@@ -2,6 +2,8 @@
 language: c++
 
 script:
-- cd app_server/build
+- cd app_server
+- mkdir build
+- cd build
 - cmake ..
 - make
