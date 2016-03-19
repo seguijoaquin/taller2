@@ -1,0 +1,9 @@
+Para ejecutar la app, situarse en app_server/build
+correr los siguientes comandos:
+> cmake ..
+> make
+> make all
+> cd src
+> ./helloWorld
+
+

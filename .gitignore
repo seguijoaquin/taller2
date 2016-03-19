@@ -1,1 +1,6 @@
-#Add files path to ignore
+################
+# Local Files
+################
+
+#APP Server build
+app_server/build/*
