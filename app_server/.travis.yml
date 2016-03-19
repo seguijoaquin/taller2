@@ -1,0 +1,7 @@
+
+language: c++
+
+script:
+- cd app_server/build
+- cmake ..
+- make
