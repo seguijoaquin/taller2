@@ -2,16 +2,18 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree. An additional grant
 // of patent rights can be found in the PATENTS file in the same directory.
-#ifndef ROCKSDB_LITE
+
 #pragma once
+
+#include <string>
+#include <vector>
+
+#include "rocksdb/db.h"
+#include "rocksdb/options.h"
 
 namespace rocksdb {
 
-class SSTDumpTool {
- public:
-  int Run(int argc, char** argv);
-};
-
+// This function can be used to list the Information logs,
+// given the db pointer.
+Status GetInfoLogList(DB* db, std::vector<std::string>* info_log_list);
 }  // namespace rocksdb
-
-#endif  // ROCKSDB_LITE
