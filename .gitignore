@@ -2,9 +2,14 @@
 # Local Files
 ################
 
-#APP Server build
-app_server/build/*
-
 #Temp files
 app_server/*.*~
 app_server/src/*.*~
+
+#Cmake files
+app_server/build/*.*
+app_server/build/*.*~
+app_server/build/CMakeFiles/*
+app_server/build/lib/*
+app_server/build/src/*
+
