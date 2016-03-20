@@ -9,13 +9,17 @@ notifications:
 sudo: required
 
 install:
+#Dependencias RocksDB
 #- sudo apt-get install libgflags-dev
 - sudo apt-get install libsnappy-dev
 - sudo apt-get install zlib1g-dev
 - sudo apt-get install libbz2-dev
+- cd app_server/lib/rocksdb-master/
+- make static_lib
+- mv -i librocksdb.a ../
+- cd ../../../
 
 script:
-- cd app_server
-- cd build
+- cd app_server/build/
 - cmake ..
 - make
