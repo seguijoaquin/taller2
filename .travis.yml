@@ -1,6 +1,11 @@
 
 language: c++
 
+notifications:
+  email:
+    - segui.joaquin@gmail.com
+    - diegofk26@gmail.com
+
 sudo: required
 
 install:
