@@ -26,7 +26,7 @@ ADD_EXECUTABLE(helloWorld main)
 #Enlaza el ejecutable con la librería Hello
 TARGET_LINK_LIBRARIES(helloWorld WebServer)
 
-#rocksdb y sus dependencias
+
 TARGET_LINK_LIBRARIES(helloWorld librocksdb.a) 
 TARGET_LINK_LIBRARIES(helloWorld gflags )
 TARGET_LINK_LIBRARIES(helloWorld snappy )
