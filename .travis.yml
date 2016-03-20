@@ -4,24 +4,13 @@ language: c++
 notifications:
   email:
     - segui.joaquin@gmail.com
-    - diegofk26@gmail.com
+   # - diegofk26@gmail.com
+   # Mail Seba
+   # Mail Juanma
 
 sudo: required
 
 install:
-#Dependencias RocksDB
-- sudo apt-get install build-essential
-- sudo apt-get install devscripts
-- sudo dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
-- sudo gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
-- sudo echo 'DSCVERIFY_KEYRINGS="/etc/apt/trusted.gpg:~/.gnupg/pubring.gpg"' > ~/.devscripts
-- sudo dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
-- cd gflags-2.0/
-- sudo debuild -uc -us
-#May fail
-- cd ..
-- sudo dpkg -i *gflags*.deb
-
 - sudo apt-get install libgflags-dev
 - sudo apt-get install libsnappy-dev
 - sudo apt-get install zlib1g-dev
