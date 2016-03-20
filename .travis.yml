@@ -15,11 +15,11 @@ install:
 - sudo apt-get install build-essential
 - sudo apt-get install devscripts
 - sudo apt-get install debhelper
-- sudo gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
-- sudo dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
-- sudo echo 'DSCVERIFY_KEYRINGS="/etc/apt/trusted.gpg:~/.gnupg/pubring.gpg"' > ~/.devscripts
+- gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
+- dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
+- echo 'DSCVERIFY_KEYRINGS="/etc/apt/trusted.gpg:~/.gnupg/pubring.gpg"' > ~/.devscripts
 - cd gflags-2.0/
-- sudo debuild -uc -us
+- debuild -uc -us
 #May fail
 - cd ..
 - sudo dpkg -i *gflags*.deb
