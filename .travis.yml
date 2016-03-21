@@ -15,7 +15,7 @@ install:
 - sudo apt-get install build-essential
 - sudo apt-get install devscripts
 - sudo apt-get install debhelper
-- dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
+#- dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
 - gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
 - echo 'DSCVERIFY_KEYRINGS="/etc/apt/trusted.gpg:~/.gnupg/pubring.gpg"' > ~/.devscripts
 - dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
