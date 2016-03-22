@@ -13,9 +13,9 @@ sudo: required
 install:
 #Dependencias RocksDB
 - sudo apt-get install build-essential
-- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 - sudo apt-get update
-- sudo apt-get install gcc-4.7 g++-4.7
+- sudo apt-get install gcc-4.9 g++-4.9
 - sudo apt-get install devscripts
 #- sudo apt-get install debhelper
 #- gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
