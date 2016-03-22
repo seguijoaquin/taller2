@@ -13,7 +13,7 @@ sudo: required
 install:
 #Dependencias RocksDB
 - sudo apt-get install build-essential
-- sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 - sudo apt-get update
 - sudo apt-get install gcc-4.7 g++-4.7
 - sudo apt-get install devscripts
