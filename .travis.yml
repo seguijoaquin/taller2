@@ -12,11 +12,11 @@ sudo: required
 
 install:
 #Dependencias RocksDB
-- sudo apt-get install build-essential
+#- sudo apt-get install build-essential
 - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 - sudo apt-get update
 - sudo apt-get install gcc-4.9 g++-4.9
-- sudo apt-get install devscripts
+#- sudo apt-get install devscripts
 #- sudo apt-get install debhelper
 #- gpg --keyserver keyserver.ubuntu.com --recv-key 8AE09345
 #- echo 'DSCVERIFY_KEYRINGS="/etc/apt/trusted.gpg:~/.gnupg/pubring.gpg"' > ~/.devscripts
@@ -26,7 +26,7 @@ install:
 #May fail
 #- cd ..
 #- sudo dpkg -i *gflags*.deb
-- sudo apt-get install libgflags-dev
+#- sudo apt-get install libgflags-dev
 - sudo apt-get install libsnappy-dev
 - sudo apt-get install zlib1g-dev
 - sudo apt-get install libbz2-dev
