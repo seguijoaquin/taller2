@@ -14,6 +14,8 @@ install:
 #Dependencias RocksDB
 - sudo apt-get install build-essential
 - sudo apt-get install g++
+- g++ --version
+- sudo apt-get install g++-4.7
 - sudo apt-get install devscripts
 - sudo apt-get install debhelper
 #- dget https://launchpad.net/ubuntu/+archive/primary/+files/gflags_2.0-1.dsc
