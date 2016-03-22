@@ -29,12 +29,12 @@ before_install:
 - sudo apt-get install -y libgflags-dev 
 - sudo apt-get install -y libsnappy-dev
 - sudo apt-get install -y zlib1g-dev
-- sudo apt-get install -y libbz2-dev
+- sudo apt-get install -y libpthread-stubs0-dev
 
 install:
-- cd app_server/lib/rocksdb-master/
+- cd app_server/lib/rocksdb/
 - make static_lib
-- mv -i librocksdb.a ../
+- sudo rm -r !(librocksdb.a|include)
 - cd ../../../
 
 script:
