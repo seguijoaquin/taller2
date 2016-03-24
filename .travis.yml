@@ -6,7 +6,7 @@ notifications:
     - segui.joaquin@gmail.com
    # - diegofk26@gmail.com
    # Mail Seba
-   # Mail Juanma
+    - juanmafc25@gmail.com
 
 sudo: required
 dist: trusty
