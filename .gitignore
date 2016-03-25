@@ -5,6 +5,7 @@
 #Temp files
 app_server/*.*~
 app_server/src/*.*~
+*.*~
 
 #Cmake files
 app_server/build/*.*
