@@ -115,17 +115,17 @@ WebServer/fast:
 .PHONY : WebServer/fast
 
 #=============================================================================
-# Target rules for targets named helloWorld
+# Target rules for targets named appserver
 
 # Build rule for target.
-helloWorld: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 helloWorld
-.PHONY : helloWorld
+appserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 appserver
+.PHONY : appserver
 
 # fast build rule for target.
-helloWorld/fast:
-	$(MAKE) -f src/CMakeFiles/helloWorld.dir/build.make src/CMakeFiles/helloWorld.dir/build
-.PHONY : helloWorld/fast
+appserver/fast:
+	$(MAKE) -f src/CMakeFiles/appserver.dir/build.make src/CMakeFiles/appserver.dir/build
+.PHONY : appserver/fast
 
 #=============================================================================
 # Target rules for targets named Mongoose
@@ -148,8 +148,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... appserver"
 	@echo "... WebServer"
-	@echo "... helloWorld"
 	@echo "... Mongoose"
 .PHONY : help
 

@@ -9,29 +9,31 @@ endif()
 
 
 # rocksdb usa pthread agrego el flag -pthread a la compilacion y linkeo.
-SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -pthread" )
-SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -pthread" )
+SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -pthread -std=c++11 -Wall -Wextra" )
+SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -pthread -std=c++11 -Wall -Wextra" )
 
 #Asegurarse de que el compilador puede encontrar los ficheros de nuestra librería Hello
 INCLUDE_DIRECTORIES(${APPSERVER_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${APPSERVER_SOURCE_DIR}/lib/mongoose)
+INCLUDE_DIRECTORIES(${APPSERVER_SOURCE_DIR}/lib)
+INCLUDE_DIRECTORIES(${APPSERVER_SOURCE_DIR}/lib/rocksdb)
+INCLUDE_DIRECTORIES(${APPSERVER_SOURCE_DIR}/lib/rocksdb/utilities)
 
-INCLUDE_DIRECTORIES("${APPSERVER_SOURCE_DIR}/lib/rocksdb" "${APPSERVER_SOURCE_DIR}/lib/rocksdb/include" "/usr/local/lib" "/usr/local/include")
-LINK_DIRECTORIES("${APPSERVER_SOURCE_DIR}/lib/rocksdb" "${APPSERVER_SOURCE_DIR}/lib/rocksdb/include" "/usr/local/lib" "/usr/local/include")
+LINK_DIRECTORIES(${APPSERVER_SOURCE_DIR}/lib)
 
 #Añade un binario llamado "helloWorld" que es construido del fichero fuente "main.cpp"
 #La extensión se encuentra automáticamente
-ADD_EXECUTABLE(helloWorld main)
+ADD_EXECUTABLE(appserver main)
  
-#Enlaza el ejecutable con la librería Hello
-TARGET_LINK_LIBRARIES(helloWorld WebServer)
+#Enlaza el ejecutable con la librería WebServer
+TARGET_LINK_LIBRARIES(appserver WebServer)
 
 #rocksdb y sus dependencias
-TARGET_LINK_LIBRARIES(helloWorld librocksdb.a) 
-TARGET_LINK_LIBRARIES(helloWorld gflags )
-TARGET_LINK_LIBRARIES(helloWorld snappy )
-TARGET_LINK_LIBRARIES(helloWorld bz2 )
-TARGET_LINK_LIBRARIES(helloWorld z)
+TARGET_LINK_LIBRARIES(appserver librocksdb.a) 
+TARGET_LINK_LIBRARIES(appserver gflags )
+TARGET_LINK_LIBRARIES(appserver snappy )
+TARGET_LINK_LIBRARIES(appserver bz2 )
+TARGET_LINK_LIBRARIES(appserver z)
 
 
 
