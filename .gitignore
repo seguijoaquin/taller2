@@ -12,4 +12,5 @@ app_server/build/*.*~
 app_server/build/CMakeFiles/*
 app_server/build/lib/*
 app_server/build/src/*
-
+app_server/lib/rocksdb/*
+app_server/lib/librocksdb.a
