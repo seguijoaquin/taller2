@@ -34,6 +34,7 @@ ADD_EXECUTABLE(appserver main)
 #Specify libraries or flags to use when linking a given target.
 #https://cmake.org/cmake/help/v3.0/command/target_link_libraries.html
 TARGET_LINK_LIBRARIES(appserver WebServer)
+TARGET_LINK_LIBRARIES(appserver json)
 
 #rocksdb y sus dependencias
 TARGET_LINK_LIBRARIES(appserver librocksdb.a) 

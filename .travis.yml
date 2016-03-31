@@ -14,7 +14,8 @@ dist: trusty
 before_install:
 #Dependencias RocksDB
 install:
-- ./instalar.sh
+- ./instalar_rocksdb.sh
+- ./instalar_cppunit.sh
 
 script:
 - cd app_server/build/
