@@ -1,2 +1,2 @@
-ADD_LIBRARY(json json)
+ADD_LIBRARY(Json json)
 
