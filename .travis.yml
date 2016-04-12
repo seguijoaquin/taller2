@@ -4,9 +4,9 @@ language: c++
 notifications:
   email:
     - segui.joaquin@gmail.com
-   # - diegofk26@gmail.com
+    - diegofk26@gmail.com
    # Mail Seba
-   #- juanmafc25@gmail.com
+    - juanmafc25@gmail.com
 
 sudo: required
 dist: trusty
@@ -18,6 +18,8 @@ install:
 - ./instalar_cppunit.sh
 
 script:
-- cd app_server/build/
-- cmake ..
+- cd Appserver
+- mkdir build
+- cd build
+- cmake ../src
 - make

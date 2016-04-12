@@ -3,15 +3,16 @@
 ################
 
 #Temp files
-app_server/*.*~
-app_server/src/*.*~
 *.*~
+Appserver/src/*.*~
+Appserver/src/*.*~
+Appserver/src/servicio/*.*~
+Appserver/src/servidor/*.*~
 
-#Cmake files
-app_server/build/*.*
-app_server/build/*.*~
-app_server/build/CMakeFiles/*
-app_server/build/lib/*
-app_server/build/src/*
-app_server/lib/rocksdb/*
-app_server/lib/librocksdb.a
+#RocksDB
+Appserver/src/external/lib/librocksdb.a
+Appserver/src/external/rocksdb/*
+#Appserver/utilities/rocksdb-master/*
+
+#Build
+Appserver/build/*
