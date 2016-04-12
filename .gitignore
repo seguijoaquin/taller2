@@ -12,7 +12,7 @@ Appserver/src/servidor/*.*~
 #RocksDB
 Appserver/src/external/lib/librocksdb.a
 Appserver/src/external/rocksdb/*
-#Appserver/utilities/rocksdb-master/*
+Appserver/utilities/rocksdb-master/*
 
 #Build
 Appserver/build/*
