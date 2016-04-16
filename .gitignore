@@ -16,3 +16,5 @@ Appserver/utilities/rocksdb-master/*
 
 #Build
 Appserver/build/*
+
+Testing/*

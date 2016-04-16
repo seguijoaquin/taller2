@@ -1,4 +1,0 @@
-usuario1 password1
-usuario2 password2
-usuario3 password3
-
