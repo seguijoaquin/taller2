@@ -4,6 +4,7 @@ servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, m
     this->manager = manager;
     this->mensajeHTTP = mensajeHTTP;
     this->listaUsuarios = listaUsuarios;
+    this->codigoRespuesta = 0;
     this->atenderRegistro();
 }
 
@@ -30,53 +31,43 @@ void servicioRegistro::atenderRegistro(){
 void servicioRegistro::realizarRegistro(string usuario, string password){
 
     struct mg_connection* conexionParaRegistrarse;
-    //Refactorizar: poner el localhost:8001 como constante
-
-
-    //NUEVO
-    //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre
-    //El mensaje para resgistrarse va a tirar solo el mensaje json
-    string mensajeParaRegistrarse = crearMensajeParaAlta(usuario);
-    char* headers = "Content-Type: application/json\r\n";
-    conexionParaRegistrarse = mg_connect_http(this->manager, this->handlerResgistro, "t2shared.herokuapp.com/users/", headers, mensajeParaRegistrarse.c_str());
-    //mg_printf(conexionParaRegistrarse,"%s",mensajeParaRegistrarse.c_str());
-
-    //Sabiendo como funciona el mg_connect_http esto (pasarle user data a la conexion) puede no funcionar si el poll se hace antes de asignar la data
-
-
-    //Refactorizar: esto se tendria que armar en una funcion usando el jsoncpp
-    //Si le borro el primer mensaje enviado despues de conectarse puede servir
-    //Idea para la sincronizacion: tal vez pueda evitar que se mande en el CONNECT, le borro el buffer en el CONNECT
-    //Esto fue para sincronizarlos, lo tengo que reformular
-/*    this->bloqueado = true;
-    while (this->bloqueado){
-        sleep(1);
-    }
- */
 
     //Aca tal vez no se mande inmediantamente, tal vez la respuesta no le llegue en seguida, lo bloqueo y espero a que llegue la respuesta
-    //
-    this->bloqueado = true;
     //Refactorizar: agregarle un timeout???
- /*   cout<<"VA a esperar en el while\n";
-    while (this->bloqueado){
-        sleep(1);
-    }
-*/
     //Refactorizar: darDeAlta(...) ademas debe agregarlo al archivo
     //REFACTORIZAR:
-    //WARNING: REFACTORIZAR: MUY MUY IMPORTANTE: ahora no se estan sincronizando el mensaje del shared con el mensaje
-    //El problema esta en que seria un thread detacheado el que corre el handler, tal vez en un thread hacer se cree la conexion y que mientras la conexion sea diferente de nula que espera hasta que sea nula (o sea, que espere hasta que se haya muerto la conexion)
-    //Igual no recibiria el codigo de error,
-    //IDEA: PONERLE EL FLAG DE "TODAVIA NO LO MANDES" en la MG_EV_CONNECT y agrego this a la user data, despues me bloqueo, le saco el flag y que la conexion me desbloquee, pasandome el codigo de salida, y el mensaje
-    //EDIT: ese flag parece no existir mas, otra posible solucion seria tener dos managers uno con MT el otro no pero creo que lo haria mas lento todo....
-    //La version de ver si es NULL podria servir pero no obtendria el codigo
-    (*(this->listaUsuarios))[usuario] = password;
-    this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+    //Problema para mas adelante: si llegan dos PUTs iguales, puede que se registren los dos, tal vez lo pueda resolver el atendedorHTTP con una lista de "usuarios que esperan ser registrados", otra seria tener esa lista como variable statica, todas las instancias la pueden ver, checkeo esa lista ademas de la lista de usuarios ya registrados para saber si el nombre esta usado o no y devuelvo un error adecuado
+    //Para probar esto se podria agregar un sleep en el ev handler para simular que tarda mucho en inscribirse.
+
+    //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
+    string bodyJson = crearMensajeParaAlta(usuario);
+    conexionParaRegistrarse = mg_connect(this->manager,"t2shared.herokuapp.com:80", this->handlerResgistro); //SI
+    mg_set_protocol_http_websocket(conexionParaRegistrarse);
+
+    conexionParaRegistrarse->user_data = this;
+    this->bloqueado = true;
+    mg_printf(conexionParaRegistrarse, "POST /users/ HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: %i\r\nContent-Type: application/json\r\n\r\n%s", bodyJson.length(), bodyJson.c_str()); //Funciona
+
+    while (this->bloqueado){
+        sleep(1);
+        cout<<"esta esperando...\n";
+    }
+
+    //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
+    if (this->codigoRespuesta == 201){
+        (*(this->listaUsuarios))[usuario] = password;
+        this->respuesta = "HTTP/1.1 201 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+    }
+    else{
+        //Cambiarlo para diferentes errores
+        this->respuesta = "HTTP/1.1 500 ERROR no se pudo registrar\r\n\r\n";
+    }
+
 }
 
 
-void servicioRegistro::desbloquear(){
+void servicioRegistro::desbloquear(int codigoRespuesta){
+    this->codigoRespuesta = codigoRespuesta;
     this->bloqueado = false;
 }
 
@@ -100,7 +91,9 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
             {
                 cout<<"EL SERVER TIRO EL REPLY\n";
                 //Refactorizar esto, ver alguna forma para sincronizar el registrador con el mensaje del shared.....
-                //((servicioRegistro*)conexion->user_data)->desbloquear();
+
+                //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
+                ((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
                 printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
                 //Esto es porque ya no tiene sentido que esa conexion siga activa luego de recibir la respuesta

@@ -143,17 +143,22 @@ int main(void) {
     // Configuro al manager como http
     mg_set_protocol_http_websocket(conexionListening);
     //Cada conexion que entra se va a manejar en un thread deatacheado distinto usando el handlerServer
-    //SOLUCION TEMPORAL AL PROBLEMA DEL CMAKE
     mg_enable_multithreading(conexionListening);
     /////////////////////////////////////////////////////////////////////
 
     //Esto asi no funciona, sin el :5000 me tira conexion NULL
-    //mg_connection* nc = mg_connect(&manager,"t2shared.herokuapp.com:5000", handlerServer); //SI
-    //mg_set_protocol_http_websocket(nc);
-    //mg_printf(nc, "GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: 0\r\n\r\n");
+    //EDIT: puerto :80, en vez de :5000 y funciona
+    //Con esta forma
+//    mg_connection* nc = mg_connect(&manager,"t2shared.herokuapp.com:80", handlerServer); //SI
+//    mg_set_protocol_http_websocket(nc);
+//    //mg_printf(nc, "GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: 0\r\n\r\n"); //Funciona
+//    mg_printf(nc, "GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\n\r\n"); //Funciona
 
-    //PARA ARRIBA NO FUNCIONA
-    //mg_connection* nc = mg_connect_http(&manager, handlerServer, "t2shared.herokuapp.com/users/18", NULL, NULL); //SI SI SI ES ESTA, THIS IS THE ONE
+    //mg_printf(nc, "GET /users/18 HTTP/1.1\r\n\r\n"); //NO funciona, conclusion: necesita si o si el host
+    //mg_printf(nc, "GET https://t2shared.herokuapp.com/users/18 HTTP/1.1\r\n\r\n"); // Tmapoco
+
+    //Con esta forma se puede mandar un GET o un POST de una
+    //mg_connection* nc = mg_connect_http(&manager, handlerServer, "t2shared.herokuapp.com/users/18", NULL, NULL);
     /*if (nc == NULL){
         cout<<"corta\n";
     }*/

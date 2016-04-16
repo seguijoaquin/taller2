@@ -21,6 +21,8 @@ class servicioRegistro
         mg_mgr* manager;
         http_message* mensajeHTTP;
         string respuesta;
+        int codigoRespuesta;
+
         map<string,string>* listaUsuarios;
         bool bloqueado;
         string crearMensajeParaAlta(string usuario);
@@ -28,7 +30,7 @@ class servicioRegistro
 
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);
-        void desbloquear();
+        void desbloquear(int codigoRespuesta);
 
         static void handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
 
