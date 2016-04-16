@@ -144,7 +144,7 @@ int main(void) {
     mg_set_protocol_http_websocket(conexionListening);
     //Cada conexion que entra se va a manejar en un thread deatacheado distinto usando el handlerServer
     //SOLUCION TEMPORAL AL PROBLEMA DEL CMAKE
-    //mg_enable_multithreading(conexionListening);
+    mg_enable_multithreading(conexionListening);
     /////////////////////////////////////////////////////////////////////
 
     //Esto asi no funciona, sin el :5000 me tira conexion NULL

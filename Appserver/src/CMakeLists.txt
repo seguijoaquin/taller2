@@ -3,7 +3,11 @@ project (Appserver C CXX)
 
 # rocksdb usa pthread agrego el flag -pthread a la compilacion y linkeo.
 SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -pthread -std=c++11 -Wall -Wextra -O0" ) 
-SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -pthread -std=c++11 -Wall -Wextra -lsnappy -lgflags -lz -lbz2 -DMG_ENABLE_JAVASCRIPT" )
+SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -pthread -std=c++11 -Wall -Wextra -lsnappy -lgflags -lz -lbz2 ")
+
+# Con este #define funciona el multithreading de Mongoose
+ADD_DEFINITIONS(-DMG_ENABLE_THREADS)
+
 
 #adds directories with headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
