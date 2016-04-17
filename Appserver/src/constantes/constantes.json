@@ -1,0 +1,11 @@
+{
+	"servicioLogin": {
+		"headerUsuario": "Usuario",
+		"headerPassword": "PassWord"
+	},
+
+  "servicioRegistro": {
+    "algo" : "asdalgo",
+    "otraConstante" : "Otra"
+  }
+}
