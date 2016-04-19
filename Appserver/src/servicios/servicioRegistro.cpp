@@ -1,10 +1,24 @@
 #include "servicioRegistro.h"
 
+//PARA PROBAR SI LAS CONEXIONES OUTBOUNDS SE MANEJAN EN UN MISMO THREAD
+int servicioRegistro::tiempo = 0;
+
+
+
+
+
+
+
+
+
+
+
 servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios ){
     this->manager = manager;
     this->mensajeHTTP = mensajeHTTP;
     this->listaUsuarios = listaUsuarios;
     this->codigoRespuesta = 0;
+    this->espera = 0;
     this->atenderRegistro();
 }
 
@@ -39,6 +53,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //Problema para mas adelante: si llegan dos PUTs iguales, puede que se registren los dos, tal vez lo pueda resolver el atendedorHTTP con una lista de "usuarios que esperan ser registrados", otra seria tener esa lista como variable statica, todas las instancias la pueden ver, checkeo esa lista ademas de la lista de usuarios ya registrados para saber si el nombre esta usado o no y devuelvo un error adecuado
     //Para probar esto se podria agregar un sleep en el ev handler para simular que tarda mucho en inscribirse.
 
+
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     string bodyJson = crearMensajeParaAlta(usuario);
     conexionParaRegistrarse = mg_connect(this->manager,"t2shared.herokuapp.com:80", this->handlerResgistro); //SI
@@ -50,13 +65,18 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     while (this->bloqueado){
         sleep(1);
-        cout<<"esta esperando...\n";
+        this->espera++;
+        //cout<<"esta esperando...\n";
+    }
+
+    if (conexionParaRegistrarse == NULL){
+        cout<<"La oncexion es nula, seguro que la proxima explota";
     }
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     if (this->codigoRespuesta == 201){
-        (*(this->listaUsuarios))[usuario] = password;
-        this->respuesta = "HTTP/1.1 201 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+        //(*(this->listaUsuarios))[usuario] = password;
+        this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
     }
     else{
         //Cambiarlo para diferentes errores
@@ -69,6 +89,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 void servicioRegistro::desbloquear(int codigoRespuesta){
     this->codigoRespuesta = codigoRespuesta;
     this->bloqueado = false;
+    cout<<"Espero: "<<this->espera<<"\n";
 }
 
 void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data){
@@ -82,8 +103,19 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
             {
                 cout<<"EL REGISTRO SE CONECTO AL SERVER\n";
                 //mbuf_remove(sendBuffer, sendBuffer->len);
-                printf("Lo que hay en el buffer DEL REGISTRO en CONNECT es:\n%.*s\n", sendBuffer->len,sendBuffer->buf);
+                //printf("Lo que hay en el buffer DEL REGISTRO en CONNECT es:\n%.*s\n", sendBuffer->len,sendBuffer->buf);
                 //((servicioRegistro*)conexion->user_data)->desbloquear();
+                cout<<"SE CONECTO AL SISTEMA, le escribo aca lo que tiene que mandar\n";
+                cout<<"El indice de CONNECT es: "<<conexion<<"\n";
+                //mbuf_remove(sendBuffer, sendBuffer->len);
+                //PARA PROBAR SI LAS CONEXIONES OUTBOUNDS SE MANEJAN EN UN MISMO THREAD
+                /*int i = 0;
+                while (i < 5){ //con 10seg y dos conexiones tira segmentation faults
+                    i++;
+                    tiempo++;
+                    cout<<"Tiempo en la conexion con direccion "<<conexion<<" "<<tiempo<<" segundos\n";
+                    sleep(1);
+                }*/
             }
             break;
 
@@ -93,7 +125,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
                 //Refactorizar esto, ver alguna forma para sincronizar el registrador con el mensaje del shared.....
 
                 //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
-                ((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
+                //((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
                 printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
                 //Esto es porque ya no tiene sentido que esa conexion siga activa luego de recibir la respuesta
@@ -108,7 +140,10 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
             break;
         case MG_EV_CLOSE:
             {
-                cout<<"SE CERRO LA CONEXION\n";
+                //cout<<"SE CERRO LA CONEXION\n";
+                //Lo pruebo para ver si se soluciona el segmentation fault
+                ((servicioRegistro*)conexion->user_data)->desbloquear( 201);
+                cout<<"SE CERRO LA CONEXION a los "<<tiempo<<" segundos "<<"El indice de CLOSE es: "<<conexion<<"\n";
             }
             break;
     }
