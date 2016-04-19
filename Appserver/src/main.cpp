@@ -1,4 +1,4 @@
-#include "../include/mongoose.h"
+#include "mongoose/mongoose.h"
 #include <iostream>
 #include <fstream>
 #include <map>
