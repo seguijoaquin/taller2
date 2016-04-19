@@ -18,3 +18,4 @@ Appserver/utilities/rocksdb-master/*
 Appserver/build/*
 
 Testing/*
+Appserver/utilities/cpptest-1.1.2/*
