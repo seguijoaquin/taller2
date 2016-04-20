@@ -86,6 +86,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     */
     //Para probar esto se podria agregar un sleep en el ev handler para simular que tarda mucho en inscribirse.
 
+
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     string bodyJson = crearMensajeParaAlta(usuario);
     conexionParaRegistrarse = mg_connect(this->manager,"t2shared.herokuapp.com:80", this->handlerResgistro); //SI

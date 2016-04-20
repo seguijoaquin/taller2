@@ -57,6 +57,9 @@ bool servicioLogin::usuarioExiste(){
         if(passwordGuardado == passwordIngresado){
             return true;
         }
+        else{
+            return false;
+        }
     }
 }
 

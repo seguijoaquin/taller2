@@ -6,8 +6,8 @@
 #include <fstream>
 #include <map>
 #include <thread>
-#include "servicioRegistro.h"
-#include "servicioLogin.h"
+
+#include "AtendedorHTTP.h"
 
 
 
@@ -25,53 +25,6 @@ rocksdb::DB* credencialesUsuarios;
 
 struct mg_mgr manager;
 
-bool compararMetodoHTTP(struct http_message* mensajeHTTP, char* metodo){
-
-    if (mg_vcmp(&(mensajeHTTP->method), metodo) == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-
-}
-
-bool compararUriHTTP(struct http_message* mensajeHTTP, char* uri){
-
-    if (mg_vcmp(&(mensajeHTTP->uri), uri) == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-
-string atenderMesajeHTTP(struct http_message* mensajeHTTP){
-    string respuesta;
-
-    if (compararMetodoHTTP(mensajeHTTP,"POST")){
-        //respuesta = atenderPOST(mensajeHTTP);
-
-    }
-    else if (compararMetodoHTTP(mensajeHTTP,"GET")){
-        if (compararUriHTTP(mensajeHTTP, "/login")){
-            //servicioLogin logginer(mensajeHTTP, &listaUsuarios);
-            servicioLogin logginer(mensajeHTTP, credencialesUsuarios);
-            respuesta = logginer.getRespuesta();
-            cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
-
-        }
-    }
-    else if (compararMetodoHTTP(mensajeHTTP, "PUT")){
-        if (compararUriHTTP(mensajeHTTP, "/registro")){
-            //servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
-            servicioRegistro registrador(&manager, mensajeHTTP, credencialesUsuarios);
-            respuesta = registrador.getRespuesta();
-            cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
-        }
-    }
-    return respuesta;
-}
 
 static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data) {
 
@@ -95,11 +48,12 @@ static void handlerServer(struct mg_connection* conexion, int evento, void* ev_d
         break;
         case MG_EV_HTTP_REQUEST:
             {
-                struct http_message* mensajeHTTP = (struct http_message *) ev_data;
 
+                struct http_message* mensajeHTTP = (struct http_message *) ev_data;
                 printf("Mensaje de llegada al server:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
 
-                string respuesta = atenderMesajeHTTP(mensajeHTTP);
+                AtendedorHTTP atendedor(mensajeHTTP, credencialesUsuarios, &manager);
+                string respuesta = atendedor.getRespuesta();
 
                 //cout<<"Respuesta:\n"<<respuesta<<"\n";
                 //mg_printf(conexion,"HTTP/1.1 202 Mensaje de informacion sobre el vnbjsdfo\r\n\r\nbody sfdvdfb\0");//, respuesta);
