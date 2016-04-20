@@ -1,8 +1,15 @@
 #include "servicioLogin.h"
 
-servicioLogin::servicioLogin(http_message* mensajeHTTP, map<string,string>* listaUsuarios){
+/*servicioLogin::servicioLogin(http_message* mensajeHTTP, map<string,string>* listaUsuarios){
     this->mensajeHTTP = mensajeHTTP;
     this->listaUsuarios = listaUsuarios;
+    this->atenderLogin();
+}
+*/
+
+servicioLogin::servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
+    this->mensajeHTTP = mensajeHTTP;
+    this->dbUsuarios = dbUsuarios;
     this->atenderLogin();
 }
 
@@ -30,11 +37,24 @@ bool servicioLogin::usuarioExiste(){
     string passwordIngresado(headerPassword->p,headerPassword->len);
 
     //Refactorizar: buscarUsuario()
+/*
     if (this->listaUsuarios->find(usuarioIngresado) == this->listaUsuarios->end()){
         return false;
     }
     else{
         if(this->listaUsuarios->find(usuarioIngresado)->second == passwordIngresado){
+            return true;
+        }
+    }
+*/
+    string passwordGuardado;
+    rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &passwordGuardado );
+
+    if (estado.IsNotFound()){
+        return false;
+    }
+    else{
+        if(passwordGuardado == passwordIngresado){
             return true;
         }
     }
@@ -49,6 +69,7 @@ void servicioLogin::realizarLogin(){
     //Tengo que escribir la respuesta HTTP/1.1 200 Se logueo correctamente\r\n\Token:1ddfw4g\r\n\r\n\0
     this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
     //cout<<"Respuesta del login:\n"<<this->respuesta<<"\n";
+
 }
 
 string servicioLogin::generarToken(){

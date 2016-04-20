@@ -6,13 +6,16 @@
 #include <map>
 #include "json/json.h"
 #include <fstream>
+//#include "../include/rocksdb/db.h"
+#include "rocksdb/db.h"
 
 using namespace std;
 
 class servicioRegistro
 {
     public:
-        servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios );
+        //servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios );
+        servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
         ~servicioRegistro();
 
         string getRespuesta();
@@ -28,7 +31,9 @@ class servicioRegistro
         int espera;
 
 
-        map<string,string>* listaUsuarios;
+        //map<string,string>* listaUsuarios;
+        rocksdb::DB* dbUsuarios;
+
         bool bloqueado;
         string crearMensajeParaAlta(string usuario);
         void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );

@@ -13,7 +13,7 @@ int servicioRegistro::tiempo = 0;
 
 
 
-servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios ){
+/*servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios ){
     this->manager = manager;
     this->mensajeHTTP = mensajeHTTP;
     this->listaUsuarios = listaUsuarios;
@@ -21,6 +21,20 @@ servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, m
     this->espera = 0;
     this->atenderRegistro();
 }
+*/
+
+servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
+    this->manager = manager;
+    this->mensajeHTTP = mensajeHTTP;
+    this->dbUsuarios = dbUsuarios;
+    this->codigoRespuesta = 0;
+    this->espera = 0;
+    this->atenderRegistro();
+}
+
+
+
+
 
 
 void servicioRegistro::atenderRegistro(){
@@ -31,7 +45,19 @@ void servicioRegistro::atenderRegistro(){
     string passwordIngresado(headerPassword->p,headerPassword->len);
 
     //Refactorizar: buscarUsuario()
-    if (this->listaUsuarios->find(usuarioIngresado) == listaUsuarios->end()){
+/*        if (this->listaUsuarios->find(usuarioIngresado) == listaUsuarios->end()){
+            //El NOMBRE de usuario NO existe y se puede inscribir
+            this->realizarRegistro(usuarioIngresado,passwordIngresado);
+        }
+        else{
+            //EL nombre SI existe, tengo que rechazarlo
+            //Refactorizar
+            this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
+        }
+*/
+    string aux;
+    rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &aux );
+    if(  estado.IsNotFound() ){
         //El NOMBRE de usuario NO existe y se puede inscribir
         this->realizarRegistro(usuarioIngresado,passwordIngresado);
     }
@@ -40,6 +66,8 @@ void servicioRegistro::atenderRegistro(){
         //Refactorizar
         this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
     }
+
+
 }
 
 void servicioRegistro::realizarRegistro(string usuario, string password){
@@ -50,9 +78,13 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //Refactorizar: agregarle un timeout???
     //Refactorizar: darDeAlta(...) ademas debe agregarlo al archivo
     //REFACTORIZAR:
-    //Problema para mas adelante: si llegan dos PUTs iguales, puede que se registren los dos, tal vez lo pueda resolver el atendedorHTTP con una lista de "usuarios que esperan ser registrados", otra seria tener esa lista como variable statica, todas las instancias la pueden ver, checkeo esa lista ademas de la lista de usuarios ya registrados para saber si el nombre esta usado o no y devuelvo un error adecuado
-    //Para probar esto se podria agregar un sleep en el ev handler para simular que tarda mucho en inscribirse.
 
+    /*Problema para mas adelante: si llegan dos PUTs iguales, puede que se registren los dos, tal vez lo pueda
+    resolver el atendedorHTTP con una lista de "usuarios que esperan ser registrados", otra seria tener esa lista como
+    variable statica, todas las instancias la pueden ver, checkeo esa lista ademas de la lista de usuarios ya registrados
+    para saber si el nombre esta usado o no y devuelvo un error adecuado
+    */
+    //Para probar esto se podria agregar un sleep en el ev handler para simular que tarda mucho en inscribirse.
 
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     string bodyJson = crearMensajeParaAlta(usuario);
@@ -69,13 +101,10 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
         //cout<<"esta esperando...\n";
     }
 
-    if (conexionParaRegistrarse == NULL){
-        cout<<"La oncexion es nula, seguro que la proxima explota";
-    }
-
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     if (this->codigoRespuesta == 201){
         //(*(this->listaUsuarios))[usuario] = password;
+        this->dbUsuarios->Put(rocksdb::WriteOptions(),usuario,password);
         this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
     }
     else{

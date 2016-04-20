@@ -1,10 +1,14 @@
+//#include "../include/mongoose.h"
+//#include "../include/rocksdb/db.h"
 #include "mongoose/mongoose.h"
+#include "rocksdb/db.h"
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <thread>
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
+
 
 
 using namespace std;
@@ -16,7 +20,9 @@ int tiempo;
 
 //const char* PATHLOGIN = "/login";
 //ESTO LO VOY A TENER QUE GUARDAR EN OTRO LUGAR O LO MANEJO CON ROCKSDB
-map<string,string> listaUsuarios;
+//map<string,string> listaUsuarios;
+rocksdb::DB* credencialesUsuarios;
+
 struct mg_mgr manager;
 
 bool compararMetodoHTTP(struct http_message* mensajeHTTP, char* metodo){
@@ -49,7 +55,8 @@ string atenderMesajeHTTP(struct http_message* mensajeHTTP){
     }
     else if (compararMetodoHTTP(mensajeHTTP,"GET")){
         if (compararUriHTTP(mensajeHTTP, "/login")){
-            servicioLogin logginer(mensajeHTTP, &listaUsuarios);
+            //servicioLogin logginer(mensajeHTTP, &listaUsuarios);
+            servicioLogin logginer(mensajeHTTP, credencialesUsuarios);
             respuesta = logginer.getRespuesta();
             cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
 
@@ -57,7 +64,8 @@ string atenderMesajeHTTP(struct http_message* mensajeHTTP){
     }
     else if (compararMetodoHTTP(mensajeHTTP, "PUT")){
         if (compararUriHTTP(mensajeHTTP, "/registro")){
-            servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
+            //servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
+            servicioRegistro registrador(&manager, mensajeHTTP, credencialesUsuarios);
             respuesta = registrador.getRespuesta();
             cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
         }
@@ -206,7 +214,7 @@ int main(void) {
 
 
     //Refactorizar: cargarDatosDeUsuario(....)
-    fstream archivoLogin;
+/*    fstream archivoLogin;
     archivoLogin.open("login.txt");
     string usuarioActual;
     string passwordActual;
@@ -216,6 +224,23 @@ int main(void) {
     }
     //O PONERLO AL FINAL PORQUE SI ALGUNO SE REGISTRA SE VA A TENER QUE VOLVER A ABRIR
     archivoLogin.close();
+*/
+
+
+
+
+
+
+
+
+    //https://github.com/facebook/rocksdb/issues/957 diferentes alternativas para guardar datos, tambien se podria usar un json...
+    rocksdb::Options options;
+    options.create_if_missing = true;
+
+    //Lanzar errores si fuera necesario
+    rocksdb::Status status = rocksdb::DB::Open(options, "./usuariosRegistrados", &credencialesUsuarios);
+
+
 
 
     for (;;) {
@@ -223,7 +248,8 @@ int main(void) {
         //cout<<"POLL----------------------------------------------------\n";
     }
 
-
+    //IMPORTANTE DELETEARLA
+    delete credencialesUsuarios;
     mg_mgr_free(&manager);
     return 0;
 
