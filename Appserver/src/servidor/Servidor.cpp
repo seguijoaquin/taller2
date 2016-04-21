@@ -114,7 +114,7 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
         case MG_EV_HTTP_REPLY:
             {
                 cout<<"Esto se dispara?\n";
-                printf("Lo que hay en el buffer es:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
+                printf("Lo que hay en el buffer es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
                 //conexion->flags |= MG_F_CLOSE_IMMEDIATELY;
             }
@@ -123,7 +123,7 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
             {
 
                 struct http_message* mensajeHTTP = (struct http_message *) ev_data;
-                printf("Mensaje de llegada al server:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
+                printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
 
                 AtendedorHTTP atendedor(mensajeHTTP, credencialesUsuarios, &manager);
                 string respuesta = atendedor.getRespuesta();
@@ -135,7 +135,7 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
                 cout<<"ESTO ES LO QUE SE VA PRINTEAR EN EL BUFFER\n"<<respuesta<<"\n";
 
                 mg_printf(conexion,"%s",respuesta.c_str());
-                printf("Lo que hay en el sendBuffer del HTTP_REQUEST es:\n%.*s\n", sendBuffer->len,sendBuffer->buf);
+                printf("Lo que hay en el sendBuffer del HTTP_REQUEST es:\n%.*s\n", (int)sendBuffer->len,sendBuffer->buf);
                 conexion->flags |= MG_F_SEND_AND_CLOSE;
                 //Refactorizar: limpiarElBuffer(...)
 

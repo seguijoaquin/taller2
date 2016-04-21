@@ -94,7 +94,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     conexionParaRegistrarse->user_data = this;
     this->bloqueado = true;
-    mg_printf(conexionParaRegistrarse, "POST /users/ HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: %i\r\nContent-Type: application/json\r\n\r\n%s", bodyJson.length(), bodyJson.c_str()); //Funciona
+    mg_printf(conexionParaRegistrarse, "POST /users/ HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: %lu\r\nContent-Type: application/json\r\n\r\n%s", bodyJson.length(), bodyJson.c_str()); //Funciona
 
     while (this->bloqueado){
         sleep(1);
@@ -156,7 +156,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
 
                 //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
                 //((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
-                printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", recvBuffer->len,recvBuffer->buf);
+                printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
                 //Esto es porque ya no tiene sentido que esa conexion siga activa luego de recibir la respuesta
                 conexion->flags |= MG_F_CLOSE_IMMEDIATELY;
@@ -165,7 +165,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
         case MG_EV_SEND:
             {
                 cout<<"Se envio algo\n";
-                printf("Lo que hay en el buffer DEL REGISTRO en SEND es:\n%.*s\n", sendBuffer->len,sendBuffer->buf);
+                printf("Lo que hay en el buffer DEL REGISTRO en SEND es:\n%.*s\n", (int)sendBuffer->len,sendBuffer->buf);
             }
             break;
         case MG_EV_CLOSE:

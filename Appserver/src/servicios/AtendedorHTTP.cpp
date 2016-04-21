@@ -37,8 +37,11 @@ void AtendedorHTTP::atenderMesajeHTTP(){
 
 
 
-bool AtendedorHTTP::compararMetodoHTTP(http_message* mensajeHTTP, char* metodo){
-    if (mg_vcmp(&(mensajeHTTP->method), metodo) == 0){
+bool AtendedorHTTP::compararMetodoHTTP(http_message* mensajeHTTP, string metodo){
+
+
+
+    if (mg_vcmp(&(mensajeHTTP->method), StringUtil::stringToChar(metodo)) == 0){
         return true;
     }
     else{
@@ -46,8 +49,8 @@ bool AtendedorHTTP::compararMetodoHTTP(http_message* mensajeHTTP, char* metodo){
     }
 }
 
-bool AtendedorHTTP::compararUriHTTP(http_message* mensajeHTTP, char* uri){
-    if (mg_vcmp(&(mensajeHTTP->uri), uri) == 0){
+bool AtendedorHTTP::compararUriHTTP(http_message* mensajeHTTP, string uri){
+    if (mg_vcmp(&(mensajeHTTP->uri), StringUtil::stringToChar(uri)) == 0){
         return true;
     }
     else{

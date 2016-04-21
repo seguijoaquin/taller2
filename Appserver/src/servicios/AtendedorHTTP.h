@@ -4,6 +4,7 @@
 
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
+#include "StringUtil.h"
 
 
 class AtendedorHTTP
@@ -37,8 +38,8 @@ class AtendedorHTTP
         string respuesta;
 
         void atenderMesajeHTTP();
-        bool compararMetodoHTTP(http_message* mensajeHTTP, char* metodo);
-        bool compararUriHTTP(http_message* mensajeHTTP, char* uri);
+        bool compararMetodoHTTP(http_message* mensajeHTTP, string metodo);
+        bool compararUriHTTP(http_message* mensajeHTTP, string uri);
 };
 
 #endif // ATENDEDORHTTP_H
