@@ -3,13 +3,19 @@
 
 //#include "../include/mongoose.h"
 //#include "../include/rocksdb/db.h"
-#include "mongoose/mongoose.h"
-#include "rocksdb/db.h"
+//#include "mongoose/mongoose.h"
+//#include "rocksdb/db.h"
+#include "mongoose.h"
+#include "db.h"
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <thread>
 #include "AtendedorHTTP.h"
+#include "ConstantesEventosServicios.h"
+
+#include "servicioRegistro.h"
+#include "servicioLogin.h"
 
 
 /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
@@ -33,15 +39,17 @@ class Servidor
         /*La otra seria poner las credenciales como user data del manager, despues en el ev handler, de la conexion sacar el manager
           y del manager sacar las credenciales....
         */
-        static rocksdb::DB* credencialesUsuarios;
-        static mg_mgr manager;
+        //http://stackoverflow.com/questions/27221020/cast-error-passing-a-void-function-with-namespace
+
+        string getRespuestaDelServicio(http_message* mensajeHTTP);
 
     protected:
     private:
         mg_connection* conexionListening;
 
 
-
+        rocksdb::DB* credencialesUsuarios;
+        mg_mgr manager;
         static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
 
 

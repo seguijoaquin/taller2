@@ -1,7 +1,8 @@
 #include "Servidor.h"
 
-mg_mgr Servidor::manager;
+/*mg_mgr Servidor::manager;
 rocksdb::DB* Servidor::credencialesUsuarios;
+*/
 
 
 Servidor::Servidor(){
@@ -68,7 +69,7 @@ void Servidor::escucharMensajes(){
       para que lo cierre de forma ordenada
     */
     for (;;) {
-        mg_mgr_poll(&Servidor::manager, 1000);
+        mg_mgr_poll(&(this->manager), 1000);
         //cout<<"POLL----------------------------------------------------\n";
     }
 }
@@ -76,14 +77,15 @@ void Servidor::escucharMensajes(){
 
 void Servidor::iniciarManager(){
 
-    mg_mgr_init(&Servidor::manager, NULL);
+    mg_mgr_init(&(this->manager), NULL);
     // Se bindea al localhost 8000 y se guarda la conexion
-    this->conexionListening = mg_bind(&Servidor::manager, "8000", handlerServer);
+    this->conexionListening = mg_bind(&(this->manager), "8000", this->handlerServer);
     // Configuro al manager como http
     mg_set_protocol_http_websocket(this->conexionListening);
     //Cada conexion que entra se va a manejar en un thread deatacheado distinto usando el handlerServer
     mg_enable_multithreading(this->conexionListening);
     /////////////////////////////////////////////////////////////////////
+    this->conexionListening->user_data = this;
 }
 
 
@@ -93,10 +95,40 @@ void Servidor::iniciarBaseDeDatos(){
     options.create_if_missing = true;
     //Lanzar errores si fuera necesario
     //WARNING: no se si las opciones pueden perder scope antes de que se destruya la base de datos, si no puede--> options variable privada
-    rocksdb::Status status = rocksdb::DB::Open(options, "./usuariosRegistrados", &(Servidor::credencialesUsuarios));
+    rocksdb::Status status = rocksdb::DB::Open(options, "./usuariosRegistrados", &(this->credencialesUsuarios));
 }
 
 
+
+
+
+
+
+string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
+
+    string respuesta;
+    AtendedorHTTP atendedor(mensajeHTTP);
+    //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
+    switch (atendedor.getServicioALanzar()){
+        case LANZAR_SERVICIO_REGISTRO:
+            {
+                //servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
+                servicioRegistro registrador(&(this->manager), mensajeHTTP, this->credencialesUsuarios);
+                respuesta = registrador.getRespuesta();
+                cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
+            }
+            break;
+        case LANZAR_SERVICIO_LOGIN:
+            {
+                servicioLogin logginer(mensajeHTTP, this->credencialesUsuarios);
+                respuesta = logginer.getRespuesta();
+                cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
+            }
+            break;
+    }
+
+    return respuesta;
+}
 
 
 void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* ev_data) {
@@ -122,11 +154,19 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
         case MG_EV_HTTP_REQUEST:
             {
 
-                struct http_message* mensajeHTTP = (struct http_message *) ev_data;
-                printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
+                /*Esto lo puedo hacer porque estoy seguro que la UNICA conexion que esta listening (la misma que recibe los HTTP_REQUEST)
+                  es la conexion del Servidor
+                */
 
+                struct http_message* mensajeHTTP = (struct http_message *) ev_data;
+                string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(mensajeHTTP);
+                printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
+                /*
                 AtendedorHTTP atendedor(mensajeHTTP, credencialesUsuarios, &manager);
-                string respuesta = atendedor.getRespuesta();
+                respuesta = atendedor.getRespuesta();
+                */
+
+
 
                 //cout<<"Respuesta:\n"<<respuesta<<"\n";
                 //mg_printf(conexion,"HTTP/1.1 202 Mensaje de informacion sobre el vnbjsdfo\r\n\r\nbody sfdvdfb\0");//, respuesta);
@@ -134,11 +174,10 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
 
                 cout<<"ESTO ES LO QUE SE VA PRINTEAR EN EL BUFFER\n"<<respuesta<<"\n";
 
-                mg_printf(conexion,"%s",respuesta.c_str());
+                mg_printf(conexion,"%s",StringUtil::stringToChar(respuesta));
                 printf("Lo que hay en el sendBuffer del HTTP_REQUEST es:\n%.*s\n", (int)sendBuffer->len,sendBuffer->buf);
                 conexion->flags |= MG_F_SEND_AND_CLOSE;
-                //Refactorizar: limpiarElBuffer(...)
-
+                //Refactorizar: limpiarElBuffer(...), tal vez en un archivo "Utilities" xq esto tambien lo va a tener que usar el registrador
                 mbuf_remove(recvBuffer, recvBuffer->len);
             }
             break;

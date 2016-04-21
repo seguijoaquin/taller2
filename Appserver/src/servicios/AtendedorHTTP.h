@@ -2,18 +2,23 @@
 #define ATENDEDORHTTP_H
 
 
-#include "servicioRegistro.h"
-#include "servicioLogin.h"
+//#include "servicioRegistro.h"
+//#include "servicioLogin.h"
 #include "StringUtil.h"
+#include "mongoose.h"
+
+#include "ConstantesEventosServicios.h"
 
 
 class AtendedorHTTP
 {
     public:
-        AtendedorHTTP(http_message* mensajeHTTP, rocksdb::DB* credencialesUsuarios, mg_mgr* manager);
+//        AtendedorHTTP(http_message* mensajeHTTP, rocksdb::DB* credencialesUsuarios, mg_mgr* manager);
+        AtendedorHTTP(http_message* mensajeHTTP);
         virtual ~AtendedorHTTP();
 
-        string getRespuesta();
+//      string getRespuesta();
+        ServicioALanzar getServicioALanzar();
     protected:
     private:
         /*Por ahora solo la necesito para llamar al registrador y al logginer, tal vez quede mejor poniendolo como
@@ -30,12 +35,17 @@ class AtendedorHTTP
          Creo que lo que define es la cantidad de cosas diferentes que necesite (y si se las tendría que pasar al atendedorHTTP)
          por ejemplo conversaciones
          O podria poner esas cosas como variables de clase(staticas)
+
+         EDIT: termine haciendo el disenio con EVENTOS porque era el que menos NO me convencia
+
         */
-        rocksdb::DB* credencialesUsuarios;
-        mg_mgr* manager;
+//        rocksdb::DB* credencialesUsuarios;
+//        mg_mgr* manager;
+        ServicioALanzar servicioALanzar;
+
 
         http_message* mensajeHTTP;
-        string respuesta;
+//        string respuesta;
 
         void atenderMesajeHTTP();
         bool compararMetodoHTTP(http_message* mensajeHTTP, string metodo);

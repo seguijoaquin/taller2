@@ -11,8 +11,6 @@ int servicioRegistro::tiempo = 0;
 
 
 
-
-
 /*servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios ){
     this->manager = manager;
     this->mensajeHTTP = mensajeHTTP;

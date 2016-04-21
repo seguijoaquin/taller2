@@ -4,7 +4,8 @@
 #include <iostream>
 #include <map>
 //#include "../include/rocksdb/db.h"
-#include "rocksdb/db.h"
+//#include "rocksdb/db.h"
+#include "db.h"
 
 using namespace std;
 

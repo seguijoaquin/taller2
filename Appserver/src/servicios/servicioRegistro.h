@@ -7,7 +7,8 @@
 #include "json/json.h"
 #include <fstream>
 //#include "../include/rocksdb/db.h"
-#include "rocksdb/db.h"
+//#include "rocksdb/db.h"
+#include "db.h"
 
 using namespace std;
 
@@ -42,8 +43,6 @@ class servicioRegistro
         void realizarRegistro(string usuario, string password);
         void desbloquear(int codigoRespuesta);
 
-        //Refactorizar: *idea* si pongo a todos los atendedores que hereden del mismo atenderdor esto podria llamarse "handlerCliente" y que cada uno lo redefna
-        //RTA: no necesariamente, puede que algunos como el GET no lo necesiten
         static int tiempo; //SOLO PARA PROBAR SI ERA UNO O DOS THREADS
         static void handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
         //mg_event_handler_t handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
