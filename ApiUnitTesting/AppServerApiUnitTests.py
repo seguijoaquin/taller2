@@ -10,9 +10,9 @@ import unittest
 
 class TestLogin(unittest.TestCase):
 
-    port = 5000
+    port = 8000
 
-    URI = 'http://localhost:' + str(port);
+    URI = 'http://10.1.151.198:' + str(port);
 
     # --------------------------------------------------------------------------
     # ----------------------------- Status CODE --------------------------------
@@ -21,29 +21,37 @@ class TestLogin(unittest.TestCase):
 
     #   Tests que deberian dar status code 400 <--------------------------------
 
-    def test_LoginConUnUsuarioInvalido(self):
-        parametros = 'user=damecincopepacompraesevi&password=patomarconlospienlaplaaza'
-        rrequest = requests.get(self.URI +'/login?'+parametros)
-        self.assertEqual(request.status_code,400)
+    # def test_LoginConUnUsuarioInvalido(self):
+    #     head = {'Usuario': 'Frezzer',
+    #     'PassWord': '123456'}
+    #     request = requests.get(self.URI +'/login',headers=head)
+    #     self.assertEqual(request.status_code,400)
 
 
-    def test_LoginSinUsuario(self):
-        parametros = 'password=algo'
 
-    def test_LoginSinPassword(self):
-        parametros = 'user=diego'
-        request = requests.get(self.URI +'/login?'+parametros)
-        self.assertEqual(request.status_code,400)
+    #VER QUE ONDA SI ES RESPONSABILIDAD DEL APP SERVER O DEL CLIENTE.
 
-    def test_ParametroUserVacio(self):
-        parametros = 'user=&password=3333122'
-        request = requests.get(self.URI +'/login?'+parametros)
-        self.assertEqual(request.status_code,400)
+    # def test_LoginSinUsuario(self):
+    #     phead = {'PassWord': 'alskdjflaksdf'}
+    #     request = requests.get(self.URI +'/login',headers=head)
+    #     self.assertEqual(request.status_code,400)
+    #
+    # def test_LoginSinPassword(self):
+    #     head = {'Usuario': 'hola'}
+    #     request = requests.get(self.URI +'/login',headers=head)
+    #     self.assertEqual(request.status_code,400)
 
-    def test_ParametroPasswordVacio(self):
-        parametros = 'user=asdasdasd&password='
-        request = requests.get(self.URI +'/login?'+parametros)
-        self.assertEqual(request.status_code,400)
+    # def test_ParametroUserVacio(self):
+    #     head = {'Usuario': '',
+    #             'PassWord': 'alskdjflaksdf'}
+    #     request = requests.get(self.URI +'/login',headers=head)
+    #     self.assertEqual(request.status_code,400)
+    #
+    # def test_ParametroPasswordVacio(self):
+    #     head = {'Usuario': 'hola',
+    #             'PassWord': ''}
+    #     request = requests.get(self.URI +'/login',headers=head)
+    #     self.assertEqual(request.status_code,400)
 
 
     # Tests que deberian dar status code 200 -----------------------------------
@@ -53,20 +61,41 @@ class TestLogin(unittest.TestCase):
 
     # def test_LoginConUsuarioValido(self):
     #     # TODO: registrar al usuario para que sea valido
-    #     parametros = 'user=diego&password=12345678'
-    #     request = requests.get(self.URI +'/login?'+parametros)
+    #     head= {'Usuario': 'usuario1',
+    #         'PassWord': 'password1'}
+    #     request = requests.get(self.URI +'/login', headers=head)
     #     self.assertEqual(request.status_code,200)
-    #
+
     # def test_LoginConTokenValido(self):
     #
     #     # TODO: registrar al usuario para que sea valido
     #     # TODO: Hacer el login para obtener el token y despues hacer login nuevamente.
-    #
-    #     parametros = 'user=diego&password=12345678'
-    #     request = requests.get(self.URI +'/login?'+parametros)
+    #     head= {'Usuario': 'usuario1',
+    #         'PassWord': 'password1'}
+    #     request = requests.get(self.URI +'/login', headers=head)
+    #     token = request.headers['Token']
+    #     token = { 'Token': token}
+    #     request = requests.get(self.URI +'/login', headers=token)
     #     self.assertEqual(request.status_code,200)
 
 
+
+class TestRegistro(unittest.TestCase):
+
+    port = 8000
+
+    URI = 'http://10.1.151.198:' + str(port);
+
+
+    def test_RegistroDeUnUsuarioValido(self):
+        head = {
+            'Usuario': 'Usuariooooasdasooooo',
+            'PassWord': '123456'
+        }
+
+
+        request = requests.put(self.URI+'/registro',headers=head)
+        self.assertEqual(request.status_code,200)
 
 
 
