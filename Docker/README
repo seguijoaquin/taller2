@@ -1,10 +1,13 @@
 Para correr la imagen:
-sudo docker run -i -t juanmafc/app_server:v0
+sudo docker run -i -t -p 8000:8000 juanmafc/app_server:v0
 
 run les va a bajar automáticamente la imagen juanmafc/app_server:v0 y la va a correr
 en el contenedor va a estar corriendo una VM con ubuntu 14.04
 -t abre una terminal en el contenedor
 -i permite que el contenedor lea de STDIN
+-p mapea el puerto 8000 del HOST al puerto 8000 del contenedor. TODO: ¿como seria si tambien tiene que levantar el Shared? https://docs.docker.com/engine/userguide/containers/usingdocker/
+
+
 
 el contenedor va a quedar funcionando como una terminal de Linux, pueden moverse con "cd" hasta llegar al /home/taller2-appserver/app_server/build/src/helloWorld del rocksdb para ver si anda
 Para salir del contenedor usen el comando: exit
