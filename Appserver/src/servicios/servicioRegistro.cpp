@@ -104,7 +104,8 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     if (this->codigoRespuesta == 201){
         //(*(this->listaUsuarios))[usuario] = password;
         this->dbUsuarios->Put(rocksdb::WriteOptions(),usuario,password);
-        this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+        //this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+	this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
     else{
         //Cambiarlo para diferentes errores
