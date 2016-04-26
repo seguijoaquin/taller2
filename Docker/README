@@ -1,5 +1,5 @@
 Para correr la imagen:
-sudo docker run -i -t -p 8000:8000 juanmafc/app_server:v0
+sudo docker run -i -t -p 8000:8000 juanmafc/app_server:v1
 
 run les va a bajar automáticamente la imagen juanmafc/app_server:v0 y la va a correr
 en el contenedor va a estar corriendo una VM con ubuntu 14.04
