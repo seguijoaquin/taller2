@@ -5,27 +5,12 @@ int servicioRegistro::tiempo = 0;
 
 
 
-
-
-
-
-
-
-/*servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios ){
-    this->manager = manager;
-    this->mensajeHTTP = mensajeHTTP;
-    this->listaUsuarios = listaUsuarios;
-    this->codigoRespuesta = 0;
-    this->espera = 0;
-    this->atenderRegistro();
-}
-*/
-
 servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
     this->manager = manager;
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
     this->codigoRespuesta = 0;
+    //Para testear
     this->espera = 0;
     this->atenderRegistro();
 }
@@ -42,17 +27,7 @@ void servicioRegistro::atenderRegistro(){
     string usuarioIngresado(headerUsuario->p,headerUsuario->len);
     string passwordIngresado(headerPassword->p,headerPassword->len);
 
-    //Refactorizar: buscarUsuario()
-/*        if (this->listaUsuarios->find(usuarioIngresado) == listaUsuarios->end()){
-            //El NOMBRE de usuario NO existe y se puede inscribir
-            this->realizarRegistro(usuarioIngresado,passwordIngresado);
-        }
-        else{
-            //EL nombre SI existe, tengo que rechazarlo
-            //Refactorizar
-            this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
-        }
-*/
+
     string aux;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &aux );
     if(  estado.IsNotFound() ){
@@ -61,7 +36,7 @@ void servicioRegistro::atenderRegistro(){
     }
     else{
         //EL nombre SI existe, tengo que rechazarlo
-        //Refactorizar
+        //Refactorizar esto...
         this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
     }
 
@@ -86,12 +61,14 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
 
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
+    //TODO: agarar todos los errores
     string bodyJson = crearMensajeParaAlta(usuario);
     conexionParaRegistrarse = mg_connect(this->manager,"t2shared.herokuapp.com:80", this->handlerResgistro); //SI
     mg_set_protocol_http_websocket(conexionParaRegistrarse);
 
     conexionParaRegistrarse->user_data = this;
     this->bloqueado = true;
+
     mg_printf(conexionParaRegistrarse, "POST /users/ HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: %lu\r\nContent-Type: application/json\r\n\r\n%s", bodyJson.length(), bodyJson.c_str()); //Funciona
 
     while (this->bloqueado){
@@ -104,8 +81,8 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     if (this->codigoRespuesta == 201){
         //(*(this->listaUsuarios))[usuario] = password;
         this->dbUsuarios->Put(rocksdb::WriteOptions(),usuario,password);
-        //this->respuesta = "HTTP/1.1 200 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
-	this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
+        //this->respuesta = "HTTP/1.1 201 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
+        this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
     else{
         //Cambiarlo para diferentes errores
@@ -114,6 +91,11 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
 }
 
+
+
+void servicioRegistro::setCodigoResuesta(int codigo){
+    this->codigoRespuesta = codigo;
+}
 
 void servicioRegistro::desbloquear(int codigoRespuesta){
     this->codigoRespuesta = codigoRespuesta;
@@ -131,12 +113,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
         case MG_EV_CONNECT:
             {
                 cout<<"EL REGISTRO SE CONECTO AL SERVER\n";
-                //mbuf_remove(sendBuffer, sendBuffer->len);
-                //printf("Lo que hay en el buffer DEL REGISTRO en CONNECT es:\n%.*s\n", sendBuffer->len,sendBuffer->buf);
-                //((servicioRegistro*)conexion->user_data)->desbloquear();
-                cout<<"SE CONECTO AL SISTEMA, le escribo aca lo que tiene que mandar\n";
                 cout<<"El indice de CONNECT es: "<<conexion<<"\n";
-                //mbuf_remove(sendBuffer, sendBuffer->len);
                 //PARA PROBAR SI LAS CONEXIONES OUTBOUNDS SE MANEJAN EN UN MISMO THREAD
                 /*int i = 0;
                 while (i < 5){ //con 10seg y dos conexiones tira segmentation faults
@@ -151,9 +128,9 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
         case MG_EV_HTTP_REPLY:
             {
                 cout<<"EL SERVER TIRO EL REPLY\n";
-                //Refactorizar esto, ver alguna forma para sincronizar el registrador con el mensaje del shared.....
-
                 //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
+                //TODO: Aca es en donde se tiene que setear el codigo de retorno
+                ((servicioRegistro*)conexion->user_data)->setCodigoResuesta( ((http_message*) ev_data)->resp_code  );
                 //((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
                 printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
@@ -170,7 +147,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
         case MG_EV_CLOSE:
             {
                 //cout<<"SE CERRO LA CONEXION\n";
-                //Lo pruebo para ver si se soluciona el segmentation fault
+                //Deberia setearse arriba el codigo y aca nada mas ->desbloquear()
                 ((servicioRegistro*)conexion->user_data)->desbloquear( 201);
                 cout<<"SE CERRO LA CONEXION a los "<<tiempo<<" segundos "<<"El indice de CLOSE es: "<<conexion<<"\n";
             }

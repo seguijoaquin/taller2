@@ -35,12 +35,6 @@ class Servidor
 
         void iniciar();
 
-        //Las tengo que hacer staticas para poder pasarlas al AtendedorHTTP en el handler....
-        /*La otra seria poner las credenciales como user data del manager, despues en el ev handler, de la conexion sacar el manager
-          y del manager sacar las credenciales....
-        */
-        //http://stackoverflow.com/questions/27221020/cast-error-passing-a-void-function-with-namespace
-
         string getRespuestaDelServicio(http_message* mensajeHTTP);
 
     protected:
@@ -50,6 +44,8 @@ class Servidor
 
         rocksdb::DB* credencialesUsuarios;
         mg_mgr manager;
+        map<string,string> tokensDeUsuarios;
+
         static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
 
 

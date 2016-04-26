@@ -1,20 +1,13 @@
 #include "servicioLogin.h"
 
-/*servicioLogin::servicioLogin(http_message* mensajeHTTP, map<string,string>* listaUsuarios){
-    this->mensajeHTTP = mensajeHTTP;
-    this->listaUsuarios = listaUsuarios;
-    this->atenderLogin();
-}
-*/
-
-servicioLogin::servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
+servicioLogin::servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
+    this->tokensDeUsuarios = tokensDeUsuarios;
     this->atenderLogin();
 }
 
 void servicioLogin::atenderLogin(){
-    //ESTO DEBERIA SER CON rocksDB
     if (usuarioExiste()){
         realizarLogin();
     }
@@ -36,17 +29,6 @@ bool servicioLogin::usuarioExiste(){
     string usuarioIngresado(headerUsuario->p,headerUsuario->len);
     string passwordIngresado(headerPassword->p,headerPassword->len);
 
-    //Refactorizar: buscarUsuario()
-/*
-    if (this->listaUsuarios->find(usuarioIngresado) == this->listaUsuarios->end()){
-        return false;
-    }
-    else{
-        if(this->listaUsuarios->find(usuarioIngresado)->second == passwordIngresado){
-            return true;
-        }
-    }
-*/
     string passwordGuardado;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &passwordGuardado );
 
@@ -69,10 +51,14 @@ void servicioLogin::realizarLogin(){
     string token;
     token = generarToken();
     //Refactorizar: TODO guardar el token en algun lugar token-usuario
-    //Tengo que escribir la respuesta HTTP/1.1 200 Se logueo correctamente\r\n\Token:1ddfw4g\r\n\r\n\0
-    this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
-    //cout<<"Respuesta del login:\n"<<this->respuesta<<"\n";
+    //Refactorizar: esto esta copiado de arriba, ¿archivo Utilities"?
 
+    mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
+    string usuarioIngresado(headerUsuario->p,headerUsuario->len);
+
+    (*(this->tokensDeUsuarios))[usuarioIngresado] = token;
+
+    this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
 }
 
 string servicioLogin::generarToken(){

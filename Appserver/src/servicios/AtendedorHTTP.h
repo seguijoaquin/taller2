@@ -1,11 +1,11 @@
 #ifndef ATENDEDORHTTP_H
 #define ATENDEDORHTTP_H
 
-
-//#include "servicioRegistro.h"
-//#include "servicioLogin.h"
 #include "StringUtil.h"
 #include "mongoose.h"
+#include <map>
+
+
 
 #include "ConstantesEventosServicios.h"
 
@@ -13,11 +13,9 @@
 class AtendedorHTTP
 {
     public:
-//        AtendedorHTTP(http_message* mensajeHTTP, rocksdb::DB* credencialesUsuarios, mg_mgr* manager);
-        AtendedorHTTP(http_message* mensajeHTTP);
+        AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios);
         virtual ~AtendedorHTTP();
 
-//      string getRespuesta();
         ServicioALanzar getServicioALanzar();
     protected:
     private:
@@ -39,17 +37,16 @@ class AtendedorHTTP
          EDIT: termine haciendo el disenio con EVENTOS porque era el que menos NO me convencia
 
         */
-//        rocksdb::DB* credencialesUsuarios;
-//        mg_mgr* manager;
         ServicioALanzar servicioALanzar;
 
 
         http_message* mensajeHTTP;
-//        string respuesta;
+        map<string,string>* tokensDeUsuarios;
 
         void atenderMesajeHTTP();
-        bool compararMetodoHTTP(http_message* mensajeHTTP, string metodo);
-        bool compararUriHTTP(http_message* mensajeHTTP, string uri);
+        bool tienePermiso();
+        bool compararMetodoHTTP( string metodo);
+        bool compararUriHTTP(string uri);
 };
 
 #endif // ATENDEDORHTTP_H

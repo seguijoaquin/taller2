@@ -10,12 +10,12 @@
 //#include "rocksdb/db.h"
 #include "db.h"
 
+
 using namespace std;
 
 class servicioRegistro
 {
     public:
-        //servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, map<string,string>* listaUsuarios );
         servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
         ~servicioRegistro();
 
@@ -31,8 +31,6 @@ class servicioRegistro
         //Para probrar
         int espera;
 
-
-        //map<string,string>* listaUsuarios;
         rocksdb::DB* dbUsuarios;
 
         bool bloqueado;
@@ -41,11 +39,11 @@ class servicioRegistro
 
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);
+        void setCodigoResuesta(int codigo);
         void desbloquear(int codigoRespuesta);
 
         static int tiempo; //SOLO PARA PROBAR SI ERA UNO O DOS THREADS
         static void handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
-        //mg_event_handler_t handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
 
 };
 

@@ -1,19 +1,10 @@
 #include "Servidor.h"
 
-/*mg_mgr Servidor::manager;
-rocksdb::DB* Servidor::credencialesUsuarios;
-*/
-
 
 Servidor::Servidor(){
 
-
     iniciarManager();
 
-
-    //Esto asi no funciona, sin el :5000 me tira conexion NULL
-    //EDIT: puerto :80, en vez de :5000 y funciona
-    //Con esta forma
 /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
     mg_connection* nc = mg_connect(&manager,"t2shared.herokuapp.com:80", handlerServer); //SI
     mg_set_protocol_http_websocket(nc);
@@ -33,35 +24,8 @@ Servidor::Servidor(){
     nc2->user_data = (void*) 2;
 */
 
-    //mg_printf(nc, "GET /users/18 HTTP/1.1\r\n\r\n"); //NO funciona, conclusion: necesita si o si el host
-    //mg_printf(nc, "GET https://t2shared.herokuapp.com/users/18 HTTP/1.1\r\n\r\n"); // Tmapoco
-
-    //Con esta forma se puede mandar un GET o un POST de una
-    //mg_connection* nc = mg_connect_http(&manager, handlerServer, "t2shared.herokuapp.com/users/18", NULL, NULL);
-    /*if (nc == NULL){
-        cout<<"corta\n";
-    }*/
-
-
-    //Refactorizar: cargarDatosDeUsuario(....)
-/*    fstream archivoLogin;
-    archivoLogin.open("login.txt");
-    string usuarioActual;
-    string passwordActual;
-    while (archivoLogin>>usuarioActual){
-        archivoLogin>>passwordActual;
-        listaUsuarios[usuarioActual] = passwordActual;
-    }
-    //O PONERLO AL FINAL PORQUE SI ALGUNO SE REGISTRA SE VA A TENER QUE VOLVER A ABRIR
-    archivoLogin.close();
-*/
-
-
     iniciarBaseDeDatos();
-
     escucharMensajes();
-
-
 }
 
 void Servidor::escucharMensajes(){
@@ -105,9 +69,9 @@ void Servidor::iniciarBaseDeDatos(){
 
 
 string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
-
     string respuesta;
-    AtendedorHTTP atendedor(mensajeHTTP);
+    AtendedorHTTP atendedor(mensajeHTTP, &(this->tokensDeUsuarios));
+
     //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
     switch (atendedor.getServicioALanzar()){
         case LANZAR_SERVICIO_REGISTRO:
@@ -120,9 +84,15 @@ string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
             break;
         case LANZAR_SERVICIO_LOGIN:
             {
-                servicioLogin logginer(mensajeHTTP, this->credencialesUsuarios);
+                servicioLogin logginer(mensajeHTTP, this->credencialesUsuarios, &(this->tokensDeUsuarios));
                 respuesta = logginer.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
+            }
+            break;
+        case LANZAR_SERVICIO_SIN_PERMISO:
+            {
+                //respuesta = CONSTANTE_MENSAJE_DE_ERROR
+                respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
             }
             break;
     }
@@ -145,10 +115,12 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
     switch (evento) {
         case MG_EV_HTTP_REPLY:
             {
-                cout<<"Esto se dispara?\n";
-                printf("Lo que hay en el buffer es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
-                mbuf_remove(recvBuffer, recvBuffer->len);
-                //conexion->flags |= MG_F_CLOSE_IMMEDIATELY;
+                /*
+                    cout<<"Esto se dispara?\n";
+                    printf("Lo que hay en el buffer es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
+                    mbuf_remove(recvBuffer, recvBuffer->len);
+                    //conexion->flags |= MG_F_CLOSE_IMMEDIATELY;
+                */
             }
         break;
         case MG_EV_HTTP_REQUEST:
@@ -157,20 +129,10 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
                 /*Esto lo puedo hacer porque estoy seguro que la UNICA conexion que esta listening (la misma que recibe los HTTP_REQUEST)
                   es la conexion del Servidor
                 */
-
                 struct http_message* mensajeHTTP = (struct http_message *) ev_data;
                 string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(mensajeHTTP);
                 printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
-                /*
-                AtendedorHTTP atendedor(mensajeHTTP, credencialesUsuarios, &manager);
-                respuesta = atendedor.getRespuesta();
-                */
 
-
-
-                //cout<<"Respuesta:\n"<<respuesta<<"\n";
-                //mg_printf(conexion,"HTTP/1.1 202 Mensaje de informacion sobre el vnbjsdfo\r\n\r\nbody sfdvdfb\0");//, respuesta);
-                //respuesta = "HTTP/1.1 200 Se logueo correctamente\r\n\Token:1234567899\r\n\r\nbody\0";
 
                 cout<<"ESTO ES LO QUE SE VA PRINTEAR EN EL BUFFER\n"<<respuesta<<"\n";
 
@@ -184,7 +146,6 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
         case MG_EV_SEND:
             {
                 cout<<"SE MANDO EL BUFFER\n";
-                //printf("Lo que hay en el buffer es:\n%s\n\0", sendBuffer->len,sendBuffer->buf);
             }
             break;
 
