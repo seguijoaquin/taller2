@@ -7,7 +7,6 @@
 //#include "rocksdb/db.h"
 #include "db.h"
 
-
 using namespace std;
 
 class servicioLogin

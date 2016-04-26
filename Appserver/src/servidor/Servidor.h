@@ -53,6 +53,8 @@ class Servidor
         void iniciarManager();
         void iniciarBaseDeDatos();
         void escucharMensajes();
+        //Si es true escucha, si es false no y se cierra el server
+        bool escuchar;
 
 };
 

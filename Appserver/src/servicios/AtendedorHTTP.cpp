@@ -30,6 +30,9 @@ void AtendedorHTTP::atenderMesajeHTTP(){
                 this->servicioALanzar = LANZAR_SERVICIO_REGISTRO;
             }
         }
+        else if (compararMetodoHTTP("DELETE")){
+            this->servicioALanzar = LANZAR_SERVICIO_CERRAR;
+        }
     }
     else{
         this->servicioALanzar = LANZAR_SERVICIO_SIN_PERMISO;

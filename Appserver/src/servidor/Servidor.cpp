@@ -32,7 +32,11 @@ void Servidor::escucharMensajes(){
     /*Ahora solo sale si se cierra por la fuerza, se podria agregar que se le puede mandar un mensaje como administrador (o algo asi)
       para que lo cierre de forma ordenada
     */
-    for (;;) {
+
+    //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
+    this->escuchar = true;
+    //for (;;) {
+    while(this->escuchar){
         mg_mgr_poll(&(this->manager), 1000);
         //cout<<"POLL----------------------------------------------------\n";
     }
@@ -93,6 +97,13 @@ string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
             {
                 //respuesta = CONSTANTE_MENSAJE_DE_ERROR
                 respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
+            }
+            break;
+        case LANZAR_SERVICIO_CERRAR:
+            {
+                //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
+                respuesta = "HTTP/1.1 200 Se cerrara el server\r\n\r\n";
+                this->escuchar = false;
             }
             break;
     }
