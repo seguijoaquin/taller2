@@ -39,7 +39,7 @@ class servicioRegistro
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);
         void setCodigoResuesta(int codigo);
-        void desbloquear(int codigoRespuesta);
+        void desbloquear();
 
         static int tiempo; //SOLO PARA PROBAR SI ERA UNO O DOS THREADS
         static void handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);

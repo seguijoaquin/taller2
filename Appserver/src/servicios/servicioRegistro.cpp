@@ -97,8 +97,8 @@ void servicioRegistro::setCodigoResuesta(int codigo){
     this->codigoRespuesta = codigo;
 }
 
-void servicioRegistro::desbloquear(int codigoRespuesta){
-    this->codigoRespuesta = codigoRespuesta;
+void servicioRegistro::desbloquear(){
+    //this->codigoRespuesta = codigoRespuesta;
     this->bloqueado = false;
     cout<<"Espero: "<<this->espera<<"\n";
 }
@@ -148,7 +148,7 @@ void servicioRegistro::handlerResgistro(struct mg_connection* conexion, int even
             {
                 //cout<<"SE CERRO LA CONEXION\n";
                 //Deberia setearse arriba el codigo y aca nada mas ->desbloquear()
-                ((servicioRegistro*)conexion->user_data)->desbloquear( 201);
+                ((servicioRegistro*)conexion->user_data)->desbloquear();
                 cout<<"SE CERRO LA CONEXION a los "<<tiempo<<" segundos "<<"El indice de CLOSE es: "<<conexion<<"\n";
             }
             break;

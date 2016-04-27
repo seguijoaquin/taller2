@@ -4,6 +4,7 @@
 #include "StringUtil.h"
 #include "mongoose.h"
 #include <map>
+#include "MensajeHTTPRequest.h"
 
 
 
@@ -39,8 +40,11 @@ class AtendedorHTTP
         */
         ServicioALanzar servicioALanzar;
 
+        //Por ahora dejo el http_message porque solo quiero probar MensajeHTTPRequest aca
+        //http_message* mensajeHTTP;
+        MensajeHTTPRequest mensajeHTTPRequest;
 
-        http_message* mensajeHTTP;
+
         map<string,string>* tokensDeUsuarios;
 
         void atenderMesajeHTTP();

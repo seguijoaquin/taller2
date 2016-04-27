@@ -2,7 +2,11 @@
 
 
 AtendedorHTTP::AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios){
-    this->mensajeHTTP = mensajeHTTP;
+    //Por ahora dejo el http_message porque solo quiero probar MensajeHTTPRequest aca
+    //this->mensajeHTTP = mensajeHTTP;
+    this->mensajeHTTPRequest = MensajeHTTPRequest(mensajeHTTP);
+    //this->mensajeHTTPRequest = MensajeHTTPRequest(mensajeHTTP);
+
     this->tokensDeUsuarios = tokensDeUsuarios;
     this->atenderMesajeHTTP();
 }
@@ -43,9 +47,10 @@ bool AtendedorHTTP::tienePermiso(){
 
     //Verificar permisos
     //Esto tambien podria ponerse en un archivo "Utilities" porque tambien lo usa el servicioLogin
-    mg_str* headerOwner = mg_get_http_header(this->mensajeHTTP, "Owner");
+    //mg_str* headerOwner = mg_get_http_header(this->mensajeHTTP, "Owner");
 
-    if (headerOwner == NULL ){
+    //if (headerOwner == NULL ){
+    if (!(this->mensajeHTTPRequest.tieneHeader("Owner"))){
         //No tiene owner, entonces puede acceder cualquiera
         return true;
     }
@@ -54,15 +59,18 @@ bool AtendedorHTTP::tienePermiso(){
           registro, entonces ni me fijo si tiene token, puede acceder cualquiera)
         */
         //Aca me tengo que fijar si Owner y Token coinciden
-        mg_str* headerToken = mg_get_http_header(this->mensajeHTTP, "Token");
+        //mg_str* headerToken = mg_get_http_header(this->mensajeHTTP, "Token");
+
+
+
         //Me podria fijar si el token no es nulo, depende de si la comunicacion cliente-appserver tiene que ser robusta
 
         //Refactorizar: otra vez esta funcion se repite en ServicioLogin, podria ponerla en "Utilities"
-        string ownerIngresado(headerOwner->p,headerOwner->len);
-        string tokenIngresado(headerToken->p,headerToken->len);
+
+        string ownerIngresado = this->mensajeHTTPRequest.getHeader("Owner"); //(headerOwner->p,headerOwner->len);
+        string tokenIngresado = this->mensajeHTTPRequest.getHeader("Token"); //headerToken->p,headerToken->len);
 
         //Despues se podria ver el tema de los que se permite que vean el recurso de otra persona, pero que tenga permiso (tal vez haya que guardar los usuarios que tengan permiso)
-
 
         if ( this->tokensDeUsuarios->find(ownerIngresado) == this->tokensDeUsuarios->end()){
             //significaria que el owner ingresado no se logueo recientemente (o no esta logueado si NO le ponemos timer al token)
@@ -95,21 +103,39 @@ bool AtendedorHTTP::tienePermiso(){
 
 bool AtendedorHTTP::compararMetodoHTTP( string metodo){
 
-    if (mg_vcmp(&(this->mensajeHTTP->method), StringUtil::stringToChar(metodo)) == 0){
+    if (this->mensajeHTTPRequest.getMetodo() == metodo){
         return true;
     }
     else{
         return false;
     }
+
+   /* if (mg_vcmp(&(this->mensajeHTTP->method), StringUtil::stringToChar(metodo)) == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+    */
 }
 
 bool AtendedorHTTP::compararUriHTTP(string uri){
+
+    if (this->mensajeHTTPRequest.getURI() == uri){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+    /*
     if (mg_vcmp(&(this->mensajeHTTP->uri), StringUtil::stringToChar(uri)) == 0){
         return true;
     }
     else{
         return false;
     }
+    */
 }
 
 
