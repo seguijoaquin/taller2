@@ -34,7 +34,8 @@ class Servidor
 
         void iniciar();
 
-        string getRespuestaDelServicio(http_message* mensajeHTTP);
+        //string getRespuestaDelServicio(http_message* mensajeHTTP);
+        string getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest);
 
     protected:
     private:

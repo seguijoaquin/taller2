@@ -13,7 +13,7 @@ class MensajeHTTPRequest
     public:
         //SACAR ESTE CONSTRUCTOR; LO DEJO POR AHORA PARA PROBAR ALGO
         MensajeHTTPRequest();
-        MensajeHTTPRequest(http_message* mensajeMG);
+        MensajeHTTPRequest(http_message* mensajeMG, int dummy);
         virtual ~MensajeHTTPRequest();
 
         string getMetodo();

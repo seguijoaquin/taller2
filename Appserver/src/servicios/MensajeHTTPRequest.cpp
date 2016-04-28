@@ -7,13 +7,12 @@ MensajeHTTPRequest::MensajeHTTPRequest(){
 }
 
 
-MensajeHTTPRequest::MensajeHTTPRequest(http_message* mensajeMG){
-    //Llamar asi al constructor puede traer problemas?
-
+MensajeHTTPRequest::MensajeHTTPRequest(http_message* mensajeMG, int dummy){
     this->metodo = this->mg_strToString(mensajeMG->method);
     this->uri = this->mg_strToString(mensajeMG->uri);
     this->cargarHeaders(mensajeMG);
 }
+
 
 string MensajeHTTPRequest::mg_strToString(mg_str& mgStr){
     return string(mgStr.p,mgStr.len);

@@ -5,8 +5,21 @@ int servicioRegistro::tiempo = 0;
 
 
 
-servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
+/*servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
     this->manager = manager;
+    //this->mensajeHTTP = mensajeHTTP;
+    this->mensajeHTTP = MensajeHTTPRequest(mensajeHTTP);
+    this->dbUsuarios = dbUsuarios;
+    this->codigoRespuesta = 0;
+    //Para testear
+    this->espera = 0;
+    this->atenderRegistro();
+}
+*/
+
+servicioRegistro::servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios ){
+    this->manager = manager;
+    //this->mensajeHTTP = mensajeHTTP;
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
     this->codigoRespuesta = 0;
@@ -17,15 +30,17 @@ servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, r
 
 
 
-
-
-
 void servicioRegistro::atenderRegistro(){
-    mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
+    /*mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
     mg_str* headerPassword = mg_get_http_header(mensajeHTTP, "Password");
 
     string usuarioIngresado(headerUsuario->p,headerUsuario->len);
     string passwordIngresado(headerPassword->p,headerPassword->len);
+    */
+
+    string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
+    string passwordIngresado = this->mensajeHTTP.getHeader("Password");
+
 
 
     string aux;
@@ -86,7 +101,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     }
     else{
         //Cambiarlo para diferentes errores
-        this->respuesta = "HTTP/1.1 500 ERROR no se pudo registrar\r\n\r\n";
+        this->respuesta = "HTTP/1.1 503 Error del server\r\n\r\n";
     }
 
 }
@@ -195,6 +210,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     //cout<<"EL MENSAJE DE ALTA ES:\n\n\n"<<mensajeAlta<<"\n\n\n";
 
     //return mensajeAlta;
+    cout<<"EL JSON ES: "<<bodyJson<<"\n\n";
     return bodyJson;
 }
 

@@ -6,19 +6,23 @@
 //#include "../include/rocksdb/db.h"
 //#include "rocksdb/db.h"
 #include "db.h"
+#include "MensajeHTTPRequest.h"
+
 
 using namespace std;
 
 class servicioLogin
 {
     public:
-        servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios, map<string,string>* tokensDeUsuarios);
+        //servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios, map<string,string>* tokensDeUsuarios);
+        servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, map<string,string>* tokensDeUsuarios);
         virtual ~servicioLogin();
 
         string getRespuesta();
     protected:
     private:
-        http_message* mensajeHTTP;
+        //http_message* mensajeHTTP;
+        MensajeHTTPRequest mensajeHTTP;
         string respuesta;
         rocksdb::DB* dbUsuarios;
         map<string,string>* tokensDeUsuarios;

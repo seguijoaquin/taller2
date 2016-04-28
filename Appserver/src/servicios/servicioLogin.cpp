@@ -1,11 +1,19 @@
 #include "servicioLogin.h"
 
-servicioLogin::servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
+/*servicioLogin::servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
+    this->mensajeHTTP = MensajeHTTPRequest(mensajeHTTP,0);
+    this->dbUsuarios = dbUsuarios;
+    this->tokensDeUsuarios = tokensDeUsuarios;
+    this->atenderLogin();
+}*/
+
+servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
     this->tokensDeUsuarios = tokensDeUsuarios;
     this->atenderLogin();
 }
+
 
 void servicioLogin::atenderLogin(){
     if (usuarioExiste()){
@@ -23,11 +31,15 @@ bool servicioLogin::usuarioExiste(){
     //Tengo que ver si son correctas
     //Devuelve T o F
     //metodo getUsuarioYPassword(.....)
-    mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
+    /*mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
     mg_str* headerPassword = mg_get_http_header(mensajeHTTP, "Password");
 
     string usuarioIngresado(headerUsuario->p,headerUsuario->len);
     string passwordIngresado(headerPassword->p,headerPassword->len);
+    */
+
+    string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
+    string passwordIngresado = this->mensajeHTTP.getHeader("Password");
 
     string passwordGuardado;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &passwordGuardado );
@@ -53,8 +65,10 @@ void servicioLogin::realizarLogin(){
     //Refactorizar: TODO guardar el token en algun lugar token-usuario
     //Refactorizar: esto esta copiado de arriba, ¿archivo Utilities"?
 
-    mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
+    /*mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
     string usuarioIngresado(headerUsuario->p,headerUsuario->len);
+    */
+    string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
 
     (*(this->tokensDeUsuarios))[usuarioIngresado] = token;
 

@@ -9,20 +9,23 @@
 //#include "../include/rocksdb/db.h"
 //#include "rocksdb/db.h"
 #include "db.h"
+#include "MensajeHTTPRequest.h"
 
 using namespace std;
 
 class servicioRegistro
 {
     public:
-        servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
+        //servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
+        servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios );
         ~servicioRegistro();
 
         string getRespuesta();
     protected:
     private:
         mg_mgr* manager;
-        http_message* mensajeHTTP;
+        //http_message* mensajeHTTP;
+        MensajeHTTPRequest mensajeHTTP;
         string respuesta;
         int codigoRespuesta;
 

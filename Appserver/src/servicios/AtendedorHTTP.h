@@ -2,7 +2,6 @@
 #define ATENDEDORHTTP_H
 
 #include "StringUtil.h"
-#include "mongoose.h"
 #include <map>
 #include "MensajeHTTPRequest.h"
 
@@ -14,7 +13,8 @@
 class AtendedorHTTP
 {
     public:
-        AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios);
+        //AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios);
+        AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
         virtual ~AtendedorHTTP();
 
         ServicioALanzar getServicioALanzar();

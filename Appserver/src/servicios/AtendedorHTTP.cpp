@@ -1,7 +1,7 @@
 #include "AtendedorHTTP.h"
 
 
-AtendedorHTTP::AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios){
+/*AtendedorHTTP::AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios){
     //Por ahora dejo el http_message porque solo quiero probar MensajeHTTPRequest aca
     //this->mensajeHTTP = mensajeHTTP;
     this->mensajeHTTPRequest = MensajeHTTPRequest(mensajeHTTP);
@@ -10,6 +10,17 @@ AtendedorHTTP::AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* toke
     this->tokensDeUsuarios = tokensDeUsuarios;
     this->atenderMesajeHTTP();
 }
+*/
+
+
+AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios){
+    this->mensajeHTTPRequest = mensajeHTTP;
+    this->tokensDeUsuarios = tokensDeUsuarios;
+    this->atenderMesajeHTTP();
+}
+
+
+
 
 
 ServicioALanzar AtendedorHTTP::getServicioALanzar(){
@@ -27,6 +38,9 @@ void AtendedorHTTP::atenderMesajeHTTP(){
         else if (compararMetodoHTTP("GET")){
             if (compararUriHTTP("/login")){
                 this->servicioALanzar = LANZAR_SERVICIO_LOGIN;
+            }
+            else if (compararUriHTTP("/test")){
+                this->servicioALanzar = LANZAR_SERVICIO_TEST;
             }
         }
         else if (compararMetodoHTTP("PUT")){

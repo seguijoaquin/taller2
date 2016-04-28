@@ -71,24 +71,28 @@ void Servidor::iniciarBaseDeDatos(){
 
 
 
-
-string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
+//string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
+string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
+//string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTP){
     string respuesta;
-    AtendedorHTTP atendedor(mensajeHTTP, &(this->tokensDeUsuarios));
+    //WTF?Si mensajeHTTP es un http_message* funciona pasadole un http_message* en vez de un MensajeHTTPRequest, tal vez lo constuye en el momento, pero se supone que funcione asi?...
+    //AtendedorHTTP atendedor(mensajeHTTP, &(this->tokensDeUsuarios));
+
+    AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->tokensDeUsuarios));
 
     //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
     switch (atendedor.getServicioALanzar()){
         case LANZAR_SERVICIO_REGISTRO:
             {
                 //servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
-                servicioRegistro registrador(&(this->manager), mensajeHTTP, this->credencialesUsuarios);
+                servicioRegistro registrador(&(this->manager), mensajeHTTPRequest, this->credencialesUsuarios);
                 respuesta = registrador.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
             }
             break;
         case LANZAR_SERVICIO_LOGIN:
             {
-                servicioLogin logginer(mensajeHTTP, this->credencialesUsuarios, &(this->tokensDeUsuarios));
+                servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->tokensDeUsuarios));
                 respuesta = logginer.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
             }
@@ -99,6 +103,10 @@ string Servidor::getRespuestaDelServicio(http_message* mensajeHTTP){
                 respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
             }
             break;
+        case LANZAR_SERVICIO_TEST:
+            {
+                respuesta = "HTTP/1.1 200 Server online\r\n\r\n";
+            }
         case LANZAR_SERVICIO_CERRAR:
             {
                 //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
@@ -141,7 +149,7 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
                   es la conexion del Servidor
                 */
                 struct http_message* mensajeHTTP = (struct http_message *) ev_data;
-                string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(mensajeHTTP);
+                string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(MensajeHTTPRequest(mensajeHTTP,0));
                 printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
 
 
