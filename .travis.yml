@@ -23,3 +23,6 @@ script:
 - cd build
 - cmake ../src
 - make
+- cd ../..
+- ./correr_pruebas_API.sh
+
