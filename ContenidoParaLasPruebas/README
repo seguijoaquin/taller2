@@ -1,0 +1,3 @@
+Este CMake es para compilar las pruebas, por alguna razón si lo corro desde otro directorio que no sea Appserver/src no funciona cuando se hace el make, por ahora lo dejo acá para no perder más tiempo.
+
+Para correr las pruebas hay que meter todo lo que está en Appserver/src/ContenidoParaLasPruebas y ponerlo en Appserver/src y el CMakeLists y el main de Appserver/src moverlo para otro lugar.
