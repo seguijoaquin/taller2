@@ -12,6 +12,7 @@
 #include <thread>
 #include "AtendedorHTTP.h"
 #include "ConstantesEventosServicios.h"
+#include "SesionesDeUsuarios.h"
 
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
@@ -44,7 +45,8 @@ class Servidor
 
         rocksdb::DB* credencialesUsuarios;
         mg_mgr manager;
-        map<string,string> tokensDeUsuarios;
+        //map<string,string> tokensDeUsuarios;
+        SesionesDeUsuarios sesionesDeUsuarios;
 
         static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
 

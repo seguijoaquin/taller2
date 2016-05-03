@@ -78,7 +78,8 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
     //WTF?Si mensajeHTTP es un http_message* funciona pasadole un http_message* en vez de un MensajeHTTPRequest, tal vez lo constuye en el momento, pero se supone que funcione asi?...
     //AtendedorHTTP atendedor(mensajeHTTP, &(this->tokensDeUsuarios));
 
-    AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->tokensDeUsuarios));
+    //AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->tokensDeUsuarios));
+    AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->sesionesDeUsuarios));
 
     //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
     switch (atendedor.getServicioALanzar()){
@@ -92,7 +93,8 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
             break;
         case LANZAR_SERVICIO_LOGIN:
             {
-                servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->tokensDeUsuarios));
+                //servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->tokensDeUsuarios));
+                servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->sesionesDeUsuarios));
                 respuesta = logginer.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
             }

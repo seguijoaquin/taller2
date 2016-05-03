@@ -13,11 +13,19 @@
 */
 
 
-AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios){
+/*AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios){
     this->mensajeHTTPRequest = mensajeHTTP;
     this->tokensDeUsuarios = tokensDeUsuarios;
     this->atenderMesajeHTTP();
+}*/
+
+AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, SesionesDeUsuarios* sesionesDeUsuarios){
+    this->mensajeHTTPRequest = mensajeHTTP;
+    this->sesionesDeUsuarios = sesionesDeUsuarios;
+    this->atenderMesajeHTTP();
 }
+
+
 
 
 
@@ -86,7 +94,15 @@ bool AtendedorHTTP::tienePermiso(){
 
         //Despues se podria ver el tema de los que se permite que vean el recurso de otra persona, pero que tenga permiso (tal vez haya que guardar los usuarios que tengan permiso)
 
-        if ( this->tokensDeUsuarios->find(ownerIngresado) == this->tokensDeUsuarios->end()){
+
+
+        //TODO, IMPORTANTE, WARNING, ETC, ETC ACA SE PUEDE PONER QUE DIRECTAMENTE LAS SESION DE USUARIO ME DIGA SI TIENE PERMISO O NO
+        //AHORA validarTokenConUsuario ESTA HACIENDO LO MISMO QUE LO DE ACA ABAJO JUNTO
+
+
+
+        //if ( this->tokensDeUsuarios->find(ownerIngresado) == this->tokensDeUsuarios->end()){
+        if ( !(this->sesionesDeUsuarios->existeSesionDe(ownerIngresado))){
             //significaria que el owner ingresado no se logueo recientemente (o no esta logueado si NO le ponemos timer al token)
             /*Si el owner ni siquiera tiene un token asignado, entonces mucho menos va a estar logueado, entonces no se deberia
              poder acceder a sus datos (por ahora, despues hay que ver los casos en que se pueda ver el perfil de otro como
@@ -95,7 +111,10 @@ bool AtendedorHTTP::tienePermiso(){
             return false;
         }
         else{
-            if  ( (*(this->tokensDeUsuarios))[ownerIngresado] !=  tokenIngresado  ){
+            //if  ( (*(this->tokensDeUsuarios))[ownerIngresado] !=  tokenIngresado  ){
+
+            //TODO, IMPORTANTE, IMPORTANT, WARNING, HERE, ESTO SE PODRIA SIMPLIFICAR PASANDO ESTA LOGICA A SesionesDeUsuarios
+            if  ( this->sesionesDeUsuarios->validarTokenConUsuario(ownerIngresado, tokenIngresado) ){
                 //NO tiene permiso,
                 return false;
             }
@@ -105,12 +124,6 @@ bool AtendedorHTTP::tienePermiso(){
             }
         }
     }
-
-
-
-
-
-
 
 
 }

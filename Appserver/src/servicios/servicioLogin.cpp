@@ -7,10 +7,19 @@
     this->atenderLogin();
 }*/
 
-servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
+/*servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios,  map<string,string>* tokensDeUsuarios ){
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
     this->tokensDeUsuarios = tokensDeUsuarios;
+    this->atenderLogin();
+}
+*/
+
+servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, SesionesDeUsuarios* sesionesDeUsuarios){
+    this->mensajeHTTP = mensajeHTTP;
+    this->dbUsuarios = dbUsuarios;
+    //this->tokensDeUsuarios = tokensDeUsuarios;
+    this->sesionesDeUsuarios = sesionesDeUsuarios;
     this->atenderLogin();
 }
 
@@ -70,7 +79,8 @@ void servicioLogin::realizarLogin(){
     */
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
 
-    (*(this->tokensDeUsuarios))[usuarioIngresado] = token;
+    //(*(this->tokensDeUsuarios))[usuarioIngresado] = token;
+    this->sesionesDeUsuarios->agregarSesionDe(usuarioIngresado, token);
 
     this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
 }

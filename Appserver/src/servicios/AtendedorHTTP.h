@@ -4,6 +4,7 @@
 #include "StringUtil.h"
 #include <map>
 #include "MensajeHTTPRequest.h"
+#include "SesionesDeUsuarios.h"
 
 
 
@@ -14,7 +15,9 @@ class AtendedorHTTP
 {
     public:
         //AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios);
-        AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
+        //AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
+        //AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
+        AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, SesionesDeUsuarios* sesionesDeUsuarios);
         virtual ~AtendedorHTTP();
 
         ServicioALanzar getServicioALanzar();
@@ -45,7 +48,8 @@ class AtendedorHTTP
         MensajeHTTPRequest mensajeHTTPRequest;
 
 
-        map<string,string>* tokensDeUsuarios;
+        //map<string,string>* tokensDeUsuarios;
+        SesionesDeUsuarios* sesionesDeUsuarios;
 
         void atenderMesajeHTTP();
         bool tienePermiso();

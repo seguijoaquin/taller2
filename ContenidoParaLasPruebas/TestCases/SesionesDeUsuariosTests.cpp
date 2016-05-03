@@ -33,7 +33,7 @@ void SesionesDeUsuariosTest::testValidarUsuarioTokenCorrectos(){
 
 void SesionesDeUsuariosTest::testValidarUsuarioTokenIncorrectos(){
   this->sesiones->agregarSesionDe("Usuario","Token");
-  CPPUNIT_ASSERT_FALSE(this->sesiones->validarTokenConUsuario("Usuario","JRRTolkien"));
-  CPPUNIT_ASSERT_FALSE(this->sesiones->validarTokenConUsuario("NotUsuario","Token"));
-  CPPUNIT_ASSERT_FALSE(this->sesiones->validarTokenConUsuario("NotUsuario","JRRTolkien"));
+  CPPUNIT_ASSERT(!(this->sesiones->validarTokenConUsuario("Usuario","JRRTolkien")));
+  CPPUNIT_ASSERT(!(this->sesiones->validarTokenConUsuario("NotUsuario","Token")));
+  CPPUNIT_ASSERT(!(this->sesiones->validarTokenConUsuario("NotUsuario","JRRTolkien")));
 }
