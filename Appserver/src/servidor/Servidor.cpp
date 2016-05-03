@@ -107,6 +107,7 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
             {
                 respuesta = "HTTP/1.1 200 Server online\r\n\r\n";
             }
+            break;
         case LANZAR_SERVICIO_CERRAR:
             {
                 //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
