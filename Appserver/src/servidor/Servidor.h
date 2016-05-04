@@ -4,7 +4,6 @@
 //#include "../include/mongoose.h"
 //#include "../include/rocksdb/db.h"
 //#include "mongoose/mongoose.h"
-#include "db.h"
 #include "mongoose.h"
 #include <iostream>
 #include <fstream>
@@ -43,7 +42,9 @@ class Servidor
         mg_connection* conexionListening;
 
 
-        rocksdb::DB* credencialesUsuarios;
+        //rocksdb::DB* credencialesUsuarios;
+        CredencialesDeUsuarios* credencialesDeUsuarios;
+
         mg_mgr manager;
         //map<string,string> tokensDeUsuarios;
         SesionesDeUsuarios sesionesDeUsuarios;

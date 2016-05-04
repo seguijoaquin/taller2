@@ -8,8 +8,8 @@
 #include <fstream>
 //#include "../include/rocksdb/db.h"
 //#include "rocksdb/db.h"
-#include "db.h"
 #include "MensajeHTTPRequest.h"
+#include "CredencialesDeUsuarios.h"
 
 using namespace std;
 
@@ -17,7 +17,8 @@ class servicioRegistro
 {
     public:
         //servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
-        servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios );
+        //servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios );
+        servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
         string getRespuesta();
@@ -33,7 +34,8 @@ class servicioRegistro
         //Para probrar
         int espera;
 
-        rocksdb::DB* dbUsuarios;
+        //rocksdb::DB* dbUsuarios;
+        CredencialesDeUsuarios* usuariosRegistrados;
 
         bool bloqueado;
         string crearMensajeParaAlta(string usuario);

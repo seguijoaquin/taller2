@@ -15,9 +15,19 @@
 }
 */
 
-servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, SesionesDeUsuarios* sesionesDeUsuarios){
+/*servicioLogin::servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, SesionesDeUsuarios* sesionesDeUsuarios){
     this->mensajeHTTP = mensajeHTTP;
     this->dbUsuarios = dbUsuarios;
+    //this->tokensDeUsuarios = tokensDeUsuarios;
+    this->sesionesDeUsuarios = sesionesDeUsuarios;
+    this->atenderLogin();
+}
+*/
+
+servicioLogin::servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+    this->mensajeHTTP = mensajeHTTP;
+    //this->dbUsuarios = dbUsuarios;
+    this->credenciales = credenciales;
     //this->tokensDeUsuarios = tokensDeUsuarios;
     this->sesionesDeUsuarios = sesionesDeUsuarios;
     this->atenderLogin();
@@ -50,7 +60,9 @@ bool servicioLogin::usuarioExiste(){
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
 
-    ///////desde aca////
+    return this->credenciales->validarCredenciales(usuarioIngresado,passwordIngresado);
+
+ /*   ///////desde aca////
     string passwordGuardado;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &passwordGuardado );
 
@@ -66,6 +78,7 @@ bool servicioLogin::usuarioExiste(){
         }
     }
     ////////////hasta aca/////////
+ */
 }
 
 

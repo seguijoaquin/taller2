@@ -58,12 +58,16 @@ void Servidor::iniciarManager(){
 
 
 void Servidor::iniciarBaseDeDatos(){
+  /*
     //https://github.com/facebook/rocksdb/issues/957 diferentes alternativas para guardar datos, tambien se podria usar un json...
     rocksdb::Options options;
     options.create_if_missing = true;
     //Lanzar errores si fuera necesario
     //WARNING: no se si las opciones pueden perder scope antes de que se destruya la base de datos, si no puede--> options variable privada
     rocksdb::Status status = rocksdb::DB::Open(options, "./usuariosRegistrados", &(this->credencialesUsuarios));
+  */
+    this->credencialesDeUsuarios = new CredencialesDeUsuarios("./usuariosRegistrados");
+
 }
 
 
@@ -86,7 +90,8 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
         case LANZAR_SERVICIO_REGISTRO:
             {
                 //servicioRegistro registrador(&manager, mensajeHTTP, &listaUsuarios);
-                servicioRegistro registrador(&(this->manager), mensajeHTTPRequest, this->credencialesUsuarios);
+                //servicioRegistro registrador(&(this->manager), mensajeHTTPRequest, this->credencialesUsuarios);
+                servicioRegistro registrador(&(this->manager), mensajeHTTPRequest, this->credencialesDeUsuarios);
                 respuesta = registrador.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
             }
@@ -94,7 +99,8 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
         case LANZAR_SERVICIO_LOGIN:
             {
                 //servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->tokensDeUsuarios));
-                servicioLogin logginer(mensajeHTTPRequest, this->credencialesUsuarios, &(this->sesionesDeUsuarios));
+                //servicioLogin logginer(&(this->sesionesDeUsuarios), mensajeHTTPRequest, this->credencialesUsuarios);
+                servicioLogin logginer(&(this->sesionesDeUsuarios), mensajeHTTPRequest, this->credencialesDeUsuarios);
                 respuesta = logginer.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
             }
@@ -219,7 +225,8 @@ void Servidor::handlerServer(struct mg_connection* conexion, int evento, void* e
 
 
 Servidor::~Servidor(){
-    delete this->credencialesUsuarios;
+    //delete this->credencialesUsuarios;
+    delete this->credencialesDeUsuarios;
     mg_mgr_free(&manager);
 
 }

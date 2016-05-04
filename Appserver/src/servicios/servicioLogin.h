@@ -5,9 +5,9 @@
 #include <map>
 //#include "../include/rocksdb/db.h"
 //#include "rocksdb/db.h"
-#include "db.h"
 #include "MensajeHTTPRequest.h"
 #include "SesionesDeUsuarios.h"
+#include "CredencialesDeUsuarios.h"
 
 
 using namespace std;
@@ -17,7 +17,8 @@ class servicioLogin
     public:
         //servicioLogin(http_message* mensajeHTTP, rocksdb::DB* dbUsuarios, map<string,string>* tokensDeUsuarios);
         //servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, map<string,string>* tokensDeUsuarios);
-        servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, SesionesDeUsuarios* sesionesDeUsuarios);
+        //servicioLogin(MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios, SesionesDeUsuarios* sesionesDeUsuarios);
+        servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales);
         virtual ~servicioLogin();
 
         string getRespuesta();
@@ -26,7 +27,8 @@ class servicioLogin
         //http_message* mensajeHTTP;
         MensajeHTTPRequest mensajeHTTP;
         string respuesta;
-        rocksdb::DB* dbUsuarios;
+        //rocksdb::DB* dbUsuarios;
+        CredencialesDeUsuarios* credenciales;
 
         //map<string,string>* tokensDeUsuarios;
         SesionesDeUsuarios* sesionesDeUsuarios;
