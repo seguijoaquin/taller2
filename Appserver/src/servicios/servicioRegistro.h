@@ -6,8 +6,6 @@
 #include <map>
 #include "json/json.h"
 #include <fstream>
-//#include "../include/rocksdb/db.h"
-//#include "rocksdb/db.h"
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
 
@@ -16,8 +14,6 @@ using namespace std;
 class servicioRegistro
 {
     public:
-        //servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios );
-        //servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios );
         servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
@@ -25,7 +21,6 @@ class servicioRegistro
     protected:
     private:
         mg_mgr* manager;
-        //http_message* mensajeHTTP;
         MensajeHTTPRequest mensajeHTTP;
         string respuesta;
         int codigoRespuesta;
@@ -34,7 +29,6 @@ class servicioRegistro
         //Para probrar
         int espera;
 
-        //rocksdb::DB* dbUsuarios;
         CredencialesDeUsuarios* usuariosRegistrados;
 
         bool bloqueado;

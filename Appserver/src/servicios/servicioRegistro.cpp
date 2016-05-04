@@ -4,36 +4,9 @@
 int servicioRegistro::tiempo = 0;
 
 
-
-/*servicioRegistro::servicioRegistro(mg_mgr* manager, http_message* mensajeHTTP, rocksdb::DB* dbUsuarios ){
-    this->manager = manager;
-    //this->mensajeHTTP = mensajeHTTP;
-    this->mensajeHTTP = MensajeHTTPRequest(mensajeHTTP);
-    this->dbUsuarios = dbUsuarios;
-    this->codigoRespuesta = 0;
-    //Para testear
-    this->espera = 0;
-    this->atenderRegistro();
-}
-*/
-
-/*servicioRegistro::servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, rocksdb::DB* dbUsuarios ){
-    this->manager = manager;
-    //this->mensajeHTTP = mensajeHTTP;
-    this->mensajeHTTP = mensajeHTTP;
-    this->dbUsuarios = dbUsuarios;
-    this->codigoRespuesta = 0;
-    //Para testear
-    this->espera = 0;
-    this->atenderRegistro();
-}
-*/
-
 servicioRegistro::servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
     this->manager = manager;
-    //this->mensajeHTTP = mensajeHTTP;
     this->mensajeHTTP = mensajeHTTP;
-    //this->dbUsuarios = dbUsuarios;
     this->usuariosRegistrados = credenciales;
     this->codigoRespuesta = 0;
     //Para testear
@@ -43,12 +16,6 @@ servicioRegistro::servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHT
 
 
 void servicioRegistro::atenderRegistro(){
-    /*mg_str* headerUsuario = mg_get_http_header(mensajeHTTP, "Usuario");
-    mg_str* headerPassword = mg_get_http_header(mensajeHTTP, "Password");
-
-    string usuarioIngresado(headerUsuario->p,headerUsuario->len);
-    string passwordIngresado(headerPassword->p,headerPassword->len);
-    */
 
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
@@ -59,22 +26,6 @@ void servicioRegistro::atenderRegistro(){
     else{
         this->realizarRegistro(usuarioIngresado,passwordIngresado);
     }
-
-/*    /////desde aca////
-    string aux;
-    rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &aux );
-    if(  estado.IsNotFound() ){
-        //El NOMBRE de usuario NO existe y se puede inscribir
-        this->realizarRegistro(usuarioIngresado,passwordIngresado);
-    }
-    else{
-        //EL nombre SI existe, tengo que rechazarlo
-        //Refactorizar esto...
-        this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
-    }
-    ///////hasta aca - reformularlo /////////
-*/
-
 }
 
 void servicioRegistro::realizarRegistro(string usuario, string password){
@@ -113,11 +64,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     if (this->codigoRespuesta == 201){
-        //(*(this->listaUsuarios))[usuario] = password;
-        //this->dbUsuarios->Put(rocksdb::WriteOptions(),usuario,password);
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
-
-        //this->respuesta = "HTTP/1.1 201 Se puedo registrar el usuario "+ usuario + " con contrasenia " + password +"\r\n\r\n";
         this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
     else{
@@ -134,7 +81,6 @@ void servicioRegistro::setCodigoResuesta(int codigo){
 }
 
 void servicioRegistro::desbloquear(){
-    //this->codigoRespuesta = codigoRespuesta;
     this->bloqueado = false;
     cout<<"Espero: "<<this->espera<<"\n";
 }

@@ -1,34 +1,11 @@
 #include "AtendedorHTTP.h"
 
 
-/*AtendedorHTTP::AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios){
-    //Por ahora dejo el http_message porque solo quiero probar MensajeHTTPRequest aca
-    //this->mensajeHTTP = mensajeHTTP;
-    this->mensajeHTTPRequest = MensajeHTTPRequest(mensajeHTTP);
-    //this->mensajeHTTPRequest = MensajeHTTPRequest(mensajeHTTP);
-
-    this->tokensDeUsuarios = tokensDeUsuarios;
-    this->atenderMesajeHTTP();
-}
-*/
-
-
-/*AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios){
-    this->mensajeHTTPRequest = mensajeHTTP;
-    this->tokensDeUsuarios = tokensDeUsuarios;
-    this->atenderMesajeHTTP();
-}*/
-
 AtendedorHTTP::AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, SesionesDeUsuarios* sesionesDeUsuarios){
     this->mensajeHTTPRequest = mensajeHTTP;
     this->sesionesDeUsuarios = sesionesDeUsuarios;
     this->atenderMesajeHTTP();
 }
-
-
-
-
-
 
 
 ServicioALanzar AtendedorHTTP::getServicioALanzar(){
@@ -68,10 +45,6 @@ void AtendedorHTTP::atenderMesajeHTTP(){
 bool AtendedorHTTP::tienePermiso(){
 
     //Verificar permisos
-    //Esto tambien podria ponerse en un archivo "Utilities" porque tambien lo usa el servicioLogin
-    //mg_str* headerOwner = mg_get_http_header(this->mensajeHTTP, "Owner");
-
-    //if (headerOwner == NULL ){
     if (!(this->mensajeHTTPRequest.tieneHeader("Owner"))){
         //No tiene owner, entonces puede acceder cualquiera
         return true;
@@ -81,22 +54,18 @@ bool AtendedorHTTP::tienePermiso(){
           registro, entonces ni me fijo si tiene token, puede acceder cualquiera)
         */
         //Aca me tengo que fijar si Owner y Token coinciden
-        //mg_str* headerToken = mg_get_http_header(this->mensajeHTTP, "Token");
-
-
 
         //Me podria fijar si el token no es nulo, depende de si la comunicacion cliente-appserver tiene que ser robusta
 
-        //Refactorizar: otra vez esta funcion se repite en ServicioLogin, podria ponerla en "Utilities"
 
-        string ownerIngresado = this->mensajeHTTPRequest.getHeader("Owner"); //(headerOwner->p,headerOwner->len);
-        string tokenIngresado = this->mensajeHTTPRequest.getHeader("Token"); //headerToken->p,headerToken->len);
+        string ownerIngresado = this->mensajeHTTPRequest.getHeader("Owner");
+        string tokenIngresado = this->mensajeHTTPRequest.getHeader("Token");
 
         //Despues se podria ver el tema de los que se permite que vean el recurso de otra persona, pero que tenga permiso (tal vez haya que guardar los usuarios que tengan permiso)
 
 
 
-        //TODO, IMPORTANTE, WARNING, ETC, ETC ACA SE PUEDE PONER QUE DIRECTAMENTE LAS SESION DE USUARIO ME DIGA SI TIENE PERMISO O NO
+        //Refactorizar: TODO, IMPORTANTE, WARNING, ETC, ETC ACA SE PUEDE PONER QUE DIRECTAMENTE LAS SESION DE USUARIO ME DIGA SI TIENE PERMISO O NO
         //AHORA validarTokenConUsuario ESTA HACIENDO LO MISMO QUE LO DE ACA ABAJO JUNTO
 
 
@@ -111,9 +80,7 @@ bool AtendedorHTTP::tienePermiso(){
             return false;
         }
         else{
-            //if  ( (*(this->tokensDeUsuarios))[ownerIngresado] !=  tokenIngresado  ){
-
-            //TODO, IMPORTANTE, IMPORTANT, WARNING, HERE, ESTO SE PODRIA SIMPLIFICAR PASANDO ESTA LOGICA A SesionesDeUsuarios
+            //Refactorizar: TODO, IMPORTANTE, IMPORTANT, WARNING, HERE, ESTO SE PODRIA SIMPLIFICAR PASANDO ESTA LOGICA A SesionesDeUsuarios
             if  ( this->sesionesDeUsuarios->validarTokenConUsuario(ownerIngresado, tokenIngresado) ){
                 //NO tiene permiso,
                 return false;
@@ -136,14 +103,6 @@ bool AtendedorHTTP::compararMetodoHTTP( string metodo){
     else{
         return false;
     }
-
-   /* if (mg_vcmp(&(this->mensajeHTTP->method), StringUtil::stringToChar(metodo)) == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-    */
 }
 
 bool AtendedorHTTP::compararUriHTTP(string uri){
@@ -154,15 +113,6 @@ bool AtendedorHTTP::compararUriHTTP(string uri){
     else{
         return false;
     }
-
-    /*
-    if (mg_vcmp(&(this->mensajeHTTP->uri), StringUtil::stringToChar(uri)) == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-    */
 }
 
 

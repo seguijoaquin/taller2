@@ -8,7 +8,7 @@ SesionesDeUsuarios::SesionesDeUsuarios()
 
 
 bool SesionesDeUsuarios::existeSesionDe(string usuario){
-    //if ( this->tokensDeUsuarios->find(ownerIngresado) == this->tokensDeUsuarios->end()){
+
     if (this->tokensDeSesionesDeUsuario.find(usuario) == this->tokensDeSesionesDeUsuario.end() ){
         return false;
     }
@@ -37,16 +37,6 @@ void SesionesDeUsuarios::agregarSesionDe(string usuario, string token){
     this->tokensDeSesionesDeUsuario[usuario] = token;
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

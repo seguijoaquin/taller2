@@ -1,9 +1,6 @@
 #ifndef SERVIDOR_H
 #define SERVIDOR_H
 
-//#include "../include/mongoose.h"
-//#include "../include/rocksdb/db.h"
-//#include "mongoose/mongoose.h"
 #include "mongoose.h"
 #include <iostream>
 #include <fstream>
@@ -22,9 +19,6 @@ int tiempo;
 */
 
 //const char* PATHLOGIN = "/login";
-//ESTO LO VOY A TENER QUE GUARDAR EN OTRO LUGAR O LO MANEJO CON ROCKSDB
-//map<string,string> listaUsuarios;
-
 
 class Servidor
 {
@@ -34,7 +28,6 @@ class Servidor
 
         void iniciar();
 
-        //string getRespuestaDelServicio(http_message* mensajeHTTP);
         string getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest);
 
     protected:
@@ -42,11 +35,9 @@ class Servidor
         mg_connection* conexionListening;
 
 
-        //rocksdb::DB* credencialesUsuarios;
         CredencialesDeUsuarios* credencialesDeUsuarios;
 
         mg_mgr manager;
-        //map<string,string> tokensDeUsuarios;
         SesionesDeUsuarios sesionesDeUsuarios;
 
         static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);

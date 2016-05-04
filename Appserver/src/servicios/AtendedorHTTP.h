@@ -14,9 +14,6 @@
 class AtendedorHTTP
 {
     public:
-        //AtendedorHTTP(http_message* mensajeHTTP, map<string,string>* tokensDeUsuarios);
-        //AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
-        //AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, map<string,string>* tokensDeUsuarios);
         AtendedorHTTP(MensajeHTTPRequest mensajeHTTP, SesionesDeUsuarios* sesionesDeUsuarios);
         virtual ~AtendedorHTTP();
 
@@ -42,13 +39,7 @@ class AtendedorHTTP
 
         */
         ServicioALanzar servicioALanzar;
-
-        //Por ahora dejo el http_message porque solo quiero probar MensajeHTTPRequest aca
-        //http_message* mensajeHTTP;
         MensajeHTTPRequest mensajeHTTPRequest;
-
-
-        //map<string,string>* tokensDeUsuarios;
         SesionesDeUsuarios* sesionesDeUsuarios;
 
         void atenderMesajeHTTP();
