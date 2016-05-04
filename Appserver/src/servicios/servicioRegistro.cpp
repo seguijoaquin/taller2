@@ -42,7 +42,7 @@ void servicioRegistro::atenderRegistro(){
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
 
 
-
+    /////desde aca////
     string aux;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &aux );
     if(  estado.IsNotFound() ){
@@ -54,6 +54,7 @@ void servicioRegistro::atenderRegistro(){
         //Refactorizar esto...
         this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
     }
+    ///////hasta aca - reformularlo /////////
 
 
 }

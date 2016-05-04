@@ -50,6 +50,7 @@ bool servicioLogin::usuarioExiste(){
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
 
+    ///////desde aca////
     string passwordGuardado;
     rocksdb::Status estado = this->dbUsuarios->Get(rocksdb::ReadOptions(), usuarioIngresado, &passwordGuardado );
 
@@ -64,6 +65,7 @@ bool servicioLogin::usuarioExiste(){
             return false;
         }
     }
+    ////////////hasta aca/////////
 }
 
 
