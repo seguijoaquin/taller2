@@ -13,6 +13,8 @@
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
 
+#include "ManejadorDeConexiones.h"
+
 
 /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
 int tiempo;
@@ -32,23 +34,23 @@ class Servidor
 
     protected:
     private:
-        mg_connection* conexionListening;
-
 
         CredencialesDeUsuarios* credencialesDeUsuarios;
-
-        mg_mgr manager;
         SesionesDeUsuarios sesionesDeUsuarios;
 
-        static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
-
-
-
-        void iniciarManager();
-        void iniciarBaseDeDatos();
+   //     mg_connection* conexionListening;
+   //     mg_mgr manager;
+   //     static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
+   //     void iniciarManager();
         void escucharMensajes();
         //Si es true escucha, si es false no y se cierra el server
-        bool escuchar;
+   //     bool escuchar;
+
+        ManejadorDeConexiones manejadorDeConexiones;
+
+        void iniciarBaseDeDatos();
+
+
 
 };
 
