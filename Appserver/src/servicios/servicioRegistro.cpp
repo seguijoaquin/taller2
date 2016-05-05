@@ -4,7 +4,7 @@ servicioRegistro::servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones,
     this->manejadorDeConexiones = manejadorDeConexiones;
     this->mensajeHTTP = mensajeHTTP;
     this->usuariosRegistrados = credenciales;
-    this->codigoRespuesta = 0;
+    //this->codigoRespuesta = 0;
     //Para testear
     this->espera = 0;
     this->atenderRegistro();
@@ -42,15 +42,23 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     //TODO: agarar todos los errores
     string bodyJson = crearMensajeParaAlta(usuario);
-    this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", this);
-    while (this->esperandoRespuesta){
+    //this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", this);
+
+    ClienteDelSharedServer cliente;
+    this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", &cliente);
+    MensajeHTTPReply respustaShared = cliente.getRespuesta();
+
+
+/*    while (this->esperandoRespuesta){
         sleep(1);
         this->espera++;
         //cout<<"esta esperando...\n";
     }
+*/
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
-    if (this->codigoRespuesta == 201){
+    //if (this->codigoRespuesta == 201){
+    if (respustaShared.getCodigo() == 201){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
         this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
@@ -62,7 +70,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 }
 
 
-
+/*
 void servicioRegistro::setCodigoResuesta(int codigo){
     this->codigoRespuesta = codigo;
 }
@@ -75,6 +83,7 @@ void servicioRegistro::dejarDeEsperar(){
     this->esperandoRespuesta = false;
     cout<<"Espero: "<<this->espera<<"\n";
 }
+*/
 
 void servicioRegistro::agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray ){
     Json::Value interesJobj;

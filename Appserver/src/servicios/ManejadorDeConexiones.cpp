@@ -137,7 +137,7 @@ void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int ev
     }
 }
 
-
+/*
 void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio){
 
     string direccion = host + ":" + puertoLocal;
@@ -152,6 +152,27 @@ void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri
     string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
     mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
 }
+*/
+
+
+
+void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente){
+
+    string direccion = host + ":" + puertoLocal;
+
+    mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente);
+    mg_set_protocol_http_websocket(conexionParaRegistrarse);
+
+    //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz "Cliente"
+    conexionParaRegistrarse->user_data = cliente;
+
+    string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
+    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
+    cliente->esperarRespuesta();//aca el cliente implmenta el loop de espera
+}
+
+
+
 
 
 
@@ -184,7 +205,10 @@ void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int e
                 cout<<"EL SERVER TIRO EL REPLY\n";
                 //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
                 //TODO: Aca es en donde se tiene que setear el codigo de retorno
-                ((servicioRegistro*)conexion->user_data)->setCodigoResuesta( ((http_message*) ev_data)->resp_code  );
+
+                //((servicioRegistro*)conexion->user_data)->setCodigoResuesta( ((http_message*) ev_data)->resp_code  );
+                ((ClienteDelSharedServer*)conexion->user_data)->setRespuesta(MensajeHTTPReply((http_message*) ev_data));
+
                 //((servicioRegistro*)conexion->user_data)->desbloquear( ((http_message*) ev_data)->resp_code );
                 printf("Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
                 mbuf_remove(recvBuffer, recvBuffer->len);
@@ -202,7 +226,11 @@ void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int e
             {
                 //cout<<"SE CERRO LA CONEXION\n";
                 //Deberia setearse arriba el codigo y aca nada mas ->desbloquear()
-                ((servicioRegistro*)conexion->user_data)->dejarDeEsperar();
+
+                //((servicioRegistro*)conexion->user_data)->dejarDeEsperar();
+                ((ClienteDelSharedServer*)conexion->user_data)->terminarConexion();
+
+
                 //cout<<"SE CERRO LA CONEXION a los "<<tiempo<<" segundos "<<"El indice de CLOSE es: "<<conexion<<"\n";
             }
             break;

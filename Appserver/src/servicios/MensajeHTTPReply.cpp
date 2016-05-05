@@ -1,5 +1,9 @@
 #include "MensajeHTTPReply.h"
 
+MensajeHTTPReply::MensajeHTTPReply(){
+    //Por ahora lo necesito
+}
+
 MensajeHTTPReply::MensajeHTTPReply(http_message* mensajeMG):MensajeHTTP(mensajeMG){
     this->codigo = mensajeMG->resp_code;
     this->mensajeDeEstado = this->mg_strToString(mensajeMG->resp_status_msg);

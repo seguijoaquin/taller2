@@ -4,10 +4,11 @@
 
 #include <iostream>
 #include "mongoose.h"
-#include "servicioRegistro.h"
+
+#include "ClienteDelSharedServer.h"
+
 //#include "Servidor.h"
 class Servidor;
-class servicioRegistro;
 
 
 
@@ -21,7 +22,9 @@ class ManejadorDeConexiones
 
         void iniciarConexionComoServidor(string puerto, Servidor* servidor);
         void terminarConexionComoServidor();
-        void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
+        //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
+
+        void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
     protected:
     private:
         mg_mgr manager;

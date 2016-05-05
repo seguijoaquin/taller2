@@ -9,6 +9,7 @@
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
 #include "ManejadorDeConexiones.h"
+#include "ClienteDelSharedServer.h"
 
 class ManejadorDeConexiones;
 using namespace std;
@@ -20,23 +21,25 @@ class servicioRegistro
         ~servicioRegistro();
 
         string getRespuesta();
-        void esperarRespuesta();
-        void setCodigoResuesta(int codigo);
+
+        //void esperarRespuesta();
+        //void setCodigoResuesta(int codigo);
         //Tal vez hacer que setRespuesta desbloquee al servicio/cliente
-        void dejarDeEsperar();
+        //void dejarDeEsperar();
     protected:
     private:
         ManejadorDeConexiones* manejadorDeConexiones;
         MensajeHTTPRequest mensajeHTTP;
         string respuesta;
-        int codigoRespuesta;
+
 
         //Para probrar
         int espera;
 
         CredencialesDeUsuarios* usuariosRegistrados;
 
-        bool esperandoRespuesta;
+        //int codigoRespuesta;
+        //bool esperandoRespuesta;
 
         string crearMensajeParaAlta(string usuario);
         void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );

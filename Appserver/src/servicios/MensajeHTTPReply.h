@@ -9,6 +9,7 @@ using namespace std;
 class MensajeHTTPReply : public MensajeHTTP
 {
     public:
+        MensajeHTTPReply();
         MensajeHTTPReply(http_message* mensajeMG);
         virtual ~MensajeHTTPReply();
 
