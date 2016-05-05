@@ -71,7 +71,7 @@ void servicioRegistro::esperarRespuesta(){
     this->esperandoRespuesta = true;
 }
 
-void servicioRegistro::desbloquear(){
+void servicioRegistro::dejarDeEsperar(){
     this->esperandoRespuesta = false;
     cout<<"Espero: "<<this->espera<<"\n";
 }

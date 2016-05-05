@@ -2,38 +2,25 @@
 #define MENSAJEHTTPREQUEST_H
 
 #include "StringUtil.h"
-#include <string>
-#include "mongoose.h"
-#include <map>
+#include "MensajeHTTP.h"
 
 using namespace std;
 
-class MensajeHTTPRequest
+class MensajeHTTPRequest: public MensajeHTTP
 {
     public:
         //SACAR ESTE CONSTRUCTOR; LO DEJO POR AHORA PARA PROBAR ALGO
         MensajeHTTPRequest();
-        MensajeHTTPRequest(http_message* mensajeMG, int dummy);
+        MensajeHTTPRequest(http_message* mensajeMG);
         virtual ~MensajeHTTPRequest();
 
         string getMetodo();
         string getURI();
-        bool tieneHeader(string header);
-        //Por ahora si NO tiene el header devuelve "", deberia devolder error?
-        string getHeader(string header);
-
-        /*// Por ahora no lo necesito
-        string getBody();
-        */
+        string toString();
     protected:
     private:
         string metodo;
         string uri;
-
-        map<string,string> headers;
-        void cargarHeaders(http_message* mensajeMG);
-        //string body;
-        string mg_strToString(mg_str& mgStr);
 };
 
 #endif // MENSAJEHTTPREQUEST_H

@@ -22,7 +22,8 @@ class servicioRegistro
         string getRespuesta();
         void esperarRespuesta();
         void setCodigoResuesta(int codigo);
-        void desbloquear();
+        //Tal vez hacer que setRespuesta desbloquee al servicio/cliente
+        void dejarDeEsperar();
     protected:
     private:
         ManejadorDeConexiones* manejadorDeConexiones;

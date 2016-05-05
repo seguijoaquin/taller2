@@ -73,7 +73,7 @@ void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int ev
                 */
                 struct http_message* mensajeHTTP = (struct http_message *) ev_data;
                 //Refactorizar: que sea una interfaz como "Recibidor de mensajes"
-                string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(MensajeHTTPRequest(mensajeHTTP,0));
+                string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(MensajeHTTPRequest(mensajeHTTP));
                 printf("Mensaje de llegada al server:\n%.*s\n", (int)recvBuffer->len,recvBuffer->buf);
 
 
@@ -202,7 +202,7 @@ void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int e
             {
                 //cout<<"SE CERRO LA CONEXION\n";
                 //Deberia setearse arriba el codigo y aca nada mas ->desbloquear()
-                ((servicioRegistro*)conexion->user_data)->desbloquear();
+                ((servicioRegistro*)conexion->user_data)->dejarDeEsperar();
                 //cout<<"SE CERRO LA CONEXION a los "<<tiempo<<" segundos "<<"El indice de CLOSE es: "<<conexion<<"\n";
             }
             break;

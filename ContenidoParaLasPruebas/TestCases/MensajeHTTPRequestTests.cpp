@@ -35,7 +35,7 @@ HttpMessageRequestTest::HttpMessageRequestTest(){
   this->mensajeMG.header_values[2] = valorVacio;
 
   //El 0 dummy esta por ahora, porque queria probar algo en el codigo, TODO: sacarla
-  this->mensaje = new MensajeHTTPRequest(&(this->mensajeMG),0);
+  this->mensaje = new MensajeHTTPRequest(&(this->mensajeMG));
 }
 
 HttpMessageRequestTest::~HttpMessageRequestTest(){
