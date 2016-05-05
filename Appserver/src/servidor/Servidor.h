@@ -16,10 +16,6 @@
 #include "ManejadorDeConexiones.h"
 
 
-/*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
-int tiempo;
-*/
-
 //const char* PATHLOGIN = "/login";
 
 class Servidor
@@ -28,7 +24,7 @@ class Servidor
         Servidor();
         virtual ~Servidor();
 
-        void iniciar();
+        //void iniciar();
 
         string getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest);
 
@@ -38,20 +34,9 @@ class Servidor
         CredencialesDeUsuarios* credencialesDeUsuarios;
         SesionesDeUsuarios sesionesDeUsuarios;
 
-   //     mg_connection* conexionListening;
-   //     mg_mgr manager;
-   //     static void handlerServer(struct mg_connection* conexion, int evento, void* ev_data);
-   //     void iniciarManager();
-        void escucharMensajes();
-        //Si es true escucha, si es false no y se cierra el server
-   //     bool escuchar;
-
         ManejadorDeConexiones manejadorDeConexiones;
-
+        void iniciarServidor();
         void iniciarBaseDeDatos();
-
-
-
 };
 
 

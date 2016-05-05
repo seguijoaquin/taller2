@@ -16,7 +16,6 @@ using namespace std;
 class servicioRegistro
 {
     public:
-        //servicioRegistro(mg_mgr* manager, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
@@ -26,17 +25,10 @@ class servicioRegistro
         void desbloquear();
     protected:
     private:
-        //mg_mgr* manager;
         ManejadorDeConexiones* manejadorDeConexiones;
-        //static int tiempo; //SOLO PARA PROBAR SI ERA UNO O DOS THREADS
-        //static void handlerResgistro(struct mg_connection* conexion, int evento, void* ev_data);
-
-
         MensajeHTTPRequest mensajeHTTP;
-
         string respuesta;
         int codigoRespuesta;
-
 
         //Para probrar
         int espera;
@@ -44,9 +36,9 @@ class servicioRegistro
         CredencialesDeUsuarios* usuariosRegistrados;
 
         bool esperandoRespuesta;
+
         string crearMensajeParaAlta(string usuario);
         void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );
-
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);
 

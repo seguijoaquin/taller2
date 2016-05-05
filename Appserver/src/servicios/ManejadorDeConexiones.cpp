@@ -24,7 +24,6 @@ void ManejadorDeConexiones::iniciarConexionComoServidor(string puerto, Servidor*
     //Cada conexion que entra se va a manejar en un thread deatacheado distinto usando el handlerServer
     mg_enable_multithreading(conexionListening);
     /////////////////////////////////////////////////////////////////////
-    //this->conexionListening->user_data = this;
     conexionListening->user_data = servidor;
 
     this->escucharMensajes();
@@ -143,21 +142,20 @@ void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri
 
     string direccion = host + ":" + puertoLocal;
 
-    //mg_connection* conexionParaRegistrarse = mg_connect(this->manager,"t2shared.herokuapp.com:80", this->handlerResgistro); //SI
-    mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente); //SI
+    mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente);
     mg_set_protocol_http_websocket(conexionParaRegistrarse);
 
     //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz "Cliente"
     conexionParaRegistrarse->user_data = servicio;
-    //this->bloqueado = true
     servicio->esperarRespuesta();
 
     string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
-    cout<<"\n\n\nMensaje que se va a mandar al SHARED SERVER:\n"<<mensaje<<"\n\n\n-------------------------------------------------------";
-    //mg_printf(conexionParaRegistrarse, "POST /users/ HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: %lu\r\nContent-Type: application/json\r\n\r\n%s", bodyJson.length(), bodyJson.c_str()); //Funciona
-
-    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str()); //Funciona
+    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
 }
+
+
+
+
 
 void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int evento, void* ev_data){
 
