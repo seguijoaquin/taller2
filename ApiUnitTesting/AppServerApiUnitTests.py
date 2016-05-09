@@ -81,9 +81,34 @@ class TestRegistro(unittest.TestCase):
         self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)
 
 
+class TestRegistroYLogin(unittest.TestCase):
 
+    headUsuarioYaRegistrado = crearHeadersDeUsuarioYPassword(usuarioCorrecto, 'cualquierPassword')
 
+    msgLoginCorrecto = "Se logueo correctamente"
+    msgLoginIncorrecto = "No coinciden los datos"
 
+    msgUsuarioYaRegistrado = "Usuario existente"
+    msgUsuarioNuevoRegistrado = "Se pudo registrar el usuario"
+
+    def test_IntentoDeLoginDeUnUsuarioNoRegistrado_SeLoRegistra_SeDebePoderLoguearCorrectamente(self):
+	#Me intento loguear con un usuario no registrado y no puedo
+        #headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado_SeLoRegistra_SeDebePoderLoguearCorrectamente", "12345")
+	headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado", "12345")
+        request = requests.get(Address + URILogin,headers=headUsuario)
+        self.assertEqual(request.status_code,400)
+        self.assertEqual(request.reason,self.msgLoginIncorrecto)
+
+	#Lo registro
+	request = requests.put(Address + URIResgistro, headers=headUsuario)
+        self.assertEqual(request.status_code,201)
+        self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)
+
+	#Ahora me puedo loguear correctamente
+	request = requests.get(Address + URILogin,headers=headUsuario)
+        self.assertEqual(request.status_code,200)
+        self.assertEqual(request.reason,self.msgLoginCorrecto)
+        self.assertIsNotNone(request.headers["Token"])
 
 
 if __name__ == '__main__':
