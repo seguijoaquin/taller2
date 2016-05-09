@@ -44,9 +44,13 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     string bodyJson = crearMensajeParaAlta(usuario);
     //this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", this);
 
-    ClienteDelSharedServer cliente;
+    /*ClienteDelSharedServer cliente;
     this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", &cliente);
     MensajeHTTPReply respustaShared = cliente.getRespuesta();
+    */
+
+    MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com");
+
 
 
 /*    while (this->esperandoRespuesta){

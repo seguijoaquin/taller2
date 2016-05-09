@@ -24,7 +24,7 @@ class Servidor
         Servidor();
         virtual ~Servidor();
 
-        //void iniciar();
+        void iniciarServidor();
 
         string getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest);
 
@@ -35,7 +35,7 @@ class Servidor
         SesionesDeUsuarios sesionesDeUsuarios;
 
         ManejadorDeConexiones manejadorDeConexiones;
-        void iniciarServidor();
+        //void iniciarServidor();
         void iniciarBaseDeDatos();
 };
 

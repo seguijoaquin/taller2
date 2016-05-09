@@ -24,7 +24,8 @@ class ManejadorDeConexiones
         void terminarConexionComoServidor();
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
 
-        void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
+        //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
+        MensajeHTTPReply enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host);
     protected:
     private:
         mg_mgr manager;

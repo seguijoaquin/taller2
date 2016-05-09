@@ -9,7 +9,7 @@
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
 #include "ManejadorDeConexiones.h"
-#include "ClienteDelSharedServer.h"
+//#include "ClienteDelSharedServer.h"
 
 class ManejadorDeConexiones;
 using namespace std;
