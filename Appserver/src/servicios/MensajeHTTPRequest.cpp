@@ -22,9 +22,23 @@ string MensajeHTTPRequest::getURI(){
     return this->uri;
 }
 
-string MensajeHTTPRequest::toString(){
-    return (this->getMetodo() + " " + this->getURI() + " HTTP/1.1\r\n" + this->headersToString() + "\r\n"); // + this->getBody()
+
+void MensajeHTTPRequest::setMetodo(string metodo){
+    this->metodo = metodo;
 }
+
+void MensajeHTTPRequest::setURI(string uri){
+    this->uri = uri;
+}
+
+
+
+
+
+string MensajeHTTPRequest::toString(){
+    return (this->getMetodo() + " " + this->getURI() + " HTTP/1.1\r\n" + this->headersToString() + "\r\n" + this->getBody());
+}
+
 
 
 

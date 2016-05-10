@@ -54,3 +54,28 @@ void HttpMessageRequestTest::testObtenerHeadersDelMensajeHTTPRequest(){
   CPPUNIT_ASSERT( "Valor0" == this->mensaje->getHeader("Header0"));
   CPPUNIT_ASSERT( "Valor1" == this->mensaje->getHeader("Header1"));
 }
+
+
+void HttpMessageRequestTest::testCrearUnMensajeHTTPRequestDesdeCero(){
+  MensajeHTTPRequest mensajeDesdeCero;
+  string metodo,uri,header1,valor1,header2,valor2, body;
+  metodo = "METODO";
+  uri = "Uri3/Uri4/servicio";
+  header1 = "Header1";
+  valor1 = "Valor1";
+  header2= "Header2";
+  valor2 = "Valor2";
+  body = "body body body\n funciona con newlines\nsomething";
+  mensajeDesdeCero.setMetodo(metodo);
+  mensajeDesdeCero.setURI(uri);
+  mensajeDesdeCero.agregarHeader(header1, valor1);
+  mensajeDesdeCero.agregarHeader(header2, valor2);
+  mensajeDesdeCero.setBody(body);
+
+  string mensajeEsperado = metodo + " " + uri + " HTTP/1.1\r\n" + header1 + ": " + valor1 + "\r\n" + header2 + ": " + valor2 + "\r\n\r\n" + body;
+
+  CPPUNIT_ASSERT( mensajeEsperado == mensajeDesdeCero.toString());
+}
+
+
+//HACER TEST PARA AGREGAR UN HEADER YA AGREGADO

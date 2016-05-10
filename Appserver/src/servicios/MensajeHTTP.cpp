@@ -21,11 +21,14 @@ void MensajeHTTP::cargarHeaders(http_message* mensajeMG){
 
     //Si por ejemplo hay 2 headers, los header_names[2].len, header_names[3].len, etc van a ser = 0
     for (int i = 0; mensajeMG->header_names[i].len > 0; i++) {
-        this->headers[this->mg_strToString(mensajeMG->header_names[i])] = this->mg_strToString(mensajeMG->header_values[i]);
+        //this->headers[this->mg_strToString(mensajeMG->header_names[i])] = this->mg_strToString(mensajeMG->header_values[i]);
+        this->agregarHeader(this->mg_strToString(mensajeMG->header_names[i]), this->mg_strToString(mensajeMG->header_values[i]));
     }
 }
 
-
+void MensajeHTTP::agregarHeader(string header, string valor){
+    this->headers[header] = valor;
+}
 
 
 
@@ -59,6 +62,20 @@ string MensajeHTTP::headersToString(){
 	}
 	return resultado;
 }
+
+
+
+void MensajeHTTP::setBody(string body){
+    this->body = body;
+}
+
+string MensajeHTTP::getBody(){
+    return this->body;
+}
+
+
+
+
 
 
 MensajeHTTP::~MensajeHTTP()

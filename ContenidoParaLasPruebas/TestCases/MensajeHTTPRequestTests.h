@@ -13,6 +13,7 @@ class HttpMessageRequestTest : public CppUnit::TestFixture{
     CPPUNIT_TEST( testObtenerMetodoDelMensajeHTTPRequest );
     CPPUNIT_TEST( testObtenerUriDelMensajeHTTPRequest );
     CPPUNIT_TEST( testObtenerHeadersDelMensajeHTTPRequest );
+    CPPUNIT_TEST( testCrearUnMensajeHTTPRequestDesdeCero );
     CPPUNIT_TEST_SUITE_END();
   public:
     HttpMessageRequestTest();
@@ -20,6 +21,7 @@ class HttpMessageRequestTest : public CppUnit::TestFixture{
     void testObtenerMetodoDelMensajeHTTPRequest();
     void testObtenerUriDelMensajeHTTPRequest();
     void testObtenerHeadersDelMensajeHTTPRequest();
+    void testCrearUnMensajeHTTPRequestDesdeCero();
   private:
     http_message mensajeMG;
     MensajeHTTPRequest* mensaje;

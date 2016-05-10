@@ -17,6 +17,9 @@ class MensajeHTTPRequest: public MensajeHTTP
         string getMetodo();
         string getURI();
         string toString();
+
+        void setMetodo(string metodo);
+        void setURI(string uri);
     protected:
     private:
         string metodo;
