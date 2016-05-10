@@ -1,7 +1,7 @@
 #ifndef MENSAJEHTTPREPLY_H
 #define MENSAJEHTTPREPLY_H
 
-#include "StringUtil.h"
+
 #include "MensajeHTTP.h"
 
 using namespace std;

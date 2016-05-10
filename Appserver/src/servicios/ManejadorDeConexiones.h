@@ -5,6 +5,7 @@
 #include <iostream>
 #include "mongoose.h"
 
+#include "MensajeHTTPRequest.h"
 #include "ClienteDelSharedServer.h"
 
 //#include "Servidor.h"
@@ -25,7 +26,8 @@ class ManejadorDeConexiones
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
 
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
-        MensajeHTTPReply enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host);
+        //MensajeHTTPReply enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host);
+        MensajeHTTPReply enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal);
     protected:
     private:
         mg_mgr manager;

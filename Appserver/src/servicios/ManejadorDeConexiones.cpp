@@ -171,7 +171,7 @@ void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri
     cliente->esperarRespuesta();//aca el cliente implmenta el loop de espera
 }
 */
-
+/*
 MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host){
     ClienteDelSharedServer cliente;
     string direccion = host + ":" + puertoLocal;
@@ -187,8 +187,23 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(string metodo, string 
     cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
     return cliente.getRespuesta();
 }
+*/
 
+MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal){
+    ClienteDelSharedServer cliente;
 
+    string direccion = request->getHeader("Host") + ":" + puertoLocal;
+    mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente);
+    mg_set_protocol_http_websocket(conexionParaRegistrarse);
+    //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz "Cliente"
+    conexionParaRegistrarse->user_data = &cliente;
+
+    //string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
+    string mensaje = request->toString();
+    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
+    cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
+    return cliente.getRespuesta();
+}
 
 
 

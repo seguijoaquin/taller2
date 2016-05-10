@@ -79,3 +79,4 @@ void HttpMessageRequestTest::testCrearUnMensajeHTTPRequestDesdeCero(){
 
 
 //HACER TEST PARA AGREGAR UN HEADER YA AGREGADO
+//TEST QUE SET BODY ADEMAS AGREGA EL HEADER Content-Length con el tamanio del body

@@ -4,6 +4,7 @@
 #include <string>
 #include "mongoose.h"
 #include <map>
+#include "StringUtil.h"
 
 using namespace std;
 

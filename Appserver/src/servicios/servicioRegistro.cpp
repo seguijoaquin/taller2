@@ -49,7 +49,15 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     MensajeHTTPReply respustaShared = cliente.getRespuesta();
     */
 
-    MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com");
+    MensajeHTTPRequest request;
+    request.setMetodo("POST");
+    request.setURI("/users/");
+    request.agregarHeader("Host", "t2shared.herokuapp.com");
+    request.agregarHeader("Content-Type", "application/json");
+    request.setBody(bodyJson);
+
+    //MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com");
+    MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP(&request,"80");
 
 
 

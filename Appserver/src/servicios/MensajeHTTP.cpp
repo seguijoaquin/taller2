@@ -66,6 +66,7 @@ string MensajeHTTP::headersToString(){
 
 
 void MensajeHTTP::setBody(string body){
+    this->agregarHeader("Content-Length", StringUtil::int2string(body.length()));
     this->body = body;
 }
 
