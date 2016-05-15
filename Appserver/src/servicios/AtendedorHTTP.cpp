@@ -18,7 +18,9 @@ void AtendedorHTTP::atenderMesajeHTTP(){
 
     if (this->tienePermiso()){
         if (compararMetodoHTTP("POST")){
-            //respuesta = atenderPOST(mensajeHTTP);
+            if (compararUriHTTP("/chat")){
+                this->servicioALanzar = LANZAR_SERVICIO_CHAT;
+            }
         }
         else if (compararMetodoHTTP("GET")){
             if (compararUriHTTP("/login")){

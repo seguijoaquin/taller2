@@ -7,6 +7,7 @@ MensajeHTTP::MensajeHTTP(){
 
 MensajeHTTP::MensajeHTTP(http_message* mensajeMG){
     this->cargarHeaders(mensajeMG);
+    this->body = mg_strToString(mensajeMG->body);
 }
 
 

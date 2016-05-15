@@ -12,6 +12,7 @@
 
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
+#include "ServicioChat.h"
 
 #include "ManejadorDeConexiones.h"
 

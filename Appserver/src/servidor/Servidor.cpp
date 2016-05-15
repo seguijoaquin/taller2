@@ -59,6 +59,13 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
             }
             break;
+        case LANZAR_SERVICIO_CHAT:
+            {
+                ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios));
+                respuesta = chat.getRespuesta();
+                cout<<"RESPUESTA DEL SERVICIO CHAT:\n"<<respuesta<<"\n";
+            }
+            break;
         case LANZAR_SERVICIO_SIN_PERMISO:
             {
                 //respuesta = CONSTANTE_MENSAJE_DE_ERROR
