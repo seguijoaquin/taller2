@@ -72,11 +72,17 @@ void HttpMessageRequestTest::testCrearUnMensajeHTTPRequestDesdeCero(){
   mensajeDesdeCero.agregarHeader(header2, valor2);
   mensajeDesdeCero.setBody(body);
 
-  string mensajeEsperado = metodo + " " + uri + " HTTP/1.1\r\n" + header1 + ": " + valor1 + "\r\n" + header2 + ": " + valor2 + "\r\n\r\n" + body;
+  string headerBodyLenght = this->crearHeaderBodyLenght(body);
 
-  CPPUNIT_ASSERT( mensajeEsperado == mensajeDesdeCero.toString());
+  string mensajeEsperado = metodo + " " + uri + " HTTP/1.1\r\n" + headerBodyLenght + header1 + ": " + valor1 + "\r\n" + header2 + ": " + valor2 + "\r\n\r\n" + body;
+
+  CPPUNIT_ASSERT_EQUAL( mensajeEsperado,mensajeDesdeCero.toString());
 }
 
+string HttpMessageRequestTest::crearHeaderBodyLenght(string body){
+
+  return ("Content-Length: " + to_string(body.length()) + "\r\n");
+}
 
 //HACER TEST PARA AGREGAR UN HEADER YA AGREGADO
 //TEST QUE SET BODY ADEMAS AGREGA EL HEADER Content-Length con el tamanio del body

@@ -26,6 +26,7 @@ class HttpMessageRequestTest : public CppUnit::TestFixture{
     http_message mensajeMG;
     MensajeHTTPRequest* mensaje;
     void iniciarMg_str(mg_str& mg_string, const char* contenido, size_t longitud);
+    string crearHeaderBodyLenght(string body);
 
 };
 
