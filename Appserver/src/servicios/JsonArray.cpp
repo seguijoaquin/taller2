@@ -4,13 +4,19 @@ JsonArray::JsonArray(){
     this->jsonValor = Json::arrayValue;
 }
 
+JsonArray::JsonArray(string jsonTexto):JsonValor(jsonTexto){
+
+}
+
+
+
 JsonValor JsonArray::operator[](int indice){
     return JsonValor(this->jsonValor[indice]);
 }
 
 
 void JsonArray::agregar(JsonValor& valor){
-    this->jsonValor.append(valor.getValor());
+    this->jsonValor.append(valor.getJsonValue());
 }
 
 void JsonArray::agregar(string& valor){

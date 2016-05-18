@@ -9,7 +9,9 @@ class JsonArray: public JsonValor{
     public:
         //El jsonValue TIENE que ser un array
         JsonArray();
+        JsonArray(string jsonTexto);
         virtual ~JsonArray();
+
 
         JsonValor operator[](int indice);
         void agregar(JsonValor& valor);

@@ -11,9 +11,13 @@ class JsonValor
 {
     public:
         JsonValor();
+        JsonValor(string jsonTexto);
         //CREO que deberia crearlo por referencia...CREO
         JsonValor(const Json::Value& jsonValor);
-        Json::Value& getValor();
+        Json::Value& getJsonValue();
+
+        int size();
+
         virtual ~JsonValor();
         string toString();
     protected:
