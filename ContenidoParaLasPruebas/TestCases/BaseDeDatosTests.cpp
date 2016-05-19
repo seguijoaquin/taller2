@@ -5,15 +5,61 @@
 
 using namespace std;
 
-TEST(AgregarUnaClaveValor, DeUnaClaveExistenteModificaElValorDeLaClave) {
-	string valor = "valor";
-	string valorDiferente = "valorDiferente";
-	BaseDeDatos* baseDeDatos = new BaseDeDatos("./BaseDeDatosDePrueba");
+
+
+
+// To use a test fixture, derive a class from testing::Test.
+class BaseDeDatosTest : public testing::Test {
 	
+ protected:  // You should make the members protected s.t. they can be
+             // accessed from sub-classes.
+
+  // virtual void SetUp() will be called before each test is run.  You
+  // should define it if you need to initialize the varaibles.
+  // Otherwise, this can be skipped.
+  
+  virtual void SetUp() {
+   	string valor = "valor";
+	string valorDiferente = "valorDiferente";
 	string clave = "AgregarUnaClaveValorDeUnaClaveExistenteModificaElValorDeLaClave";
+	baseDeDatos = new BaseDeDatos("./BaseDeDatosDePrueba");
+  }
+  
+
+
+  // virtual void TearDown() will be called after each test is run.
+  // You should define it if there is cleanup work to do.  Otherwise,
+  // you don't have to provide it.
+  //
+  virtual void TearDown() {
+	delete baseDeDatos;
+  }
+
+
+	//ACA TAMBIEN PODEMOS DEFINIR FUNCIONES Y UTILIZARLAS PARA HACER
+	//EL MISMO TEST CON DIFERENTES DATOS.
+
+
+  // Declares the variables your tests want to use.
+  string clave;
+  string valor;
+  string valorDiferente;
+  BaseDeDatos* baseDeDatos;
+};
+
+
+
+
+
+
+// El primer parametro es el nombre de la clase en la que describimos
+// las variables a utilizar y demas.
+//El segundo parametro es el nombre del test.
+TEST_F(BaseDeDatosTest, AlHacerDosVecesUnPutConLaMismaClaveElValorAlmacenadoDeberiaSerElUltimoGuardado) {
+	//Todas las variables estan definidas en la clase 
 	baseDeDatos->put(clave,valor);
-	//Ahora agrego la misma clave pero con otro valor
 	baseDeDatos->put(clave,valorDiferente);
 	
 	EXPECT_EQ(valorDiferente, baseDeDatos->get(clave));
+  
 }

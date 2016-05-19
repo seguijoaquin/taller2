@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/gtest_color_test_.dir/test/gtest_color_test_.cc.o  -o gtest_color_test_  -L/home/diego/Desktop/googletest/googletest/mybuild/src -rdynamic libgtest.so -lpthread -Wl,-rpath,/home/diego/Desktop/googletest/googletest/mybuild/src:/home/diego/Desktop/googletest/googletest/mybuild 

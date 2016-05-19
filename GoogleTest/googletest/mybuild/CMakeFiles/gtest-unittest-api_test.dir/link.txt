@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/gtest-unittest-api_test.dir/test/gtest-unittest-api_test.cc.o  -o gtest-unittest-api_test  -L/home/diego/Desktop/googletest/googletest/mybuild/src -rdynamic libgtest.so -lpthread -Wl,-rpath,/home/diego/Desktop/googletest/googletest/mybuild/src:/home/diego/Desktop/googletest/googletest/mybuild 

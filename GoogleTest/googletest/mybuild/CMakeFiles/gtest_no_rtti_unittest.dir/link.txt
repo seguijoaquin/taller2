@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/gtest_no_rtti_unittest.dir/test/gtest_unittest.cc.o  -o gtest_no_rtti_unittest  -L/home/diego/Desktop/googletest/googletest/mybuild/src -rdynamic libgtest_main_no_rtti.so -lpthread -Wl,-rpath,/home/diego/Desktop/googletest/googletest/mybuild/src:/home/diego/Desktop/googletest/googletest/mybuild 

@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/gtest_throw_on_failure_ex_test.dir/test/gtest_throw_on_failure_ex_test.cc.o  -o gtest_throw_on_failure_ex_test  -L/home/diego/Desktop/googletest/googletest/mybuild/src -rdynamic libgtest.so -lpthread -Wl,-rpath,/home/diego/Desktop/googletest/googletest/mybuild/src:/home/diego/Desktop/googletest/googletest/mybuild 

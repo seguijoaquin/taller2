@@ -1,0 +1,659 @@
+Start testing: May 14 20:51 ART
+----------------------------------------------------------
+Unable to find executable: gtest-death-test_test
+1/41 Testing: gtest-death-test_test
+1/41 Test: gtest-death-test_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-death-test_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-death-test_test" end time: May 14 20:51 ART
+"gtest-death-test_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_environment_test
+2/41 Testing: gtest_environment_test
+2/41 Test: gtest_environment_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_environment_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_environment_test" end time: May 14 20:51 ART
+"gtest_environment_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-filepath_test
+3/41 Testing: gtest-filepath_test
+3/41 Test: gtest-filepath_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-filepath_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-filepath_test" end time: May 14 20:51 ART
+"gtest-filepath_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-linked_ptr_test
+4/41 Testing: gtest-linked_ptr_test
+4/41 Test: gtest-linked_ptr_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-linked_ptr_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-linked_ptr_test" end time: May 14 20:51 ART
+"gtest-linked_ptr_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-listener_test
+5/41 Testing: gtest-listener_test
+5/41 Test: gtest-listener_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-listener_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-listener_test" end time: May 14 20:51 ART
+"gtest-listener_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_main_unittest
+6/41 Testing: gtest_main_unittest
+6/41 Test: gtest_main_unittest
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_main_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_main_unittest" end time: May 14 20:51 ART
+"gtest_main_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-message_test
+7/41 Testing: gtest-message_test
+7/41 Test: gtest-message_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-message_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-message_test" end time: May 14 20:51 ART
+"gtest-message_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_no_test_unittest
+8/41 Testing: gtest_no_test_unittest
+8/41 Test: gtest_no_test_unittest
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_no_test_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_no_test_unittest" end time: May 14 20:51 ART
+"gtest_no_test_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-options_test
+9/41 Testing: gtest-options_test
+9/41 Test: gtest-options_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-options_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-options_test" end time: May 14 20:51 ART
+"gtest-options_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-param-test_test
+10/41 Testing: gtest-param-test_test
+10/41 Test: gtest-param-test_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-param-test_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-param-test_test" end time: May 14 20:51 ART
+"gtest-param-test_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-port_test
+11/41 Testing: gtest-port_test
+11/41 Test: gtest-port_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-port_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-port_test" end time: May 14 20:51 ART
+"gtest-port_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_pred_impl_unittest
+12/41 Testing: gtest_pred_impl_unittest
+12/41 Test: gtest_pred_impl_unittest
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_pred_impl_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_pred_impl_unittest" end time: May 14 20:51 ART
+"gtest_pred_impl_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_premature_exit_test
+13/41 Testing: gtest_premature_exit_test
+13/41 Test: gtest_premature_exit_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_premature_exit_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_premature_exit_test" end time: May 14 20:51 ART
+"gtest_premature_exit_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-printers_test
+14/41 Testing: gtest-printers_test
+14/41 Test: gtest-printers_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-printers_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-printers_test" end time: May 14 20:51 ART
+"gtest-printers_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_prod_test
+15/41 Testing: gtest_prod_test
+15/41 Test: gtest_prod_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_prod_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_prod_test" end time: May 14 20:51 ART
+"gtest_prod_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_repeat_test
+16/41 Testing: gtest_repeat_test
+16/41 Test: gtest_repeat_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_repeat_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_repeat_test" end time: May 14 20:51 ART
+"gtest_repeat_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_sole_header_test
+17/41 Testing: gtest_sole_header_test
+17/41 Test: gtest_sole_header_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_sole_header_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_sole_header_test" end time: May 14 20:51 ART
+"gtest_sole_header_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_stress_test
+18/41 Testing: gtest_stress_test
+18/41 Test: gtest_stress_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_stress_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_stress_test" end time: May 14 20:51 ART
+"gtest_stress_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-test-part_test
+19/41 Testing: gtest-test-part_test
+19/41 Test: gtest-test-part_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-test-part_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-test-part_test" end time: May 14 20:51 ART
+"gtest-test-part_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_throw_on_failure_ex_test
+20/41 Testing: gtest_throw_on_failure_ex_test
+20/41 Test: gtest_throw_on_failure_ex_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_throw_on_failure_ex_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_throw_on_failure_ex_test" end time: May 14 20:51 ART
+"gtest_throw_on_failure_ex_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-typed-test_test
+21/41 Testing: gtest-typed-test_test
+21/41 Test: gtest-typed-test_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-typed-test_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-typed-test_test" end time: May 14 20:51 ART
+"gtest-typed-test_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_unittest
+22/41 Testing: gtest_unittest
+22/41 Test: gtest_unittest
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_unittest" end time: May 14 20:51 ART
+"gtest_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-unittest-api_test
+23/41 Testing: gtest-unittest-api_test
+23/41 Test: gtest-unittest-api_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-unittest-api_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-unittest-api_test" end time: May 14 20:51 ART
+"gtest-unittest-api_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-death-test_ex_nocatch_test
+24/41 Testing: gtest-death-test_ex_nocatch_test
+24/41 Test: gtest-death-test_ex_nocatch_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-death-test_ex_nocatch_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-death-test_ex_nocatch_test" end time: May 14 20:51 ART
+"gtest-death-test_ex_nocatch_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-death-test_ex_catch_test
+25/41 Testing: gtest-death-test_ex_catch_test
+25/41 Test: gtest-death-test_ex_catch_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-death-test_ex_catch_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-death-test_ex_catch_test" end time: May 14 20:51 ART
+"gtest-death-test_ex_catch_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_no_rtti_unittest
+26/41 Testing: gtest_no_rtti_unittest
+26/41 Test: gtest_no_rtti_unittest
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_no_rtti_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_no_rtti_unittest" end time: May 14 20:51 ART
+"gtest_no_rtti_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest-tuple_test
+27/41 Testing: gtest-tuple_test
+27/41 Test: gtest-tuple_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest-tuple_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest-tuple_test" end time: May 14 20:51 ART
+"gtest-tuple_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: gtest_use_own_tuple_test
+28/41 Testing: gtest_use_own_tuple_test
+28/41 Test: gtest_use_own_tuple_test
+Command: ""
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_use_own_tuple_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_use_own_tuple_test" end time: May 14 20:51 ART
+"gtest_use_own_tuple_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+29/41 Testing: gtest_break_on_failure_unittest
+29/41 Test: gtest_break_on_failure_unittest
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_break_on_failure_unittest.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_break_on_failure_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_break_on_failure_unittest" end time: May 14 20:51 ART
+"gtest_break_on_failure_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+30/41 Testing: gtest_catch_exceptions_test
+30/41 Test: gtest_catch_exceptions_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_catch_exceptions_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_catch_exceptions_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_catch_exceptions_test" end time: May 14 20:51 ART
+"gtest_catch_exceptions_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+31/41 Testing: gtest_color_test
+31/41 Test: gtest_color_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_color_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_color_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_color_test" end time: May 14 20:51 ART
+"gtest_color_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+32/41 Testing: gtest_env_var_test
+32/41 Test: gtest_env_var_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_env_var_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_env_var_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_env_var_test" end time: May 14 20:51 ART
+"gtest_env_var_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+33/41 Testing: gtest_filter_unittest
+33/41 Test: gtest_filter_unittest
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_filter_unittest.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_filter_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_filter_unittest" end time: May 14 20:51 ART
+"gtest_filter_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+34/41 Testing: gtest_help_test
+34/41 Test: gtest_help_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_help_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_help_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_help_test" end time: May 14 20:51 ART
+"gtest_help_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+35/41 Testing: gtest_list_tests_unittest
+35/41 Test: gtest_list_tests_unittest
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_list_tests_unittest.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_list_tests_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_list_tests_unittest" end time: May 14 20:51 ART
+"gtest_list_tests_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+36/41 Testing: gtest_output_test
+36/41 Test: gtest_output_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_output_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_output_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_output_test" end time: May 14 20:51 ART
+"gtest_output_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+37/41 Testing: gtest_shuffle_test
+37/41 Test: gtest_shuffle_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_shuffle_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_shuffle_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_shuffle_test" end time: May 14 20:51 ART
+"gtest_shuffle_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+38/41 Testing: gtest_throw_on_failure_test
+38/41 Test: gtest_throw_on_failure_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_throw_on_failure_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_throw_on_failure_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_throw_on_failure_test" end time: May 14 20:51 ART
+"gtest_throw_on_failure_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+39/41 Testing: gtest_uninitialized_test
+39/41 Test: gtest_uninitialized_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_uninitialized_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_uninitialized_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_uninitialized_test" end time: May 14 20:51 ART
+"gtest_uninitialized_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+40/41 Testing: gtest_xml_outfiles_test
+40/41 Test: gtest_xml_outfiles_test
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_xml_outfiles_test.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_xml_outfiles_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_xml_outfiles_test" end time: May 14 20:51 ART
+"gtest_xml_outfiles_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/diego/Desktop/googletest/googletest/mybuild/path/to/python
+41/41 Testing: gtest_xml_output_unittest
+41/41 Test: gtest_xml_output_unittest
+Command: "" "/home/diego/Desktop/googletest/googletest/test/gtest_xml_output_unittest.py" "--build_dir=/home/diego/Desktop/googletest/googletest/mybuild/"
+Directory: /home/diego/Desktop/googletest/googletest/mybuild
+"gtest_xml_output_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"gtest_xml_output_unittest" end time: May 14 20:51 ART
+"gtest_xml_output_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 14 20:51 ART

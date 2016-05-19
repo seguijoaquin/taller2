@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/gtest_dll_test_.dir/test/gtest_all_test.cc.o  -o gtest_dll_test_  -L/home/diego/Desktop/googletest/googletest/mybuild/src -rdynamic libgtest_dll.so -lpthread -Wl,-rpath,/home/diego/Desktop/googletest/googletest/mybuild/src:/home/diego/Desktop/googletest/googletest/mybuild 
