@@ -16,7 +16,7 @@ before_install:
 install:
 - ./instalar_rocksdb.sh
 - ./instalar_cppunit.sh
-- ./instalar_googletest.sh
+- sh ./instalar_googletest.sh
 
 script:
 - cd Appserver
@@ -26,5 +26,5 @@ script:
 - make
 - cd ../..
 - ./correr_pruebas_API.sh
-- ./correrUnitTests.sh
+- sh ./correrUnitTests.sh
 
