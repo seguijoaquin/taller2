@@ -27,6 +27,7 @@ void ServicioMensajes::atenderMensajes(){
 
             Mensajes mensajes = this->conversaciones->obtenerCantidadMensajesDesdeEntre(StringUtil::str2int(cantidad),StringUtil::str2int(desde),usuario1,usuario2);
             string mensajesPedidos = mensajes.toString();
+            //delete mensajes;
             this->respuesta = "HTTP/1.1 201 OK\r\n\r\n" + mensajesPedidos;
         }
         else{
