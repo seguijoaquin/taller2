@@ -1,4 +1,0 @@
-/home/diego/Desktop/googletest/build/googlemock/CMakeFiles/gmock.dir
-/home/diego/Desktop/googletest/build/googlemock/CMakeFiles/gmock_main.dir
-/home/diego/Desktop/googletest/build/googlemock/gtest/CMakeFiles/gtest.dir
-/home/diego/Desktop/googletest/build/googlemock/gtest/CMakeFiles/gtest_main.dir

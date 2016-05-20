@@ -2,6 +2,6 @@ cd GoogleTest
 mkdir -p build
 cd build
 cmake ../
-make install
-ldconfig
+sudo make install
+sudo ldconfig
 cd ..
