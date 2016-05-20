@@ -19,9 +19,9 @@ class BaseDeDatosTest : public testing::Test {
   // Otherwise, this can be skipped.
   
   virtual void SetUp() {
-   	string valor = "valor";
-	string valorDiferente = "valorDiferente";
-	string clave = "AgregarUnaClaveValorDeUnaClaveExistenteModificaElValorDeLaClave";
+   	valor = "valor";
+	valorDiferente = "valorDiferente";
+	clave = "AgregarUnaClaveValorDeUnaClaveExistenteModificaElValorDeLaClave";
 	baseDeDatos = new BaseDeDatos("./BaseDeDatosDePrueba");
   }
   
@@ -32,7 +32,7 @@ class BaseDeDatosTest : public testing::Test {
   // you don't have to provide it.
   //
   virtual void TearDown() {
-	delete baseDeDatos;
+	delete this->baseDeDatos;
   }
 
 
@@ -49,7 +49,10 @@ class BaseDeDatosTest : public testing::Test {
 
 
 
-
+TEST_F(BaseDeDatosTest, testAgregarUnaClaveValorNuevaYObtenerla){
+	baseDeDatos->put(clave,valor);
+	ASSERT_EQ(valor,baseDeDatos->get(clave));
+}
 
 
 // El primer parametro es el nombre de la clase en la que describimos
@@ -63,3 +66,11 @@ TEST_F(BaseDeDatosTest, AlHacerDosVecesUnPutConLaMismaClaveElValorAlmacenadoDebe
 	EXPECT_EQ(valorDiferente, baseDeDatos->get(clave));
   
 }
+
+
+TEST_F(BaseDeDatosTest, testAlPreguntarPorLaExistenciaDeUnaClaveInexistenteDeberiaDarFalse){
+	 string clave = "ExistenciaDeClaveInexistente";
+	 EXPECT_EQ(false,baseDeDatos->existe(clave));
+}
+
+
