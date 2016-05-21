@@ -32,7 +32,7 @@ class BaseDeDatosTest : public testing::Test {
   // you don't have to provide it.
   //
   virtual void TearDown() {
-	delete this->baseDeDatos;
+	delete baseDeDatos;
   }
 
 
@@ -63,14 +63,35 @@ TEST_F(BaseDeDatosTest, AlHacerDosVecesUnPutConLaMismaClaveElValorAlmacenadoDebe
 	baseDeDatos->put(clave,valor);
 	baseDeDatos->put(clave,valorDiferente);
 	
-	EXPECT_EQ(valorDiferente, baseDeDatos->get(clave));
+	ASSERT_EQ(valorDiferente, baseDeDatos->get(clave));
   
 }
 
 
 TEST_F(BaseDeDatosTest, testAlPreguntarPorLaExistenciaDeUnaClaveInexistenteDeberiaDarFalse){
 	 string clave = "ExistenciaDeClaveInexistente";
-	 EXPECT_EQ(false,baseDeDatos->existe(clave));
+	 ASSERT_FALSE(baseDeDatos->existe(clave));
 }
+
+
+
+TEST_F(BaseDeDatosTest, existenciaDeUnaClaveExistente){
+	
+	baseDeDatos->put(clave,valor);
+	ASSERT_TRUE(baseDeDatos->existe(clave));
+	
+}
+
+
+TEST_F(BaseDeDatosTest, testObtenerElValorDeUnaClaveInexistenteDebeDevolverUnValorVacio){
+	string claveInexistente = "CLAVEINEXISTENTE";
+	ASSERT_EQ("",baseDeDatos->get(claveInexistente));
+}
+
+
+
+
+
+
 
 
