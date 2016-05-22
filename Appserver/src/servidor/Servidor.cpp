@@ -62,7 +62,7 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
             break;
         case LANZAR_SERVICIO_CHAT:
             {
-                ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios));
+                ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios), this->conversaciones);
                 respuesta = chat.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO CHAT:\n"<<respuesta<<"\n";
             }
