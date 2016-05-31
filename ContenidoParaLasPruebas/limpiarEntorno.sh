@@ -1,1 +1,4 @@
-rm -r CredencialesDePrueba BaseDeDatosDePrueba ConversacionesDePrueba
+if [ -d Entorno ]; then
+	cd Entorno
+	rm -r *
+fi

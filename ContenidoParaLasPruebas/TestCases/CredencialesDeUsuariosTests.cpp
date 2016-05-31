@@ -18,7 +18,7 @@ class CredencialesDeUsuariosTest : public testing::Test {
   // Otherwise, this can be skipped.
 
   virtual void SetUp() {
-	credenciales = new CredencialesDeUsuarios("./CredencialesDePrueba");
+	credenciales = new CredencialesDeUsuarios("./Entorno/CredencialesDePrueba");
 	password = "password";
 	passwordIncorrecto = "passwordIncorrecto";
 	usuario = "NUEVO_USUARIO";

@@ -22,7 +22,7 @@ class BaseDeDatosTest : public testing::Test {
    	valor = "valor";
 	valorDiferente = "valorDiferente";
 	clave = "AgregarUnaClaveValorDeUnaClaveExistenteModificaElValorDeLaClave";
-	baseDeDatos = new BaseDeDatos("./BaseDeDatosDePrueba");
+	baseDeDatos = new BaseDeDatos("./Entorno/BaseDeDatosDePrueba");
   }
 
 

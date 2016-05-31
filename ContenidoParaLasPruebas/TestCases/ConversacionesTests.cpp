@@ -10,11 +10,12 @@ class ConversacionesTest : public testing::Test{
 	protected:
 
 		virtual void SetUp(){
-			conversaciones = new Conversaciones("./ConversacionesDePrueba");
+			conversaciones = new Conversaciones("./Entorno/ConversacionesDePrueba");
 		}
 
 		virtual void TearDown(){
 			delete conversaciones;
+            system("../limpiarEntorno.sh");
 		}
 
 		void agregarMensajesAConversaciones(string usuario1, string usuario2, vector<pair<string,string>>& listaMensajes){
@@ -64,13 +65,6 @@ class ConversacionesTest : public testing::Test{
 			return ( (mensajes.getEmisor(indiceMensajes) ==  listaMensajes[indiceLista-1].first) &&
 					(mensajes.getMensaje(indiceMensajes) == listaMensajes[indiceLista-1].second) );
 		}
-
-
-
-        virtual void TearDown() {
-            delete credenciales;
-            system("../limpiarEntorno.sh");
-        }
 
 		Conversaciones* conversaciones;
 };

@@ -1,6 +1,7 @@
 cd ContenidoParaLasPruebas
 mkdir -p build
 cd build
+mkdir -p Entorno
 cmake ../
 make
 
