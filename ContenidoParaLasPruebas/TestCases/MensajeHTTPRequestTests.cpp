@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-//using namespace std;
+using namespace std;
 
 
 class HttpMessageRequestTest : public testing::Test{
@@ -45,7 +45,10 @@ class HttpMessageRequestTest : public testing::Test{
 		}
 		
 		
-		
+		string crearHeaderBodyLenght(string body){
+
+			return ("Content-Length: " + to_string(body.length()) + "\r\n");
+		}
 		
 		void iniciarMg_str(mg_str& mg_string, const char* contenido, size_t longitud){
 			mg_string.p = contenido;
@@ -74,5 +77,28 @@ TEST_F(HttpMessageRequestTest, testObtenerHeadersDelMensajeHTTPRequest){
   ASSERT_EQ( "Valor0" , mensaje->getHeader("Header0"));
   ASSERT_EQ( "Valor1" , mensaje->getHeader("Header1"));	
 	
+}
+
+TEST_F(HttpMessageRequestTest,testCrearUnMensajeHTTPRequestDesdeCero){
+  MensajeHTTPRequest mensajeDesdeCero;
+  string metodo,uri,header1,valor1,header2,valor2, body;
+  metodo = "METODO";
+  uri = "Uri3/Uri4/servicio";
+  header1 = "Header1";
+  valor1 = "Valor1";
+  header2= "Header2";
+  valor2 = "Valor2";
+  body = "body body body\n funciona con newlines\nsomething";
+  mensajeDesdeCero.setMetodo(metodo);
+  mensajeDesdeCero.setURI(uri);
+  mensajeDesdeCero.agregarHeader(header1, valor1);
+  mensajeDesdeCero.agregarHeader(header2, valor2);
+  mensajeDesdeCero.setBody(body);
+
+  string headerBodyLenght = crearHeaderBodyLenght(body);
+
+  string mensajeEsperado = metodo + " " + uri + " HTTP/1.1\r\n" + headerBodyLenght + header1 + ": " + valor1 + "\r\n" + header2 + ": " + valor2 + "\r\n\r\n" + body;
+
+  ASSERT_EQ( mensajeEsperado,mensajeDesdeCero.toString());
 }
 

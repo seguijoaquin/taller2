@@ -1,8 +1,9 @@
 #include "SesionesDeUsuarios.h"
+#include <iostream>
 #include "gtest/gtest.h"
 //using namespace std;
 
-class SesionesDeUsuariosTest : public testing::Test {
+class SesionesDeUsuariosTest : public testing::Test{
 	protected:
 	
 		virtual void SetUp(){

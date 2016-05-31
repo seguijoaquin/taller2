@@ -26,6 +26,9 @@ void AtendedorHTTP::atenderMesajeHTTP(){
             if (compararUriHTTP("/login")){
                 this->servicioALanzar = LANZAR_SERVICIO_LOGIN;
             }
+            else if (compararUriHTTP("/mensajes")){
+                this->servicioALanzar = LANZAR_SERVICIO_MENSAJES;
+            }
             else if (compararUriHTTP("/test")){
                 this->servicioALanzar = LANZAR_SERVICIO_TEST;
             }

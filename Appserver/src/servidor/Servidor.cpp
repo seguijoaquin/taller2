@@ -32,6 +32,7 @@ void Servidor::iniciarServidor(){
 
 void Servidor::iniciarBaseDeDatos(){
     this->credencialesDeUsuarios = new CredencialesDeUsuarios("./usuariosRegistrados");
+    this->conversaciones = new Conversaciones("./Conversaciones");
 }
 
 
@@ -61,9 +62,16 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
             break;
         case LANZAR_SERVICIO_CHAT:
             {
-                ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios));
+                ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios), this->conversaciones);
                 respuesta = chat.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO CHAT:\n"<<respuesta<<"\n";
+            }
+            break;
+        case LANZAR_SERVICIO_MENSAJES:
+            {
+                ServicioMensajes mensajes(&mensajeHTTPRequest,&(this->sesionesDeUsuarios),this->conversaciones);
+                respuesta = mensajes.getRespuesta();
+                cout<<"RESPUESTA DEL SERVICIO MENSAJES:\n"<<respuesta<<"\n";
             }
             break;
         case LANZAR_SERVICIO_SIN_PERMISO:
@@ -90,5 +98,6 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
 }
 
 Servidor::~Servidor(){
+    delete this->conversaciones;
     delete this->credencialesDeUsuarios;
 }

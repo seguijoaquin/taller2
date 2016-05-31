@@ -13,6 +13,7 @@
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
 #include "ServicioChat.h"
+#include "ServicioMensajes.h"
 
 #include "ManejadorDeConexiones.h"
 
@@ -33,6 +34,7 @@ class Servidor
     private:
 
         CredencialesDeUsuarios* credencialesDeUsuarios;
+        Conversaciones* conversaciones;
         SesionesDeUsuarios sesionesDeUsuarios;
 
         ManejadorDeConexiones manejadorDeConexiones;
