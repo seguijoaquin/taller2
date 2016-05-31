@@ -19,7 +19,7 @@ string MensajeHTTPReply::getMensajeDeEstado(){
 }
 
 string MensajeHTTPReply::toString(){
-    return ("HTTP/1.1 " + StringUtil::int2string(this->getCodigo()) + " " + this->getMensajeDeEstado() + "\r\n" + this->headersToString() + "\r\n"); // + this->getBody()
+    return ("HTTP/1.1 " + StringUtil::int2string(this->getCodigo()) + " " + this->getMensajeDeEstado() + "\r\n" + this->headersToString() + "\r\n" + this->getBody() );
 }
 
 
