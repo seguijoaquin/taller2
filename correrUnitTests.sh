@@ -18,5 +18,3 @@ ERROR=$(./Pruebas | grep "FAILED")
 if [ -n "$ERROR" ]; then
     exit 1
 fi
-
-
