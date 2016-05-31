@@ -9,21 +9,21 @@ using namespace std;
 
 
 class CredencialesDeUsuariosTest : public testing::Test {
-	
+
  protected:  // You should make the members protected s.t. they can be
              // accessed from sub-classes.
 
   // virtual void SetUp() will be called before each test is run.  You
   // should define it if you need to initialize the varaibles.
   // Otherwise, this can be skipped.
-  
+
   virtual void SetUp() {
 	credenciales = new CredencialesDeUsuarios("./CredencialesDePrueba");
 	password = "password";
 	passwordIncorrecto = "passwordIncorrecto";
 	usuario = "NUEVO_USUARIO";
   }
-  
+
 
 
   // virtual void TearDown() will be called after each test is run.
@@ -32,6 +32,7 @@ class CredencialesDeUsuariosTest : public testing::Test {
   //
   virtual void TearDown() {
 	delete credenciales;
+	system("../limpiarEntorno.sh");
   }
 
 
@@ -69,9 +70,9 @@ TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioExistenteDebe
 }
 
 TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioInexistenteDeberiaDarFalse){
-	
+
 	ASSERT_FALSE(credenciales->existeUsuario(usuario));
-	
+
 }
 
 TEST_F(CredencialesDeUsuariosTest, testValidarCredencialesCorrectasDaTrue){

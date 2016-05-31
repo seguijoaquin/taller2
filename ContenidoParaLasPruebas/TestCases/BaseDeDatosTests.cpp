@@ -10,21 +10,21 @@ using namespace std;
 
 // To use a test fixture, derive a class from testing::Test.
 class BaseDeDatosTest : public testing::Test {
-	
+
  protected:  // You should make the members protected s.t. they can be
              // accessed from sub-classes.
 
   // virtual void SetUp() will be called before each test is run.  You
   // should define it if you need to initialize the varaibles.
   // Otherwise, this can be skipped.
-  
+
   virtual void SetUp() {
    	valor = "valor";
 	valorDiferente = "valorDiferente";
 	clave = "AgregarUnaClaveValorDeUnaClaveExistenteModificaElValorDeLaClave";
 	baseDeDatos = new BaseDeDatos("./BaseDeDatosDePrueba");
   }
-  
+
 
 
   // virtual void TearDown() will be called after each test is run.
@@ -61,12 +61,12 @@ TEST_F(BaseDeDatosTest, testAgregarUnaClaveValorNuevaYObtenerla){
 // las variables a utilizar y demas.
 //El segundo parametro es el nombre del test.
 TEST_F(BaseDeDatosTest, AlHacerDosVecesUnPutConLaMismaClaveElValorAlmacenadoDeberiaSerElUltimoGuardado) {
-	//Todas las variables estan definidas en la clase 
+	//Todas las variables estan definidas en la clase
 	baseDeDatos->put(clave,valor);
 	baseDeDatos->put(clave,valorDiferente);
-	
+
 	ASSERT_EQ(valorDiferente, baseDeDatos->get(clave));
-  
+
 }
 
 
@@ -78,10 +78,10 @@ TEST_F(BaseDeDatosTest, testAlPreguntarPorLaExistenciaDeUnaClaveInexistenteDeber
 
 
 TEST_F(BaseDeDatosTest, existenciaDeUnaClaveExistente){
-	
+
 	baseDeDatos->put(clave,valor);
 	ASSERT_TRUE(baseDeDatos->existe(clave));
-	
+
 }
 
 

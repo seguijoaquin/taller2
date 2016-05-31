@@ -1,0 +1,1 @@
+rm -r CredencialesDePrueba BaseDeDatosDePrueba ConversacionesDePrueba

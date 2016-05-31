@@ -8,15 +8,15 @@ using namespace std;
 
 class ConversacionesTest : public testing::Test{
 	protected:
-		
+
 		virtual void SetUp(){
 			conversaciones = new Conversaciones("./ConversacionesDePrueba");
 		}
-		
+
 		virtual void TearDown(){
 			delete conversaciones;
 		}
-		
+
 		void agregarMensajesAConversaciones(string usuario1, string usuario2, vector<pair<string,string>>& listaMensajes){
 			for(unsigned int i = 0; i < listaMensajes.size(); i++){
 				string emisor, receptor;
@@ -30,12 +30,12 @@ class ConversacionesTest : public testing::Test{
 				this->conversaciones->agregarMensajeDePara(emisor,receptor,listaMensajes[i].second);
 			}
 		}
-		
-		
+
+
 		vector<pair<string,string>> crearListaDeMensajes(string usuario1, string usuario2, int cantidad){
-		
+
 			vector<pair<string,string>> listaMensajes;
-			
+
 			string emisor = usuario1;
 			for (int i = 0; i < cantidad; i++){
 				pair<string,string> mensaje;
@@ -52,22 +52,37 @@ class ConversacionesTest : public testing::Test{
 			}
 			return listaMensajes;
 		}
-		
-		
+
+
 		bool verificarMensajeVacio(Mensajes& mensajes, int indice){
 			return ( (mensajes.getEmisor(indice).empty()) && (mensajes.getMensaje(indice).empty()) );
 		}
-		
-		
-		
+
+
+
 		bool compararMensajeConLista(Mensajes& mensajes, int indiceMensajes, vector<pair<string,string>>& listaMensajes, int indiceLista){
 			return ( (mensajes.getEmisor(indiceMensajes) ==  listaMensajes[indiceLista-1].first) &&
 					(mensajes.getMensaje(indiceMensajes) == listaMensajes[indiceLista-1].second) );
 		}
-		
-		
+
+
+
+        virtual void TearDown() {
+            delete credenciales;
+            system("../limpiarEntorno.sh");
+        }
+
 		Conversaciones* conversaciones;
 };
+
+
+
+
+
+
+
+
+
 
 
 TEST_F(ConversacionesTest, testObtenerMensajesEntreUsuariosQueNoConversaronDevuelveUnaConversacionVacia){
@@ -182,7 +197,7 @@ TEST_F(ConversacionesTest,testSiLaCantidadDeMensajesQueSePideDesdeElNroDeMensaje
 
     //Pido 3 mensajes desde el cuarto mensaje mas nuevo (me deberia dar el cuarto, quinto y sexto mas nuevo pero solo hay 5 mensajes totales)
      // Entonces solo me da el cuarto y quinto mas nuevo (si se enviaron 5 mensajes, el cuato y el quinto mas nuevo son el mensaje 2 y 1 respectivamente)
-    
+
     Mensajes mensajes = this->conversaciones->obtenerCantidadMensajesDesdeEntre(3,4,usuario1,usuario2);
     ASSERT_TRUE(compararMensajeConLista(mensajes,1,listaMensajes,2));
     ASSERT_TRUE(compararMensajeConLista(mensajes,2,listaMensajes,1));
