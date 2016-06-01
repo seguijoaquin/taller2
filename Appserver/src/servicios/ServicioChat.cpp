@@ -41,29 +41,45 @@ void ServicioChat::atenderChat(){
                 Json::Value bodyJson = Json::objectValue;
                 Json::Value dataJson = Json::objectValue;
                 //Hardcodeado el cluente de mi comopu
-                //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
                 bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
+                //string GCMToken= this->mensajeHTTP->getHeader("GChigihgMToken");
+                //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
+                //bodyJson["to"] = GCMToken;
                 dataJson["Emisor"] = usuarioEmisor;
                 dataJson["Mensaje"] = mensaje;
                 bodyJson["data"] = dataJson;
                 Json::FastWriter escritor;
                 requestGCM.setBody( escritor.write(bodyJson) );
-                MensajeHTTPReply reply = this->manejadorDeConexiones->enviarMensajeHTTP(&requestGCM,"80");
-                cout<<"Mensaje de respuesta de GCM:\n"<<reply.toString();
+                MensajeHTTPReply GCMreply = this->manejadorDeConexiones->enviarMensajeHTTP(&requestGCM,"80");
+                cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
                 ////////////////////////////////////////////////////////////////////////////////////
-                this->respuesta = reply.toString();
+
+                //Tengo que interpretar la respuesta del "Shared" o del "RepositorioDeMensajes" o algo asi, abstraerlo
+                /*
+                    servicioChat---->BaseDeDatosDelServidor----->Conexiones
+                                                            ---->Credenciales
+
+                */
+                RespuestaDelChat* respuestaChat = new RespuestaDelChat();
+                respuestaChat->setRespuestaGCM(GCMreply);
+                this->respuesta = respuestaChat;
+                //this->respuesta = GCMreply.toString();
             }
         }
         else{
-            this->respuesta = "HTTP/1.1 400 No hubo match\r\n\r\n";
+            //this->respuesta = "HTTP/1.1 400 No hubo match\r\n\r\n";
         }
     }
     else{
-        this->respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
+        //this->respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
     }
 }
 
-string ServicioChat::getRespuesta(){
+/*string ServicioChat::getRespuesta(){
+    return this->respuesta;
+}*/
+
+RespuestaDelServicio* ServicioChat::getRespuesta(){
     return this->respuesta;
 }
 

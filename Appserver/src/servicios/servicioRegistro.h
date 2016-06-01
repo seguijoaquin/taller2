@@ -9,7 +9,7 @@
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
 #include "ManejadorDeConexiones.h"
-//#include "ClienteDelSharedServer.h"
+#include "RespuestaDelRegistro.h"
 
 class ManejadorDeConexiones;
 using namespace std;
@@ -20,7 +20,8 @@ class servicioRegistro
         servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
-        string getRespuesta();
+        //string getRespuesta();
+        RespuestaDelServicio* getRespuesta();
 
         //void esperarRespuesta();
         //void setCodigoResuesta(int codigo);
@@ -30,7 +31,9 @@ class servicioRegistro
     private:
         ManejadorDeConexiones* manejadorDeConexiones;
         MensajeHTTPRequest mensajeHTTP;
-        string respuesta;
+
+        RespuestaDelServicio* respuesta;
+        //string respuesta;
 
 
         //Para probrar

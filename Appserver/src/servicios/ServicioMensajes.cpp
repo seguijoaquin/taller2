@@ -26,19 +26,27 @@ void ServicioMensajes::atenderMensajes(){
             string cantidad = this->mensajeHTTP->getHeader("Cantidad");
 
             Mensajes mensajes = this->conversaciones->obtenerCantidadMensajesDesdeEntre(StringUtil::str2int(cantidad),StringUtil::str2int(desde),usuario1,usuario2);
-            string mensajesPedidos = mensajes.toString();
+            //string mensajesPedidos = mensajes.toString();
             //delete mensajes;
-            this->respuesta = "HTTP/1.1 201 OK\r\n\r\n" + mensajesPedidos;
+
+            RespuestaMensajes* respuestaMensajes = new RespuestaMensajes();
+            respuestaMensajes->setMensajesComoRespuesta(mensajes);
+            this->respuesta = respuestaMensajes;
+            //this->respuesta = "HTTP/1.1 201 OK\r\n\r\n" + mensajesPedidos;
         }
         else{
-            this->respuesta = "HTTP/1.1 400 No hubo match\r\n\r\n";
+            //this->respuesta = "HTTP/1.1 400 No hubo match\r\n\r\n";
         }
     }
     else{
-        this->respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
+        //this->respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
     }
 }
 
-string ServicioMensajes::getRespuesta(){
+/*string ServicioMensajes::getRespuesta(){
+    return this->respuesta;
+}*/
+
+RespuestaDelServicio* ServicioMensajes::getRespuesta(){
     return this->respuesta;
 }

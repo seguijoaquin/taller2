@@ -7,6 +7,7 @@
 #include "json/json.h"
 #include "json/json-forwards.h"
 #include "Conversaciones.h"
+#include "RespuestaDelChat.h"
 
 class ServicioChat
 {
@@ -14,7 +15,8 @@ class ServicioChat
         ServicioChat(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones);
         virtual ~ServicioChat();
 
-        string getRespuesta();
+        //string getRespuesta();
+        RespuestaDelServicio* getRespuesta();
     protected:
     private:
         ManejadorDeConexiones* manejadorDeConexiones;
@@ -22,7 +24,8 @@ class ServicioChat
         SesionesDeUsuarios* sesiones;
         Conversaciones* conversaciones;
 
-        string respuesta;
+        //string respuesta;
+        RespuestaDelServicio*respuesta;
         void atenderChat();
 };
 

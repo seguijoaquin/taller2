@@ -49,28 +49,32 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
         case LANZAR_SERVICIO_REGISTRO:
             {
                 servicioRegistro registrador(&(this->manejadorDeConexiones), mensajeHTTPRequest, this->credencialesDeUsuarios);
-                respuesta = registrador.getRespuesta();
+                respuesta = registrador.getRespuesta()->toString();
+                delete registrador.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO REGISTRO:\n"<<respuesta<<"\n";
             }
             break;
         case LANZAR_SERVICIO_LOGIN:
             {
                 servicioLogin logginer(&(this->sesionesDeUsuarios), mensajeHTTPRequest, this->credencialesDeUsuarios);
-                respuesta = logginer.getRespuesta();
+                respuesta = logginer.getRespuesta()->toString();
+                delete logginer.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO LOGIN:\n"<<respuesta<<"\n";
             }
             break;
         case LANZAR_SERVICIO_CHAT:
             {
                 ServicioChat chat(&(this->manejadorDeConexiones),&mensajeHTTPRequest,&(this->sesionesDeUsuarios), this->conversaciones);
-                respuesta = chat.getRespuesta();
+                respuesta = chat.getRespuesta()->toString();
+                delete chat.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO CHAT:\n"<<respuesta<<"\n";
             }
             break;
         case LANZAR_SERVICIO_MENSAJES:
             {
                 ServicioMensajes mensajes(&mensajeHTTPRequest,&(this->sesionesDeUsuarios),this->conversaciones);
-                respuesta = mensajes.getRespuesta();
+                respuesta = mensajes.getRespuesta()->toString();
+                delete mensajes.getRespuesta();
                 cout<<"RESPUESTA DEL SERVICIO MENSAJES:\n"<<respuesta<<"\n";
             }
             break;
