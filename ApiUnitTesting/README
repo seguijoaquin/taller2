@@ -7,3 +7,9 @@
 6) Se tienen los .html con los reportes de cobertura
 
 https://groups.google.com/forum/#!searchin/7552tallerdeprogramacionii/coverage/7552tallerdeprogramacionii/vqZjIbPUg74/qT07aUTRo9gJ
+
+
+
+Para agregar nuevas pruebas:
+Crear un archivo python con las clases de prueba
+En el archivo del main hacer "from +archivo+ import *"
