@@ -23,8 +23,8 @@ def crearHeadersDeUsuarioYPassword(usuario, password):
 
 class TestChat(unittest.TestCase):
 
-    usuario1 = 'usuarioTestChat11'
-    usuario2 = 'usuarioTestChat22'
+    usuario1 = 'usuarioTestChat1'
+    usuario2 = 'usuarioTestChat2'
     passwordCorrecto = 'password' #lo uso para ambos usuarios
 
     msgMensajeEnviadoCorrectamente = "OK"
@@ -48,6 +48,7 @@ class TestChat(unittest.TestCase):
         reply2 = self.hacerLoginDeUsuario(self.usuario2)
         mensajeUsuario1AlUsuario2 = "Hola\n"
         headChat = self.crearHeadersDeChat(self.usuario1, self.usuario2, reply1.headers["Token"])
+
         replyChat = requests.post(Address + URIChat, headers=headChat, data=mensajeUsuario1AlUsuario2)
         self.assertEqual(replyChat.reason,self.msgMensajeEnviadoCorrectamente)
         self.assertEqual(replyChat.status_code,200)
