@@ -4,7 +4,11 @@
 //#include "mongoose.h"
 #include <iostream>
 #include <map>
-#include "json/json.h"
+
+//#include "json/json.h"
+#include "JsonObject.h"
+#include "JsonArray.h"
+
 #include <fstream>
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
@@ -49,7 +53,8 @@ class servicioRegistro : public Servicio
         //bool esperandoRespuesta;
 
         string crearMensajeParaAlta(string usuario);
-        void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );
+        //void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );
+        void agregarInteresAlJarray(string interes, string valor, JsonArray& jarray );
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);
 

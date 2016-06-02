@@ -2,6 +2,7 @@
 
 Mensajero::Mensajero(ManejadorDeConexiones* conexiones, SesionesDeUsuarios* sesiones){
     this->conexiones = conexiones;
+    //Las sesiones van a servir para ver el GCM Token
 }
 
 Mensajero::~Mensajero()
@@ -14,20 +15,27 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
 
     MensajeHTTPRequestGCM requestGCM;
     ////////////////////////////////REFACTORIZAR//////////////////////////////////////
-    Json::Value bodyJson = Json::objectValue;
-    Json::Value dataJson = Json::objectValue;
-    //Hardcodeado el cluente de mi comopu
+    //Json::Value bodyJson = Json::objectValue;
+    //Json::Value dataJson = Json::objectValue;
+    JsonObject dataJson;
+    //dataJson["Emisor"] = emisor;
+    //dataJson["Mensaje"] = mensaje;
+    dataJson.agregarClaveValor("Emisor",emisor);
+    dataJson.agregarClaveValor("Mensaje",mensaje);
 
-    //Aca deberia sacar el token de las sesiones
-    bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
+    JsonObject bodyJson;
     //string GCMToken= this->mensajeHTTP->getHeader("GChigihgMToken");
-    //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
     //bodyJson["to"] = GCMToken;
-    dataJson["Emisor"] = emisor;
-    dataJson["Mensaje"] = mensaje;
-    bodyJson["data"] = dataJson;
-    Json::FastWriter escritor;
-    requestGCM.setBody( escritor.write(bodyJson) );
+    //Hardcodeado el cluente de mi comopu
+    //Aca deberia sacar el token de las sesiones
+    bodyJson.agregarClaveValor("to","APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ");
+    bodyJson.agregarClaveValor("data",dataJson);
+    //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
+    //bodyJson["data"] = dataJson;
+    //Json::FastWriter escritor;
+    //requestGCM.setBody( escritor.write(bodyJson) );
+    requestGCM.setBody( bodyJson.toString() );
+
     MensajeHTTPReply GCMreply = this->conexiones->enviarMensajeHTTP(&requestGCM,"80");
 
 

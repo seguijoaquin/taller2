@@ -92,24 +92,59 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
 }
 
-
+/*
 void servicioRegistro::agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray ){
     Json::Value interesJobj;
     interesJobj["category"] = interes;
     interesJobj["value"] = valor;
     jarray.append(interesJobj);
 }
+*/
+
+
+void servicioRegistro::agregarInteresAlJarray(string interes, string valor, JsonArray& jarray ){
+    JsonObject interesJobj;
+    interesJobj.agregarClaveValor("category", interes);
+    interesJobj.agregarClaveValor("value", valor);
+    jarray.agregar(interesJobj);
+}
+
 
 string servicioRegistro::crearMensajeParaAlta(string usuario){
-    Json::Value mensajeAltaJobj;
+    /*Json::Value mensajeAltaJobj;
     Json::Value usuarioJobj;
     Json::Value ubicacionJobj;
     Json::Value interesesJarray;
+    */
 
+    JsonObject mensajeAltaJobj;
+    JsonObject usuarioJobj;
+    JsonObject ubicacionJobj;
+    JsonArray interesesJarray;
+
+    usuarioJobj.agregarClaveValor("name", usuario);
+    usuarioJobj.agregarClaveValor("alias", "alias1");
+
+    usuarioJobj.agregarClaveValor("email", usuario + "2/6/16-09:27");
+    usuarioJobj.agregarClaveValor("sex", "M");
+    usuarioJobj.agregarClaveValor("edad", "22");
+
+    agregarInteresAlJarray("music/band","radiohead", interesesJarray);
+    agregarInteresAlJarray("music/band","pearl jam", interesesJarray);
+    agregarInteresAlJarray("outdoors","running", interesesJarray);
+    usuarioJobj.agregarClaveValor("interests", interesesJarray);
+
+    ubicacionJobj.agregarClaveValor("latitude", "-121.45356");
+    ubicacionJobj.agregarClaveValor("longitude","46.51119");
+    usuarioJobj.agregarClaveValor("location", ubicacionJobj);
+
+    mensajeAltaJobj.agregarClaveValor("user",usuarioJobj);
+
+/*
     usuarioJobj["name"] = usuario;
     usuarioJobj["alias"] = "alias1";
     //usuarioJobj["email"] = "hard_coded@email.com";
-    usuarioJobj["email"] = usuario + "2/6/16-07:45";
+    usuarioJobj["email"] = usuario + "2/6/16-07:36";
     usuarioJobj["sex"] = "M";
     usuarioJobj["edad"] = "22";
 
@@ -124,11 +159,12 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
 
     mensajeAltaJobj["user"] = usuarioJobj;
 
-
-    Json::StyledWriter styledWriter;
+*/
+    //Json::StyledWriter styledWriter;
     //string mensajeAlta;// = styledWriter.write(mensajeAltaJobj);
 
-    string bodyJson = styledWriter.write(mensajeAltaJobj);
+    //string bodyJson = styledWriter.write(mensajeAltaJobj);
+    string bodyJson = mensajeAltaJobj.toString();
 
 
     //mensajeAlta = "POST /users HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Type: application/json\r\n\r\n" + bodyJson;

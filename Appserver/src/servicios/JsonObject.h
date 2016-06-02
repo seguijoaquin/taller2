@@ -11,6 +11,7 @@ class JsonObject: public JsonValor{
         JsonValor operator[](string clave);
         JsonValor getValor(string clave);
         void agregarClaveValor(string clave, string valor);
+        void agregarClaveValor(string clave, JsonValor& valor);
         //Por ahora no necesito agregar nada
     protected:
     private:
