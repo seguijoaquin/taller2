@@ -10,12 +10,18 @@
 #include "ConstantesEventosServicios.h"
 #include "SesionesDeUsuarios.h"
 
+/*
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
 #include "ServicioChat.h"
 #include "ServicioMensajes.h"
+*/
+
+#include "Servicio.h"
+#include "FactoryServicios.h"
 
 #include "ManejadorDeConexiones.h"
+
 
 
 //const char* PATHLOGIN = "/login";
@@ -40,6 +46,8 @@ class Servidor
         ManejadorDeConexiones manejadorDeConexiones;
         //void iniciarServidor();
         void iniciarBaseDeDatos();
+
+        FactoryServicios factoryServicios = FactoryServicios(&manejadorDeConexiones);
 };
 
 

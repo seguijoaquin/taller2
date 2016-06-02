@@ -8,22 +8,20 @@
 #include "CredencialesDeUsuarios.h"
 #include "RespuestaDelLogin.h"
 
+#include "Servicio.h"
 
 using namespace std;
 
-class servicioLogin
+class servicioLogin : public Servicio
 {
     public:
         servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales);
         virtual ~servicioLogin();
 
         //string getRespuesta();
-        RespuestaDelServicio* getRespuesta();
     protected:
     private:
         MensajeHTTPRequest mensajeHTTP;
-
-        RespuestaDelServicio* respuesta;
 
 
         CredencialesDeUsuarios* credenciales;

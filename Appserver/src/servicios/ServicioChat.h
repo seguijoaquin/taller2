@@ -4,19 +4,17 @@
 #include "ManejadorDeConexiones.h"
 #include "MensajeHTTPRequestGCM.h"
 #include "SesionesDeUsuarios.h"
-#include "json/json.h"
-#include "json/json-forwards.h"
 #include "Conversaciones.h"
 #include "RespuestaDelChat.h"
+#include "Servicio.h"
 
-class ServicioChat
+class ServicioChat : public Servicio
 {
     public:
         ServicioChat(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones);
         virtual ~ServicioChat();
 
         //string getRespuesta();
-        RespuestaDelServicio* getRespuesta();
     protected:
     private:
         ManejadorDeConexiones* manejadorDeConexiones;
@@ -25,7 +23,7 @@ class ServicioChat
         Conversaciones* conversaciones;
 
         //string respuesta;
-        RespuestaDelServicio*respuesta;
+
         void atenderChat();
 };
 

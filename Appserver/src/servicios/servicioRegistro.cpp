@@ -74,7 +74,7 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     //if (this->codigoRespuesta == 201){
-    //if (respustaShared.getCodigo() == 201){ POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
+    //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
     if (respustaShared.getCodigo() == 200){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
@@ -158,10 +158,6 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     return this->respuesta;
 }
 */
-
-RespuestaDelServicio* servicioRegistro::getRespuesta(){
-    return this->respuesta;
-}
 
 
 servicioRegistro::~servicioRegistro()
