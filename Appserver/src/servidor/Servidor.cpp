@@ -115,6 +115,6 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
 }
 
 Servidor::~Servidor(){
-    delete this->conversaciones;
-    delete this->credencialesDeUsuarios;
+    //delete this->conversaciones;
+    //delete this->credencialesDeUsuarios;
 }
