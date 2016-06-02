@@ -22,7 +22,6 @@ Servidor::Servidor(){
 */
 
     iniciarBaseDeDatos();
-    //iniciarServidor();
 }
 
 void Servidor::iniciarServidor(){

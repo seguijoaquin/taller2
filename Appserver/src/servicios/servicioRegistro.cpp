@@ -1,10 +1,20 @@
 #include "servicioRegistro.h"
 
-servicioRegistro::servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+/*servicioRegistro::servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
     this->manejadorDeConexiones = manejadorDeConexiones;
     this->mensajeHTTP = mensajeHTTP;
     this->usuariosRegistrados = credenciales;
-    //this->codigoRespuesta = 0;
+
+    //Para testear
+    this->espera = 0;
+    this->atenderRegistro();
+}*/
+
+servicioRegistro::servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+    this->shared = shared;
+    this->mensajeHTTP = mensajeHTTP;
+    this->usuariosRegistrados = credenciales;
+
     //Para testear
     this->espera = 0;
     this->atenderRegistro();
@@ -46,13 +56,9 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     //TODO: agarar todos los errores
     string bodyJson = crearMensajeParaAlta(usuario);
-    //this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", this);
 
-    /*ClienteDelSharedServer cliente;
-    this->manejadorDeConexiones->iniciarConexionComoCliente("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com", &cliente);
-    MensajeHTTPReply respustaShared = cliente.getRespuesta();
-    */
-
+/////ESTO DEBERIA SER RESPONSABILIDAD DE OTRA CLASE/////
+/*
     MensajeHTTPRequest request;
     request.setMetodo("POST");
     request.setURI("/users/");
@@ -60,22 +66,16 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     request.agregarHeader("Content-Type", "application/json");
     request.setBody(bodyJson);
 
-    //MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP("POST", "/users/",bodyJson,"80", "t2shared.herokuapp.com");
     MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP(&request,"80");
-
-
-
-/*    while (this->esperandoRespuesta){
-        sleep(1);
-        this->espera++;
-        //cout<<"esta esperando...\n";
-    }
 */
 
+    //POR AHORA SE PASA EL BODY DEL JSON, DEBERIA
+
+
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
-    //if (this->codigoRespuesta == 201){
     //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
-    if (respustaShared.getCodigo() == 200){
+    //if (respustaShared.getCodigo() == 200){
+    if (this->shared->registrarUsuario(bodyJson)){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaRegistroCorrecto();
@@ -93,21 +93,6 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 }
 
 
-/*
-void servicioRegistro::setCodigoResuesta(int codigo){
-    this->codigoRespuesta = codigo;
-}
-
-void servicioRegistro::esperarRespuesta(){
-    this->esperandoRespuesta = true;
-}
-
-void servicioRegistro::dejarDeEsperar(){
-    this->esperandoRespuesta = false;
-    cout<<"Espero: "<<this->espera<<"\n";
-}
-*/
-
 void servicioRegistro::agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray ){
     Json::Value interesJobj;
     interesJobj["category"] = interes;
@@ -124,7 +109,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     usuarioJobj["name"] = usuario;
     usuarioJobj["alias"] = "alias1";
     //usuarioJobj["email"] = "hard_coded@email.com";
-    usuarioJobj["email"] = usuario;
+    usuarioJobj["email"] = usuario + "2/6/16-00:01";
     usuarioJobj["sex"] = "M";
 
     agregarInteresAlJarray("music/band","radiohead", interesesJarray);
@@ -152,12 +137,6 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     cout<<"EL JSON ES: "<<bodyJson<<"\n\n";
     return bodyJson;
 }
-
-
-/*string servicioRegistro::getRespuesta(){
-    return this->respuesta;
-}
-*/
 
 
 servicioRegistro::~servicioRegistro()

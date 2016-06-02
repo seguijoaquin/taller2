@@ -1,11 +1,19 @@
 #include "FactoryServicios.h"
 
 FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
+    this->conversaciones = new Conversaciones("./Conversaciones");
+    this->sesiones = new SesionesDeUsuarios();
+    this->credenciales = new CredencialesDeUsuarios("./usuariosRegistrados");
     this->conexiones = conexiones;
+
+    this->shared = new SharedDataBase(this->conexiones);
 }
 
 FactoryServicios::~FactoryServicios(){
-    //dtor
+    delete this->conversaciones;
+    delete this->sesiones;
+    delete this->credenciales;
+    delete this->shared;
 }
 
 
@@ -15,15 +23,15 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
     if (compararMetodoHTTP(httpRequest, "POST")){
         if (compararUriHTTP(httpRequest, "/chat")){
-            servicio = new ServicioChat(this->conexiones,&httpRequest,&this->sesiones, &this->conversaciones);
+            servicio = new ServicioChat(this->conexiones,&httpRequest,this->sesiones, this->conversaciones);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){
-            servicio = new servicioLogin(&this->sesiones, httpRequest, &this->credenciales);
+            servicio = new servicioLogin(this->sesiones, httpRequest, this->credenciales);
         }
         else if (compararUriHTTP(httpRequest, "/mensajes")){
-            servicio = new ServicioMensajes (&httpRequest, &this->sesiones,&this->conversaciones);
+            servicio = new ServicioMensajes (&httpRequest, this->sesiones,this->conversaciones);
         }
         else if (compararUriHTTP(httpRequest, "/test")){
             servicio = nullptr;
@@ -31,7 +39,8 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     }
     else if (compararMetodoHTTP(httpRequest, "PUT")){
         if (compararUriHTTP(httpRequest, "/registro")){
-            servicio = new servicioRegistro((this->conexiones), httpRequest, &this->credenciales);
+            //servicio = new servicioRegistro(this->conexiones, httpRequest, this->credenciales);
+            servicio = new servicioRegistro(this->shared, httpRequest, this->credenciales);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){

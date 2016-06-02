@@ -39,9 +39,9 @@ class Servidor
     protected:
     private:
 
-        CredencialesDeUsuarios* credencialesDeUsuarios;
-        Conversaciones* conversaciones;
-        SesionesDeUsuarios sesionesDeUsuarios;
+        //CredencialesDeUsuarios* credencialesDeUsuarios;
+        //Conversaciones* conversaciones;
+        //SesionesDeUsuarios sesionesDeUsuarios;
 
         ManejadorDeConexiones manejadorDeConexiones;
         //void iniciarServidor();

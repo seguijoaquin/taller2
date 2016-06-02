@@ -8,10 +8,11 @@
 #include <fstream>
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
-#include "ManejadorDeConexiones.h"
+//#include "ManejadorDeConexiones.h"
 #include "RespuestaDelRegistro.h"
 
 #include "Servicio.h"
+#include "SharedDataBase.h"
 
 //class ManejadorDeConexiones;
 using namespace std;
@@ -19,7 +20,8 @@ using namespace std;
 class servicioRegistro : public Servicio
 {
     public:
-        servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
+        //servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
+        servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
         //string getRespuesta();
@@ -30,7 +32,9 @@ class servicioRegistro : public Servicio
         //void dejarDeEsperar();
     protected:
     private:
-        ManejadorDeConexiones* manejadorDeConexiones;
+        //ManejadorDeConexiones* manejadorDeConexiones;
+        SharedDataBase* shared;
+
         MensajeHTTPRequest mensajeHTTP;
 
         //string respuesta;
