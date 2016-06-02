@@ -3,8 +3,16 @@
 
 #include <map>
 #include <string>
+#include <iostream>
 
 using namespace std;
+
+
+
+struct datosDeSesion{
+    string token;
+    string tokenGCM;
+};
 
 
 class SesionesDeUsuarios
@@ -15,11 +23,13 @@ class SesionesDeUsuarios
 
         bool existeSesionDe(string usuario);
         bool validarTokenConUsuario(string usuario, string token);
-        void agregarSesionDe(string usuario, string token);
+        void agregarSesionDe(string usuario, string token,string tokenGCM);
+
+        string getTokenGCMDe(string usuario);
 
     protected:
     private:
-        map<string,string> tokensDeSesionesDeUsuario;
+        map<string,datosDeSesion> tokensDeSesionesDeUsuario;
 
 
 };

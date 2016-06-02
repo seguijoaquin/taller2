@@ -2,6 +2,7 @@
 
 Mensajero::Mensajero(ManejadorDeConexiones* conexiones, SesionesDeUsuarios* sesiones){
     this->conexiones = conexiones;
+    this->sesiones = sesiones;
     //Las sesiones van a servir para ver el GCM Token
 }
 
@@ -28,7 +29,9 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
     //bodyJson["to"] = GCMToken;
     //Hardcodeado el cluente de mi comopu
     //Aca deberia sacar el token de las sesiones
-    bodyJson.agregarClaveValor("to","APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ");
+    string tokenGCM = this->sesiones->getTokenGCMDe(receptor);
+    //bodyJson.agregarClaveValor("to","APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ");
+    bodyJson.agregarClaveValor("to",tokenGCM);
     bodyJson.agregarClaveValor("data",dataJson);
     //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
     //bodyJson["data"] = dataJson;

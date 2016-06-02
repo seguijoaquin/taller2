@@ -18,7 +18,7 @@ URIMensajes = "/mensajes"
 
 
 def crearHeadersDeUsuarioYPassword(usuario, password):
-    return {'Usuario': usuario,'Password': password }
+    return {'Usuario': usuario,'Password': password, 'TokenGCM': "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ" }
 
 
 class TestChat(unittest.TestCase):

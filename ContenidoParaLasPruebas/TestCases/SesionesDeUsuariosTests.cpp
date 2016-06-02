@@ -20,20 +20,20 @@ class SesionesDeUsuariosTest : public testing::Test{
 
 
 TEST_F(SesionesDeUsuariosTest, testAgregarUnaSesionDeUsuario){
-	sesiones->agregarSesionDe("Usuario","Token");
+	sesiones->agregarSesionDe("Usuario","Token", "GCMToken");
 	ASSERT_TRUE(sesiones->existeSesionDe("Usuario"));
 }
 
 
 TEST_F(SesionesDeUsuariosTest, testValidarUsuarioTokenCorrectos){
-  sesiones->agregarSesionDe("Usuario","Token");
+  sesiones->agregarSesionDe("Usuario","Token", "GCMToken");
   ASSERT_TRUE(sesiones->validarTokenConUsuario("Usuario","Token"));
 }
 	
 
 TEST_F(SesionesDeUsuariosTest, testValidarUsuarioTokenIncorrectos){
 	
-  this->sesiones->agregarSesionDe("Usuario","Token");
+  this->sesiones->agregarSesionDe("Usuario","Token", "GCMToken");
   ASSERT_FALSE(sesiones->validarTokenConUsuario("Usuario","JRRTolkien"));
   ASSERT_FALSE(sesiones->validarTokenConUsuario("NotUsuario","Token"));
   ASSERT_FALSE(sesiones->validarTokenConUsuario("NotUsuario","JRRTolkien"));	

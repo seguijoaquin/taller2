@@ -1,5 +1,9 @@
 #include "servicioLogin.h"
 
+
+
+
+
 servicioLogin::servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;
@@ -37,7 +41,10 @@ void servicioLogin::realizarLogin(){
     string token;
     token = generarToken();
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
-    this->sesionesDeUsuarios->agregarSesionDe(usuarioIngresado, token);
+    string tokenGCM = this->mensajeHTTP.getHeader("TokenGCM");
+
+    this->sesionesDeUsuarios->agregarSesionDe(usuarioIngresado, token,tokenGCM);
+
     RespuestaDelLogin* respuestaLogin = new RespuestaDelLogin();
     respuestaLogin->setRespuestaLoginCorrecto(token);
     this->respuesta = respuestaLogin;

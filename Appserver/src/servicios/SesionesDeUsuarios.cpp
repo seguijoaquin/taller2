@@ -12,16 +12,25 @@ bool SesionesDeUsuarios::existeSesionDe(string usuario){
 }
 
 bool SesionesDeUsuarios::validarTokenConUsuario(string usuario, string token){
-    return ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario] ==  token) );
+    return ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario].token ==  token) );
 
 }
 
-void SesionesDeUsuarios::agregarSesionDe(string usuario, string token){
-    this->tokensDeSesionesDeUsuario[usuario] = token;
+void SesionesDeUsuarios::agregarSesionDe(string usuario, string token, string tokenGCM){
+    this->tokensDeSesionesDeUsuario[usuario].token = token;
+    this->tokensDeSesionesDeUsuario[usuario].tokenGCM = tokenGCM;
 
 }
 
 
+string SesionesDeUsuarios::getTokenGCMDe(string usuario){
+    if (this->existeSesionDe(usuario)){
+        return this->tokensDeSesionesDeUsuario[usuario].tokenGCM;
+    }
+    else{
+        return "";
+    }
+}
 
 SesionesDeUsuarios::~SesionesDeUsuarios()
 {
