@@ -31,8 +31,8 @@ void Servidor::iniciarServidor(){
 
 
 void Servidor::iniciarBaseDeDatos(){
-    this->credencialesDeUsuarios = new CredencialesDeUsuarios("./usuariosRegistrados");
-    this->conversaciones = new Conversaciones("./Conversaciones");
+    //this->credencialesDeUsuarios = new CredencialesDeUsuarios("./usuariosRegistrados");
+    //this->conversaciones = new Conversaciones("./Conversaciones");
 }
 
 
@@ -40,10 +40,10 @@ void Servidor::iniciarBaseDeDatos(){
 
 
 string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
-    string respuesta;
+    //string respuesta;
 
-    AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->sesionesDeUsuarios));
-
+    //AtendedorHTTP atendedor(mensajeHTTPRequest, &(this->sesionesDeUsuarios));
+/*
     //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
     switch (atendedor.getServicioALanzar()){
         case LANZAR_SERVICIO_REGISTRO:
@@ -97,7 +97,20 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
             }
             break;
     }
+*/
 
+    Servicio* servicio = this->factoryServicios.fabricarServicio(mensajeHTTPRequest);
+    string respuesta;
+    if (servicio != nullptr){
+        respuesta = servicio->getRespuesta()->toString();
+        delete servicio->getRespuesta();
+        delete servicio;
+    }
+    else{
+        //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
+        respuesta = "HTTP/1.1 200 Se cerrara el server\r\n\r\n";
+        this->manejadorDeConexiones.terminarConexionComoServidor();
+    }
     return respuesta;
 }
 

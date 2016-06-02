@@ -79,11 +79,6 @@ void ServicioChat::atenderChat(){
     return this->respuesta;
 }*/
 
-RespuestaDelServicio* ServicioChat::getRespuesta(){
-    return this->respuesta;
-}
-
-
 
 ServicioChat::~ServicioChat()
 {

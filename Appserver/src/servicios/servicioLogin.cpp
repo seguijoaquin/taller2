@@ -57,10 +57,6 @@ string servicioLogin::generarToken(){
 }
 */
 
-RespuestaDelServicio* servicioLogin::getRespuesta(){
-    return this->respuesta;
-}
-
 servicioLogin::~servicioLogin(){
     //dtor
 }

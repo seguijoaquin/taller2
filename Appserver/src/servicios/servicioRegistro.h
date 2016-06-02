@@ -11,17 +11,18 @@
 #include "ManejadorDeConexiones.h"
 #include "RespuestaDelRegistro.h"
 
-class ManejadorDeConexiones;
+#include "Servicio.h"
+
+//class ManejadorDeConexiones;
 using namespace std;
 
-class servicioRegistro
+class servicioRegistro : public Servicio
 {
     public:
         servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         ~servicioRegistro();
 
         //string getRespuesta();
-        RespuestaDelServicio* getRespuesta();
 
         //void esperarRespuesta();
         //void setCodigoResuesta(int codigo);
@@ -32,7 +33,6 @@ class servicioRegistro
         ManejadorDeConexiones* manejadorDeConexiones;
         MensajeHTTPRequest mensajeHTTP;
 
-        RespuestaDelServicio* respuesta;
         //string respuesta;
 
 

@@ -47,6 +47,3 @@ void ServicioMensajes::atenderMensajes(){
     return this->respuesta;
 }*/
 
-RespuestaDelServicio* ServicioMensajes::getRespuesta(){
-    return this->respuesta;
-}
