@@ -1,46 +1,19 @@
-Para correr la imagen:
+# Taller de programacion II - Docker Application server
+
+## Descripcion
+
+Para evitar problemas con la portabilidad del programa se ofrece la posibilidad de correrlo en un Container de Docker que virtualiza ubuntu 14.04
+
+## Instalacion
+Para utilizar esta feature es necesario tener docker instalado y corriendo en nuestro ordenador. En caso de no poseerlo ingresar a la pagina de [Docker](https://www.docker.com/) e instalarlo.
+
+## Utilizacion
+Para correr la imagen debemos utilizar el siguiente comando de bash:
+```
 sudo docker run -i -t -p 8000:8000 juanmafc/app_server:v1
+```
+- run va a bajar automáticamente la imagen juanmafc/app_server:v0 y la va a correr
+- t abre una terminal en el contenedor
+- i permite que el contenedor lea de STDIN
+- p mapea el puerto 8000 del HOST al puerto 8000 del contenedor.
 
-run les va a bajar automáticamente la imagen juanmafc/app_server:v0 y la va a correr
-en el contenedor va a estar corriendo una VM con ubuntu 14.04
--t abre una terminal en el contenedor
--i permite que el contenedor lea de STDIN
--p mapea el puerto 8000 del HOST al puerto 8000 del contenedor. TODO: ¿como seria si tambien tiene que levantar el Shared? https://docs.docker.com/engine/userguide/containers/usingdocker/
-
-
-
-el contenedor va a quedar funcionando como una terminal de Linux, pueden moverse con "cd" hasta llegar al /home/taller2-appserver/app_server/build/src/helloWorld del rocksdb para ver si anda
-Para salir del contenedor usen el comando: exit
-
-
----------------------------------------------------------------------------------------------------------
-Para crear la imagen (esto es para crear la imagen desde cero, esto no lo tienen que hacer, lo dejo para que sepan y me acuerde como se hace)
-1-Armar y pararse en un directorio
-2-En ese directorio poner los archivos que se quieran meter la imagen (en este caso ninguno xq se baja del repo)
-3-crear un archivo que se llame "Dockerfile" que tenga los comandos necesarios
-4-Comando de la terminal:
-sudo docker build -t app_server .
--t *nombre de la imagen*
-el "." es para que agarre el Dockerfile del directorio en donde estamos parados
-
-5-taggear la imagen:
-sudo docker images
-Encontrar el ID de la imagen recien creada
-No va a tener namespace, hay que agregarselo para que Docker lo asocie al repo del Docker Hub ( *namespace*/*nombre_imagen*)
-
-Para tagear la imagen:
-sudo docker tag *ID imagen* *usuario dueño del repo*/*nombre imagen*:*TAG(es opcional)*
-
-Loguearse:
-sudo docker login --username=*yourhubusername* --email=*youremail@company.com*
-
-Para subir la imagen:
-sudo docker push *usuario dueño del repo*/*nombre imagen*:*TAG(es opcional)*
-
-Para bajar una imagen manualmente:
-sudo docker pull *usuario dueño del repo*/*nombre imagen*:*TAG*
-
-
-
-
-NOTA: si no se pone TAG por defecto lo taggea como "lattest"
