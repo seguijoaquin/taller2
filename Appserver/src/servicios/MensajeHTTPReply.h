@@ -13,8 +13,12 @@ class MensajeHTTPReply : public MensajeHTTP
         MensajeHTTPReply(http_message* mensajeMG);
         virtual ~MensajeHTTPReply();
 
+        void setCodigo(int codigo);
         int getCodigo();
+
+        void setMensajeDeEstado(string mensaje);
         string getMensajeDeEstado();
+
         string toString();
     protected:
     private:

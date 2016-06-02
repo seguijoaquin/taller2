@@ -17,7 +17,11 @@ void servicioRegistro::atenderRegistro(){
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
 
     if (this->usuariosRegistrados->existeUsuario(usuarioIngresado)){
-        this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
+
+        RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
+        respuestaRegistro->setRespuestaUsuarioExistente();
+        this->respuesta = respuestaRegistro;
+        //this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
     }
     else{
         this->realizarRegistro(usuarioIngresado,passwordIngresado);
@@ -70,13 +74,20 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     //if (this->codigoRespuesta == 201){
-    if (respustaShared.getCodigo() == 201){
+    //if (respustaShared.getCodigo() == 201){ POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
+    if (respustaShared.getCodigo() == 200){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
-        this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
+        RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
+        respuestaRegistro->setRespuestaRegistroCorrecto();
+        this->respuesta = respuestaRegistro;
+        //this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
     else{
         //Cambiarlo para diferentes errores
-        this->respuesta = "HTTP/1.1 503 Error del server\r\n\r\n";
+        RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
+        respuestaRegistro->setRespuestaErrorDelSharedServer();
+        this->respuesta = respuestaRegistro;
+        //this->respuesta = "HTTP/1.1 503 Error del server\r\n\r\n";
     }
 
 }
@@ -143,9 +154,15 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
 }
 
 
-string servicioRegistro::getRespuesta(){
+/*string servicioRegistro::getRespuesta(){
     return this->respuesta;
 }
+*/
+
+RespuestaDelServicio* servicioRegistro::getRespuesta(){
+    return this->respuesta;
+}
+
 
 servicioRegistro::~servicioRegistro()
 {

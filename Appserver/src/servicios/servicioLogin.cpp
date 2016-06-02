@@ -15,7 +15,10 @@ void servicioLogin::atenderLogin(){
     else{
         //SI ALGUNO DE LOS DOS DATOS ESTA INCORRECTO, SE LE MANDA UN MENSAJE GENERAL DE QUE HAY DATOS INCORRECTOS
         //Refactorizar: respuesta = MENSAJE_DATOS__LOGIN_ERRONEOS;
-        this->respuesta = "HTTP/1.1 400 No coinciden los datos\r\n\r\n";
+        RespuestaDelLogin* respuestaLogin = new RespuestaDelLogin();
+        respuestaLogin->setRespuestaLoginIncorrecto();
+        this->respuesta = respuestaLogin;
+        //this->respuesta = "HTTP/1.1 400 No coinciden los datos\r\n\r\n";
     }
 }
 
@@ -35,7 +38,10 @@ void servicioLogin::realizarLogin(){
     token = generarToken();
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     this->sesionesDeUsuarios->agregarSesionDe(usuarioIngresado, token);
-    this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
+    RespuestaDelLogin* respuestaLogin = new RespuestaDelLogin();
+    respuestaLogin->setRespuestaLoginCorrecto(token);
+    this->respuesta = respuestaLogin;
+    //this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
 }
 
 string servicioLogin::generarToken(){
@@ -46,7 +52,12 @@ string servicioLogin::generarToken(){
 
 
 
-string servicioLogin::getRespuesta(){
+/*string servicioLogin::getRespuesta(){
+    return this->respuesta;
+}
+*/
+
+RespuestaDelServicio* servicioLogin::getRespuesta(){
     return this->respuesta;
 }
 

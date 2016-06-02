@@ -17,5 +17,9 @@ Appserver/utilities/rocksdb-master/*
 #Build
 Appserver/build/*
 
+#Testing
 Testing/*
 Appserver/utilities/cpptest-1.1.2/*
+ContenidoParaLasPruebas/build/
+GoogleTest/build/
+

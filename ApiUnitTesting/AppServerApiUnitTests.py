@@ -1,6 +1,8 @@
 import json
 import requests
 import unittest
+from testLogin import *
+from testChat import *
 
 
 
@@ -25,40 +27,6 @@ passwordCorrecto = 'password'
 def crearHeadersDeUsuarioYPassword(usuario, password):
     return {'Usuario': usuario,'Password': password }
 
-class TestLogin(unittest.TestCase):
-
-    msgLoginCorrecto = "Se logueo correctamente"
-    msgLoginIncorrecto = "No coinciden los datos"
-
-    usuarioIncorrecto = 'usuarioFalso'    
-    passwordIncorrecto = 'passwordFalso'    
-
-    def test_LoginConUnUsuarioRegistrado(self):        
-        headUsuarioRegistrado = crearHeadersDeUsuarioYPassword( usuarioCorrecto, passwordCorrecto)
-        request = requests.get(Address + URILogin,headers=headUsuarioRegistrado)
-        self.assertEqual(request.status_code,200)
-        self.assertEqual(request.reason,self.msgLoginCorrecto)
-        self.assertIsNotNone(request.headers["Token"])
-
-    def test_LoginConUnUsuarioYPasswordIncorrectos(self):
-        headUsuarioYPasswordIncorrectos = crearHeadersDeUsuarioYPassword( self.usuarioIncorrecto, self.passwordIncorrecto)
-        request = requests.get(Address + URILogin,headers=headUsuarioYPasswordIncorrectos)
-        self.assertEqual(request.status_code,400)
-        self.assertEqual(request.reason,self.msgLoginIncorrecto)
-
-    def test_LoginConUnUsuarioIncorrecto(self):        
-        headUsuarioIncorrecto = crearHeadersDeUsuarioYPassword( self.usuarioIncorrecto, passwordCorrecto)
-        request = requests.get(Address + URILogin,headers=headUsuarioIncorrecto)
-        self.assertEqual(request.status_code,400)
-        self.assertEqual(request.reason,self.msgLoginIncorrecto)
-
-    def test_LoginConUnPasswordIncorrecto(self):        
-        headPasswordIncorrecto = crearHeadersDeUsuarioYPassword( usuarioCorrecto, self.passwordIncorrecto)
-        request = requests.get(Address + URILogin,headers=headPasswordIncorrecto)
-        self.assertEqual(request.status_code,400)
-        self.assertEqual(request.reason,self.msgLoginIncorrecto)
-
-
 
 class TestRegistro(unittest.TestCase):
 
@@ -70,15 +38,24 @@ class TestRegistro(unittest.TestCase):
     passwordNuevo = "passwordNuevo"
     headUsuarioNuevo = crearHeadersDeUsuarioYPassword(usuarioNuevo, passwordNuevo)
 
+    def load_tests(loader, tests, pattern):
+	suite = TestSuite()
+	for test_class in test_cases:
+		tests = loader.loadTestsFromTestCase(test_class)
+		suite.addTests(tests)
+    	return suite
+
     def test_RegistroDeUnUsuarioYaRegistrado(self):
         request = requests.put(Address + URIResgistro, headers=self.headUsuarioYaRegistrado)
-        self.assertEqual(request.status_code,400)
         self.assertEqual(request.reason,self.msgUsuarioYaRegistrado)
+        self.assertEqual(request.status_code,400)
+
 
     def test_RegistroDeUnUsuarioNuevo(self):
         request = requests.put(Address + URIResgistro, headers=self.headUsuarioNuevo)
-        self.assertEqual(request.status_code,201)
         self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)
+        self.assertEqual(request.status_code,201)
+
 
 
 class TestRegistroYLogin(unittest.TestCase):
@@ -109,6 +86,12 @@ class TestRegistroYLogin(unittest.TestCase):
         self.assertEqual(request.status_code,200)
         self.assertEqual(request.reason,self.msgLoginCorrecto)
         self.assertIsNotNone(request.headers["Token"])
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
