@@ -34,14 +34,7 @@ void MensajeHTTP::agregarHeader(string header, string valor){
 
 
 bool MensajeHTTP::tieneHeader(string header){
-    if (this->headers.find(header) == this->headers.end()){
-        //Si es == al end() es porque NO lo encontro, entonces NO tiene el header pasado
-        return false;
-    }
-    else{
-        //Si es != al end() es porque SI lo encontro, entonces SI tiene el header pasado
-        return true;
-    }
+    return (this->headers.find(header) != this->headers.end());
 }
 
 string MensajeHTTP::getHeader(string header){

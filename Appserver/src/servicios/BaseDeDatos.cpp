@@ -32,10 +32,5 @@ string BaseDeDatos::get(string clave){
 bool BaseDeDatos::existe(string clave){
     string aux;
     rocksdb::Status estado = this->datos->Get(rocksdb::ReadOptions(), clave, &aux );
-    if (estado.IsNotFound()){
-        return false;
-    }
-    else{
-        return true;
-    }
+    return (!estado.IsNotFound());
 }

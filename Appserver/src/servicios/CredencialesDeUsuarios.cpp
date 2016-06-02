@@ -9,17 +9,7 @@ CredencialesDeUsuarios::CredencialesDeUsuarios(string ruta){
 
 
 bool CredencialesDeUsuarios::validarCredenciales(string usuario, string password){
-    if (this->existeUsuario(usuario)){
-        if ( this->getPasswordDe(usuario) == password ){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    else{
-        return false;
-    }
+    return ( (this->existeUsuario(usuario)) && (this->getPasswordDe(usuario) == password) );
 }
 
 bool CredencialesDeUsuarios::agregarNuevoUsuario(string usuario, string password){
