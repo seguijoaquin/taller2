@@ -10,7 +10,7 @@ class RespuestaDelChat : public RespuestaDelServicio
         RespuestaDelChat();
         virtual ~RespuestaDelChat();
 
-        void setRespuestaGCM(MensajeHTTPReply GCMreply);
+        void setRespuestaGCM();
 
         /*this->respuesta.setCodigo(503);
         this->respuesta.setMensajeDeEstado("Error del server");

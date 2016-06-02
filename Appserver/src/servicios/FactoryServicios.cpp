@@ -7,6 +7,7 @@ FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
     this->conexiones = conexiones;
 
     this->shared = new SharedDataBase(this->conexiones);
+    this->mensajero = new Mensajero(this->conexiones, this->sesiones);
 }
 
 FactoryServicios::~FactoryServicios(){
@@ -14,6 +15,7 @@ FactoryServicios::~FactoryServicios(){
     delete this->sesiones;
     delete this->credenciales;
     delete this->shared;
+    delete this->mensajero;
 }
 
 
@@ -23,7 +25,8 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
     if (compararMetodoHTTP(httpRequest, "POST")){
         if (compararUriHTTP(httpRequest, "/chat")){
-            servicio = new ServicioChat(this->conexiones,&httpRequest,this->sesiones, this->conversaciones);
+            //servicio = new ServicioChat(this->conexiones,&httpRequest,this->sesiones, this->conversaciones);
+            servicio = new ServicioChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){

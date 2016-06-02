@@ -11,7 +11,7 @@ RespuestaDelChat::~RespuestaDelChat()
 }
 
 
-void RespuestaDelChat::setRespuestaGCM(MensajeHTTPReply GCMreply){
+void RespuestaDelChat::setRespuestaGCM(){
     //this->respuesta = GCMreply;
     this->respuesta.setCodigo(200);
     this->respuesta.setMensajeDeEstado("OK");

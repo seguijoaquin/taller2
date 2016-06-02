@@ -7,6 +7,7 @@
 #include "ServicioMensajes.h"
 
 #include "SharedDataBase.h"
+#include "Mensajero.h"
 
 class FactoryServicios
 {
@@ -22,6 +23,7 @@ class FactoryServicios
         CredencialesDeUsuarios* credenciales;
         ManejadorDeConexiones* conexiones;
         SharedDataBase* shared;
+        Mensajero* mensajero;
 
         bool compararMetodoHTTP(MensajeHTTPRequest& httpRequest, string metodo);
         bool compararUriHTTP(MensajeHTTPRequest& httpRequest, string uri);

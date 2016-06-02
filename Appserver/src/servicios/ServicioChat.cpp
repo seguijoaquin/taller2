@@ -1,7 +1,17 @@
 #include "ServicioChat.h"
 
-ServicioChat::ServicioChat(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
+/*ServicioChat::ServicioChat(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
     this->manejadorDeConexiones = manejadorDeConexiones;
+    this->mensajeHTTP = mensajeHTTP;
+    this->sesiones = sesiones;
+    this->conversaciones = conversaciones;
+
+    this->atenderChat();
+}
+*/
+
+ServicioChat::ServicioChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
+    this->mensajero = mensajero;
     this->mensajeHTTP = mensajeHTTP;
     this->sesiones = sesiones;
     this->conversaciones = conversaciones;
@@ -36,7 +46,7 @@ void ServicioChat::atenderChat(){
                 //ADEMAS ENVIAR EL MENSAJE A GCM
                 //Crear el Mensaje HTTP Request y mandarselo al manejador de conexiones
                 //TODO: deberia agregar el token del cliente.
-                MensajeHTTPRequestGCM requestGCM;
+        /*        MensajeHTTPRequestGCM requestGCM;
                 ////////////////////////////////REFACTORIZAR//////////////////////////////////////
                 Json::Value bodyJson = Json::objectValue;
                 Json::Value dataJson = Json::objectValue;
@@ -51,8 +61,17 @@ void ServicioChat::atenderChat(){
                 Json::FastWriter escritor;
                 requestGCM.setBody( escritor.write(bodyJson) );
                 MensajeHTTPReply GCMreply = this->manejadorDeConexiones->enviarMensajeHTTP(&requestGCM,"80");
+
+
                 cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
+            */
+
+                this->mensajero->enviarMensaje(usuarioEmisor,usuarioReceptor,mensaje);
+
+
                 ////////////////////////////////////////////////////////////////////////////////////
+
+
 
                 //Tengo que interpretar la respuesta del "Shared" o del "RepositorioDeMensajes" o algo asi, abstraerlo
                 /*
@@ -61,7 +80,7 @@ void ServicioChat::atenderChat(){
 
                 */
                 RespuestaDelChat* respuestaChat = new RespuestaDelChat();
-                respuestaChat->setRespuestaGCM(GCMreply);
+                respuestaChat->setRespuestaGCM();
                 this->respuesta = respuestaChat;
                 //this->respuesta = GCMreply.toString();
             }

@@ -109,7 +109,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     usuarioJobj["name"] = usuario;
     usuarioJobj["alias"] = "alias1";
     //usuarioJobj["email"] = "hard_coded@email.com";
-    usuarioJobj["email"] = usuario + "2/6/16-00:01";
+    usuarioJobj["email"] = usuario + "2/6/16-01:38";
     usuarioJobj["sex"] = "M";
 
     agregarInteresAlJarray("music/band","radiohead", interesesJarray);
