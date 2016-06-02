@@ -2,6 +2,30 @@
 
 ## [Unreleased](https://github.com/seguijoaquin/taller2-appserver/tree/HEAD)
 
+[Full Changelog](https://github.com/seguijoaquin/taller2-appserver/compare/v1.0.0...HEAD)
+
+**Implemented enhancements:**
+
+- Implementar el envío de los mensajes del chat [\#19](https://github.com/seguijoaquin/taller2-appserver/issues/19)
+- Integración del rocksdb [\#12](https://github.com/seguijoaquin/taller2-appserver/issues/12)
+
+**Closed issues:**
+
+- Quitar responsabilidades de los servicios [\#38](https://github.com/seguijoaquin/taller2-appserver/issues/38)
+- Realizar pruebas de API que permitan chatear y pedir mensajes [\#37](https://github.com/seguijoaquin/taller2-appserver/issues/37)
+- Implementar el servicio para pedir mensajes pasados de una conversación [\#36](https://github.com/seguijoaquin/taller2-appserver/issues/36)
+- Definir la API entre appserver-cliente para poder pedir mensajes de chat pasados [\#35](https://github.com/seguijoaquin/taller2-appserver/issues/35)
+- Wrappear JsonCPP [\#34](https://github.com/seguijoaquin/taller2-appserver/issues/34)
+- Simplificar los "if \(condicion\) return true else return false" [\#31](https://github.com/seguijoaquin/taller2-appserver/issues/31)
+- No utilizar enumerados ni switchs [\#30](https://github.com/seguijoaquin/taller2-appserver/issues/30)
+- Hacer un README que describa mejor el proyecto [\#26](https://github.com/seguijoaquin/taller2-appserver/issues/26)
+- Formatear la documentación existente en READMEs  [\#24](https://github.com/seguijoaquin/taller2-appserver/issues/24)
+- Automatizar las pruebas de CPPUnit y agregarlas al Travis [\#22](https://github.com/seguijoaquin/taller2-appserver/issues/22)
+- Definir la API entre appserver-cliente para poder chatear [\#21](https://github.com/seguijoaquin/taller2-appserver/issues/21)
+- Crear clases que se encarguen de manejar las conversaciones [\#20](https://github.com/seguijoaquin/taller2-appserver/issues/20)
+- Abtraer mejor el Mongoose  y el RocksDB [\#16](https://github.com/seguijoaquin/taller2-appserver/issues/16)
+
+## [v1.0.0](https://github.com/seguijoaquin/taller2-appserver/tree/v1.0.0) (2016-04-28)
 **Implemented enhancements:**
 
 - Modificar el código para que utilize StringUtil [\#13](https://github.com/seguijoaquin/taller2-appserver/issues/13)
