@@ -22,34 +22,51 @@ FactoryServicios::~FactoryServicios(){
 Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
     Servicio* servicio;
+    CreatorServicio* creator = nullptr;
 
     if (compararMetodoHTTP(httpRequest, "POST")){
         if (compararUriHTTP(httpRequest, "/chat")){
             //servicio = new ServicioChat(this->conexiones,&httpRequest,this->sesiones, this->conversaciones);
-            servicio = new ServicioChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
+            //servicio = new ServicioChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
+
+            creator = new CreatorChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){
-            servicio = new servicioLogin(this->sesiones, httpRequest, this->credenciales);
+            //servicio = new servicioLogin(this->sesiones, httpRequest, this->credenciales);
+
+            creator = new CreatorLogin(this->sesiones, httpRequest, this->credenciales);
         }
         else if (compararUriHTTP(httpRequest, "/mensajes")){
-            servicio = new ServicioMensajes (&httpRequest, this->sesiones,this->conversaciones);
+
+            //servicio = new ServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
+
+            creator = new CreatorServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
         }
         else if (compararUriHTTP(httpRequest, "/test")){
-            servicio = nullptr;
+            creator = nullptr;
         }
     }
     else if (compararMetodoHTTP(httpRequest, "PUT")){
         if (compararUriHTTP(httpRequest, "/registro")){
             //servicio = new servicioRegistro(this->conexiones, httpRequest, this->credenciales);
-            servicio = new servicioRegistro(this->shared, httpRequest, this->credenciales);
+            //servicio = new servicioRegistro(this->shared, httpRequest, this->credenciales);
+
+            creator = new CreatorRegistro(this->shared, httpRequest, this->credenciales);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){
-        servicio = nullptr;
+        creator = nullptr;
     }
 
+    if (creator != nullptr){
+        servicio = creator->getServicio();
+        delete creator;
+    }
+    else{
+        servicio = nullptr;
+    }
     return servicio;
 }
 

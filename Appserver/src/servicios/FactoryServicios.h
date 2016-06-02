@@ -1,13 +1,20 @@
 #ifndef FACTORYSERVICIOS_H
 #define FACTORYSERVICIOS_H
-
+/*
 #include "servicioRegistro.h"
 #include "servicioLogin.h"
 #include "ServicioChat.h"
 #include "ServicioMensajes.h"
 
+
 #include "SharedDataBase.h"
 #include "Mensajero.h"
+*/
+
+#include "CreatorChat.h"
+#include "CreatorServicioMensajes.h"
+#include "CreatorLogin.h"
+#include "CreatorRegistro.h"
 
 class FactoryServicios
 {
