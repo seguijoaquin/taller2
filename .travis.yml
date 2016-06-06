@@ -4,7 +4,7 @@ language: c++
 notifications:
   email:
     - segui.joaquin@gmail.com
-    - diegofk26@gmail.com
+    # diegofk26@gmail.com
    # Mail Seba
     - juanmafc25@gmail.com
 
@@ -14,9 +14,7 @@ dist: trusty
 before_install:
 #Dependencias RocksDB
 install:
-- ./instalar_rocksdb.sh
-- ./instalar_cppunit.sh
-- sh ./instalar_googletest.sh
+- ./instalar_dependencias.sh
 
 script:
 - cd Appserver
@@ -24,7 +22,7 @@ script:
 - cd build
 - cmake ../src
 - make
-- cd ../..
+- cd ../Test
 - ./correr_pruebas_API.sh
 - sh ./correrUnitTests.sh
 
