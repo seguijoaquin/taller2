@@ -1,4 +1,4 @@
-cd ContenidoParaLasPruebas
+cd UnitTests
 mkdir -p build
 cd build
 mkdir -p Entorno

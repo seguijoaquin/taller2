@@ -49,7 +49,7 @@ class BaseDeDatosTest : public testing::Test {
   BaseDeDatos* baseDeDatos;
 };
 
-
+/*
 
 TEST_F(BaseDeDatosTest, testAgregarUnaClaveValorNuevaYObtenerla){
 	baseDeDatos->put(clave,valor);
@@ -92,7 +92,7 @@ TEST_F(BaseDeDatosTest, testObtenerElValorDeUnaClaveInexistenteDebeDevolverUnVal
 
 
 
-
+*/
 
 
 

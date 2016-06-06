@@ -1,7 +1,7 @@
 #include "SesionesDeUsuarios.h"
 #include <iostream>
 #include "gtest/gtest.h"
-//using namespace std;
+using namespace std;
 
 class SesionesDeUsuariosTest : public testing::Test{
 	protected:
@@ -18,7 +18,7 @@ class SesionesDeUsuariosTest : public testing::Test{
 };
 
 
-
+/*
 TEST_F(SesionesDeUsuariosTest, testAgregarUnaSesionDeUsuario){
 	sesiones->agregarSesionDe("Usuario","Token");
 	ASSERT_TRUE(sesiones->existeSesionDe("Usuario"));
@@ -39,3 +39,4 @@ TEST_F(SesionesDeUsuariosTest, testValidarUsuarioTokenIncorrectos){
   ASSERT_FALSE(sesiones->validarTokenConUsuario("NotUsuario","JRRTolkien"));	
 
 }
+*/
