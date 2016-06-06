@@ -20,7 +20,7 @@ script:
 - cd Appserver
 - mkdir build
 - cd build
-- cmake ../src
+- cmake ..
 - make
 - cd ../Test
 - ./correr_pruebas_API.sh
