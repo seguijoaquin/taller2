@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - servicios/Conversaciones.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">servicios</a> - Conversaciones.cpp<span style="font-size: 80%;"> (source / <a href="Conversaciones.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-31</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;Conversaciones.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<a name="3"><span class="lineNum">       3 </span>            : using namespace std;</a>
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span><span class="lineCov">         60 : Conversaciones::Conversaciones(string ruta){</span>
+<span class="lineNum">       6 </span><span class="lineCov">         60 :     this-&gt;conversaciones = new BaseDeDatos(ruta);</span>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">         60 : }</span></a>
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span><span class="lineCov">        120 : Conversaciones::~Conversaciones(){</span>
+<span class="lineNum">      10 </span><span class="lineCov">         60 :     delete this-&gt;conversaciones;</span>
+<span class="lineNum">      11 </span><span class="lineCov">        120 : }</span>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span><span class="lineCov">        250 : string Conversaciones::obtenerTodosLosMensajesEntre(string usuario1, string usuario2){</span>
+<span class="lineNum">      15 </span><span class="lineCov">        250 :     string clave;</span>
+<span class="lineNum">      16 </span><span class="lineCov">        250 :     this-&gt;armarClaveDeLaConversacion(usuario1,usuario2,clave);</span>
+<span class="lineNum">      17 </span><span class="lineCov">        250 :     return this-&gt;conversaciones-&gt;get(clave);</span>
+<a name="18"><span class="lineNum">      18 </span>            : }</a>
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span><span class="lineCov">         70 : Mensajes Conversaciones::obtenerCantidadMensajesDesdeEntre(int cantidad, int desde, string usuario1, string usuario2){</span>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span><span class="lineCov">         70 :     Mensajes todosLosMensajes(this-&gt;obtenerTodosLosMensajesEntre(usuario1,usuario2));</span>
+<span class="lineNum">      23 </span><span class="lineCov">         70 :     int cantidadMensajesTotales = todosLosMensajes.getTamanio();</span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineCov">         70 :     Mensajes mensajesPedidos;</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">         70 :     int limite = cantidadMensajesTotales - desde - cantidad + 2;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         70 :     if (limite &lt; 1 ){</span>
+<span class="lineNum">      29 </span><span class="lineCov">         30 :         limite = 1;</span>
+<span class="lineNum">      30 </span>            :     }
+<span class="lineNum">      31 </span><span class="lineCov">        220 :     for (int i = ( cantidadMensajesTotales - desde + 1); i &gt;= limite ; i--){</span>
+<span class="lineNum">      32 </span>            :         //El formato Json ahra SOLO se maneja adentro de Mensajes
+<span class="lineNum">      33 </span><span class="lineCov">        150 :         mensajesPedidos.agregarMensaje(todosLosMensajes.getEmisor(i),todosLosMensajes.getMensaje(i));</span>
+<span class="lineNum">      34 </span>            :     }
+<span class="lineNum">      35 </span>            :     //tal vez convenga devolver un ptero por la eficiencia
+<span class="lineNum">      36 </span><span class="lineCov">         70 :     return mensajesPedidos;</span>
+<span class="lineNum">      37 </span>            : }
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : 
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">        430 : void Conversaciones::armarClaveDeLaConversacion(string&amp; usuario1, string&amp; usuario2, string&amp; claveConversacion){</span>
+<span class="lineNum">      44 </span><span class="lineCov">        430 :     if (usuario1 &lt; usuario2){</span>
+<span class="lineNum">      45 </span><span class="lineCov">        230 :         claveConversacion = usuario1 + &quot; &quot; + usuario2;</span>
+<span class="lineNum">      46 </span>            :     }
+<span class="lineNum">      47 </span>            :     else{
+<span class="lineNum">      48 </span><span class="lineCov">        200 :         claveConversacion = usuario2 + &quot; &quot; + usuario1;</span>
+<span class="lineNum">      49 </span>            :     }
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        430 : }</span></a>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">        180 : void Conversaciones::guardarConversacion(string&amp; usuario1, string&amp;usuario2, Mensajes&amp; conversacion){</span>
+<span class="lineNum">      53 </span><span class="lineCov">        180 :     string claveConversacion;</span>
+<span class="lineNum">      54 </span><span class="lineCov">        180 :     this-&gt;armarClaveDeLaConversacion(usuario1,usuario2,claveConversacion);</span>
+<span class="lineNum">      55 </span><span class="lineCov">        180 :     this-&gt;conversaciones-&gt;put(claveConversacion, conversacion.toString());</span>
+<span class="lineNum">      56 </span><span class="lineCov">        180 : }</span>
+<a name="57"><span class="lineNum">      57 </span>            : </a>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineCov">        180 : void Conversaciones::agregarMensajeDePara(string&amp; emisor, string&amp; receptor, string&amp; mensaje){</span>
+<span class="lineNum">      60 </span>            :     //IMPORTANTE: aca puede haber problemas de performance, si todo el tiempo esta accediendo a la base de datos
+<span class="lineNum">      61 </span>            :     //Se podria hacer que Conversaciones o alguien tenga una lista de conversaciones de gente que esta logueada
+<span class="lineNum">      62 </span>            :     //La modificacion podria hacerse en this-&gt;guardarConversacion
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineCov">        180 :     Mensajes todosLosMensajes(this-&gt;obtenerTodosLosMensajesEntre(emisor,receptor));</span>
+<span class="lineNum">      65 </span><span class="lineCov">        180 :     todosLosMensajes.agregarMensaje(emisor,mensaje);</span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        180 :     this-&gt;guardarConversacion(emisor,receptor,todosLosMensajes);</span></a>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">        210 : }</span>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

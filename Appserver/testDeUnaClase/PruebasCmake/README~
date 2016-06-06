@@ -1,1 +1,0 @@
-Este CMake es para compilar las pruebas, por alguna razón si lo corro desde otro directorio que no sea Appserver/src por alguna razón no funciona cuando se hace el make, por ahora lo dej acá para no perder más tiempo.

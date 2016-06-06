@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /home/diego/Desktop/taller2-appserver/ContenidoParaLasPruebas/TestCases/CredencialesDeUsuariosTests.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">home/diego/Desktop/taller2-appserver/ContenidoParaLasPruebas/TestCases</a> - CredencialesDeUsuariosTests.cpp<span style="font-size: 80%;"> (source / <a href="CredencialesDeUsuariosTests.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-31</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryHi">96.8 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;gtest/gtest.h&quot;</a>
+<span class="lineNum">       2 </span>            : #include &quot;CredencialesDeUsuarios.h&quot;
+<span class="lineNum">       3 </span>            : #include &lt;iostream&gt;
+<span class="lineNum">       4 </span>            : #include &lt;cppunit/extensions/HelperMacros.h&gt;
+<span class="lineNum">       5 </span>            : #include &lt;string&gt;
+<span class="lineNum">       6 </span>            : #include &quot;servicioRegistro.h&quot;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : using namespace std;
+<a name="9"><span class="lineNum">       9 </span>            : </a>
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineCov">        120 : class CredencialesDeUsuariosTest : public testing::Test {</span>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            :  protected:  // You should make the members protected s.t. they can be
+<span class="lineNum">      14 </span>            :              // accessed from sub-classes.
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            :   // virtual void SetUp() will be called before each test is run.  You
+<span class="lineNum">      17 </span>            :   // should define it if you need to initialize the varaibles.
+<a name="18"><span class="lineNum">      18 </span>            :   // Otherwise, this can be skipped.</a>
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span><span class="lineCov">         60 :   virtual void SetUp() {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         60 :         credenciales = new CredencialesDeUsuarios(&quot;./Entorno/CredencialesDePrueba&quot;);</span>
+<span class="lineNum">      22 </span><span class="lineCov">         60 :         password = &quot;password&quot;;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         60 :         passwordIncorrecto = &quot;passwordIncorrecto&quot;;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         60 :         usuario = &quot;NUEVO_USUARIO&quot;;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         60 :   }</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            :   // virtual void TearDown() will be called after each test is run.
+<span class="lineNum">      30 </span>            :   // You should define it if there is cleanup work to do.  Otherwise,
+<a name="31"><span class="lineNum">      31 </span>            :   // you don't have to provide it.</a>
+<span class="lineNum">      32 </span>            :   //
+<span class="lineNum">      33 </span><span class="lineCov">         60 :   virtual void TearDown() {</span>
+<span class="lineNum">      34 </span><span class="lineCov">         60 :         delete credenciales;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         60 :         system(&quot;../limpiarEntorno.sh&quot;);</span>
+<span class="lineNum">      36 </span><span class="lineCov">         60 :   }</span>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            :         //ACA TAMBIEN PODEMOS DEFINIR FUNCIONES Y UTILIZARLAS PARA HACER
+<span class="lineNum">      40 </span>            :         //EL MISMO TEST CON DIFERENTES DATOS.
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            :   // Declares the variables your tests want to use.
+<span class="lineNum">      44 </span>            :   string usuario;
+<span class="lineNum">      45 </span>            :   string password;
+<span class="lineNum">      46 </span>            :   string passwordIncorrecto;
+<span class="lineNum">      47 </span>            :   CredencialesDeUsuarios* credenciales;
+<span class="lineNum">      48 </span>            : };
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : 
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, agregarUnNuevoUsuarioDeberiaDarTrue){</span>
+<span class="lineNum">      56 </span><span class="lineCov">         10 :         ASSERT_TRUE(credenciales-&gt;agregarNuevoUsuario(usuario,password));</span>
+<span class="lineNum">      57 </span>            : }
+<span class="lineNum">      58 </span>            : 
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, alTratarDeAgregarUnUsuarioExistenteDeberiaDarFalse){</span>
+<span class="lineNum">      62 </span><span class="lineCov">         10 :         credenciales-&gt;agregarNuevoUsuario(usuario,password);</span>
+<span class="lineNum">      63 </span><span class="lineCov">         10 :         ASSERT_FALSE(credenciales-&gt;agregarNuevoUsuario(usuario,password));</span>
+<span class="lineNum">      64 </span>            : }
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioExistenteDeberiaDarTrue){</span>
+<span class="lineNum">      68 </span><span class="lineCov">         10 :         credenciales-&gt;agregarNuevoUsuario(usuario,password);</span>
+<span class="lineNum">      69 </span><span class="lineCov">         10 :         ASSERT_TRUE(credenciales-&gt;existeUsuario(usuario));</span>
+<a name="70"><span class="lineNum">      70 </span>            : }</a>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioInexistenteDeberiaDarFalse){</span>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineCov">         10 :         ASSERT_FALSE(credenciales-&gt;existeUsuario(usuario));</span>
+<span class="lineNum">      75 </span>            : 
+<a name="76"><span class="lineNum">      76 </span>            : }</a>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, testValidarCredencialesCorrectasDaTrue){</span>
+<span class="lineNum">      79 </span><span class="lineCov">         10 :         credenciales-&gt;agregarNuevoUsuario(usuario,password);</span>
+<span class="lineNum">      80 </span><span class="lineCov">         10 :         ASSERT_TRUE(credenciales-&gt;validarCredenciales(usuario,password));</span>
+<span class="lineNum">      81 </span>            : }
+<a name="82"><span class="lineNum">      82 </span>            : </a>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineCov">         50 : TEST_F(CredencialesDeUsuariosTest, testValidarCredencialesIncorrectasDaFalse){</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         10 :         credenciales-&gt;agregarNuevoUsuario(usuario,password);</span></a>
+<span class="lineNum">      86 </span><span class="lineCov">         10 :         ASSERT_FALSE(credenciales-&gt;validarCredenciales(usuario,passwordIncorrecto));</span>
+<span class="lineNum">      87 </span><span class="lineCov">         30 : }</span>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

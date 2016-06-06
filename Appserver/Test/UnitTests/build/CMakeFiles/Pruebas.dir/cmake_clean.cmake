@@ -1,0 +1,41 @@
+FILE(REMOVE_RECURSE
+  "CMakeFiles/Pruebas.dir/gtest_main.cc.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/ClienteDelSharedServer.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/Mensajes.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/BaseDeDatos.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/JsonArray.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/ServicioMensajes.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/Conversaciones.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/servicioLogin.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/servicio.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/AtendedorHTTP.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/JsonObject.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/ServicioChat.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/CredencialesDeUsuarios.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/MensajeHTTPRequest.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/servicioRegistro.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/MensajeHTTPReply.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/SesionesDeUsuarios.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/MensajeHTTP.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/MensajeHTTPRequestGCM.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/ManejadorDeConexiones.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servicios/JsonValor.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/MensajeHTTPRequestTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/BaseDeDatosTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/MensajeHTTPReplyTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/SesionesDeUsuariosTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/CredencialesDeUsuariosTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/ConversacionesTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/TestCases/JsonValoresTests.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/external/json/jsoncpp.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/external/StringUtil/StringUtil.cpp.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/external/mongoose/mongoose.c.o"
+  "CMakeFiles/Pruebas.dir/home/diego/Desktop/taller2-appserver/Appserver/src/servidor/Servidor.cpp.o"
+  "Pruebas.pdb"
+  "Pruebas"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang C CXX)
+  INCLUDE(CMakeFiles/Pruebas.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

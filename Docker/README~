@@ -1,0 +1,20 @@
+# Taller de programacion II - Docker Application server
+
+## Descripcion
+
+Para evitar problemas con la portabilidad del programa se ofrece la posibilidad de correrlo en un Container de Docker que virtualiza ubuntu 14.04
+
+## Instalacion
+Para utilizar esta feature es necesario tener docker instalado y corriendo en nuestro ordenador. En caso de no poseerlo ingresar a la pagina de [Docker](https://www.docker.com/) e instalarlo.
+
+## Utilizacion
+Para correr la imagen debemos utilizar el siguiente comando de bash:
+```
+sudo docker run -i -t -p 8000:8000 juanmafc/app_server:v1
+```
+- run va a bajar automáticamente la imagen juanmafc/app_server:v0 y la va a correr
+- t abre una terminal en el contenedor
+- i permite que el contenedor lea de STDIN
+- p mapea el puerto 8000 del HOST al puerto 8000 del contenedor.
+
+
