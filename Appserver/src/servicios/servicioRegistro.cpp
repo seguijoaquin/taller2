@@ -57,25 +57,13 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //TODO: agarar todos los errores
     string bodyJson = crearMensajeParaAlta(usuario);
 
-/////ESTO DEBERIA SER RESPONSABILIDAD DE OTRA CLASE/////
-/*
-    MensajeHTTPRequest request;
-    request.setMetodo("POST");
-    request.setURI("/users/");
-    request.agregarHeader("Host", "t2shared.herokuapp.com");
-    request.agregarHeader("Content-Type", "application/json");
-    request.setBody(bodyJson);
-
-    MensajeHTTPReply respustaShared = this->manejadorDeConexiones->enviarMensajeHTTP(&request,"80");
-*/
-
     //POR AHORA SE PASA EL BODY DEL JSON, DEBERIA
 
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
     //if (respustaShared.getCodigo() == 200){
-    if (this->shared->registrarUsuario(bodyJson)){
+    if (this->shared->registrarUsuario(bodyJson) > -1 ){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaRegistroCorrecto();
@@ -125,7 +113,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     usuarioJobj.agregarClaveValor("name", usuario);
     usuarioJobj.agregarClaveValor("alias", "alias1");
 
-    usuarioJobj.agregarClaveValor("email", usuario + "2/6/16-14:14");
+    usuarioJobj.agregarClaveValor("email", usuario + "2/6/16-14:04");
     usuarioJobj.agregarClaveValor("sex", "M");
     usuarioJobj.agregarClaveValor("edad", "22");
 
