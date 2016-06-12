@@ -6,9 +6,9 @@
 
 
 class JsonValoresTests : public testing::Test{
-	
+
 	protected:
-	
+
 		void agregarNumeroAlJsonArray(int numero,JsonArray& jarray){
 			//int nro = numero;
 			//jarray.agregar(nro);
@@ -24,10 +24,10 @@ class JsonValoresTests : public testing::Test{
 		bool compararStringConJsonValor(string stringEsperado,JsonValor jvalor){
 			return jvalor.toString().compare(stringEsperado);
 		}
-		
-	
-	
-	
+
+
+
+
 };
 
 
@@ -111,23 +111,31 @@ TEST_F(JsonValoresTests,testAgregarUnJsonArrayAlJsonArray){
 
 
 
-/*
+TEST_F(JsonValoresTests,testRecorrerUnArray){
+  JsonArray jarray;
+  this->agregarPalabraAlJsonArray("1",jarray);
+  this->agregarPalabraAlJsonArray("2",jarray);
+  this->agregarPalabraAlJsonArray("3",jarray);
 
+  string valorActual;
+  jarray>>valorActual;
+  ASSERT_EQ("1", valorActual);
+  jarray>>valorActual;
+  ASSERT_EQ("2", valorActual);
+  jarray>>valorActual;
+  ASSERT_EQ("3", valorActual);
 
+  ASSERT_FALSE(jarray>>valorActual);
 
+}
 
+TEST_F(JsonValoresTests,testRecorrerUnArrayVacio){
+  JsonArray jarray;
+  string valorActual = "valor original";
+  string valorOriginal = valorActual;
 
-
-
-
-
-
-
-
-
-
-
-*/
-
-
+  jarray>>valorActual;
+  ASSERT_FALSE(jarray>>valorActual);
+  ASSERT_EQ(valorOriginal,valorActual);
+}
 

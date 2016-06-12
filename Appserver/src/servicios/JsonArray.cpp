@@ -1,6 +1,7 @@
 #include "JsonArray.h"
 
 JsonArray::JsonArray(){
+    this->indiceActual = 0;
     this->jsonValor = Json::arrayValue;
 }
 
@@ -9,6 +10,16 @@ JsonArray::JsonArray(string jsonTexto):JsonValor(jsonTexto){
 }
 
 
+bool JsonArray::operator>>(string& valor){
+    if (this->indiceActual < this->size()){
+        valor = (this->jsonValor[this->indiceActual]).asString();
+        this->indiceActual++;
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 JsonValor JsonArray::operator[](int indice){
     return JsonValor(this->jsonValor[indice]);

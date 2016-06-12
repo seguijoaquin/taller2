@@ -13,13 +13,16 @@ class JsonArray: public JsonValor{
         virtual ~JsonArray();
 
 
+        bool operator>>(string& valor);
         JsonValor operator[](int indice);
+
         void agregar(JsonValor& valor);
         void agregar(string& valor);
         void agregar(int& valor);
 
     protected:
     private:
+        int indiceActual;
 
 };
 
