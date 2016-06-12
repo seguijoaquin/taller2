@@ -2,6 +2,7 @@
 #define JSONOBJECT_H
 
 #include "JsonValor.h"
+#include "JsonArray.h"
 
 class JsonObject: public JsonValor{
     public:
@@ -12,6 +13,8 @@ class JsonObject: public JsonValor{
 
         JsonValor operator[](string clave);
         JsonObject getJsonObject(string clave);
+        JsonArray getJsonArray(string clave);
+
         int getInt(string clave);
 
         void agregarClaveValor(string clave, string valor);

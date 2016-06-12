@@ -10,6 +10,7 @@ class JsonArray: public JsonValor{
         //El jsonValue TIENE que ser un array
         JsonArray();
         JsonArray(string jsonTexto);
+        JsonArray(const Json::Value& jsonValor);
         virtual ~JsonArray();
 
 

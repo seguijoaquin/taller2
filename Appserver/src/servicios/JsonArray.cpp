@@ -9,6 +9,9 @@ JsonArray::JsonArray(string jsonTexto):JsonValor(jsonTexto){
 
 }
 
+JsonArray::JsonArray(const Json::Value& jsonValor):JsonValor(jsonValor){
+
+}
 
 bool JsonArray::operator>>(string& valor){
     if (this->indiceActual < this->size()){
