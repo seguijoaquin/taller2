@@ -7,6 +7,8 @@
 
 #include "JsonObject.h"
 
+#include "Usuario.h"
+
 class SharedDataBase
 {
     public:
@@ -18,21 +20,25 @@ class SharedDataBase
         SharedDataBase(ManejadorDeConexiones* conexiones);
         virtual ~SharedDataBase();
 
-        //DESPUES MODIFICAR LO QUE SE PASE OMO PARAMETRO PARA QUE NO SE TENGA QUE PASAR COMO JSON....
+        //DESPUES MODIFICAR LO QUE SE PASE COMO PARAMETRO PARA QUE NO SE TENGA QUE PASAR COMO JSON....
         //QUE SE PASE UN PerfilUsuario&
         //bool registrarUsuar(string bodyJson);
 
         int registrarUsuario(string bodyJson);
-        string obtenerPerfilDelUsuario(int idUsuario);
+        Usuario obtenerPerfilDelUsuario(int idUsuario);
         string obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
+
+        string obtenerListadoDeIntereses();
 
     protected:
     private:
         ManejadorDeConexiones* conexiones;
         MensajeHTTPRequest armarRequest(string metodo, string uri, string bodyJson);
-        MensajeHTTPReply enviarHTTPRequest(MensajeHTTPRequest& request);
+        MensajeHTTPReply enviarHTTPRequest(string metodo, string uri, string bodyJson);
+
         string armarURIDeUsuario(int idUsuario);
+
 };
 
 #endif // SHAREDDATABASE_H

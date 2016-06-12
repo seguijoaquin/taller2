@@ -20,14 +20,17 @@ MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, strin
 }
 
 
-MensajeHTTPReply SharedDataBase::enviarHTTPRequest(MensajeHTTPRequest& request){
+MensajeHTTPReply SharedDataBase::enviarHTTPRequest(string metodo, string uri, string bodyJson){
+    MensajeHTTPRequest request = this->armarRequest(metodo, uri, bodyJson);
     return this->conexiones->enviarMensajeHTTP(&request,"80");
 }
 
-int SharedDataBase::registrarUsuario(string bodyJson){
 
-    MensajeHTTPRequest request = this->armarRequest("POST", "/users/",bodyJson);
-    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest(request);
+
+
+
+int SharedDataBase::registrarUsuario(string bodyJson){
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",bodyJson);
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     int idCliente = -1;
@@ -40,11 +43,8 @@ int SharedDataBase::registrarUsuario(string bodyJson){
 }
 
 
-string SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
-
-    MensajeHTTPRequest request = this->armarRequest("GET", this->armarURIDeUsuario(idUsuario) ,"");
-
-    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest(request);
+Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", this->armarURIDeUsuario(idUsuario) ,"");
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
@@ -56,31 +56,29 @@ string SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
     }
     */
 
-    return respuestaShared.getBody();
+    return Usuario(respuestaShared.getBody());
 }
 
 
 
 string SharedDataBase::obtenerListadoDeUsuarios(){
-    MensajeHTTPRequest request = this->armarRequest("GET", "/users/" ,"");
-    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest(request);
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/users/" ,"");
     return respuestaShared.getBody();
 }
 
 
 bool SharedDataBase::eliminarUsuario(int idUsuario){
-    MensajeHTTPRequest request = this->armarRequest("DELETE", this->armarURIDeUsuario(idUsuario) ,"");
-    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest(request);
-
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("DELETE", this->armarURIDeUsuario(idUsuario) ,"");
     return (respuestaShared.getCodigo() == 200);
 }
-
-
-
-
 
 string SharedDataBase::armarURIDeUsuario(int idUsuario){
     string uri = "/users/";
     uri = uri + StringUtil::int2string(idUsuario);
     return uri;
+}
+
+string SharedDataBase::obtenerListadoDeIntereses(){
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/interests","");
+    return respuestaShared.getBody();
 }
