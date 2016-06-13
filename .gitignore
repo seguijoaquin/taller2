@@ -22,4 +22,5 @@ Testing/*
 Appserver/utilities/cpptest-1.1.2/*
 ContenidoParaLasPruebas/build/
 GoogleTest/build/
+Appserver/Test/ApiUnitTesting/*.pyc
 

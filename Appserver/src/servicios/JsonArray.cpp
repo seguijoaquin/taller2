@@ -6,16 +6,16 @@ JsonArray::JsonArray(){
 }
 
 JsonArray::JsonArray(string jsonTexto):JsonValor(jsonTexto){
-
+    this->indiceActual = 0;
 }
 
 JsonArray::JsonArray(const Json::Value& jsonValor):JsonValor(jsonValor){
-
+    this->indiceActual = 0;
 }
 
 bool JsonArray::operator>>(string& valor){
     if (this->indiceActual < this->size()){
-        valor = (this->jsonValor[this->indiceActual]).asString();
+        valor = (this->jsonValor[this->indiceActual]).toStyledString();
         this->indiceActual++;
         return true;
     }
