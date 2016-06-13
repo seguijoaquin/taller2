@@ -15,7 +15,7 @@ JsonArray::JsonArray(const Json::Value& jsonValor):JsonValor(jsonValor){
 
 bool JsonArray::operator>>(string& valor){
     if (this->indiceActual < this->size()){
-        valor = (this->jsonValor[this->indiceActual]).toStyledString();
+        valor = JsonValor(this->jsonValor[this->indiceActual]).toString();
         this->indiceActual++;
         return true;
     }

@@ -4,8 +4,7 @@ SharedDataBase::SharedDataBase(ManejadorDeConexiones* conexiones){
     this->conexiones = conexiones;
 }
 
-SharedDataBase::~SharedDataBase()
-{
+SharedDataBase::~SharedDataBase(){
     //dtor
 }
 
@@ -61,9 +60,10 @@ Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
 
 
 
-string SharedDataBase::obtenerListadoDeUsuarios(){
+ListadoDeUsuarios* SharedDataBase::obtenerListadoDeUsuarios(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/users/" ,"");
-    return respuestaShared.getBody();
+    this->listadoDeUsuarios.agregarUsuarios( respuestaShared.getBody() );
+    return &(this->listadoDeUsuarios);
 }
 
 

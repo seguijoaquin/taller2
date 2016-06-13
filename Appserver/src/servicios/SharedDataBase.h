@@ -8,6 +8,7 @@
 #include "JsonObject.h"
 
 #include "Usuario.h"
+#include "ListadoDeUsuarios.h"
 
 class SharedDataBase
 {
@@ -26,7 +27,7 @@ class SharedDataBase
 
         int registrarUsuario(string bodyJson);
         Usuario obtenerPerfilDelUsuario(int idUsuario);
-        string obtenerListadoDeUsuarios();
+        ListadoDeUsuarios* obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
 
         string obtenerListadoDeIntereses();
@@ -38,6 +39,8 @@ class SharedDataBase
         MensajeHTTPReply enviarHTTPRequest(string metodo, string uri, string bodyJson);
 
         string armarURIDeUsuario(int idUsuario);
+
+        ListadoDeUsuarios listadoDeUsuarios;
 
 };
 

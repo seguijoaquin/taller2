@@ -118,12 +118,13 @@ TEST_F(JsonValoresTests,testRecorrerUnArray){
   this->agregarPalabraAlJsonArray("3",jarray);
 
   string valorActual;
+
   jarray>>valorActual;
-  ASSERT_EQ("1", valorActual);
+  ASSERT_TRUE(valorActual.compare("1"));
   jarray>>valorActual;
-  ASSERT_EQ("2", valorActual);
+  ASSERT_TRUE(valorActual.compare("2"));
   jarray>>valorActual;
-  ASSERT_EQ("3", valorActual);
+  ASSERT_TRUE(valorActual.compare("3"));
 
   ASSERT_FALSE(jarray>>valorActual);
 
