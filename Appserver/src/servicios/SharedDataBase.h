@@ -7,8 +7,9 @@
 
 #include "JsonObject.h"
 
-#include "Usuario.h"
 #include "ListadoDeUsuarios.h"
+#include "ListadoDeIntereses.h"
+
 
 class SharedDataBase
 {
@@ -30,7 +31,7 @@ class SharedDataBase
         ListadoDeUsuarios* obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
 
-        string obtenerListadoDeIntereses();
+        ListadoDeIntereses* obtenerListadoDeIntereses();
 
     protected:
     private:
@@ -41,6 +42,7 @@ class SharedDataBase
         string armarURIDeUsuario(int idUsuario);
 
         ListadoDeUsuarios listadoDeUsuarios;
+        ListadoDeIntereses listadoDeIntereses;
 
 };
 
