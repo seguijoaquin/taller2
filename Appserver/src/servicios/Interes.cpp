@@ -11,3 +11,11 @@ Interes::~Interes()
 {
     //dtor
 }
+
+string Interes::getCategoria(){
+    return this->categoria;
+}
+
+string Interes::getValor(){
+    return this->valor;
+}

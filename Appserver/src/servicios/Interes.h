@@ -9,6 +9,10 @@ class Interes
     public:
         Interes(string jsonInteres);
         virtual ~Interes();
+
+        string getCategoria();
+        string getValor();
+
     protected:
     private:
         string categoria;
