@@ -16,8 +16,6 @@ class Usuario
         string getId();
 
         bool tieneInteres(string interes);
-        void agregarPosibleMatch(Usuario* usuario);
-        Usuario* getPosibleMatch();
 
 
         string toString();

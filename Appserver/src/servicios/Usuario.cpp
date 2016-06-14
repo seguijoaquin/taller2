@@ -18,7 +18,7 @@ string Usuario::toString(){
 
 
 string Usuario::getEmail(){
-
+    return this->perfil.getString("email");
 }
 
 string Usuario::getId(){
@@ -27,21 +27,6 @@ string Usuario::getId(){
 
 bool Usuario::tieneInteres(string interes){
 
-}
-
-void Usuario::agregarPosibleMatch(Usuario* usuario){
-    this->posiblesMatches.push(usuario);
-}
-
-Usuario* Usuario::getPosibleMatch(){
-    if (!this->posiblesMatches.empty()){
-        Usuario* posibleMatch = this->posiblesMatches.top();
-        this->posiblesMatches.pop();
-        return posibleMatch;
-    }
-    else{
-        return nullptr;
-    }
 }
 
 
