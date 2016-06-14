@@ -16,6 +16,7 @@ class JsonObject: public JsonValor{
         JsonArray getJsonArray(string clave);
 
         int getInt(string clave);
+        string getString(string clave);
 
         void agregarClaveValor(string clave, string valor);
         void agregarClaveValor(string clave, JsonValor& valor);

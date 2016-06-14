@@ -26,6 +26,12 @@ int JsonObject::getInt(string clave){
     return (this->jsonValor[clave]).asInt();
 }
 
+string JsonObject::getString(string clave){
+    return (this->jsonValor[clave]).asString();
+}
+
+
+
 JsonArray JsonObject::getJsonArray(string clave){
     return JsonArray(this->jsonValor[clave]);
 }
