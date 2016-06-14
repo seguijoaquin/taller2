@@ -11,6 +11,8 @@ class Interes
         virtual ~Interes();
     protected:
     private:
+        string categoria;
+        string valor;
 };
 
 #endif // INTERES_H
