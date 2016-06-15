@@ -7,7 +7,7 @@ sudo apt-get install -y libcppunit-dev
 sudo apt-get install -y libpthread-stubs0-dev
 
 #Instalo requests de Python
-sudo apt-get -y install python-pip
+sudo apt-get install -y python-pip
 pip install requests
 
 
