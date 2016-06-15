@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - servicios/MensajeHTTP.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">servicios</a> - MensajeHTTP.cpp<span style="font-size: 80%;"> (source / <a href="MensajeHTTP.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntryHi">97.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-10</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntryHi">92.9 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;MensajeHTTP.h&quot;</a>
+<a name="2"><span class="lineNum">       2 </span>            : </a>
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span><span class="lineCov">          1 : MensajeHTTP::MensajeHTTP(){</span>
+<span class="lineNum">       5 </span>            : 
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">          7 : MensajeHTTP::MensajeHTTP(http_message* mensajeMG){</span>
+<span class="lineNum">       9 </span><span class="lineCov">          7 :     this-&gt;cargarHeaders(mensajeMG);</span>
+<span class="lineNum">      10 </span><span class="lineCov">          7 :     this-&gt;body = mg_strToString(mensajeMG-&gt;body);</span>
+<span class="lineNum">      11 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : 
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">         46 : string MensajeHTTP::mg_strToString(mg_str&amp; mgStr){</span>
+<span class="lineNum">      17 </span><span class="lineCov">         46 :     return string(mgStr.p,mgStr.len);</span>
+<span class="lineNum">      18 </span>            : }
+<a name="19"><span class="lineNum">      19 </span>            : </a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          7 : void MensajeHTTP::cargarHeaders(http_message* mensajeMG){</span>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            :     //Si por ejemplo hay 2 headers, los header_names[2].len, header_names[3].len, etc van a ser = 0
+<span class="lineNum">      24 </span><span class="lineCov">         21 :     for (int i = 0; mensajeMG-&gt;header_names[i].len &gt; 0; i++) {</span>
+<span class="lineNum">      25 </span>            :         //this-&gt;headers[this-&gt;mg_strToString(mensajeMG-&gt;header_names[i])] = this-&gt;mg_strToString(mensajeMG-&gt;header_values[i]);
+<span class="lineNum">      26 </span><span class="lineCov">         14 :         this-&gt;agregarHeader(this-&gt;mg_strToString(mensajeMG-&gt;header_names[i]), this-&gt;mg_strToString(mensajeMG-&gt;header_values[i]));</span>
+<span class="lineNum">      27 </span>            :     }
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          7 : }</span></a>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineCov">         17 : void MensajeHTTP::agregarHeader(string header, string valor){</span>
+<span class="lineNum">      31 </span><span class="lineCov">         17 :     this-&gt;headers[header] = valor;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">      33 </span>            : 
+<a name="34"><span class="lineNum">      34 </span>            : </a>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineCov">          4 : bool MensajeHTTP::tieneHeader(string header){</span>
+<span class="lineNum">      37 </span><span class="lineCov">          4 :     return (this-&gt;headers.find(header) != this-&gt;headers.end());</span>
+<a name="38"><span class="lineNum">      38 </span>            : }</a>
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span><span class="lineCov">          4 : string MensajeHTTP::getHeader(string header){</span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 :     if (this-&gt;tieneHeader(header)){</span>
+<span class="lineNum">      42 </span><span class="lineCov">          4 :         return this-&gt;headers[header];</span>
+<span class="lineNum">      43 </span>            :     }
+<span class="lineNum">      44 </span>            :     else{
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         return &quot;&quot;;</span>
+<span class="lineNum">      46 </span>            :     }
+<span class="lineNum">      47 </span>            : }
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineCov">          1 : string MensajeHTTP::headersToString(){</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :     string resultado = &quot;&quot;;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          4 :         for( map&lt;string,string&gt;::iterator it = this-&gt;headers.begin() ; it != this-&gt;headers.end(); ++it){</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :             string nombre = (*it).first;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          6 :         string contenido = (*it).second;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :         resultado = resultado + nombre + &quot;: &quot; + contenido + &quot;\r\n&quot;;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 :         }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :         return resultado;</span>
+<span class="lineNum">      58 </span>            : }
+<span class="lineNum">      59 </span>            : 
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineCov">          1 : void MensajeHTTP::setBody(string body){</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     this-&gt;agregarHeader(&quot;Content-Length&quot;, StringUtil::int2string(body.length()));</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     this-&gt;body = body;</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">          1 : string MensajeHTTP::getBody(){</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     return this-&gt;body;</span>
+<span class="lineNum">      69 </span>            : }
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : 
+<a name="74"><span class="lineNum">      74 </span>            : </a>
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">          8 : MensajeHTTP::~MensajeHTTP()</span>
+<a name="77"><span class="lineNum">      77 </span>            : {</a>
+<span class="lineNum">      78 </span>            :     //dtor
+<span class="lineNum">      79 </span><span class="lineCov">         11 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

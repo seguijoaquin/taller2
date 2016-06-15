@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/servicios/SharedDataBase.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/servicios</a> - SharedDataBase.cpp<span style="font-size: 80%;"> (source / <a href="SharedDataBase.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryLo">40.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryMed">83.3 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;SharedDataBase.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineCov">          4 : SharedDataBase::SharedDataBase(ManejadorDeConexiones* conexiones){</span>
+<span class="lineNum">       4 </span><span class="lineCov">          4 :     this-&gt;conexiones = conexiones;</span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span><span class="lineCov">          8 : SharedDataBase::~SharedDataBase(){</span>
+<span class="lineNum">       8 </span>            :     //dtor
+<span class="lineNum">       9 </span>            : }
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          8 : </span></a>
+<span class="lineNum">      11 </span>            : MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, string bodyJson){
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 :     MensajeHTTPRequest request;</span>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :     request.setMetodo(metodo);</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 :     request.setURI(uri);</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :     request.agregarHeader(&quot;Host&quot;, &quot;t2shared.herokuapp.com&quot;);</span>
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 :     request.agregarHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :     request.setBody(bodyJson);</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :     return request;</span>
+<span class="lineNum">      19 </span>            : }
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : MensajeHTTPReply SharedDataBase::enviarHTTPRequest(string metodo, string uri, string bodyJson){
+<span class="lineNum">      23 </span>            :     MensajeHTTPRequest request = this-&gt;armarRequest(metodo, uri, bodyJson);
+<span class="lineNum">      24 </span>            :     return this-&gt;conexiones-&gt;enviarMensajeHTTP(&amp;request,&quot;80&quot;);
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : int SharedDataBase::registrarUsuario(string bodyJson){
+<a name="32"><span class="lineNum">      32 </span>            :     MensajeHTTPReply respuestaShared = this-&gt;enviarHTTPRequest(&quot;POST&quot;, &quot;/users/&quot;,bodyJson);</a>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineCov">         12 :     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc</span>
+<span class="lineNum">      35 </span>            :     int idCliente = -1;
+<span class="lineNum">      36 </span>            :     if (respuestaShared.getCodigo() == 201){
+<span class="lineNum">      37 </span>            :         JsonObject bodyRespuestaShared(respuestaShared.getBody());
+<span class="lineNum">      38 </span>            :         idCliente = (bodyRespuestaShared.getJsonObject(&quot;user&quot;)).getInt(&quot;id&quot;);
+<span class="lineNum">      39 </span>            :     }
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            :     return idCliente;
+<span class="lineNum">      42 </span>            : }
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
+<span class="lineNum">      46 </span>            :     MensajeHTTPReply respuestaShared = this-&gt;enviarHTTPRequest(&quot;GET&quot;, this-&gt;armarURIDeUsuario(idUsuario) ,&quot;&quot;);
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            :     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
+<span class="lineNum">      49 </span>            :     //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            :     /*int idCliente = 0;
+<span class="lineNum">      52 </span>            :     if (respuestaShared.getCodigo() == 201){
+<span class="lineNum">      53 </span>            :         JsonObject bodyRespuestaShared(respuestaShared.getBody());
+<span class="lineNum">      54 </span>            :         idCliente = (bodyRespuestaShared.getJsonObject(&quot;user&quot;)).getInt(&quot;id&quot;);
+<span class="lineNum">      55 </span>            :     }
+<span class="lineNum">      56 </span>            :     */
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            :     return Usuario(respuestaShared.getBody());
+<span class="lineNum">      59 </span>            : }
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : ListadoDeUsuarios* SharedDataBase::obtenerListadoDeUsuarios(){
+<span class="lineNum">      64 </span>            :     MensajeHTTPReply respuestaShared = this-&gt;enviarHTTPRequest(&quot;GET&quot;, &quot;/users/&quot; ,&quot;&quot;);
+<span class="lineNum">      65 </span>            :     this-&gt;listadoDeUsuarios.agregarUsuarios( respuestaShared.getBody() );
+<span class="lineNum">      66 </span>            :     return &amp;(this-&gt;listadoDeUsuarios);
+<span class="lineNum">      67 </span>            : }
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : bool SharedDataBase::eliminarUsuario(int idUsuario){
+<span class="lineNum">      71 </span>            :     MensajeHTTPReply respuestaShared = this-&gt;enviarHTTPRequest(&quot;DELETE&quot;, this-&gt;armarURIDeUsuario(idUsuario) ,&quot;&quot;);
+<span class="lineNum">      72 </span>            :     return (respuestaShared.getCodigo() == 200);
+<span class="lineNum">      73 </span>            : }
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : string SharedDataBase::armarURIDeUsuario(int idUsuario){
+<span class="lineNum">      76 </span>            :     string uri = &quot;/users/&quot;;
+<span class="lineNum">      77 </span>            :     uri = uri + StringUtil::int2string(idUsuario);
+<span class="lineNum">      78 </span>            :     return uri;
+<span class="lineNum">      79 </span>            : }
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : ListadoDeIntereses* SharedDataBase::obtenerListadoDeIntereses(){
+<span class="lineNum">      82 </span>            :     MensajeHTTPReply respuestaShared = this-&gt;enviarHTTPRequest(&quot;GET&quot;, &quot;/interests&quot;,&quot;&quot;);
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            :     this-&gt;listadoDeIntereses.agregarIntereses( respuestaShared.getBody() );
+<span class="lineNum">      85 </span>            :     return &amp;(this-&gt;listadoDeIntereses);
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

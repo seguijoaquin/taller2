@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/servicios/Mensajero.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/servicios</a> - Mensajero.cpp<span style="font-size: 80%;"> (source / <a href="Mensajero.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;Mensajero.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineCov">          4 : Mensajero::Mensajero(ManejadorDeConexiones* conexiones, SesionesDeUsuarios* sesiones){</span>
+<span class="lineNum">       4 </span><span class="lineCov">          4 :     this-&gt;conexiones = conexiones;</span>
+<span class="lineNum">       5 </span><span class="lineCov">          4 :     this-&gt;sesiones = sesiones;</span>
+<span class="lineNum">       6 </span>            :     //Las sesiones van a servir para ver el GCM Token
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span><span class="lineCov">          8 : Mensajero::~Mensajero()</span>
+<span class="lineNum">      10 </span>            : {
+<span class="lineNum">      11 </span>            :     //dtor
+<span class="lineNum">      12 </span><span class="lineCov">          8 : }</span>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span><span class="lineCov">          2 : bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){</span>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     MensajeHTTPRequestGCM requestGCM;</span>
+<span class="lineNum">      18 </span>            :     ////////////////////////////////REFACTORIZAR//////////////////////////////////////
+<span class="lineNum">      19 </span>            :     //Json::Value bodyJson = Json::objectValue;
+<span class="lineNum">      20 </span>            :     //Json::Value dataJson = Json::objectValue;
+<span class="lineNum">      21 </span><span class="lineCov">          4 :     JsonObject dataJson;</span>
+<span class="lineNum">      22 </span>            :     //dataJson[&quot;Emisor&quot;] = emisor;
+<span class="lineNum">      23 </span>            :     //dataJson[&quot;Mensaje&quot;] = mensaje;
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     dataJson.agregarClaveValor(&quot;Emisor&quot;,emisor);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     dataJson.agregarClaveValor(&quot;Mensaje&quot;,mensaje);</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">          4 :     JsonObject bodyJson;</span>
+<span class="lineNum">      28 </span>            :     //string GCMToken= this-&gt;mensajeHTTP-&gt;getHeader(&quot;GChigihgMToken&quot;);
+<span class="lineNum">      29 </span>            :     //bodyJson[&quot;to&quot;] = GCMToken;
+<span class="lineNum">      30 </span>            :     //Hardcodeado el cluente de mi comopu
+<span class="lineNum">      31 </span>            :     //Aca deberia sacar el token de las sesiones
+<span class="lineNum">      32 </span><span class="lineCov">          4 :     string tokenGCM = this-&gt;sesiones-&gt;getTokenGCMDe(receptor);</span>
+<span class="lineNum">      33 </span>            :     //bodyJson.agregarClaveValor(&quot;to&quot;,&quot;APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ&quot;);
+<span class="lineNum">      34 </span><span class="lineCov">          2 :     bodyJson.agregarClaveValor(&quot;to&quot;,tokenGCM);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     bodyJson.agregarClaveValor(&quot;data&quot;,dataJson);</span>
+<span class="lineNum">      36 </span>            :     //bodyJson[&quot;to&quot;] = &quot;APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ&quot;;
+<span class="lineNum">      37 </span>            :     //bodyJson[&quot;data&quot;] = dataJson;
+<span class="lineNum">      38 </span>            :     //Json::FastWriter escritor;
+<span class="lineNum">      39 </span>            :     //requestGCM.setBody( escritor.write(bodyJson) );
+<span class="lineNum">      40 </span><span class="lineCov">          2 :     requestGCM.setBody( bodyJson.toString() );</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">          4 :     MensajeHTTPReply GCMreply = this-&gt;conexiones-&gt;enviarMensajeHTTP(&amp;requestGCM,&quot;80&quot;);</span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     cout&lt;&lt;&quot;Mensaje de respuesta de GCM:\n&quot;&lt;&lt;GCMreply.toString()&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            :     //FALTARIA COMPARAR EL BODY QUE ES EL QUE DICE SI FUE SUCCES O FAIL
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          4 :     return (GCMreply.getCodigo() == 200);</span></a>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineCov">         12 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

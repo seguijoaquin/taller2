@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/servidor/Servidor.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/servidor</a> - Servidor.cpp<span style="font-size: 80%;"> (source / <a href="Servidor.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryMed">87.5 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;Servidor.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineCov">          4 : Servidor::Servidor(){</span>
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
+<span class="lineNum">       6 </span>            :     mg_connection* nc = mg_connect(&amp;manager,&quot;t2shared.herokuapp.com:80&quot;, handlerServer); //SI
+<span class="lineNum">       7 </span>            :     mg_set_protocol_http_websocket(nc);
+<span class="lineNum">       8 </span>            :     //mg_printf(nc, &quot;GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: 0\r\n\r\n&quot;); //Funciona
+<span class="lineNum">       9 </span>            :     mg_printf(nc, &quot;GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\n\r\n&quot;); //Funciona
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            :     mg_connection* nc2 = mg_connect(&amp;manager,&quot;t2shared.herokuapp.com:80&quot;, handlerServer); //SI
+<span class="lineNum">      13 </span>            :     mg_set_protocol_http_websocket(nc2);
+<span class="lineNum">      14 </span>            :     mg_printf(nc2, &quot;GET /users/42 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\n\r\n&quot;); //Funcio
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            :     tiempo = 0;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : //Le pongo user data y veo que pasa....
+<span class="lineNum">      20 </span>            :     nc-&gt;user_data = (void*) 1;
+<span class="lineNum">      21 </span>            :     nc2-&gt;user_data = (void*) 2;
+<span class="lineNum">      22 </span>            : */
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">          4 :     iniciarBaseDeDatos();</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">          4 : void Servidor::iniciarServidor(){</span>
+<span class="lineNum">      28 </span><span class="lineCov">          4 :     this-&gt;manejadorDeConexiones.iniciarConexionComoServidor(&quot;8000&quot;, this);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          4 : }</span>
+<a name="30"><span class="lineNum">      30 </span>            : </a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">          4 : void Servidor::iniciarBaseDeDatos(){</span>
+<span class="lineNum">      33 </span>            :     //this-&gt;credencialesDeUsuarios = new CredencialesDeUsuarios(&quot;./usuariosRegistrados&quot;);
+<span class="lineNum">      34 </span>            :     //this-&gt;conversaciones = new Conversaciones(&quot;./Conversaciones&quot;);
+<span class="lineNum">      35 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : 
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineCov">         18 : string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){</span>
+<span class="lineNum">      42 </span>            :     //string respuesta;
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            :     //AtendedorHTTP atendedor(mensajeHTTPRequest, &amp;(this-&gt;sesionesDeUsuarios));
+<span class="lineNum">      45 </span>            : /*
+<span class="lineNum">      46 </span>            :     //Refactorizar: lanzarServicio(...), ademas podria hacer que Servicios hereden de una clase Servicio y subo ahi el getRespuesta
+<span class="lineNum">      47 </span>            :     switch (atendedor.getServicioALanzar()){
+<span class="lineNum">      48 </span>            :         case LANZAR_SERVICIO_REGISTRO:
+<span class="lineNum">      49 </span>            :             {
+<span class="lineNum">      50 </span>            :                 servicioRegistro registrador(&amp;(this-&gt;manejadorDeConexiones), mensajeHTTPRequest, this-&gt;credencialesDeUsuarios);
+<span class="lineNum">      51 </span>            :                 respuesta = registrador.getRespuesta()-&gt;toString();
+<span class="lineNum">      52 </span>            :                 delete registrador.getRespuesta();
+<span class="lineNum">      53 </span>            :                 cout&lt;&lt;&quot;RESPUESTA DEL SERVICIO REGISTRO:\n&quot;&lt;&lt;respuesta&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">      54 </span>            :             }
+<span class="lineNum">      55 </span>            :             break;
+<span class="lineNum">      56 </span>            :         case LANZAR_SERVICIO_LOGIN:
+<span class="lineNum">      57 </span>            :             {
+<span class="lineNum">      58 </span>            :                 servicioLogin logginer(&amp;(this-&gt;sesionesDeUsuarios), mensajeHTTPRequest, this-&gt;credencialesDeUsuarios);
+<span class="lineNum">      59 </span>            :                 respuesta = logginer.getRespuesta()-&gt;toString();
+<span class="lineNum">      60 </span>            :                 delete logginer.getRespuesta();
+<span class="lineNum">      61 </span>            :                 cout&lt;&lt;&quot;RESPUESTA DEL SERVICIO LOGIN:\n&quot;&lt;&lt;respuesta&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">      62 </span>            :             }
+<span class="lineNum">      63 </span>            :             break;
+<span class="lineNum">      64 </span>            :         case LANZAR_SERVICIO_CHAT:
+<span class="lineNum">      65 </span>            :             {
+<span class="lineNum">      66 </span>            :                 ServicioChat chat(&amp;(this-&gt;manejadorDeConexiones),&amp;mensajeHTTPRequest,&amp;(this-&gt;sesionesDeUsuarios), this-&gt;conversaciones);
+<span class="lineNum">      67 </span>            :                 respuesta = chat.getRespuesta()-&gt;toString();
+<span class="lineNum">      68 </span>            :                 delete chat.getRespuesta();
+<span class="lineNum">      69 </span>            :                 cout&lt;&lt;&quot;RESPUESTA DEL SERVICIO CHAT:\n&quot;&lt;&lt;respuesta&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">      70 </span>            :             }
+<span class="lineNum">      71 </span>            :             break;
+<span class="lineNum">      72 </span>            :         case LANZAR_SERVICIO_MENSAJES:
+<span class="lineNum">      73 </span>            :             {
+<span class="lineNum">      74 </span>            :                 ServicioMensajes mensajes(&amp;mensajeHTTPRequest,&amp;(this-&gt;sesionesDeUsuarios),this-&gt;conversaciones);
+<span class="lineNum">      75 </span>            :                 respuesta = mensajes.getRespuesta()-&gt;toString();
+<span class="lineNum">      76 </span>            :                 delete mensajes.getRespuesta();
+<span class="lineNum">      77 </span>            :                 cout&lt;&lt;&quot;RESPUESTA DEL SERVICIO MENSAJES:\n&quot;&lt;&lt;respuesta&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">      78 </span>            :             }
+<span class="lineNum">      79 </span>            :             break;
+<span class="lineNum">      80 </span>            :         case LANZAR_SERVICIO_SIN_PERMISO:
+<span class="lineNum">      81 </span>            :             {
+<span class="lineNum">      82 </span>            :                 //respuesta = CONSTANTE_MENSAJE_DE_ERROR
+<span class="lineNum">      83 </span>            :                 respuesta = &quot;HTTP/1.1 400 No tiene autorizacion\r\n\r\n&quot;;
+<span class="lineNum">      84 </span>            :             }
+<span class="lineNum">      85 </span>            :             break;
+<span class="lineNum">      86 </span>            :         case LANZAR_SERVICIO_TEST:
+<span class="lineNum">      87 </span>            :             {
+<span class="lineNum">      88 </span>            :                 respuesta = &quot;HTTP/1.1 200 Server online\r\n\r\n&quot;;
+<span class="lineNum">      89 </span>            :             }
+<span class="lineNum">      90 </span>            :             break;
+<span class="lineNum">      91 </span>            :         case LANZAR_SERVICIO_CERRAR:
+<span class="lineNum">      92 </span>            :             {
+<span class="lineNum">      93 </span>            :                 //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
+<span class="lineNum">      94 </span>            :                 respuesta = &quot;HTTP/1.1 200 Se cerrara el server\r\n\r\n&quot;;
+<span class="lineNum">      95 </span>            :                 this-&gt;manejadorDeConexiones.terminarConexionComoServidor();
+<span class="lineNum">      96 </span>            :             }
+<span class="lineNum">      97 </span>            :             break;
+<span class="lineNum">      98 </span>            :     }
+<span class="lineNum">      99 </span>            : */
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span><span class="lineCov">         18 :     Servicio* servicio = this-&gt;factoryServicios.fabricarServicio(mensajeHTTPRequest);</span>
+<span class="lineNum">     102 </span><span class="lineCov">         18 :     string respuesta;</span>
+<span class="lineNum">     103 </span><span class="lineCov">         18 :     if (servicio != nullptr){</span>
+<span class="lineNum">     104 </span><span class="lineCov">         14 :         respuesta = servicio-&gt;getRespuesta()-&gt;toString();</span>
+<span class="lineNum">     105 </span><span class="lineCov">         14 :         delete servicio-&gt;getRespuesta();</span>
+<span class="lineNum">     106 </span><span class="lineCov">         14 :         delete servicio;</span>
+<span class="lineNum">     107 </span>            :     }
+<span class="lineNum">     108 </span>            :     else{
+<span class="lineNum">     109 </span>            :         //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
+<span class="lineNum">     110 </span><span class="lineCov">          4 :         respuesta = &quot;HTTP/1.1 200 Se cerrara el server\r\n\r\n&quot;;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          4 :         this-&gt;manejadorDeConexiones.terminarConexionComoServidor();</span>
+<span class="lineNum">     112 </span>            :     }
+<span class="lineNum">     113 </span><span class="lineCov">         18 :     return respuesta;</span>
+<a name="114"><span class="lineNum">     114 </span>            : }</a>
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span><span class="lineCov">          4 : Servidor::~Servidor(){</span>
+<a name="117"><span class="lineNum">     117 </span>            :     //delete this-&gt;conversaciones;</a>
+<span class="lineNum">     118 </span>            :     //delete this-&gt;credencialesDeUsuarios;
+<span class="lineNum">     119 </span><span class="lineCov">         16 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

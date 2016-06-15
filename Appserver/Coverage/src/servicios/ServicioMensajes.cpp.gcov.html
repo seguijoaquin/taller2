@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/servicios/ServicioMensajes.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/servicios</a> - ServicioMensajes.cpp<span style="font-size: 80%;"> (source / <a href="ServicioMensajes.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;ServicioMensajes.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineCov">          1 : ServicioMensajes::ServicioMensajes(MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :     this-&gt;mensajeHTTP = mensajeHTTP;</span>
+<span class="lineNum">       5 </span>            :     //this-&gt;sesiones = sesiones;
+<span class="lineNum">       6 </span><span class="lineCov">          1 :     this-&gt;conversaciones = conversaciones;</span>
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">          1 :     this-&gt;atenderMensajes();</span>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineCov">          2 : ServicioMensajes::~ServicioMensajes(){</span>
+<span class="lineNum">      12 </span>            :     //dtor
+<span class="lineNum">      13 </span><span class="lineCov">          2 : }</span>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">          1 : void ServicioMensajes::atenderMensajes(){</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :     string usuario1 = this-&gt;mensajeHTTP-&gt;getHeader(&quot;Usuario1&quot;);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     string tokenIngresado = this-&gt;mensajeHTTP-&gt;getHeader(&quot;Token&quot;);</span>
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : /*    //if (this-&gt;sesiones-&gt;validarTokenConUsuario(usuario1, tokenIngresado)){
+<span class="lineNum">      21 </span>            :     if (true){
+<span class="lineNum">      22 </span>            :         if (true){//Ahora me tengo que fijar si hubo match
+<span class="lineNum">      23 </span>            : */
+<span class="lineNum">      24 </span>            :             //aca SI hubo match y tengo el token correcto
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     string usuario2 = this-&gt;mensajeHTTP-&gt;getHeader(&quot;Usuario2&quot;);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     string desde = this-&gt;mensajeHTTP-&gt;getHeader(&quot;Desde&quot;);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     string cantidad = this-&gt;mensajeHTTP-&gt;getHeader(&quot;Cantidad&quot;);</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     Mensajes mensajes = this-&gt;conversaciones-&gt;obtenerCantidadMensajesDesdeEntre(StringUtil::str2int(cantidad),StringUtil::str2int(desde),usuario1,usuario2);</span>
+<span class="lineNum">      30 </span>            :     //string mensajesPedidos = mensajes.toString();
+<span class="lineNum">      31 </span>            :     //delete mensajes;
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     RespuestaMensajes* respuestaMensajes = new RespuestaMensajes();</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     respuestaMensajes-&gt;setMensajesComoRespuesta(mensajes);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     this-&gt;respuesta = respuestaMensajes;</span>
+<span class="lineNum">      36 </span>            :             //this-&gt;respuesta = &quot;HTTP/1.1 201 OK\r\n\r\n&quot; + mensajesPedidos;
+<span class="lineNum">      37 </span>            : /*        }
+<span class="lineNum">      38 </span>            :         else{
+<span class="lineNum">      39 </span>            :             //this-&gt;respuesta = &quot;HTTP/1.1 400 No hubo match\r\n\r\n&quot;;
+<span class="lineNum">      40 </span>            :         }
+<span class="lineNum">      41 </span>            :     }
+<span class="lineNum">      42 </span>            :     else{
+<span class="lineNum">      43 </span>            :         //this-&gt;respuesta = &quot;HTTP/1.1 400 No tiene autorizacion\r\n\r\n&quot;;
+<a name="44"><span class="lineNum">      44 </span>            :     }</a>
+<span class="lineNum">      45 </span>            : */
+<span class="lineNum">      46 </span><span class="lineCov">         13 : }</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : /*string ServicioMensajes::getRespuesta(){
+<span class="lineNum">      49 </span>            :     return this-&gt;respuesta;
+<span class="lineNum">      50 </span>            : }*/
+<span class="lineNum">      51 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/servicios/ManejadorDeConexiones.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/servicios</a> - ManejadorDeConexiones.cpp<span style="font-size: 80%;"> (source / <a href="ManejadorDeConexiones.cpp.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">95.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-06-15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryHi">90.9 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;ManejadorDeConexiones.h&quot;</a>
+<span class="lineNum">       2 </span>            : #include &quot;Servidor.h&quot;
+<span class="lineNum">       3 </span>            : #include &quot;servicioRegistro.h&quot;
+<span class="lineNum">       4 </span>            : using namespace std;
+<span class="lineNum">       5 </span>            : 
+<span class="lineNum">       6 </span>            : 
+<a name="7"><span class="lineNum">       7 </span>            : int ManejadorDeConexiones::tiempo = 0;</a>
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span><span class="lineCov">          4 : ManejadorDeConexiones::ManejadorDeConexiones(){</span>
+<span class="lineNum">      10 </span><span class="lineCov">          4 :     mg_mgr_init(&amp;(this-&gt;manager), NULL);</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span><span class="lineCov">          4 : ManejadorDeConexiones::~ManejadorDeConexiones(){</span>
+<span class="lineNum">      14 </span><span class="lineCov">          4 :     mg_mgr_free(&amp;manager);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      16 </span>            : 
+<a name="17"><span class="lineNum">      17 </span>            : </a>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineCov">          4 : void ManejadorDeConexiones::iniciarConexionComoServidor(string puerto, Servidor* servidor){</span>
+<span class="lineNum">      20 </span>            :     // Se bindea al localhost 8000 y se guarda la conexion
+<span class="lineNum">      21 </span><span class="lineCov">          4 :     mg_connection* conexionListening = mg_bind(&amp;(this-&gt;manager), puerto.c_str(), this-&gt;handlerServer);</span>
+<span class="lineNum">      22 </span>            :     // Configuro al manager como http
+<span class="lineNum">      23 </span><span class="lineCov">          4 :     mg_set_protocol_http_websocket(conexionListening);</span>
+<span class="lineNum">      24 </span>            :     //Cada conexion que entra se va a manejar en un thread deatacheado distinto usando el handlerServer
+<span class="lineNum">      25 </span><span class="lineCov">          4 :     mg_enable_multithreading(conexionListening);</span>
+<span class="lineNum">      26 </span>            :     /////////////////////////////////////////////////////////////////////
+<span class="lineNum">      27 </span><span class="lineCov">          4 :     conexionListening-&gt;user_data = servidor;</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineCov">          4 :     this-&gt;escucharMensajes();</span>
+<span class="lineNum">      30 </span><span class="lineCov">          4 : }</span>
+<a name="31"><span class="lineNum">      31 </span>            : </a>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineCov">          4 : void ManejadorDeConexiones::escucharMensajes(){</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 :     this-&gt;escuchar = true;</span>
+<span class="lineNum">      35 </span>            :     //for (;;) {
+<span class="lineNum">      36 </span><span class="lineCov">        122 :     while(this-&gt;escuchar){</span>
+<span class="lineNum">      37 </span><span class="lineCov">        114 :         mg_mgr_poll(&amp;(this-&gt;manager), 1000);</span>
+<span class="lineNum">      38 </span>            :         //cout&lt;&lt;&quot;POLL----------------------------------------------------\n&quot;;
+<span class="lineNum">      39 </span>            :     }
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">          4 : void ManejadorDeConexiones::terminarConexionComoServidor(){</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 :     this-&gt;escuchar = false;</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineCov">         70 : void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int evento, void* ev_data) {</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span><span class="lineCov">         70 :     struct mbuf* recvBuffer = &amp;(conexion-&gt;recv_mbuf);</span>
+<span class="lineNum">      49 </span><span class="lineCov">         70 :     struct mbuf* sendBuffer = &amp;(conexion-&gt;send_mbuf);</span>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            :     /*if (evento!=0){
+<span class="lineNum">      52 </span>            :         cout&lt;&lt;&quot;EL evento de no se quien es: &quot;&lt;&lt;evento&lt;&lt;&quot; \n&quot;;
+<span class="lineNum">      53 </span>            :     }*/
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span><span class="lineCov">         70 :     cout&lt;&lt;&quot;Conexion en el main direccion: &quot;&lt;&lt;conexion&lt;&lt;&quot;-----------------------\n&quot;;</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">         70 :     switch (evento) {</span>
+<span class="lineNum">      58 </span>            :         case MG_EV_HTTP_REPLY:
+<span class="lineNum">      59 </span>            :             {
+<span class="lineNum">      60 </span>            :                 /*
+<span class="lineNum">      61 </span>            :                     cout&lt;&lt;&quot;Esto se dispara?\n&quot;;
+<span class="lineNum">      62 </span>            :                     printf(&quot;Lo que hay en el buffer es:\n%.*s\n&quot;, (int)recvBuffer-&gt;len,recvBuffer-&gt;buf);
+<span class="lineNum">      63 </span>            :                     mbuf_remove(recvBuffer, recvBuffer-&gt;len);
+<span class="lineNum">      64 </span>            :                     //conexion-&gt;flags |= MG_F_CLOSE_IMMEDIATELY;
+<span class="lineNum">      65 </span>            :                 */
+<span class="lineNum">      66 </span>            :             }
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         break;</span>
+<span class="lineNum">      68 </span>            :         case MG_EV_HTTP_REQUEST:
+<span class="lineNum">      69 </span>            :             {
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            :                 /*Esto lo puedo hacer porque estoy seguro que la UNICA conexion que esta listening (la misma que recibe los HTTP_REQUEST)
+<span class="lineNum">      72 </span>            :                   es la conexion del Servidor
+<span class="lineNum">      73 </span>            :                 */
+<span class="lineNum">      74 </span><span class="lineCov">         18 :                 struct http_message* mensajeHTTP = (struct http_message *) ev_data;</span>
+<span class="lineNum">      75 </span>            :                 //Refactorizar: que sea una interfaz como &quot;Recibidor de mensajes&quot;
+<span class="lineNum">      76 </span><span class="lineCov">         18 :                 string respuesta = ((Servidor*)(conexion-&gt;user_data))-&gt;getRespuestaDelServicio(MensajeHTTPRequest(mensajeHTTP));</span>
+<span class="lineNum">      77 </span><span class="lineCov">         18 :                 printf(&quot;Mensaje de llegada al server:\n%.*s\n&quot;, (int)recvBuffer-&gt;len,recvBuffer-&gt;buf);</span>
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span><span class="lineCov">         18 :                 cout&lt;&lt;&quot;ESTO ES LO QUE SE VA PRINTEAR EN EL BUFFER\n&quot;&lt;&lt;respuesta&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineCov">         18 :                 mg_printf(conexion,&quot;%s&quot;,StringUtil::stringToChar(respuesta));</span>
+<span class="lineNum">      83 </span><span class="lineCov">         18 :                 printf(&quot;Lo que hay en el sendBuffer del HTTP_REQUEST es:\n%.*s\n&quot;, (int)sendBuffer-&gt;len,sendBuffer-&gt;buf);</span>
+<span class="lineNum">      84 </span><span class="lineCov">         18 :                 conexion-&gt;flags |= MG_F_SEND_AND_CLOSE;</span>
+<span class="lineNum">      85 </span>            :                 //Refactorizar: limpiarElBuffer(...), tal vez en un archivo &quot;Utilities&quot; xq esto tambien lo va a tener que usar el registrador
+<span class="lineNum">      86 </span><span class="lineCov">         18 :                 mbuf_remove(recvBuffer, recvBuffer-&gt;len);</span>
+<span class="lineNum">      87 </span>            :             }
+<span class="lineNum">      88 </span><span class="lineCov">         18 :             break;</span>
+<span class="lineNum">      89 </span>            :         case MG_EV_SEND:
+<span class="lineNum">      90 </span>            :             {
+<span class="lineNum">      91 </span><span class="lineCov">         18 :                 cout&lt;&lt;&quot;SE MANDO EL BUFFER\n&quot;;</span>
+<span class="lineNum">      92 </span>            :             }
+<span class="lineNum">      93 </span><span class="lineCov">         16 :             break;</span>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :         case MG_EV_CONNECT:
+<span class="lineNum">      96 </span>            :             {
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :                 cout&lt;&lt;&quot;SE CONECTO AL SISTEMA, le escribo aca lo que tiene que mandar\n&quot;;</span>
+<span class="lineNum">      98 </span>            :                 /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
+<span class="lineNum">      99 </span>            :                 cout&lt;&lt;&quot;El indice de CONNECT es: &quot;&lt;&lt;(int)(conexion-&gt;user_data)&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">     100 </span>            :                 //mbuf_remove(sendBuffer, sendBuffer-&gt;len);
+<span class="lineNum">     101 </span>            :                 int i = 0;
+<span class="lineNum">     102 </span>            :                 while (i &lt; 10){
+<span class="lineNum">     103 </span>            :                     i++;
+<span class="lineNum">     104 </span>            :                     tiempo++;
+<span class="lineNum">     105 </span>            :                     cout&lt;&lt;&quot;Tiempo en la conexion nro &quot;&lt;&lt;(int)conexion-&gt;user_data&lt;&lt;&quot; &quot;&lt;&lt;tiempo&lt;&lt;&quot; segundo\n&quot;;
+<span class="lineNum">     106 </span>            :                     sleep(1);
+<span class="lineNum">     107 </span>            :                 }
+<span class="lineNum">     108 </span>            :                 */
+<span class="lineNum">     109 </span>            :             }
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     111 </span>            :         /*WARNING IMPORTANTE: SI ESTA EL CASE MG_EV_RECV ENTONCES SE USA ESTE EN VEZ DEL MG_EV_HTTP_REPLY
+<span class="lineNum">     112 </span>            :         case MG_EV_RECV:
+<span class="lineNum">     113 </span>            :             {
+<span class="lineNum">     114 </span>            :                 cout&lt;&lt;&quot;Se recibio algo\n&quot;;
+<span class="lineNum">     115 </span>            :                 printf(&quot;Lo que hay en el buffer es:\n%.*s\n&quot;, recvBuffer-&gt;len,recvBuffer-&gt;buf);
+<span class="lineNum">     116 </span>            :                 mbuf_remove(recvBuffer, recvBuffer-&gt;len);
+<span class="lineNum">     117 </span>            :                 //mg_printf(conexion, &quot;GET /users/18 HTTP/1.1\r\nHost: t2shared.herokuapp.com\r\nContent-Length: 0\r\n\r\n&quot;);
+<span class="lineNum">     118 </span>            :             }
+<span class="lineNum">     119 </span>            :             break;
+<span class="lineNum">     120 </span>            :         */
+<span class="lineNum">     121 </span>            :         case MG_EV_CLOSE:
+<span class="lineNum">     122 </span>            :             {
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineCov">         16 :                 cout&lt;&lt;&quot;SE CERRO LA CONEXION en el main\n&quot;;// a los &quot;&lt;&lt;tiempo&lt;&lt;&quot; segundos\n&quot;;</span>
+<span class="lineNum">     125 </span>            :                 /*  CON ESTO ESTUVE PROBANDO SI HAY MULTITHREADING EN LAS CONEXIONES OUTBOUND
+<span class="lineNum">     126 </span>            :                 cout&lt;&lt;&quot;El indice de CLOSE es: &quot;&lt;&lt;(int)conexion-&gt;user_data&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">     127 </span>            :                 */
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            :             }
+<span class="lineNum">     130 </span><span class="lineCov">         16 :             break;</span>
+<span class="lineNum">     131 </span>            :         default:
+<span class="lineNum">     132 </span>            :                 /*if (evento!=0){
+<span class="lineNum">     133 </span>            :                     cout&lt;&lt;&quot;EL evento de no se quien es: &quot;&lt;&lt;evento&lt;&lt;&quot; \n&quot;;
+<span class="lineNum">     134 </span>            :                 }*/
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineCov">         18 :             break;</span>
+<span class="lineNum">     137 </span>            :     }
+<span class="lineNum">     138 </span><span class="lineCov">         68 : }</span>
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            : /*
+<span class="lineNum">     141 </span>            : void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio){
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            :     string direccion = host + &quot;:&quot; + puertoLocal;
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            :     mg_connection* conexionParaRegistrarse = mg_connect(&amp;(this-&gt;manager), direccion.c_str() , this-&gt;handlerCliente);
+<span class="lineNum">     146 </span>            :     mg_set_protocol_http_websocket(conexionParaRegistrarse);
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span>            :     //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz &quot;Cliente&quot;
+<span class="lineNum">     149 </span>            :     conexionParaRegistrarse-&gt;user_data = servicio;
+<span class="lineNum">     150 </span>            :     servicio-&gt;esperarRespuesta();
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     string mensaje = metodo + &quot; &quot; + uri + &quot; HTTP/1.1\r\nHost: &quot;+host + &quot;\r\nContent-Length: &quot;+ StringUtil::int2string(body.length()) +&quot;\r\nContent-Type: application/json\r\n\r\n&quot;+body;
+<span class="lineNum">     153 </span>            :     mg_printf(conexionParaRegistrarse,&quot;%s&quot;, mensaje.c_str());
+<span class="lineNum">     154 </span>            : }
+<span class="lineNum">     155 </span>            : */
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span>            : /*void ManejadorDeConexiones::iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente){
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            :     string direccion = host + &quot;:&quot; + puertoLocal;
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            :     mg_connection* conexionParaRegistrarse = mg_connect(&amp;(this-&gt;manager), direccion.c_str() , this-&gt;handlerCliente);
+<span class="lineNum">     164 </span>            :     mg_set_protocol_http_websocket(conexionParaRegistrarse);
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            :     //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz &quot;Cliente&quot;
+<span class="lineNum">     167 </span>            :     conexionParaRegistrarse-&gt;user_data = cliente;
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            :     string mensaje = metodo + &quot; &quot; + uri + &quot; HTTP/1.1\r\nHost: &quot;+host + &quot;\r\nContent-Length: &quot;+ StringUtil::int2string(body.length()) +&quot;\r\nContent-Type: application/json\r\n\r\n&quot;+body;
+<span class="lineNum">     170 </span>            :     mg_printf(conexionParaRegistrarse,&quot;%s&quot;, mensaje.c_str());
+<span class="lineNum">     171 </span>            :     cliente-&gt;esperarRespuesta();//aca el cliente implmenta el loop de espera
+<span class="lineNum">     172 </span>            : }
+<span class="lineNum">     173 </span>            : */
+<span class="lineNum">     174 </span>            : /*
+<span class="lineNum">     175 </span>            : MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host){
+<span class="lineNum">     176 </span>            :     ClienteDelSharedServer cliente;
+<span class="lineNum">     177 </span>            :     string direccion = host + &quot;:&quot; + puertoLocal;
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            :     mg_connection* conexionParaRegistrarse = mg_connect(&amp;(this-&gt;manager), direccion.c_str() , this-&gt;handlerCliente);
+<span class="lineNum">     180 </span>            :     mg_set_protocol_http_websocket(conexionParaRegistrarse);
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span>            :     //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz &quot;Cliente&quot;
+<span class="lineNum">     183 </span>            :     conexionParaRegistrarse-&gt;user_data = &amp;cliente;
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span>            :     string mensaje = metodo + &quot; &quot; + uri + &quot; HTTP/1.1\r\nHost: &quot;+host + &quot;\r\nContent-Length: &quot;+ StringUtil::int2string(body.length()) +&quot;\r\nContent-Type: application/json\r\n\r\n&quot;+body;
+<span class="lineNum">     186 </span>            :     mg_printf(conexionParaRegistrarse,&quot;%s&quot;, mensaje.c_str());
+<span class="lineNum">     187 </span>            :     cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
+<span class="lineNum">     188 </span>            :     return cliente.getRespuesta();
+<span class="lineNum">     189 </span>            : }
+<a name="190"><span class="lineNum">     190 </span>            : */</a>
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span><span class="lineCov">          2 : MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal){</span>
+<span class="lineNum">     193 </span><span class="lineCov">          2 :     ClienteDelSharedServer cliente;</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineCov">          4 :     string direccion = request-&gt;getHeader(&quot;Host&quot;) + &quot;:&quot; + puertoLocal;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          2 :     mg_connection* conexionParaRegistrarse = mg_connect(&amp;(this-&gt;manager), direccion.c_str() , this-&gt;handlerCliente);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          2 :     mg_set_protocol_http_websocket(conexionParaRegistrarse);</span>
+<span class="lineNum">     198 </span>            :     //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz &quot;Cliente&quot;
+<span class="lineNum">     199 </span><span class="lineCov">          2 :     conexionParaRegistrarse-&gt;user_data = &amp;cliente;</span>
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span>            :     //string mensaje = metodo + &quot; &quot; + uri + &quot; HTTP/1.1\r\nHost: &quot;+host + &quot;\r\nContent-Length: &quot;+ StringUtil::int2string(body.length()) +&quot;\r\nContent-Type: application/json\r\n\r\n&quot;+body;
+<span class="lineNum">     202 </span><span class="lineCov">          4 :     string mensaje = request-&gt;toString();</span>
+<span class="lineNum">     203 </span><span class="lineCov">          2 :     mg_printf(conexionParaRegistrarse,&quot;%s&quot;, mensaje.c_str());</span>
+<span class="lineNum">     204 </span><span class="lineCov">          2 :     cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera</span>
+<span class="lineNum">     205 </span><span class="lineCov">          4 :     return cliente.getRespuesta();</span>
+<span class="lineNum">     206 </span>            : }
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            : 
+<a name="211"><span class="lineNum">     211 </span>            : </a>
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span><span class="lineCov">         12 : void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int evento, void* ev_data){</span>
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span><span class="lineCov">         12 :     struct mbuf* recvBuffer = &amp;(conexion-&gt;recv_mbuf);</span>
+<span class="lineNum">     216 </span><span class="lineCov">         12 :     struct mbuf* sendBuffer = &amp;(conexion-&gt;send_mbuf);</span>
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span><span class="lineCov">         12 :     switch (evento) {</span>
+<span class="lineNum">     220 </span>            :         case MG_EV_CONNECT:
+<span class="lineNum">     221 </span>            :             {
+<span class="lineNum">     222 </span><span class="lineCov">          2 :                 cout&lt;&lt;&quot;EL REGISTRO SE CONECTO AL SERVER\n&quot;;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          2 :                 cout&lt;&lt;&quot;El indice de CONNECT es: &quot;&lt;&lt;conexion&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">     224 </span>            :                 //PARA PROBAR SI LAS CONEXIONES OUTBOUNDS SE MANEJAN EN UN MISMO THREAD
+<span class="lineNum">     225 </span>            :                 /*int i = 0;
+<span class="lineNum">     226 </span>            :                 while (i &lt; 5){ //con 10seg y dos conexiones tira segmentation faults
+<span class="lineNum">     227 </span>            :                     i++;
+<span class="lineNum">     228 </span>            :                     tiempo++;
+<span class="lineNum">     229 </span>            :                     cout&lt;&lt;&quot;Tiempo en la conexion con direccion &quot;&lt;&lt;conexion&lt;&lt;&quot; &quot;&lt;&lt;tiempo&lt;&lt;&quot; segundos\n&quot;;
+<span class="lineNum">     230 </span>            :                     sleep(1);
+<span class="lineNum">     231 </span>            :                 }*/
+<span class="lineNum">     232 </span>            :             }
+<span class="lineNum">     233 </span><span class="lineCov">          2 :             break;</span>
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span>            :         case MG_EV_HTTP_REPLY:
+<span class="lineNum">     236 </span>            :             {
+<span class="lineNum">     237 </span><span class="lineCov">          2 :                 cout&lt;&lt;&quot;EL SERVER TIRO EL REPLY\n&quot;;</span>
+<span class="lineNum">     238 </span>            :                 //NOTA: castear el ev_data a http_message* se puede hacer aca porque el caso MG_EV_HTTP_REPLY garantiza que haya un http_message en el ev_data
+<span class="lineNum">     239 </span>            :                 //TODO: Aca es en donde se tiene que setear el codigo de retorno
+<span class="lineNum">     240 </span>            : 
+<span class="lineNum">     241 </span>            :                 //((servicioRegistro*)conexion-&gt;user_data)-&gt;setCodigoResuesta( ((http_message*) ev_data)-&gt;resp_code  );
+<span class="lineNum">     242 </span><span class="lineCov">          2 :                 ((ClienteDelSharedServer*)conexion-&gt;user_data)-&gt;setRespuesta(MensajeHTTPReply((http_message*) ev_data));</span>
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            :                 //((servicioRegistro*)conexion-&gt;user_data)-&gt;desbloquear( ((http_message*) ev_data)-&gt;resp_code );
+<span class="lineNum">     245 </span><span class="lineCov">          2 :                 printf(&quot;Lo que hay en el buffer DEL REGISTRO en RECV es:\n%.*s\n&quot;, (int)recvBuffer-&gt;len,recvBuffer-&gt;buf);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          2 :                 mbuf_remove(recvBuffer, recvBuffer-&gt;len);</span>
+<span class="lineNum">     247 </span>            :                 //Esto es porque ya no tiene sentido que esa conexion siga activa luego de recibir la respuesta
+<span class="lineNum">     248 </span><span class="lineCov">          2 :                 conexion-&gt;flags |= MG_F_CLOSE_IMMEDIATELY;</span>
+<span class="lineNum">     249 </span>            :             }
+<span class="lineNum">     250 </span><span class="lineCov">          2 :             break;</span>
+<span class="lineNum">     251 </span>            :         case MG_EV_SEND:
+<span class="lineNum">     252 </span>            :             {
+<span class="lineNum">     253 </span><span class="lineCov">          2 :                 cout&lt;&lt;&quot;Se envio algo\n&quot;;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          2 :                 printf(&quot;Lo que hay en el buffer DEL REGISTRO en SEND es:\n%.*s\n&quot;, (int)sendBuffer-&gt;len,sendBuffer-&gt;buf);</span>
+<span class="lineNum">     255 </span>            :             }
+<span class="lineNum">     256 </span><span class="lineCov">          2 :             break;</span>
+<span class="lineNum">     257 </span>            :         case MG_EV_CLOSE:
+<span class="lineNum">     258 </span>            :             {
+<span class="lineNum">     259 </span>            :                 //cout&lt;&lt;&quot;SE CERRO LA CONEXION\n&quot;;
+<span class="lineNum">     260 </span>            :                 //Deberia setearse arriba el codigo y aca nada mas -&gt;desbloquear()
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span>            :                 //((servicioRegistro*)conexion-&gt;user_data)-&gt;dejarDeEsperar();
+<span class="lineNum">     263 </span><span class="lineCov">          2 :                 ((ClienteDelSharedServer*)conexion-&gt;user_data)-&gt;terminarConexion();</span>
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span>            :                 //cout&lt;&lt;&quot;SE CERRO LA CONEXION a los &quot;&lt;&lt;tiempo&lt;&lt;&quot; segundos &quot;&lt;&lt;&quot;El indice de CLOSE es: &quot;&lt;&lt;conexion&lt;&lt;&quot;\n&quot;;
+<span class="lineNum">     267 </span>            :             }
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          2 :             break;</span></a>
+<span class="lineNum">     269 </span>            :     }
+<span class="lineNum">     270 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     271 </span>            : 
+<span class="lineNum">     272 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
