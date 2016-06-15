@@ -5,6 +5,12 @@ sudo apt-get install -y zlib1g-dev
 sudo apt-get install -y libbz2-dev
 sudo apt-get install -y libcppunit-dev
 sudo apt-get install -y libpthread-stubs0-dev
+
+#Instalo requests de Python
+sudo apt-get -y install python-pip
+pip install requests
+
+
 echo '--------------------------'
 echo -e '\e[0;32mDEPENDENCIAS INSTALADAS\e[0m'
 echo '--------------------------'
