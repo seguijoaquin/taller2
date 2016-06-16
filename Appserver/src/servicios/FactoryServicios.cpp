@@ -8,6 +8,8 @@ FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
 
     this->shared = new SharedDataBase(this->conexiones);
     this->mensajero = new Mensajero(this->conexiones, this->sesiones);
+
+    this->administradorCandidatos = new AdministradorCandidatos(this->shared, this->mensajero);
 }
 
 FactoryServicios::~FactoryServicios(){
@@ -16,6 +18,7 @@ FactoryServicios::~FactoryServicios(){
     delete this->credenciales;
     delete this->shared;
     delete this->mensajero;
+    delete this->administradorCandidatos;
 }
 
 
@@ -43,6 +46,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
             //servicio = new ServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
 
             creator = new CreatorServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
+        }
+        else if (compararUriHTTP(httpRequest, "/perfil")){
+            creator = new CreatorBusquedaCandidato(this->administradorCandidatos, &httpRequest, this->sesiones);
         }
         else if (compararUriHTTP(httpRequest, "/test")){
             creator = nullptr;

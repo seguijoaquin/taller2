@@ -15,6 +15,7 @@
 #include "CreatorServicioMensajes.h"
 #include "CreatorLogin.h"
 #include "CreatorRegistro.h"
+#include "CreatorBusquedaCandidato.h"
 
 class FactoryServicios
 {
@@ -31,6 +32,8 @@ class FactoryServicios
         ManejadorDeConexiones* conexiones;
         SharedDataBase* shared;
         Mensajero* mensajero;
+
+        AdministradorCandidatos* administradorCandidatos;
 
         bool compararMetodoHTTP(MensajeHTTPRequest& httpRequest, string metodo);
         bool compararUriHTTP(MensajeHTTPRequest& httpRequest, string uri);
