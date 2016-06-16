@@ -6,7 +6,8 @@
 #include "JsonObject.h"
 
 #include "Interes.h"
-#include <set>
+//#include <set>
+#include <vector>
 
 class ListadoDeIntereses
 {
@@ -15,10 +16,15 @@ class ListadoDeIntereses
         virtual ~ListadoDeIntereses();
 
         void agregarIntereses(string jsonListadoIntereses);
+        bool tieneInteres(Interes& interes);
+
+        int size();
+        Interes getInteres(int i);
     protected:
     private:
         void agregarInteres(string jsonInteres);
-        set<Interes*> intereses;
+        //set<Interes> intereses;
+        vector<Interes> intereses;
 };
 
 #endif // LISTADODEINTERESES_H
