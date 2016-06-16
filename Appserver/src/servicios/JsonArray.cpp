@@ -24,6 +24,7 @@ bool JsonArray::operator>>(string& valor){
     }
 }
 
+
 JsonValor JsonArray::operator[](int indice){
     return JsonValor(this->jsonValor[indice]);
 }

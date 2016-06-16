@@ -60,10 +60,10 @@ Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
 
 
 
-ListadoDeUsuarios* SharedDataBase::obtenerListadoDeUsuarios(){
+ListadoDeUsuarios SharedDataBase::obtenerListadoDeUsuarios(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/users/" ,"");
     this->listadoDeUsuarios.agregarUsuarios( respuestaShared.getBody() );
-    return &(this->listadoDeUsuarios);
+    return (this->listadoDeUsuarios);
 }
 
 
@@ -78,11 +78,11 @@ string SharedDataBase::armarURIDeUsuario(int idUsuario){
     return uri;
 }
 
-ListadoDeIntereses* SharedDataBase::obtenerListadoDeIntereses(){
+ListadoDeIntereses SharedDataBase::obtenerListadoDeIntereses(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/interests","");
 
     this->listadoDeIntereses.agregarIntereses( respuestaShared.getBody() );
-    return &(this->listadoDeIntereses);
+    return (this->listadoDeIntereses);
 
 
 }

@@ -2,6 +2,7 @@
 #define JSONARRAY_H
 
 #include "JsonValor.h"
+
 using namespace std;
 
 
@@ -15,6 +16,7 @@ class JsonArray: public JsonValor{
 
 
         bool operator>>(string& valor);
+
         JsonValor operator[](int indice);
 
         void agregar(JsonValor& valor);

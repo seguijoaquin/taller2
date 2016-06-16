@@ -25,7 +25,6 @@ class Pareja
         map<string, int> votosDeUsuarios;
         string usuario1;
         string usuario2;
-
         bool existeUsuario(string usuario);
 };
 

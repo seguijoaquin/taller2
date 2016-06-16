@@ -48,3 +48,5 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
     return (GCMreply.getCodigo() == 200);
 
 }
+
+

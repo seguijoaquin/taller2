@@ -28,10 +28,10 @@ class SharedDataBase
 
         int registrarUsuario(string bodyJson);
         Usuario obtenerPerfilDelUsuario(int idUsuario);
-        ListadoDeUsuarios* obtenerListadoDeUsuarios();
+        ListadoDeUsuarios obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
 
-        ListadoDeIntereses* obtenerListadoDeIntereses();
+        ListadoDeIntereses obtenerListadoDeIntereses();
 
     protected:
     private:
