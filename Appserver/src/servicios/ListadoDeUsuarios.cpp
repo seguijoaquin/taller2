@@ -2,15 +2,15 @@
 
 using namespace std;
 
-ListadoDeUsuarios::ListadoDeUsuarios()
-{
-    //ctor
+ListadoDeUsuarios::ListadoDeUsuarios(){
 }
 
 ListadoDeUsuarios::~ListadoDeUsuarios(){
-    for (set<Usuario*>::iterator it = this->usuarios.begin(); it != this->usuarios.end(); ++it){
-        delete (*it);
+    /*
+    for (map<string, Usuario>::iterator it = this->usuarios.begin(); it != this->usuarios.end(); ++it){
+        delete (it->second);
     }
+    */
 }
 
 void ListadoDeUsuarios::agregarUsuarios(string jsonListadoUsuarios){
@@ -24,6 +24,41 @@ void ListadoDeUsuarios::agregarUsuarios(string jsonListadoUsuarios){
 }
 
 void ListadoDeUsuarios::agregarUsuario(string jsonUsuario){
-    this->usuarios.insert(new Usuario(jsonUsuario));
+    //Usuario* nuevoUsuario = new Usuario(jsonUsuario);
+    //string emailNuevoUsuario = nuevoUsuario->getEmail();
+
+    //Si el usuario existia, entonces deleteo el anterior y lo actualizo
+    /*
+    if (this->usuarios.find(emailNuevoUsuario) != this->usuarios.end()){
+        delete this->usuarios[emailNuevoUsuario];
+    }
+    this->usuarios[emailNuevoUsuario] = nuevoUsuario;
+    */
+
+    Usuario nuevoUsuario(jsonUsuario);
+    string emailNuevoUsuario = nuevoUsuario.getEmail();
+    this->usuarios[emailNuevoUsuario] = nuevoUsuario;
+
+}
+
+
+Usuario ListadoDeUsuarios::getUsuario(string usuario){
+    //PRECONDICION: EL USUARIO EXISTE
+    return ((this->usuarios[usuario]));
+}
+
+void ListadoDeUsuarios::irAlInicio(){
+    this->itUsuarioActual = this->usuarios.begin();
+}
+bool ListadoDeUsuarios::getSiguienteUsuario(Usuario& usuario){
+
+    if ( this->itUsuarioActual != this->usuarios.end() ){
+        usuario = (itUsuarioActual->second);
+        ++itUsuarioActual;
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 

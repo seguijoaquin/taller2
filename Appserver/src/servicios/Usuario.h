@@ -2,29 +2,28 @@
 #define USUARIO_H
 
 #include "JsonObject.h"
-#include <stack>
+#include "ListadoDeIntereses.h"
+
 
 using namespace std;
 
 class Usuario
 {
     public:
+        Usuario();
         Usuario(string jsonUsuario);
         virtual ~Usuario();
 
         string getEmail();
         string getId();
 
-        bool tieneInteres(string interes);
-
 
         string toString();
+        ListadoDeIntereses getIntereses();
     protected:
     private:
         JsonObject perfil;
-        stack<Usuario*> posiblesMatches;
-
-
+        string email;
 };
 
 #endif // USUARIO_H

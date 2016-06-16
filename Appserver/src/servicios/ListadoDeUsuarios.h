@@ -5,8 +5,8 @@
 #include "JsonArray.h"
 
 #include "Usuario.h"
-#include <set>
 
+#include <map>
 #include <iostream>
 
 class ListadoDeUsuarios
@@ -16,11 +16,19 @@ class ListadoDeUsuarios
         virtual ~ListadoDeUsuarios();
 
         void agregarUsuarios(string jsonListadoUsuarios);
+
+        //PRECONDICION: EL USUARIO EXISTE
+        Usuario getUsuario(string usuario);
+
+        //T si hubo siguiente usuario, F si llego al final
+        bool getSiguienteUsuario(Usuario& usuario);
+        void irAlInicio();
     protected:
     private:
         void agregarUsuario(string jsonUsuario);
+        map<string,Usuario> usuarios;
 
-        set<Usuario*> usuarios;
+        map<string,Usuario>::iterator itUsuarioActual;
 };
 
 #endif // LISTADODEUSUARIOS_H

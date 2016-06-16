@@ -2,8 +2,13 @@
 
 using namespace std;
 
+Usuario::Usuario(){
+
+}
+
 Usuario::Usuario(string jsonUsuario){
-    this->perfil = JsonObject(jsonUsuario);
+    this->perfil = JsonObject(jsonUsuario).getJsonObject("user");
+    this->email = this->perfil.getString("email");
 }
 
 Usuario::~Usuario(){
@@ -18,15 +23,19 @@ string Usuario::toString(){
 
 
 string Usuario::getEmail(){
-    return this->perfil.getString("email");
+    return this->email;
 }
 
 string Usuario::getId(){
-
+    return this->perfil.getString("id");
 }
 
-bool Usuario::tieneInteres(string interes){
-
+ListadoDeIntereses Usuario::getIntereses(){
+    ListadoDeIntereses intereses;
+    intereses.agregarIntereses(this->perfil.toString());
+    return intereses;
 }
+
+
 
 
