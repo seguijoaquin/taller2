@@ -1,5 +1,6 @@
 #include "Interes.h"
 
+
 Interes::Interes(string jsonInteres){
     JsonObject datos(jsonInteres);
 
@@ -18,4 +19,9 @@ string Interes::getCategoria(){
 
 string Interes::getValor(){
     return this->valor;
+}
+
+bool Interes::comparar(Interes& interes){
+    return ((this->categoria == interes.getCategoria()) && (this->valor == interes.getValor()));
+
 }

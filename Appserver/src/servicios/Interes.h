@@ -13,6 +13,8 @@ class Interes
         string getCategoria();
         string getValor();
 
+        bool comparar(Interes& interes);
+
     protected:
     private:
         string categoria;
