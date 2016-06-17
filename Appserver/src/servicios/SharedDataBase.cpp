@@ -83,6 +83,16 @@ ListadoDeIntereses SharedDataBase::obtenerListadoDeIntereses(){
 
     this->listadoDeIntereses.agregarIntereses( respuestaShared.getBody() );
     return (this->listadoDeIntereses);
-
-
 }
+
+
+bool SharedDataBase::modificarFotoPerfil(int idUsuario, string fotoBase64){
+    string uri = this->armarURIDeUsuario(idUsuario);
+    uri = uri + "/photo";
+    JsonObject jsonFoto;
+    jsonFoto.agregarClaveValor("photo", fotoBase64);
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("PUT", uri , jsonFoto.toString());
+
+    return (respuestaShared.getCodigo() == 200);
+}
+

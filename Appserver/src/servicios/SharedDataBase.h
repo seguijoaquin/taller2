@@ -33,6 +33,8 @@ class SharedDataBase
 
         ListadoDeIntereses obtenerListadoDeIntereses();
 
+        bool modificarFotoPerfil(int idUsuario, string fotoBase64);
+
     protected:
     private:
         ManejadorDeConexiones* conexiones;
