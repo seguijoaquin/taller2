@@ -53,19 +53,19 @@ class CredencialesDeUsuariosTest : public testing::Test {
 
 
 TEST_F(CredencialesDeUsuariosTest, agregarUnNuevoUsuarioDeberiaDarTrue){
-	ASSERT_TRUE(credenciales->agregarNuevoUsuario(usuario,password));
+	ASSERT_TRUE(credenciales->agregarNuevoUsuario(usuario,password,5));
 }
 
 
 
 TEST_F(CredencialesDeUsuariosTest, alTratarDeAgregarUnUsuarioExistenteDeberiaDarFalse){
-	credenciales->agregarNuevoUsuario(usuario,password);
-	ASSERT_FALSE(credenciales->agregarNuevoUsuario(usuario,password));
+	credenciales->agregarNuevoUsuario(usuario,password,5);
+	ASSERT_FALSE(credenciales->agregarNuevoUsuario(usuario,password,5));
 }
 
 
 TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioExistenteDeberiaDarTrue){
-	credenciales->agregarNuevoUsuario(usuario,password);
+	credenciales->agregarNuevoUsuario(usuario,password,5);
 	ASSERT_TRUE(credenciales->existeUsuario(usuario));
 }
 
@@ -76,13 +76,13 @@ TEST_F(CredencialesDeUsuariosTest, testAlPreguntarSiExisteUnUsuarioInexistenteDe
 }
 
 TEST_F(CredencialesDeUsuariosTest, testValidarCredencialesCorrectasDaTrue){
-	credenciales->agregarNuevoUsuario(usuario,password);
+	credenciales->agregarNuevoUsuario(usuario,password,5);
 	ASSERT_TRUE(credenciales->validarCredenciales(usuario,password));
 }
 
 
 TEST_F(CredencialesDeUsuariosTest, testValidarCredencialesIncorrectasDaFalse){
-	credenciales->agregarNuevoUsuario(usuario,password);
+	credenciales->agregarNuevoUsuario(usuario,password,5);
 	ASSERT_FALSE(credenciales->validarCredenciales(usuario,passwordIncorrecto));
 }
 

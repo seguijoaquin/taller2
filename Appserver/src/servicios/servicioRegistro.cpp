@@ -63,8 +63,9 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
     //if (respustaShared.getCodigo() == 200){
-    if (this->shared->registrarUsuario(bodyJson) > -1 ){
-        this->usuariosRegistrados->agregarNuevoUsuario(usuario,password);
+    int idShared = this->shared->registrarUsuario(bodyJson);
+    if ( idShared > -1 ){
+        this->usuariosRegistrados->agregarNuevoUsuario(usuario,password, idShared);
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaRegistroCorrecto();
         this->respuesta = respuestaRegistro;

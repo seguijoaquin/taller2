@@ -12,12 +12,12 @@ bool CredencialesDeUsuarios::validarCredenciales(string usuario, string password
     return ( (this->existeUsuario(usuario)) && (this->getPasswordDe(usuario) == password) );
 }
 
-bool CredencialesDeUsuarios::agregarNuevoUsuario(string usuario, string password){
+bool CredencialesDeUsuarios::agregarNuevoUsuario(string usuario, string password, int idShared){
     if (this->existeUsuario(usuario)){
         return false;
     }
     else{
-        this->agregarUsuarioYCredenciales(usuario,password);
+        this->agregarUsuarioYCredenciales(usuario,password,idShared);
         return true;
     }
 }
@@ -27,11 +27,18 @@ bool CredencialesDeUsuarios::existeUsuario(string usuario){
 }
 
 string CredencialesDeUsuarios::getPasswordDe(string usuario){
-    return this->credenciales->get(usuario);
+    //return this->credenciales->get(usuario);
+    JsonObject datos(this->credenciales->get(usuario));
+    return datos.getString("password");
+
 }
 
-void CredencialesDeUsuarios::agregarUsuarioYCredenciales(string usuario, string password){
-    this->credenciales->put(usuario,password);
+void CredencialesDeUsuarios::agregarUsuarioYCredenciales(string usuario, string password, int idShared){
+    JsonObject datos;
+    datos.agregarClaveValor("password",password);
+    datos.agregarClaveValor("idShared",idShared);
+    //this->credenciales->put(usuario,password);
+    this->credenciales->put(usuario,datos.toString());
 }
 
 CredencialesDeUsuarios::~CredencialesDeUsuarios(){
