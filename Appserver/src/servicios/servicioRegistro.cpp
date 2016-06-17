@@ -113,7 +113,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     usuarioJobj.agregarClaveValor("name", usuario);
     usuarioJobj.agregarClaveValor("alias", "alias1");
 
-    usuarioJobj.agregarClaveValor("email", usuario + "2/6/16-14:04");
+    usuarioJobj.agregarClaveValor("email", usuario);
     usuarioJobj.agregarClaveValor("sex", "M");
     usuarioJobj.agregarClaveValor("edad", "22");
 
