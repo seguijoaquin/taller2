@@ -17,6 +17,8 @@ class CredencialesDeUsuarios
         //Devuelve T si se pudo agregar y F si el usuario ya existe.
         bool agregarNuevoUsuario(string usuario, string password, int idUsuario);
         bool existeUsuario(string usuario);
+
+        int getIDSharedDe(string usuario);
     protected:
     private:
 

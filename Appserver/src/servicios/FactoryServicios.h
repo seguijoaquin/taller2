@@ -16,6 +16,7 @@
 #include "CreatorLogin.h"
 #include "CreatorRegistro.h"
 #include "CreatorBusquedaCandidato.h"
+#include "CreatorModificarFoto.h"
 
 class FactoryServicios
 {

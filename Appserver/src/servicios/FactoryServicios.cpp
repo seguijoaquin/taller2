@@ -61,6 +61,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
             creator = new CreatorRegistro(this->shared, httpRequest, this->credenciales);
         }
+        else if (compararUriHTTP(httpRequest, "/foto")){
+            creator = new CreatorModificarFoto(this->shared, &httpRequest, this->sesiones, this->credenciales);
+        }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){
         creator = nullptr;
