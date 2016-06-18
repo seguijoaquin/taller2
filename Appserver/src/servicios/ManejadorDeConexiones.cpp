@@ -43,6 +43,7 @@ void ManejadorDeConexiones::terminarConexionComoServidor(){
     this->escuchar = false;
 }
 
+
 void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int evento, void* ev_data) {
 
     struct mbuf* recvBuffer = &(conexion->recv_mbuf);

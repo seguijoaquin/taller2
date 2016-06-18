@@ -26,6 +26,7 @@ class FactoryServicios
         virtual ~FactoryServicios();
 
         Servicio* fabricarServicio(MensajeHTTPRequest);
+        void cambiarShared(string direccion);
     protected:
     private:
         Conversaciones* conversaciones;

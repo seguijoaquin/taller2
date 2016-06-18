@@ -1,13 +1,13 @@
 #ifndef SERVIDOR_H
 #define SERVIDOR_H
 
-//#include "mongoose.h"
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <thread>
-//#include "AtendedorHTTP.h"
-//#include "ConstantesEventosServicios.h"
+#include <queue>
+
+
 #include "SesionesDeUsuarios.h"
 
 /*
@@ -36,6 +36,9 @@ class Servidor
 
         string getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest);
 
+        //BORRAR ESTO
+        ManejadorDeConexiones* getManejador(){ return &this->manejadorDeConexiones; }
+
     protected:
     private:
 
@@ -48,6 +51,13 @@ class Servidor
         void iniciarBaseDeDatos();
 
         FactoryServicios factoryServicios = FactoryServicios(&manejadorDeConexiones);
+
+        static void escucharComandos(Servidor* servidor);
+        static queue<string>* leerComandos(string ruta);
+        static void recorrerComandos(queue<string>* comandos,Servidor* servidor);
+        void interpretar(string comando);
+        bool estaActivo();
+        bool activo;
 };
 
 

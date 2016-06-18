@@ -33,6 +33,8 @@ class SharedDataBase
         ListadoDeIntereses obtenerListadoDeIntereses();
         bool modificarFotoPerfil(int idUsuario, string fotoBase64);
 
+        void cambiarDireccion(string nuevaDireccion);
+
     protected:
     private:
 

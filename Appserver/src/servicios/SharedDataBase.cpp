@@ -9,6 +9,12 @@ SharedDataBase::~SharedDataBase(){
     //dtor
 }
 
+void SharedDataBase::cambiarDireccion(string nuevaDireccion){
+    this->direccionShared = nuevaDireccion;
+}
+
+
+
 MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, string bodyJson){
     MensajeHTTPRequest request;
     request.setMetodo(metodo);
@@ -22,6 +28,7 @@ MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, strin
 
 MensajeHTTPReply SharedDataBase::enviarHTTPRequest(string metodo, string uri, string bodyJson){
     MensajeHTTPRequest request = this->armarRequest(metodo, uri, bodyJson);
+    cout<<"REQUEST DEL SHARED: \n"<<request.toString()<<"\n";
     return this->conexiones->enviarMensajeHTTP(&request,"80");
 }
 

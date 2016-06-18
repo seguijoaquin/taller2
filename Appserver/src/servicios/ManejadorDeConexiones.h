@@ -21,6 +21,8 @@ class ManejadorDeConexiones
         ManejadorDeConexiones();
         virtual ~ManejadorDeConexiones();
 
+
+
         void iniciarConexionComoServidor(string puerto, Servidor* servidor);
         void terminarConexionComoServidor();
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);

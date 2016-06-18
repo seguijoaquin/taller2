@@ -7,7 +7,6 @@ FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
     this->conexiones = conexiones;
 
     this->shared = new SharedDataBase(this->conexiones, "t2shared.herokuapp.com");
-    //this->shared = new SharedDataBase(this->conexiones, "localhost:5000");
     this->mensajero = new Mensajero(this->conexiones, this->sesiones);
 
     this->administradorCandidatos = new AdministradorCandidatos(this->shared, this->mensajero);
@@ -92,4 +91,7 @@ bool FactoryServicios::compararUriHTTP(MensajeHTTPRequest& httpRequest, string u
 
 
 
+void FactoryServicios::cambiarShared(string direccion){
+    this->shared->cambiarDireccion(direccion);
+}
 
