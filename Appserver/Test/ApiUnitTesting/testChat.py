@@ -6,7 +6,7 @@ import unittest
 
 # Precondiciones:
 # Conversaciones:
-# 	Debe haber un usuario en la base de datos que se llame "Usuario"
+# 	Debe haber un usuario en la base de datos que se llame "usuarioTestChat1" y "usuarioTestChat2" con contrasenia "password"
 #
 
 
