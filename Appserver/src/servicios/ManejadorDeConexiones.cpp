@@ -189,6 +189,7 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(string metodo, string 
 }
 */
 
+/*
 MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal){
     ClienteDelSharedServer cliente;
 
@@ -204,13 +205,47 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* re
     cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
     return cliente.getRespuesta();
 }
+*/
 
+MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal){
+    //Se va a crear un manager para cada cliente, no se si traiga problemas internos pero esto permite que las conexiones como cliente se hagan MUCHO mas rapido y en paralelo
+    mg_mgr managerCliente;
+    mg_mgr_init(&managerCliente, NULL);
+
+    ClienteDelSharedServer cliente;
+
+
+    string direccion = request->getHeader("Host") + ":" + puertoLocal;
+    //mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente);
+    //mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->iniciarThreadParaAntenderCliente);
+    mg_connection* conexionParaRegistrarse = mg_connect(&managerCliente, direccion.c_str() , this->handlerCliente);
+    mg_set_protocol_http_websocket(conexionParaRegistrarse);
+    //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz "Cliente"
+    conexionParaRegistrarse->user_data = &cliente;
+
+    //string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
+    string mensaje = request->toString();
+    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
+
+
+
+    while (cliente.conexionActiva){
+        mg_mgr_poll(&managerCliente, 1000);
+    }
+
+    mg_mgr_free(&managerCliente);
+
+    //ESTO NO ES NECESARIO CON EL CLIENTE PROPIO
+    cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
+    return cliente.getRespuesta();
+}
 
 
 
 
 
 void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int evento, void* ev_data){
+
 
     struct mbuf* recvBuffer = &(conexion->recv_mbuf);
     struct mbuf* sendBuffer = &(conexion->send_mbuf);

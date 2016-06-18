@@ -22,12 +22,15 @@ class ClienteDelSharedServer
         //Tal vez hacer que setRespuesta desbloquee al servicio/cliente
         //void dejarDeEsperar();
         MensajeHTTPReply getRespuesta();
+
+        bool conexionActiva;
     protected:
     private:
         MensajeHTTPReply respuesta;
         //bool esperandoRespuesta;
         //bool recibioRespuesta;
-        bool conexionActiva;
+        //LO MUEVO ARRIBA PARA PROBAR EL MANAGER UNICO PARA CADA CLIENTE
+        //bool conexionActiva;
 };
 
 #endif // CLIENTEDELSHAREDSERVER_H

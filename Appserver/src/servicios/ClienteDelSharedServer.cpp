@@ -1,5 +1,6 @@
 #include "ClienteDelSharedServer.h"
 
+
 ClienteDelSharedServer::ClienteDelSharedServer(){
    // this->recibioRespuesta = false;
     this->conexionActiva = true;
@@ -15,8 +16,6 @@ void ClienteDelSharedServer::esperarRespuesta(){
     //while ( !this->recibioRespuesta){
     while ( this->conexionActiva){
         sleep(1);
-        //this->espera++;
-        //cout<<"esta esperando...\n";
     }
 }
 
