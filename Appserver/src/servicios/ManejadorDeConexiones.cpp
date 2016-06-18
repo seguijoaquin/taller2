@@ -214,19 +214,20 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* re
 
     ClienteDelSharedServer cliente;
 
+    string direccion = request->getHeader("Host");
+    //REFACTORIZAR: SI TIENE LOCALHOST
+    if (direccion != "localhost:5000"){
+        direccion = direccion + ":" + puertoLocal;
+    }
 
-    string direccion = request->getHeader("Host") + ":" + puertoLocal;
-    //mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->handlerCliente);
-    //mg_connection* conexionParaRegistrarse = mg_connect(&(this->manager), direccion.c_str() , this->iniciarThreadParaAntenderCliente);
+    //cout<<"DIRECCION"<<direccion<<"\n";
     mg_connection* conexionParaRegistrarse = mg_connect(&managerCliente, direccion.c_str() , this->handlerCliente);
     mg_set_protocol_http_websocket(conexionParaRegistrarse);
-    //Refactorizar// TODO, hacer que la user data sea un Servicio o que implemente una interfaz "Cliente"
     conexionParaRegistrarse->user_data = &cliente;
+    mg_printf(conexionParaRegistrarse,"%s", request->toString().c_str());
 
-    //string mensaje = metodo + " " + uri + " HTTP/1.1\r\nHost: "+host + "\r\nContent-Length: "+ StringUtil::int2string(body.length()) +"\r\nContent-Type: application/json\r\n\r\n"+body;
-    string mensaje = request->toString();
-    mg_printf(conexionParaRegistrarse,"%s", mensaje.c_str());
-
+    //cout<<"LO QUE SE VA A MANDAR EN EL BUFFER DEL SEND DE LA CONEXION#################\n";
+    //printf("%.*s\n",(int)conexionParaRegistrarse->send_mbuf.len,conexionParaRegistrarse->send_mbuf.buf);
 
 
     while (cliente.conexionActiva){
