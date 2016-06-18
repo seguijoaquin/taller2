@@ -34,6 +34,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
             creator = new CreatorChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
         }
+        else if (compararUriHTTP(httpRequest, "/matcheo")){
+            creator = new CreatorVotacion(this->shared, this->mensajero, &httpRequest,this->sesiones, this->administradorCandidatos);
+        }
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){

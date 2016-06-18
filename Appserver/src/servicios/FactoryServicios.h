@@ -17,6 +17,7 @@
 #include "CreatorRegistro.h"
 #include "CreatorBusquedaCandidato.h"
 #include "CreatorModificarFoto.h"
+#include "CreatorVotacion.h"
 
 class FactoryServicios
 {

@@ -16,10 +16,14 @@ class Mensajero
         virtual ~Mensajero();
 
         bool enviarMensaje(string emisor, string receptor, string mensaje);
+        bool notificarUsuarioSobreMatchCon(string usuario, string match);
+
     protected:
     private:
         ManejadorDeConexiones* conexiones;
         SesionesDeUsuarios* sesiones;
+        bool enviarMensaje(MensajeHTTPRequestGCM& requestGCM);
+        void armarBodyDelMensaje(string tokenGCM, MensajeHTTPRequestGCM& requestGCM, JsonObject& dataJson);
 
 
 };

@@ -48,3 +48,11 @@ bool AdministradorCandidatos::compararIntereses(Usuario& usuario1, Usuario& usua
 }
 
 
+void AdministradorCandidatos::usuarioVotaAFavorDe(string usuario1, string usuario2, bool votoAFavor){
+    this->candidatos.usuarioVotaAFavorDe(usuario1, usuario2, votoAFavor);
+}
+
+bool AdministradorCandidatos::hayMatchEntre(string usuario1, string usuario2){
+    return this->candidatos.hayMatchEntre(usuario1, usuario2);
+}
+

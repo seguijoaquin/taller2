@@ -19,6 +19,7 @@ class AdministradorCandidatos
         //El que pide al candidato es responsable de deletear al Usuario*
         Usuario* buscarCandidatoPara(string usuario);
         void usuarioVotaAFavorDe(string usuario1, string usuario2, bool votoAFavor);
+        bool hayMatchEntre(string usuario1, string usuario2);
 
         bool compararIntereses(Usuario& usuario1, Usuario& usuario2);
 

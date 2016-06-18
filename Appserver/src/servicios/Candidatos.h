@@ -18,6 +18,7 @@ class Candidatos
         //Puede devolver true o false dependiendo si hay match o no
         //Devuelve true para que el administrador pueda saber si hubo match para mandarle la notificacion al otro
         bool usuarioVotaAFavorDe(string usuario1, string usuario2, bool votoAFavor);
+        bool hayMatchEntre(string usuario1, string usuario2);
 
 
     protected:

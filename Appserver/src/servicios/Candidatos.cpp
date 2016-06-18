@@ -68,4 +68,13 @@ bool Candidatos::usuarioVotaAFavorDe(string usuario1, string usuario2, bool voto
 
 
 
+bool Candidatos::hayMatchEntre(string usuario1, string usuario2){
+    if ( this->existePareja(usuario1, usuario2) ){
+        Pareja pareja( this->obtenerPareja(usuario1, usuario2) );
+        return pareja.hayMatch();
+    }
+    else{
+        return false;
+    }
+}
 

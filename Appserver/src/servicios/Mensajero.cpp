@@ -39,9 +39,8 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
     //requestGCM.setBody( escritor.write(bodyJson) );
     requestGCM.setBody( bodyJson.toString() );
 
+
     MensajeHTTPReply GCMreply = this->conexiones->enviarMensajeHTTP(&requestGCM,"80");
-
-
     cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
 
     //FALTARIA COMPARAR EL BODY QUE ES EL QUE DICE SI FUE SUCCES O FAIL
@@ -49,4 +48,31 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
 
 }
 
+bool Mensajero::notificarUsuarioSobreMatchCon(string usuario, string match){
+    cout<<"Se va a notificar\n";
+    MensajeHTTPRequestGCM requestGCM;
 
+    string tokenGCM = this->sesiones->getTokenGCMDe(usuario);
+
+    JsonObject dataJson;
+    dataJson.agregarClaveValor("Email", match);
+    dataJson.agregarClaveValor("Nombre","NOMBRE HARDCODEADO"+match);
+
+    this->armarBodyDelMensaje(tokenGCM, requestGCM, dataJson);
+    return this->enviarMensaje(requestGCM);
+}
+
+void Mensajero::armarBodyDelMensaje(string tokenGCM, MensajeHTTPRequestGCM& requestGCM, JsonObject& dataJson){
+    JsonObject bodyJson;
+    bodyJson.agregarClaveValor("to",tokenGCM);
+    bodyJson.agregarClaveValor("data",dataJson);
+    requestGCM.setBody( bodyJson.toString() );
+}
+
+
+bool Mensajero::enviarMensaje(MensajeHTTPRequestGCM& requestGCM){
+    MensajeHTTPReply GCMreply = this->conexiones->enviarMensajeHTTP(&requestGCM,"80");
+    cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
+    //FALTARIA COMPARAR EL BODY QUE ES EL QUE DICE SI FUE SUCCES O FAIL
+    return (GCMreply.getCodigo() == 200);
+}
