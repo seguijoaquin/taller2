@@ -19,24 +19,25 @@ class SharedDataBase
         base64 de la imagen. Si uno consulta el detalle del usuario (users/1) ahí si se devuelve la imagen en base64.
         */
 
-        SharedDataBase(ManejadorDeConexiones* conexiones);
+        SharedDataBase(ManejadorDeConexiones* conexiones, string direccion);
         virtual ~SharedDataBase();
 
         //DESPUES MODIFICAR LO QUE SE PASE COMO PARAMETRO PARA QUE NO SE TENGA QUE PASAR COMO JSON....
         //QUE SE PASE UN PerfilUsuario&
         //bool registrarUsuar(string bodyJson);
-
         int registrarUsuario(string bodyJson);
         Usuario obtenerPerfilDelUsuario(int idUsuario);
         ListadoDeUsuarios obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
 
         ListadoDeIntereses obtenerListadoDeIntereses();
-
         bool modificarFotoPerfil(int idUsuario, string fotoBase64);
 
     protected:
     private:
+
+        string direccionShared;
+
         ManejadorDeConexiones* conexiones;
         MensajeHTTPRequest armarRequest(string metodo, string uri, string bodyJson);
         MensajeHTTPReply enviarHTTPRequest(string metodo, string uri, string bodyJson);
@@ -45,7 +46,6 @@ class SharedDataBase
 
         ListadoDeUsuarios listadoDeUsuarios;
         ListadoDeIntereses listadoDeIntereses;
-
 };
 
 #endif // SHAREDDATABASE_H

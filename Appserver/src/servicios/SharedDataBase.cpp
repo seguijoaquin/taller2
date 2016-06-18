@@ -1,7 +1,8 @@
 #include "SharedDataBase.h"
 
-SharedDataBase::SharedDataBase(ManejadorDeConexiones* conexiones){
+SharedDataBase::SharedDataBase(ManejadorDeConexiones* conexiones, string direccion){
     this->conexiones = conexiones;
+    this->direccionShared = direccion;
 }
 
 SharedDataBase::~SharedDataBase(){
@@ -12,7 +13,8 @@ MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, strin
     MensajeHTTPRequest request;
     request.setMetodo(metodo);
     request.setURI(uri);
-    request.agregarHeader("Host", "t2shared.herokuapp.com");
+    //request.agregarHeader("Host", "t2shared.herokuapp.com");
+    request.agregarHeader("Host", this->direccionShared);
     request.agregarHeader("Content-Type", "application/json");
     request.setBody(bodyJson);
     return request;

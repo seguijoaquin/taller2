@@ -6,7 +6,7 @@ FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
     this->credenciales = new CredencialesDeUsuarios("./usuariosRegistrados");
     this->conexiones = conexiones;
 
-    this->shared = new SharedDataBase(this->conexiones);
+    this->shared = new SharedDataBase(this->conexiones, "t2shared.herokuapp.com");
     this->mensajero = new Mensajero(this->conexiones, this->sesiones);
 
     this->administradorCandidatos = new AdministradorCandidatos(this->shared, this->mensajero);
