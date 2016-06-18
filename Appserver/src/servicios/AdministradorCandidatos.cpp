@@ -9,8 +9,12 @@ AdministradorCandidatos::~AdministradorCandidatos(){
     //dtor
 }
 
+void AdministradorCandidatos::inicializarCandidato(string usuario){
+    this->estadisticas.inicializarUsuario(usuario);
+}
 
 Usuario* AdministradorCandidatos::buscarCandidatoPara(string usuario){
+
     ListadoDeUsuarios usuarios = this->shared->obtenerListadoDeUsuarios();
     Usuario usuarioPrincipal = usuarios.getUsuario(usuario);
 
@@ -22,9 +26,11 @@ Usuario* AdministradorCandidatos::buscarCandidatoPara(string usuario){
         if((usuarioPrincipal.getEmail() != candidatoActual.getEmail() ) &&
            (!this->candidatos.usuarioFueNotificadoSobreElCandidato(usuario,candidatoActual.getEmail()) ) &&
            ( this->compararIntereses(usuarioPrincipal,candidatoActual) ) /*&&
-            this->estaCerca(usuarioPrincipal,*candidatoActual)*/){
+            this->estaCerca(usuarioPrincipal,*candidatoActual)  &&
+            this->condicionDel1%*/){
             candidato = new Usuario(candidatoActual);
             this->candidatos.registrarNotificacionAUsuarioSobreCandidato(usuarioPrincipal.getEmail(), candidato->getEmail());
+            this->estadisticas.contabilizarCandidatoPara(usuarioPrincipal.getEmail());
         }
     }
     return candidato;
@@ -50,6 +56,9 @@ bool AdministradorCandidatos::compararIntereses(Usuario& usuario1, Usuario& usua
 
 void AdministradorCandidatos::usuarioVotaAFavorDe(string usuario1, string usuario2, bool votoAFavor){
     this->candidatos.usuarioVotaAFavorDe(usuario1, usuario2, votoAFavor);
+    if (votoAFavor){
+        this->estadisticas.contabilizarVotoPara(usuario1);
+    }
 }
 
 bool AdministradorCandidatos::hayMatchEntre(string usuario1, string usuario2){

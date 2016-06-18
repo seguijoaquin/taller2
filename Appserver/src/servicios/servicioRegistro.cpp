@@ -10,10 +10,12 @@
     this->atenderRegistro();
 }*/
 
-servicioRegistro::servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+servicioRegistro::servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos){
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->usuariosRegistrados = credenciales;
+
+    this->administradorCandidatos = administradorCandidatos;
 
     //Para testear
     this->espera = 0;
@@ -66,6 +68,8 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
     int idShared = this->shared->registrarUsuario(bodyJson);
     if ( idShared > -1 ){
         this->usuariosRegistrados->agregarNuevoUsuario(usuario,password, idShared);
+        this->administradorCandidatos->inicializarCandidato(usuario);
+
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaRegistroCorrecto();
         this->respuesta = respuestaRegistro;

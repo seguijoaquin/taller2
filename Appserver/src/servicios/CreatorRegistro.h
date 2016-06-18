@@ -9,7 +9,7 @@
 class CreatorRegistro : public CreatorServicio
 {
     public:
-        CreatorRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
+        CreatorRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos );
         virtual ~CreatorRegistro();
     protected:
     private:

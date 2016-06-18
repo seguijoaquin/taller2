@@ -17,6 +17,7 @@
 
 #include "Servicio.h"
 #include "SharedDataBase.h"
+#include "AdministradorCandidatos.h"
 
 //class ManejadorDeConexiones;
 using namespace std;
@@ -25,7 +26,7 @@ class servicioRegistro : public Servicio
 {
     public:
         //servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
-        servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
+        servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos);
         ~servicioRegistro();
 
         //string getRespuesta();
@@ -49,11 +50,11 @@ class servicioRegistro : public Servicio
 
         CredencialesDeUsuarios* usuariosRegistrados;
 
-        //int codigoRespuesta;
-        //bool esperandoRespuesta;
+        AdministradorCandidatos* administradorCandidatos;
+
+
 
         string crearMensajeParaAlta(string usuario);
-        //void agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray );
         void agregarInteresAlJarray(string interes, string valor, JsonArray& jarray );
         void atenderRegistro();
         void realizarRegistro(string usuario, string password);

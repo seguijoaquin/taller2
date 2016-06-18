@@ -59,10 +59,7 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     }
     else if (compararMetodoHTTP(httpRequest, "PUT")){
         if (compararUriHTTP(httpRequest, "/registro")){
-            //servicio = new servicioRegistro(this->conexiones, httpRequest, this->credenciales);
-            //servicio = new servicioRegistro(this->shared, httpRequest, this->credenciales);
-
-            creator = new CreatorRegistro(this->shared, httpRequest, this->credenciales);
+            creator = new CreatorRegistro(this->shared, httpRequest, this->credenciales, this->administradorCandidatos);
         }
         else if (compararUriHTTP(httpRequest, "/foto")){
             creator = new CreatorModificarFoto(this->shared, &httpRequest, this->sesiones, this->credenciales);
