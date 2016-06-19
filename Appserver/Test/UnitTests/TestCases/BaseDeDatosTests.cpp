@@ -33,6 +33,7 @@ class BaseDeDatosTest : public testing::Test {
   //
   virtual void TearDown() {
 	delete baseDeDatos;
+    system("../limpiarEntorno.sh");
   }
 
 
@@ -49,7 +50,6 @@ class BaseDeDatosTest : public testing::Test {
   BaseDeDatos* baseDeDatos;
 };
 
-/*
 
 TEST_F(BaseDeDatosTest, testAgregarUnaClaveValorNuevaYObtenerla){
 	baseDeDatos->put(clave,valor);
@@ -78,7 +78,6 @@ TEST_F(BaseDeDatosTest, testAlPreguntarPorLaExistenciaDeUnaClaveInexistenteDeber
 
 
 TEST_F(BaseDeDatosTest, existenciaDeUnaClaveExistente){
-
 	baseDeDatos->put(clave,valor);
 	ASSERT_TRUE(baseDeDatos->existe(clave));
 
@@ -87,12 +86,10 @@ TEST_F(BaseDeDatosTest, existenciaDeUnaClaveExistente){
 
 TEST_F(BaseDeDatosTest, testObtenerElValorDeUnaClaveInexistenteDebeDevolverUnValorVacio){
 	string claveInexistente = "CLAVEINEXISTENTE";
+	ASSERT_FALSE(baseDeDatos->existe(claveInexistente));
 	ASSERT_EQ("",baseDeDatos->get(claveInexistente));
 }
 
-
-
-*/
 
 
 
