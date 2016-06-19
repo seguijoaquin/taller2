@@ -15,7 +15,7 @@ class Usuario
         virtual ~Usuario();
 
         string getEmail();
-        string getId();
+        int getId();
 
 
         string toString();

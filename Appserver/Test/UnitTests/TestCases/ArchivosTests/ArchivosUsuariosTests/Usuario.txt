@@ -1,0 +1,28 @@
+{
+    "user": {
+        "id": 5,
+        "name": "usuario",
+                          "alias": "not a user",
+                          "sex": "male",
+                          "age": 30,
+                          "email": "email@prueba.com",
+        "photo_profile": "< base_64 >",
+        "interests": [{
+            "category": "music/band",
+            "value": "michael jackson"
+        }, {
+            "category": "music/band",
+            "value": "pearl jam"
+        }, {
+            "category": "outdoors",
+            "value": "running"
+         }],
+                          "location": { 
+                               "latitude": -121.45356,
+                               "longitude": 46.51119
+                         }
+    },
+    "metadata": {
+        "version": "0.1"
+    }
+}

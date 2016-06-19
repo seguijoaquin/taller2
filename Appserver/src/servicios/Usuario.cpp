@@ -26,8 +26,8 @@ string Usuario::getEmail(){
     return this->email;
 }
 
-string Usuario::getId(){
-    return this->perfil.getString("id");
+int Usuario::getId(){
+    return this->perfil.getInt("id");
 }
 
 ListadoDeIntereses Usuario::getIntereses(){

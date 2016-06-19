@@ -1,0 +1,12 @@
+{
+    "interests": [{
+            "category": "music/band",
+            "value": "michael jackson"
+        }, {
+            "category": "music/band",
+            "value": "pearl jam"
+        }, {
+            "category": "outdoors",
+            "value": "running"
+         }]
+}
