@@ -1,0 +1,4 @@
+{
+            "category": "CATEGORIADIFERENTE",
+            "value": "VALORDIFERENTE"
+}
