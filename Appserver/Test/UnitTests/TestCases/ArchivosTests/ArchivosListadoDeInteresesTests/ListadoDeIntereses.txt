@@ -1,0 +1,16 @@
+{
+    "interests": [{
+            "category": "CATEGORIA1",
+            "value": "VALOR1"
+        }, {
+            "category": "CATEGORIA2",
+            "value": "VALOR2"
+        }, {
+            "category": "CATEGORIA3",
+            "value": "VALOR3"
+         }], 
+    "metadata": {
+        "version": "0.1”,
+        “count”: 3
+    }
+}

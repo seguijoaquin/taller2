@@ -43,6 +43,10 @@ int ListadoDeIntereses::size(){
 }
 
 Interes ListadoDeIntereses::getInteres(int i){
-    //PRECONDICION: UN i VALIDO
-    return this->intereses[i-1];
+    if ( ( i>= 1) && (i <= this->size() ) ){
+        return this->intereses[i-1];
+    }
+    else{
+        return Interes("");
+    }
 }

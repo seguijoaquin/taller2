@@ -87,15 +87,3 @@ TEST_F(InteresesTest, testCompararUnInteresConOtroQueTengaDiferenteCategoriaYVal
     ASSERT_FALSE( this->compararValores(interes, interesDiferenteCategoriaYValor ) );
     ASSERT_FALSE(this->compararIntereses(interes, interesDiferenteCategoriaYValor));
 }
-
-
-
-
-/*
-TEST_F(SesionesDeUsuariosTest, testAgregarUnaSesionDeUsuario){
-	sesiones->agregarSesionDe("Usuario","Token");
-	ASSERT_TRUE(sesiones->existeSesionDe("Usuario"));
-	ASSERT_FALSE(sesiones->validarTokenConUsuario("NotUsuario","JRRTolkien"));
-	ASSERT_EW(1,1);
-}
-*/

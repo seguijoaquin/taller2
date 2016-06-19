@@ -1,0 +1,4 @@
+{
+      "category": "CATEGORIA2",
+      "value": "VALOR2"
+}
