@@ -11,7 +11,7 @@ class HttpMessageRequestTest : public testing::Test{
 	protected:
 	
 		virtual void SetUp(){
-			mg_str metodo, uri, header0, header1, headerVacio, valor0, valor1, valorVacio;
+			mg_str metodo, uri, header0, header1, headerVacio, valor0, valor1, valorVacio, body;
 			this->iniciarMg_str(metodo, "METODO",6);
 			this->iniciarMg_str(uri, "Uri1/Uri2/servicio",18);
 			this->iniciarMg_str(header0, "Header0",7);
@@ -20,6 +20,7 @@ class HttpMessageRequestTest : public testing::Test{
 			this->iniciarMg_str(valor0, "Valor0",6);
 			this->iniciarMg_str(valor1, "Valor1",6);
 			this->iniciarMg_str(valorVacio, "",0);
+			this->iniciarMg_str(body, "",0);
 
 			//Aca se copian los valores
 			this->mensajeMG.method = metodo;
@@ -34,7 +35,9 @@ class HttpMessageRequestTest : public testing::Test{
 			this->mensajeMG.header_names[2] = headerVacio;
 			this->mensajeMG.header_values[2] = valorVacio;
 
-			//El 0 dummy esta por ahora, porque queria probar algo en el codigo, TODO: sacarla
+			this->mensajeMG.body = body;
+			
+
 			mensaje = new MensajeHTTPRequest(&(this->mensajeMG));
 			
 		}
