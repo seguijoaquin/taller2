@@ -1,0 +1,25 @@
+{
+      "user": {
+        "id": 2,
+        "name": "usuario5",
+        "alias": "2not a user",
+        "email": "2usuario@usuario.com",
+        "sex": "male",
+        "age": 30,
+        "photo_profile": "http://<sharedserver>/users/1/photo",
+        "interests": [
+          {
+            "category": "music/band",
+            "value": "radiohead"
+          },
+          {
+            "category": "series",
+            "value": "the walking dead"
+          }
+        ],
+        "location": {
+          "latitude": -121.45356,
+          "longitude": 46.51119
+        }
+      }
+}

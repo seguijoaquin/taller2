@@ -1,0 +1,33 @@
+{
+      "user": {
+        "id": 1,
+        "name": "usuario",
+        "alias": "not a user",
+        "email": "1usuario@usuario.com",
+        "sex": "male",
+        "age": 30,
+        "photo_profile": "http://<sharedserver>/users/1/photo",
+        "interests": [
+          {
+            "category": "videogames",
+            "value": "overwatch"
+          },
+          {
+            "category": "musiand",
+            "value": "peam"
+          },
+          {
+            "category": "outdoors",
+            "value": "running"
+          },
+          {
+            "category": "sex",
+            "value": "man"
+          }
+        ],
+        "location": {
+          "latitude": -121.45356,
+          "longitude": 46.51119
+        }
+      }
+}

@@ -44,8 +44,19 @@ void ListadoDeUsuarios::agregarUsuario(string jsonUsuario){
 
 Usuario ListadoDeUsuarios::getUsuario(string usuario){
     //PRECONDICION: EL USUARIO EXISTE
-    return ((this->usuarios[usuario]));
+    if (this->usuarioExiste(usuario)){
+        return ((this->usuarios[usuario]));
+    }
+    else{
+        return Usuario();
+    }
 }
+
+bool ListadoDeUsuarios::usuarioExiste(string usuario){
+    return (  this->usuarios.find(usuario) != this->usuarios.end()    );
+}
+
+
 
 void ListadoDeUsuarios::irAlInicio(){
     this->itUsuarioActual = this->usuarios.begin();

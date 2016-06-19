@@ -29,6 +29,7 @@ class ListadoDeUsuarios
         map<string,Usuario> usuarios;
 
         map<string,Usuario>::iterator itUsuarioActual;
+        bool usuarioExiste(string usuario);
 };
 
 #endif // LISTADODEUSUARIOS_H

@@ -1,0 +1,28 @@
+{
+      "user": {
+        "id": 3,
+        "name": "usuario2",
+        "alias": "not a user2",
+        "email": "3usuario@usuario.com",
+        "sex": "male",
+        "age": 30,
+        "photo_profile": "http://<sharedserver>/users/1/photo",
+        "interests": [
+          {
+            "category": "videogames",
+            "value": "league of legends"
+          },
+          {
+            "category": "series",
+            "value": "game of thrones"
+          },
+          {
+            "category": "outdoors",
+            "value": "running"
+          }
+        ],
+        "location": {
+          "latitude": -121.45356,
+          "longitude": 46.51119
+        }
+}
