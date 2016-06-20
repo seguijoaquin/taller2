@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int limiteCandidatos = 5;
+const int EstadisticasCandidatos::limiteCandidatos = 3;
+const double EstadisticasCandidatos::porcentajeUsuariosPopulares = 0.01;
 
 EstadisticasCandidatos::EstadisticasCandidatos()
 {
@@ -37,9 +38,13 @@ string EstadisticasCandidatos::buscarUsuarioPopularConMenosVotos(){
 }
 
 void EstadisticasCandidatos::contabilizarVotoPara(string usuario){
+    if (this->existeUsuario(usuario)){
+        this->estadisticasPorUsuario[usuario].cantidadDeVotosPositivos++;
+        this->actualizarUsuariosPopulares(usuario);
+    }
+}
 
-    this->estadisticasPorUsuario[usuario].cantidadDeVotosPositivos++;
-
+void EstadisticasCandidatos::actualizarUsuariosPopulares(string usuario){
     if (!this->usuarioEsPopular(usuario)){
         string usuarioPopularConMenosVotos = this->buscarUsuarioPopularConMenosVotos();
         if ( (usuarioPopularConMenosVotos != "") && (this->getCantidadVotosPara(usuario) > this->getCantidadVotosPara(usuarioPopularConMenosVotos)) ){
@@ -55,7 +60,9 @@ bool EstadisticasCandidatos::usuarioEsPopular(string usuario){
 
 
 void EstadisticasCandidatos::contabilizarCandidatoPara(string usuario){
-    this->estadisticasPorUsuario[usuario].cantidadDeCandidatosPedidos++;
+    if (this->existeUsuario(usuario)){
+        this->estadisticasPorUsuario[usuario].cantidadDeCandidatosPedidos++;
+    }
 }
 
 bool EstadisticasCandidatos::usuarioSuperoLimiteDeCandidatos(string usuario){
@@ -73,23 +80,27 @@ bool EstadisticasCandidatos::existeUsuario(string usuario){
 }
 
 void EstadisticasCandidatos::inicializarUsuario(string usuario){
-    Estadisticas estadisticas;
-    estadisticas.cantidadDeCandidatosPedidos = 0;
-    estadisticas.cantidadDeVotosPositivos = 0;
-    this->estadisticasPorUsuario[usuario] = estadisticas;
 
-    if ( floor(this->estadisticasPorUsuario.size()*0.01) > this->usuariosPopulares.size()){
-        //buscar al usuario con mas votos que no este en la lista de los populares y agregarlo a la lista de los populares
-        string usuarioConMasVotos = "";
-        for( map<string, Estadisticas>::iterator it = this->estadisticasPorUsuario.begin() ; it != this->estadisticasPorUsuario.end(); ++it){
-            string usuarioAux = it->first;
-            if ( ( this->getCantidadVotosPara(usuarioAux) >=  this->getCantidadVotosPara(usuarioConMasVotos)) &&
-                 ( !this->usuarioEsPopular(usuarioAux) ) ){
-                usuarioConMasVotos = usuarioAux;
+    if( !this->existeUsuario(usuario)){
+
+        Estadisticas estadisticas;
+        estadisticas.cantidadDeCandidatosPedidos = 0;
+        estadisticas.cantidadDeVotosPositivos = 0;
+        this->estadisticasPorUsuario[usuario] = estadisticas;
+
+        if ( floor(this->estadisticasPorUsuario.size()*porcentajeUsuariosPopulares) > this->usuariosPopulares.size()){
+            //buscar al usuario con mas votos que no este en la lista de los populares y agregarlo a la lista de los populares
+            string usuarioConMasVotos = "";
+            for( map<string, Estadisticas>::iterator it = this->estadisticasPorUsuario.begin() ; it != this->estadisticasPorUsuario.end(); ++it){
+                string usuarioAux = it->first;
+                if ( ( this->getCantidadVotosPara(usuarioAux) >=  this->getCantidadVotosPara(usuarioConMasVotos)) &&
+                     ( !this->usuarioEsPopular(usuarioAux) ) ){
+                    usuarioConMasVotos = usuarioAux;
+                }
             }
-        }
-        if (usuarioConMasVotos != ""){
-            this->usuariosPopulares.insert(usuarioConMasVotos);
+            if (usuarioConMasVotos != ""){
+                this->usuariosPopulares.insert(usuarioConMasVotos);
+            }
         }
     }
 }

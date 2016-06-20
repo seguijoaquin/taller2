@@ -25,8 +25,12 @@ class EstadisticasCandidatos
         void contabilizarCandidatoPara(string usuario);
         bool usuarioSuperoLimiteDeCandidatos(string usuario);
 
-        bool usuarioEsPopular(string usuario);
         void contabilizarVotoPara(string usuario);
+        bool usuarioEsPopular(string usuario);
+
+        const static int limiteCandidatos;
+        const static double porcentajeUsuariosPopulares;
+
     protected:
     private:
         int getCantidadVotosPara(string usuario);
@@ -36,6 +40,8 @@ class EstadisticasCandidatos
         set<string> usuariosPopulares;
 
         string buscarUsuarioPopularConMenosVotos();
+
+        void actualizarUsuariosPopulares(string usuario);
 };
 
 #endif // ESTADISTICASCANDIDATOS_H
