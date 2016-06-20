@@ -28,6 +28,7 @@ var searchData=
   ['compactionoptionsfifo',['CompactionOptionsFIFO',['../structrocksdb_1_1CompactionOptionsFIFO.html',1,'rocksdb']]],
   ['compactionoptionsuniversal',['CompactionOptionsUniversal',['../classrocksdb_1_1CompactionOptionsUniversal.html',1,'rocksdb']]],
   ['compactrangeoptions',['CompactRangeOptions',['../structrocksdb_1_1CompactRangeOptions.html',1,'rocksdb']]],
+  ['compararintereses',['compararIntereses',['../classAdministradorCandidatos.html#ab0ac32f8834aff9bfb7aa4da33bfe57c',1,'AdministradorCandidatos']]],
   ['comparator',['Comparator',['../classrocksdb_1_1Comparator.html',1,'rocksdb']]],
   ['compressionoptions',['CompressionOptions',['../structrocksdb_1_1CompressionOptions.html',1,'rocksdb']]],
   ['constexpr_5fmax',['constexpr_max',['../structrocksdb_1_1constexpr__max.html',1,'rocksdb']]],

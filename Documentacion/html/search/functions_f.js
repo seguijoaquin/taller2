@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['validate',['validate',['../classJson_1_1CharReaderBuilder.html#af890b5cb70e9b372e41de5c9e6535d21',1,'Json::CharReaderBuilder::validate()'],['../classJson_1_1StreamWriterBuilder.html#a12353b97766841db7d049da84658da09',1,'Json::StreamWriterBuilder::validate()']]],
-  ['value',['Value',['../classJson_1_1Value.html#ada6ba1369448fb0240bccc36efaa46f7',1,'Json::Value::Value(ValueType type=nullValue)'],['../classJson_1_1Value.html#ad87b849356816aca75995dd07302e49d',1,'Json::Value::Value(const char *value)'],['../classJson_1_1Value.html#a39fa09d1902efbd4350e1236db920571',1,'Json::Value::Value(const char *begin, const char *end)'],['../classJson_1_1Value.html#a081830e95f88a37054da7e46c65b0766',1,'Json::Value::Value(const StaticString &amp;value)'],['../classJson_1_1Value.html#a89ef37969ff7c6eb3a7afcca03d4cd4a',1,'Json::Value::Value(const JSONCPP_STRING &amp;value)'],['../classJson_1_1Value.html#a436dfd3670f95fd665f680eba5cebcf0',1,'Json::Value::Value(const Value &amp;other)']]]
+  ['setcomment',['setComment',['../classJson_1_1Value.html#a29f3a30f7e5d3af6f38d57999bf5b480',1,'Json::Value::setComment(const char *comment, CommentPlacement placement)'],['../classJson_1_1Value.html#a2900152a2887b410a9ddabe278b9d492',1,'Json::Value::setComment(const char *comment, size_t len, CommentPlacement placement)'],['../classJson_1_1Value.html#a2c5d13a5f45eb77e912008778e65b27f',1,'Json::Value::setComment(const JSONCPP_STRING &amp;comment, CommentPlacement placement)']]],
+  ['setdefaults',['setDefaults',['../classJson_1_1CharReaderBuilder.html#a03ff031e06aabff989ab4addc87294ab',1,'Json::CharReaderBuilder::setDefaults()'],['../classJson_1_1StreamWriterBuilder.html#a53bf106b141e28637b01ad0ecd2acbf6',1,'Json::StreamWriterBuilder::setDefaults()']]],
+  ['size',['size',['../classJson_1_1Value.html#a0ec2808e1d7efa4e9fad938d6667be44',1,'Json::Value']]],
+  ['strictmode',['strictMode',['../classJson_1_1Features.html#ae23176c14b2e79e81fb61fb1a8ab58ee',1,'Json::Features::strictMode()'],['../classJson_1_1CharReaderBuilder.html#a9c19e3c5475f9072d527810d4bf56749',1,'Json::CharReaderBuilder::strictMode()']]],
+  ['swap',['swap',['../classJson_1_1Value.html#aab841120d78e296e1bc06a373345e822',1,'Json::Value']]],
+  ['swappayload',['swapPayload',['../classJson_1_1Value.html#a5263476047f20e2fc6de470e4de34fe5',1,'Json::Value']]]
 ];

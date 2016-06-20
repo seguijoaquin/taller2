@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key',['key',['../classJson_1_1ValueIteratorBase.html#a3838ba39c43c518cf3ed4aa6ce78ccad',1,'Json::ValueIteratorBase']]]
+  ['haymatchentre',['hayMatchEntre',['../classAdministradorCandidatos.html#a5b64e63a07f2289bc72296d3b523f2ef',1,'AdministradorCandidatos']]]
 ];

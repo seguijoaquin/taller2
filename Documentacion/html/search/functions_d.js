@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['setcomment',['setComment',['../classJson_1_1Value.html#a29f3a30f7e5d3af6f38d57999bf5b480',1,'Json::Value::setComment(const char *comment, CommentPlacement placement)'],['../classJson_1_1Value.html#a2900152a2887b410a9ddabe278b9d492',1,'Json::Value::setComment(const char *comment, size_t len, CommentPlacement placement)'],['../classJson_1_1Value.html#a2c5d13a5f45eb77e912008778e65b27f',1,'Json::Value::setComment(const JSONCPP_STRING &amp;comment, CommentPlacement placement)']]],
-  ['setdefaults',['setDefaults',['../classJson_1_1CharReaderBuilder.html#a03ff031e06aabff989ab4addc87294ab',1,'Json::CharReaderBuilder::setDefaults()'],['../classJson_1_1StreamWriterBuilder.html#a53bf106b141e28637b01ad0ecd2acbf6',1,'Json::StreamWriterBuilder::setDefaults()']]],
-  ['size',['size',['../classJson_1_1Value.html#a0ec2808e1d7efa4e9fad938d6667be44',1,'Json::Value']]],
-  ['strictmode',['strictMode',['../classJson_1_1Features.html#ae23176c14b2e79e81fb61fb1a8ab58ee',1,'Json::Features::strictMode()'],['../classJson_1_1CharReaderBuilder.html#a9c19e3c5475f9072d527810d4bf56749',1,'Json::CharReaderBuilder::strictMode()']]],
-  ['swap',['swap',['../classJson_1_1Value.html#aab841120d78e296e1bc06a373345e822',1,'Json::Value']]],
-  ['swappayload',['swapPayload',['../classJson_1_1Value.html#a5263476047f20e2fc6de470e4de34fe5',1,'Json::Value']]]
+  ['parse',['parse',['../classJson_1_1Reader.html#af1da6c976ad1e96c742804c3853eef94',1,'Json::Reader::parse(const std::string &amp;document, Value &amp;root, bool collectComments=true)'],['../classJson_1_1Reader.html#ac71ef2b64c7c27b062052e692af3fb32',1,'Json::Reader::parse(const char *beginDoc, const char *endDoc, Value &amp;root, bool collectComments=true)'],['../classJson_1_1Reader.html#a6d5d0e23f68749d2f17feece4ccf504d',1,'Json::Reader::parse(JSONCPP_ISTREAM &amp;is, Value &amp;root, bool collectComments=true)'],['../classJson_1_1CharReader.html#a7983680d50fd0745f371c43b162e78e1',1,'Json::CharReader::parse()'],['../classJson_1_1OurCharReader.html#a547f08ec5a9951ca69e8bb2e90296c83',1,'Json::OurCharReader::parse()']]],
+  ['parsefromstream',['parseFromStream',['../namespaceJson.html#aab0cf1ecf81d1aeca12be2a416a84352',1,'Json']]],
+  ['pusherror',['pushError',['../classJson_1_1Reader.html#af5fa7099083f01706635ade1d0f8ddb5',1,'Json::Reader::pushError(const Value &amp;value, const JSONCPP_STRING &amp;message)'],['../classJson_1_1Reader.html#a3568be9db568ff57bd3fcc373143dff3',1,'Json::Reader::pushError(const Value &amp;value, const JSONCPP_STRING &amp;message, const Value &amp;extra)']]]
 ];

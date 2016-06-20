@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['features',['Features',['../classJson_1_1Features.html#ad15a091cb61bb31323299a95970d2644',1,'Json::Features']]],
-  ['find',['find',['../classJson_1_1Value.html#afb007b9ce9b2cf9d5f667a07e5e0349f',1,'Json::Value']]]
+  ['empty',['empty',['../classJson_1_1Value.html#a0519a551e37ee6665d74742b3f96bab3',1,'Json::Value']]]
 ];
