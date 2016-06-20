@@ -2,7 +2,8 @@
 
 CreatorRegistro::CreatorRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos ){
 
-    if (mensajeHTTP.tieneHeader("Usuario") &&  mensajeHTTP.tieneHeader("Password") ){
+    //DEBE VERIFICAR EL JSON DEL USUARIO
+    if (/*mensajeHTTP.tieneHeader("Usuario") && */ mensajeHTTP.tieneHeader("Password") ){
         this->servicio = new servicioRegistro(shared, mensajeHTTP, credenciales, administradorCandidatos);
     }
     else{

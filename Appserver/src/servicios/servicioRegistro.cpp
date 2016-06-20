@@ -14,37 +14,30 @@ servicioRegistro::servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest me
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->usuariosRegistrados = credenciales;
-
     this->administradorCandidatos = administradorCandidatos;
-
-    //Para testear
-    this->espera = 0;
     this->atenderRegistro();
 }
 
 
 void servicioRegistro::atenderRegistro(){
 
-    string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
+    //string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     string passwordIngresado = this->mensajeHTTP.getHeader("Password");
+    Usuario usuarioIngresado(this->mensajeHTTP.getBody());
 
-    if (this->usuariosRegistrados->existeUsuario(usuarioIngresado)){
-
+    if (this->usuariosRegistrados->existeUsuario(getClaveParaRegistrarse(usuarioIngresado))){
         RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaUsuarioExistente();
         this->respuesta = respuestaRegistro;
-        //this->respuesta = "HTTP/1.1 400 Usuario existente\r\n\r\n";
     }
     else{
         this->realizarRegistro(usuarioIngresado,passwordIngresado);
     }
 }
 
-void servicioRegistro::realizarRegistro(string usuario, string password){
+//void servicioRegistro::realizarRegistro(string usuario, string password){
+void servicioRegistro::realizarRegistro(Usuario& usuario, string password){
 
-
-    //Aca tal vez no se mande inmediantamente, tal vez la respuesta no le llegue en seguida, lo bloqueo y espero a que llegue la respuesta
-    //Refactorizar: agregarle un timeout???
     //REFACTORIZAR:
 
     /*Problema para mas adelante: si llegan dos PUTs iguales, puede que se registren los dos, tal vez lo pueda
@@ -57,44 +50,47 @@ void servicioRegistro::realizarRegistro(string usuario, string password){
 
     //Refactorizar: Ahora esta devolviendo el json nada mas, cambiarle el nombre o hacer que cree el mensaje completo
     //TODO: agarar todos los errores
-    string bodyJson = crearMensajeParaAlta(usuario);
+
+    //ESTO YA NO SIRVE PORQUE PASO USUARIOS
+    //string bodyJson = crearMensajeParaAlta(usuario);
 
     //POR AHORA SE PASA EL BODY DEL JSON, DEBERIA
 
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
-    //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
-    //if (respustaShared.getCodigo() == 200){
-    int idShared = this->shared->registrarUsuario(bodyJson);
-    if ( idShared > -1 ){
-        this->usuariosRegistrados->agregarNuevoUsuario(usuario,password, idShared);
-        this->administradorCandidatos->inicializarCandidato(usuario);
+    //if (respustaShared.getCodigo() == 201){
 
-        RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
+
+    //int idShared = this->shared->registrarUsuario(bodyJson);
+    int idShared = this->shared->registrarUsuario(usuario);
+    RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
+    if ( idShared > -1 ){
+        this->usuariosRegistrados->agregarNuevoUsuario(getClaveParaRegistrarse(usuario),password, idShared);
+        this->administradorCandidatos->inicializarCandidato(getClaveParaRegistrarse(usuario));
+
+
         respuestaRegistro->setRespuestaRegistroCorrecto();
-        this->respuesta = respuestaRegistro;
+
         //this->respuesta = "HTTP/1.1 201 Se pudo registrar el usuario\r\n\r\n";
     }
     else{
         //Cambiarlo para diferentes errores
-        RespuestaDelRegistro* respuestaRegistro = new RespuestaDelRegistro();
         respuestaRegistro->setRespuestaErrorDelSharedServer();
-        this->respuesta = respuestaRegistro;
         //this->respuesta = "HTTP/1.1 503 Error del server\r\n\r\n";
     }
+    this->respuesta = respuestaRegistro;
 
 }
+
+
+string servicioRegistro::getClaveParaRegistrarse(Usuario& usuario){
+    return usuario.getEmail();
+}
+
+
+
 
 /*
-void servicioRegistro::agregarInteresAlJarray(Json::Value interes, Json::Value valor, Json::Value& jarray ){
-    Json::Value interesJobj;
-    interesJobj["category"] = interes;
-    interesJobj["value"] = valor;
-    jarray.append(interesJobj);
-}
-*/
-
-
 void servicioRegistro::agregarInteresAlJarray(string interes, string valor, JsonArray& jarray ){
     JsonObject interesJobj;
     interesJobj.agregarClaveValor("category", interes);
@@ -104,11 +100,6 @@ void servicioRegistro::agregarInteresAlJarray(string interes, string valor, Json
 
 
 string servicioRegistro::crearMensajeParaAlta(string usuario){
-    /*Json::Value mensajeAltaJobj;
-    Json::Value usuarioJobj;
-    Json::Value ubicacionJobj;
-    Json::Value interesesJarray;
-    */
 
     JsonObject mensajeAltaJobj;
     JsonObject usuarioJobj;
@@ -133,30 +124,6 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
 
     mensajeAltaJobj.agregarClaveValor("user",usuarioJobj);
 
-/*
-    usuarioJobj["name"] = usuario;
-    usuarioJobj["alias"] = "alias1";
-    //usuarioJobj["email"] = "hard_coded@email.com";
-    usuarioJobj["email"] = usuario + "2/6/16-07:36";
-    usuarioJobj["sex"] = "M";
-    usuarioJobj["edad"] = "22";
-
-    agregarInteresAlJarray("music/band","radiohead", interesesJarray);
-    agregarInteresAlJarray("music/band","pearl jam", interesesJarray);
-    agregarInteresAlJarray("outdoors","running", interesesJarray);
-    usuarioJobj["interests"] = interesesJarray;
-
-    ubicacionJobj["latitude"] = "-121.45356";
-    ubicacionJobj["longitude"] = "46.51119";
-    usuarioJobj["location"] = ubicacionJobj;
-
-    mensajeAltaJobj["user"] = usuarioJobj;
-
-*/
-    //Json::StyledWriter styledWriter;
-    //string mensajeAlta;// = styledWriter.write(mensajeAltaJobj);
-
-    //string bodyJson = styledWriter.write(mensajeAltaJobj);
     string bodyJson = mensajeAltaJobj.toString();
 
 
@@ -167,7 +134,7 @@ string servicioRegistro::crearMensajeParaAlta(string usuario){
     cout<<"EL JSON ES: "<<bodyJson<<"\n\n";
     return bodyJson;
 }
-
+*/
 
 servicioRegistro::~servicioRegistro()
 {

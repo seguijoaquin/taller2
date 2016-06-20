@@ -36,8 +36,11 @@ MensajeHTTPReply SharedDataBase::enviarHTTPRequest(string metodo, string uri, st
 
 
 
-int SharedDataBase::registrarUsuario(string bodyJson){
-    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",bodyJson);
+//int SharedDataBase::registrarUsuario(string bodyJson){
+int SharedDataBase::registrarUsuario(Usuario& usuario){
+    //MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",bodyJson);
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",usuario.toString());
+
 
     //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
     int idCliente = -1;

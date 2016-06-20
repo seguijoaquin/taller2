@@ -15,10 +15,10 @@ Usuario::~Usuario(){
     //dtor
 }
 
-
-
 string Usuario::toString(){
-    return this->perfil.toString();
+    JsonObject user;
+    user.agregarClaveValor("user",this->perfil);
+    return user.toString();
 }
 
 

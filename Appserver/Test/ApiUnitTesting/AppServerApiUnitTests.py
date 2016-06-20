@@ -1,8 +1,10 @@
 import json
 import requests
 import unittest
+import Utilities
 from testLogin import *
 from testChat import *
+from testBusquedaCandidatos import *
 
 
 
@@ -28,6 +30,8 @@ def crearHeadersDeUsuarioYPassword(usuario, password):
     return {'Usuario': usuario,'Password': password }
 
 
+
+
 class TestRegistro(unittest.TestCase):
 
     headUsuarioYaRegistrado = crearHeadersDeUsuarioYPassword(usuarioCorrecto, 'cualquierPassword')
@@ -38,6 +42,11 @@ class TestRegistro(unittest.TestCase):
     passwordNuevo = "passwordNuevo"
     headUsuarioNuevo = crearHeadersDeUsuarioYPassword(usuarioNuevo, passwordNuevo)
 
+    def crearBodyUsuario(self, nombre):
+        body = Utilities.abrirJson("./usuarioCompleto.json")
+        body["user"]["email"] = nombre
+        return body
+
     def load_tests(loader, tests, pattern):
 	suite = TestSuite()
 	for test_class in test_cases:
@@ -46,13 +55,17 @@ class TestRegistro(unittest.TestCase):
     	return suite
 
     def test_RegistroDeUnUsuarioYaRegistrado(self):
-        request = requests.put(Address + URIResgistro, headers=self.headUsuarioYaRegistrado)
+
+        bodyUsuario = self.crearBodyUsuario(usuarioCorrecto)
+        request = requests.put(Address + URIResgistro, headers=self.headUsuarioYaRegistrado, data=json.dumps(bodyUsuario) )
+
         self.assertEqual(request.reason,self.msgUsuarioYaRegistrado)
         self.assertEqual(request.status_code,400)
 
 
     def test_RegistroDeUnUsuarioNuevo(self):
-        request = requests.put(Address + URIResgistro, headers=self.headUsuarioNuevo)
+        bodyUsuario = self.crearBodyUsuario(self.usuarioNuevo)
+        request = requests.put(Address + URIResgistro, headers=self.headUsuarioNuevo, data=json.dumps(bodyUsuario))
         self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)
         self.assertEqual(request.status_code,201)
 
@@ -68,21 +81,28 @@ class TestRegistroYLogin(unittest.TestCase):
     msgUsuarioYaRegistrado = "Usuario existente"
     msgUsuarioNuevoRegistrado = "Se pudo registrar el usuario"
 
+    def crearBodyUsuario(self, nombre):
+        body = Utilities.abrirJson("./usuarioCompleto.json")
+        body["user"]["email"] = nombre
+        return body
+
     def test_IntentoDeLoginDeUnUsuarioNoRegistrado_SeLoRegistra_SeDebePoderLoguearCorrectamente(self):
+
 	#Me intento loguear con un usuario no registrado y no puedo
         #headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado_SeLoRegistra_SeDebePoderLoguearCorrectamente", "12345")
-	headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado", "12345")
+        headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado", "12345")
         request = requests.get(Address + URILogin,headers=headUsuario)
         self.assertEqual(request.status_code,400)
         self.assertEqual(request.reason,self.msgLoginIncorrecto)
 
 	#Lo registro
-	request = requests.put(Address + URIResgistro, headers=headUsuario)
+        bodyUsuario = self.crearBodyUsuario("IntentoDeLoginDeUnUsuarioNoRegistrado")
+        request = requests.put(Address + URIResgistro, headers=headUsuario, data=json.dumps(bodyUsuario))
         self.assertEqual(request.status_code,201)
         self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)
 
 	#Ahora me puedo loguear correctamente
-	request = requests.get(Address + URILogin,headers=headUsuario)
+        request = requests.get(Address + URILogin,headers=headUsuario)
         self.assertEqual(request.status_code,200)
         self.assertEqual(request.reason,self.msgLoginCorrecto)
         self.assertIsNotNone(request.headers["Token"])
