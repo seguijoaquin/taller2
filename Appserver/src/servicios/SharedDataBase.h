@@ -27,7 +27,7 @@ class SharedDataBase
         //bool registrarUsuar(string bodyJson);
         int registrarUsuario(string bodyJson);
         Usuario obtenerPerfilDelUsuario(int idUsuario);
-        ListadoDeUsuarios obtenerListadoDeUsuarios();
+        virtual ListadoDeUsuarios obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
 
         ListadoDeIntereses obtenerListadoDeIntereses();
