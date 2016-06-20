@@ -29,9 +29,6 @@ class TestChat(unittest.TestCase):
 
     msgMensajeEnviadoCorrectamente = "OK"
 
-    usuarioIncorrecto = 'usuarioFalso'
-    passwordIncorrecto = 'passwordFalso'
-
     def hacerLoginDeUsuario(self, usuario):
         headUsuarioRegistrado = crearHeadersDeUsuarioYPassword( usuario, self.passwordCorrecto)
         reply = requests.get(Address + URILogin,headers=headUsuarioRegistrado)

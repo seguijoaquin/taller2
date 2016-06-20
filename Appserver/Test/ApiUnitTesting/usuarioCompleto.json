@@ -1,0 +1,18 @@
+{
+  "user": {
+    "name": "USUARIO_DE_LAS_PRUEBAS",
+    "alias": "notauser",
+    "sex": "M",
+    "age": 30,
+    "interests": [
+	{
+		"category": "music/band",
+            	"value": "radiohead"
+	}
+    ],
+    "location": {
+      "latitude": -121.45356,
+      "longitude": 46.51119
+    }
+  }
+}
