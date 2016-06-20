@@ -27,6 +27,8 @@ class SesionesDeUsuarios
 
         string getTokenGCMDe(string usuario);
 
+        void eliminarUsuario(string usuario);
+
     protected:
     private:
         map<string,datosDeSesion> tokensDeSesionesDeUsuario;

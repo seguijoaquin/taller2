@@ -34,3 +34,7 @@ bool BaseDeDatos::existe(string clave){
     rocksdb::Status estado = this->datos->Get(rocksdb::ReadOptions(), clave, &aux );
     return (!estado.IsNotFound());
 }
+
+void BaseDeDatos::eliminar(string clave){
+    this->datos->Delete(rocksdb::WriteOptions(),clave);
+}

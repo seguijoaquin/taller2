@@ -15,6 +15,8 @@ class BaseDeDatos
         //Si la clave no existe devuelve VALOR_DE_CLAVE_NO_ENCONTRADA,;
         string get(string clave);
         bool existe(string clave);
+
+        void eliminar(string clave);
     protected:
     private:
         rocksdb::DB* datos;

@@ -32,6 +32,10 @@ string SesionesDeUsuarios::getTokenGCMDe(string usuario){
     }
 }
 
+void SesionesDeUsuarios::eliminarUsuario(string usuario){
+    this->tokensDeSesionesDeUsuario.erase(usuario);
+}
+
 SesionesDeUsuarios::~SesionesDeUsuarios()
 {
     //dtor

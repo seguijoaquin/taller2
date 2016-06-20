@@ -45,6 +45,12 @@ void CredencialesDeUsuarios::agregarUsuarioYCredenciales(string usuario, string 
     this->credenciales->put(usuario,datos.toString());
 }
 
+
+void CredencialesDeUsuarios::eliminiarUsuario(string usuario){
+    this->credenciales->eliminar(usuario);
+}
+
+
 CredencialesDeUsuarios::~CredencialesDeUsuarios(){
     delete this->credenciales;
 }

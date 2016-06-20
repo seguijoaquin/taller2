@@ -19,6 +19,8 @@ class CredencialesDeUsuarios
         bool existeUsuario(string usuario);
 
         int getIDSharedDe(string usuario);
+
+        void eliminiarUsuario(string usuario);
     protected:
     private:
 
