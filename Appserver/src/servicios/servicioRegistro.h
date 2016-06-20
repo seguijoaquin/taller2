@@ -12,7 +12,7 @@
 #include <fstream>
 #include "MensajeHTTPRequest.h"
 #include "CredencialesDeUsuarios.h"
-//#include "ManejadorDeConexiones.h"
+
 #include "RespuestaDelRegistro.h"
 
 #include "Servicio.h"
@@ -25,39 +25,25 @@ using namespace std;
 class servicioRegistro : public Servicio
 {
     public:
-        //servicioRegistro(ManejadorDeConexiones* manejadorDeConexiones, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales );
         servicioRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos);
         ~servicioRegistro();
 
         //string getRespuesta();
-
-        //void esperarRespuesta();
-        //void setCodigoResuesta(int codigo);
-        //Tal vez hacer que setRespuesta desbloquee al servicio/cliente
-        //void dejarDeEsperar();
     protected:
     private:
-        //ManejadorDeConexiones* manejadorDeConexiones;
         SharedDataBase* shared;
-
         MensajeHTTPRequest mensajeHTTP;
-
-        //string respuesta;
-
-
-        //Para probrar
-        int espera;
-
         CredencialesDeUsuarios* usuariosRegistrados;
-
         AdministradorCandidatos* administradorCandidatos;
 
+        //string crearMensajeParaAlta(string usuario);
+        //void agregarInteresAlJarray(string interes, string valor, JsonArray& jarray );
 
-
-        string crearMensajeParaAlta(string usuario);
-        void agregarInteresAlJarray(string interes, string valor, JsonArray& jarray );
         void atenderRegistro();
-        void realizarRegistro(string usuario, string password);
+        //void realizarRegistro(string usuario, string password);
+        void realizarRegistro(Usuario& usuario, string password);
+
+        string getClaveParaRegistrarse(Usuario& usuario);
 
 
 

@@ -25,7 +25,10 @@ class SharedDataBase
         //DESPUES MODIFICAR LO QUE SE PASE COMO PARAMETRO PARA QUE NO SE TENGA QUE PASAR COMO JSON....
         //QUE SE PASE UN PerfilUsuario&
         //bool registrarUsuar(string bodyJson);
-        int registrarUsuario(string bodyJson);
+        //int registrarUsuario(string bodyJson);
+        int registrarUsuario(Usuario& usuario);
+
+
         Usuario obtenerPerfilDelUsuario(int idUsuario);
         ListadoDeUsuarios obtenerListadoDeUsuarios();
         bool eliminarUsuario(int idUsuario);
