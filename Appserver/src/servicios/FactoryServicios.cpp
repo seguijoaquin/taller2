@@ -29,8 +29,6 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
 
     if (compararMetodoHTTP(httpRequest, "POST")){
         if (compararUriHTTP(httpRequest, "/chat")){
-            //servicio = new ServicioChat(this->conexiones,&httpRequest,this->sesiones, this->conversaciones);
-            //servicio = new ServicioChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
 
             creator = new CreatorChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
         }
@@ -40,13 +38,10 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){
-            //servicio = new servicioLogin(this->sesiones, httpRequest, this->credenciales);
 
             creator = new CreatorLogin(this->sesiones, httpRequest, this->credenciales);
         }
         else if (compararUriHTTP(httpRequest, "/mensajes")){
-
-            //servicio = new ServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
 
             creator = new CreatorServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
         }
@@ -66,7 +61,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){
-        creator = nullptr;
+        if (compararUriHTTP(httpRequest, "/eliminar")){
+            creator = new CreatorEliminacion(this->shared, &httpRequest, this->credenciales, this->sesiones);
+        }
     }
 
     if (creator != nullptr){
