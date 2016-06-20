@@ -1,0 +1,26 @@
+var classrocksdb_1_1WriteBatchWithIndex =
+[
+    [ "WriteBatchWithIndex", "classrocksdb_1_1WriteBatchWithIndex.html#ae30239148711ea91f9f74c0ff35a050a", null ],
+    [ "~WriteBatchWithIndex", "classrocksdb_1_1WriteBatchWithIndex.html#a2d2fc4697d3f9386d00e196356f0176a", null ],
+    [ "Clear", "classrocksdb_1_1WriteBatchWithIndex.html#a35c2f169d06c3965a30b8612640df8d8", null ],
+    [ "Delete", "classrocksdb_1_1WriteBatchWithIndex.html#ad7dee3429735282d18652b8ea0d5b06c", null ],
+    [ "Delete", "classrocksdb_1_1WriteBatchWithIndex.html#a8607c3d398eb4be3ecc0b146aa49c414", null ],
+    [ "GetFromBatch", "classrocksdb_1_1WriteBatchWithIndex.html#aee56706c39cc7df1b23990c9c2e17957", null ],
+    [ "GetFromBatch", "classrocksdb_1_1WriteBatchWithIndex.html#a751a2f10088e6a4da8b7bdfbba3b88c2", null ],
+    [ "GetFromBatchAndDB", "classrocksdb_1_1WriteBatchWithIndex.html#a4c4f01aad704cfce660e4e12dcadcfee", null ],
+    [ "GetFromBatchAndDB", "classrocksdb_1_1WriteBatchWithIndex.html#a5f19484b5f3ce5a1ec831b750f020f5d", null ],
+    [ "GetWriteBatch", "classrocksdb_1_1WriteBatchWithIndex.html#a0e1a019e009b31c5a25388c4dc7ebfdc", null ],
+    [ "Merge", "classrocksdb_1_1WriteBatchWithIndex.html#ad59982d64a80a24201930158499bd927", null ],
+    [ "Merge", "classrocksdb_1_1WriteBatchWithIndex.html#a4c8be96a087e0376a7523be2993732e6", null ],
+    [ "NewIterator", "classrocksdb_1_1WriteBatchWithIndex.html#a78b9a2d037cbfc2c5410cda78551ffd3", null ],
+    [ "NewIterator", "classrocksdb_1_1WriteBatchWithIndex.html#ab79deb71fb0f8899d68d2098df057416", null ],
+    [ "NewIteratorWithBase", "classrocksdb_1_1WriteBatchWithIndex.html#a4cc367c9b6b2432bb3e5b001ec825695", null ],
+    [ "NewIteratorWithBase", "classrocksdb_1_1WriteBatchWithIndex.html#a5c5ae5be74f4dc481bebf24255a3d394", null ],
+    [ "Put", "classrocksdb_1_1WriteBatchWithIndex.html#a65947d01dc77091d9a5a73485dd804ff", null ],
+    [ "Put", "classrocksdb_1_1WriteBatchWithIndex.html#a84a48bbbb10429133b09de7f3b5d38e0", null ],
+    [ "PutLogData", "classrocksdb_1_1WriteBatchWithIndex.html#a243f29744cb3521f987eb2da0405eff9", null ],
+    [ "RollbackToSavePoint", "classrocksdb_1_1WriteBatchWithIndex.html#af53563fdeb95c10fa3e7b7a96ab5beaa", null ],
+    [ "SetSavePoint", "classrocksdb_1_1WriteBatchWithIndex.html#a1390ea750181a1298563d759eb23a6c3", null ],
+    [ "SingleDelete", "classrocksdb_1_1WriteBatchWithIndex.html#a0f9e13dde1b941d9048e23a025748e94", null ],
+    [ "SingleDelete", "classrocksdb_1_1WriteBatchWithIndex.html#a5a6a99382308e325ba2331a41a27fec6", null ]
+];

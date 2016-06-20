@@ -1,0 +1,27 @@
+var structrocksdb_1_1CompactionJobStats =
+[
+    [ "CompactionJobStats", "structrocksdb_1_1CompactionJobStats.html#ac6be032896de68f4da5d610f855df09f", null ],
+    [ "Add", "structrocksdb_1_1CompactionJobStats.html#a3bc84f5f31d8281195c68255bc75cfc3", null ],
+    [ "Reset", "structrocksdb_1_1CompactionJobStats.html#af0195248906328fd3b8f27d55ae9425f", null ],
+    [ "elapsed_micros", "structrocksdb_1_1CompactionJobStats.html#a6567d468a65804786f63cc4479be6c6f", null ],
+    [ "file_fsync_nanos", "structrocksdb_1_1CompactionJobStats.html#ae9faea0656e11b736aeac6d35facc700", null ],
+    [ "file_prepare_write_nanos", "structrocksdb_1_1CompactionJobStats.html#a5cf8dcee3c51604d9a45fd221fab792a", null ],
+    [ "file_range_sync_nanos", "structrocksdb_1_1CompactionJobStats.html#af3b2635781a0ac9ad2e9e2eb6b01dcfc", null ],
+    [ "file_write_nanos", "structrocksdb_1_1CompactionJobStats.html#a442fa7d03821f9c107dfac2bb049f9b5", null ],
+    [ "is_manual_compaction", "structrocksdb_1_1CompactionJobStats.html#ae07cc8e438bcafbfd3fe9899dd323dde", null ],
+    [ "largest_output_key_prefix", "structrocksdb_1_1CompactionJobStats.html#adcb6ac0e33c7eafd46999a2d152b018d", null ],
+    [ "num_corrupt_keys", "structrocksdb_1_1CompactionJobStats.html#acd7628e417f48a0f7eab1e1732c6c27d", null ],
+    [ "num_expired_deletion_records", "structrocksdb_1_1CompactionJobStats.html#a93fa71d4acdde55345a0dfd341525d68", null ],
+    [ "num_input_deletion_records", "structrocksdb_1_1CompactionJobStats.html#a26690d30147da530ccb58b31664bd842", null ],
+    [ "num_input_files", "structrocksdb_1_1CompactionJobStats.html#ad51b1dbb1097f47965e03a1f0df1dae0", null ],
+    [ "num_input_files_at_output_level", "structrocksdb_1_1CompactionJobStats.html#a4bd332cb2fd690781e28b45340819511", null ],
+    [ "num_input_records", "structrocksdb_1_1CompactionJobStats.html#aa59a71837c8db2b6d3fbd619d9abfa97", null ],
+    [ "num_output_files", "structrocksdb_1_1CompactionJobStats.html#a28cb3dcc37534dc043e75a5218f12243", null ],
+    [ "num_output_records", "structrocksdb_1_1CompactionJobStats.html#a23be31caaba0bc26d62329f2d9b9da82", null ],
+    [ "num_records_replaced", "structrocksdb_1_1CompactionJobStats.html#a1c79e44c92dd9faa6888ca26937a210a", null ],
+    [ "smallest_output_key_prefix", "structrocksdb_1_1CompactionJobStats.html#a566d94f35ffb42149030263118c51819", null ],
+    [ "total_input_bytes", "structrocksdb_1_1CompactionJobStats.html#a097802ababbd8561713ebdd013af291b", null ],
+    [ "total_input_raw_key_bytes", "structrocksdb_1_1CompactionJobStats.html#a910330008a971df31761388ab43938cb", null ],
+    [ "total_input_raw_value_bytes", "structrocksdb_1_1CompactionJobStats.html#a8a1a5bb5fba130c88f22fcc8dbbf33d4", null ],
+    [ "total_output_bytes", "structrocksdb_1_1CompactionJobStats.html#adf968cd75deab45d379fa203899ce5fb", null ]
+];
