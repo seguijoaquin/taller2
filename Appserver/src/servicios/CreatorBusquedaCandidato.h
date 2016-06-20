@@ -14,6 +14,7 @@ class CreatorBusquedaCandidato : public CreatorServicio
         virtual ~CreatorBusquedaCandidato();
     protected:
     private:
+        bool validarParametros(MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones);
 };
 
 #endif // CREATORBUSQUEDACANDIDATO_H
