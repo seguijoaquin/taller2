@@ -1,0 +1,197 @@
+\hypertarget{classrocksdb_1_1Status}{}\section{rocksdb\+:\+:Status Class Reference}
+\label{classrocksdb_1_1Status}\index{rocksdb\+::\+Status@{rocksdb\+::\+Status}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Code} \{ \\*
+{\bfseries k\+Ok} = 0, 
+{\bfseries k\+Not\+Found} = 1, 
+{\bfseries k\+Corruption} = 2, 
+{\bfseries k\+Not\+Supported} = 3, 
+\\*
+{\bfseries k\+Invalid\+Argument} = 4, 
+{\bfseries k\+I\+O\+Error} = 5, 
+{\bfseries k\+Merge\+In\+Progress} = 6, 
+{\bfseries k\+Incomplete} = 7, 
+\\*
+{\bfseries k\+Shutdown\+In\+Progress} = 8, 
+{\bfseries k\+Timed\+Out} = 9, 
+{\bfseries k\+Aborted} = 10, 
+{\bfseries k\+Busy} = 11, 
+\\*
+{\bfseries k\+Expired} = 12, 
+{\bfseries k\+Try\+Again} = 13
+ \}\hypertarget{classrocksdb_1_1Status_a674f0382df1070a302a38eed9be0416d}{}\label{classrocksdb_1_1Status_a674f0382df1070a302a38eed9be0416d}
+
+\item 
+enum {\bfseries Sub\+Code} \{ \\*
+{\bfseries k\+None} = 0, 
+{\bfseries k\+Mutex\+Timeout} = 1, 
+{\bfseries k\+Lock\+Timeout} = 2, 
+{\bfseries k\+Lock\+Limit} = 3, 
+\\*
+{\bfseries k\+Max\+Sub\+Code}
+ \}\hypertarget{classrocksdb_1_1Status_a5f057a64d03b29d53b2d97f4c10b520a}{}\label{classrocksdb_1_1Status_a5f057a64d03b29d53b2d97f4c10b520a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Status} (const \hyperlink{classrocksdb_1_1Status}{Status} \&s)\hypertarget{classrocksdb_1_1Status_a3a35e6356b999e337c19c64fa3d97b3f}{}\label{classrocksdb_1_1Status_a3a35e6356b999e337c19c64fa3d97b3f}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} \& {\bfseries operator=} (const \hyperlink{classrocksdb_1_1Status}{Status} \&s)\hypertarget{classrocksdb_1_1Status_a84c2f3af12d07cc80c95c6afa31bda18}{}\label{classrocksdb_1_1Status_a84c2f3af12d07cc80c95c6afa31bda18}
+
+\item 
+{\bfseries Status} (\hyperlink{classrocksdb_1_1Status}{Status} \&\&s) noexcept\hypertarget{classrocksdb_1_1Status_a78f1d71eba0697577555dd00fd7980d1}{}\label{classrocksdb_1_1Status_a78f1d71eba0697577555dd00fd7980d1}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} \& {\bfseries operator=} (\hyperlink{classrocksdb_1_1Status}{Status} \&\&s) noexcept\hypertarget{classrocksdb_1_1Status_acd56c3377f431c98ac6ca409fbbea25d}{}\label{classrocksdb_1_1Status_acd56c3377f431c98ac6ca409fbbea25d}
+
+\item 
+bool {\bfseries operator==} (const \hyperlink{classrocksdb_1_1Status}{Status} \&rhs) const\hypertarget{classrocksdb_1_1Status_a0da952f0e7216b07cbcc17d3b73498ae}{}\label{classrocksdb_1_1Status_a0da952f0e7216b07cbcc17d3b73498ae}
+
+\item 
+bool {\bfseries operator!=} (const \hyperlink{classrocksdb_1_1Status}{Status} \&rhs) const\hypertarget{classrocksdb_1_1Status_a41978a635b602f25d481a6db5715619b}{}\label{classrocksdb_1_1Status_a41978a635b602f25d481a6db5715619b}
+
+\item 
+Code {\bfseries code} () const\hypertarget{classrocksdb_1_1Status_a71dcf5c75045a1740b3ccd1b36f8d8f7}{}\label{classrocksdb_1_1Status_a71dcf5c75045a1740b3ccd1b36f8d8f7}
+
+\item 
+Sub\+Code {\bfseries subcode} () const\hypertarget{classrocksdb_1_1Status_ae99838221b30689a63d283053317f848}{}\label{classrocksdb_1_1Status_ae99838221b30689a63d283053317f848}
+
+\item 
+bool {\bfseries ok} () const\hypertarget{classrocksdb_1_1Status_aac021d30599d2d6485701cf2a28428d7}{}\label{classrocksdb_1_1Status_aac021d30599d2d6485701cf2a28428d7}
+
+\item 
+bool {\bfseries Is\+Not\+Found} () const\hypertarget{classrocksdb_1_1Status_a9954f7897aa9a4c69863dfdcf6454e03}{}\label{classrocksdb_1_1Status_a9954f7897aa9a4c69863dfdcf6454e03}
+
+\item 
+bool {\bfseries Is\+Corruption} () const\hypertarget{classrocksdb_1_1Status_a88ad7dccf98298d44fe5ecadd26c25fa}{}\label{classrocksdb_1_1Status_a88ad7dccf98298d44fe5ecadd26c25fa}
+
+\item 
+bool {\bfseries Is\+Not\+Supported} () const\hypertarget{classrocksdb_1_1Status_ab078891f762dc537230e08cde478f4f6}{}\label{classrocksdb_1_1Status_ab078891f762dc537230e08cde478f4f6}
+
+\item 
+bool {\bfseries Is\+Invalid\+Argument} () const\hypertarget{classrocksdb_1_1Status_aab1f9febda3e40941bec777650d87231}{}\label{classrocksdb_1_1Status_aab1f9febda3e40941bec777650d87231}
+
+\item 
+bool {\bfseries Is\+I\+O\+Error} () const\hypertarget{classrocksdb_1_1Status_a7a22ba73ccc42db5c60d14666deeea84}{}\label{classrocksdb_1_1Status_a7a22ba73ccc42db5c60d14666deeea84}
+
+\item 
+bool {\bfseries Is\+Merge\+In\+Progress} () const\hypertarget{classrocksdb_1_1Status_a2d8fa105da681142cc8f04f2ede2d86b}{}\label{classrocksdb_1_1Status_a2d8fa105da681142cc8f04f2ede2d86b}
+
+\item 
+bool {\bfseries Is\+Incomplete} () const\hypertarget{classrocksdb_1_1Status_a2223f609e259b57eb130aeb634754433}{}\label{classrocksdb_1_1Status_a2223f609e259b57eb130aeb634754433}
+
+\item 
+bool {\bfseries Is\+Shutdown\+In\+Progress} () const\hypertarget{classrocksdb_1_1Status_a1cb85d04e6afcd3334df5802e83cb327}{}\label{classrocksdb_1_1Status_a1cb85d04e6afcd3334df5802e83cb327}
+
+\item 
+bool {\bfseries Is\+Timed\+Out} () const\hypertarget{classrocksdb_1_1Status_a2e37f2631882bd4201e33321880495ef}{}\label{classrocksdb_1_1Status_a2e37f2631882bd4201e33321880495ef}
+
+\item 
+bool {\bfseries Is\+Aborted} () const\hypertarget{classrocksdb_1_1Status_a61bfcfc7fb1cbebd4155a78c9a37bc67}{}\label{classrocksdb_1_1Status_a61bfcfc7fb1cbebd4155a78c9a37bc67}
+
+\item 
+bool {\bfseries Is\+Busy} () const\hypertarget{classrocksdb_1_1Status_a6104bfa1b071e917a10bf84be04864e6}{}\label{classrocksdb_1_1Status_a6104bfa1b071e917a10bf84be04864e6}
+
+\item 
+bool {\bfseries Is\+Expired} () const\hypertarget{classrocksdb_1_1Status_aa5b6a212e47d943bc474ecf31c1f90d2}{}\label{classrocksdb_1_1Status_aa5b6a212e47d943bc474ecf31c1f90d2}
+
+\item 
+bool {\bfseries Is\+Try\+Again} () const\hypertarget{classrocksdb_1_1Status_ada822596b51a03e78af9a232dc37f51f}{}\label{classrocksdb_1_1Status_ada822596b51a03e78af9a232dc37f51f}
+
+\item 
+std\+::string {\bfseries To\+String} () const\hypertarget{classrocksdb_1_1Status_a87ee28e35df0661ce991d15cdfee9d64}{}\label{classrocksdb_1_1Status_a87ee28e35df0661ce991d15cdfee9d64}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries OK} ()\hypertarget{classrocksdb_1_1Status_aceb84d55ae3b6bccf2a925433ca1ae00}{}\label{classrocksdb_1_1Status_aceb84d55ae3b6bccf2a925433ca1ae00}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Not\+Found} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a415510a7cc15542538c80c790d2bb4af}{}\label{classrocksdb_1_1Status_a415510a7cc15542538c80c790d2bb4af}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Not\+Found} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a2239b205090bf5dd7123d05b5e3fe39f}{}\label{classrocksdb_1_1Status_a2239b205090bf5dd7123d05b5e3fe39f}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Corruption} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a585d7fbcadd8858734f534519290035d}{}\label{classrocksdb_1_1Status_a585d7fbcadd8858734f534519290035d}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Corruption} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a9c879b8e364c5defea0dc06bc9863bb1}{}\label{classrocksdb_1_1Status_a9c879b8e364c5defea0dc06bc9863bb1}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Not\+Supported} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_affd56b266e377f34a3b2e3d525a9d8c8}{}\label{classrocksdb_1_1Status_affd56b266e377f34a3b2e3d525a9d8c8}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Not\+Supported} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a3daac74978ea0d4cba97273c4598fc16}{}\label{classrocksdb_1_1Status_a3daac74978ea0d4cba97273c4598fc16}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Invalid\+Argument} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a5afec51a3f306b6f188a5af0c5d003ba}{}\label{classrocksdb_1_1Status_a5afec51a3f306b6f188a5af0c5d003ba}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Invalid\+Argument} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_ad83a72735d10c30cb97337412256a3e6}{}\label{classrocksdb_1_1Status_ad83a72735d10c30cb97337412256a3e6}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries I\+O\+Error} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_aebdc2d6b55f9d3145ea7add1551be0bc}{}\label{classrocksdb_1_1Status_aebdc2d6b55f9d3145ea7add1551be0bc}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries I\+O\+Error} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a63110d6c30793cd74ff23140808072ba}{}\label{classrocksdb_1_1Status_a63110d6c30793cd74ff23140808072ba}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge\+In\+Progress} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_ae68d506384bf32b72c7db619eaeb508a}{}\label{classrocksdb_1_1Status_ae68d506384bf32b72c7db619eaeb508a}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge\+In\+Progress} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a05a1e4898e057666ac98a005d62857e3}{}\label{classrocksdb_1_1Status_a05a1e4898e057666ac98a005d62857e3}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Incomplete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a223ccba0dce26cd4539d6fd2c28ae364}{}\label{classrocksdb_1_1Status_a223ccba0dce26cd4539d6fd2c28ae364}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Incomplete} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_afaba38f1c48d2059eeee00a274d6b02b}{}\label{classrocksdb_1_1Status_afaba38f1c48d2059eeee00a274d6b02b}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Shutdown\+In\+Progress} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a8aef9b12b426e25219a1bcc1c3259a14}{}\label{classrocksdb_1_1Status_a8aef9b12b426e25219a1bcc1c3259a14}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Shutdown\+In\+Progress} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a9c0889ee08cd32f72eb0d7f900f326db}{}\label{classrocksdb_1_1Status_a9c0889ee08cd32f72eb0d7f900f326db}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Aborted} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a82419bdaec6f6ac233d8259b7fcd3a46}{}\label{classrocksdb_1_1Status_a82419bdaec6f6ac233d8259b7fcd3a46}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Aborted} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a359bd8151b16d4bb46903105ccfa6c6c}{}\label{classrocksdb_1_1Status_a359bd8151b16d4bb46903105ccfa6c6c}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Busy} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_afae32a6e8ad3e7b6e8b8783f88402f5d}{}\label{classrocksdb_1_1Status_afae32a6e8ad3e7b6e8b8783f88402f5d}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Busy} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a89c44c7288668b9dcce3fb2b1f7925dd}{}\label{classrocksdb_1_1Status_a89c44c7288668b9dcce3fb2b1f7925dd}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Timed\+Out} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a35c568e76c206ce1b529de1d1e93b36d}{}\label{classrocksdb_1_1Status_a35c568e76c206ce1b529de1d1e93b36d}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Timed\+Out} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a130325d800a3238a68622d94ba9f8945}{}\label{classrocksdb_1_1Status_a130325d800a3238a68622d94ba9f8945}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Expired} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_ae5391df04f0e9deb8a670977f0e20143}{}\label{classrocksdb_1_1Status_ae5391df04f0e9deb8a670977f0e20143}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Expired} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_ab910e01b91c2cd40cb8d81fa1e0c6540}{}\label{classrocksdb_1_1Status_ab910e01b91c2cd40cb8d81fa1e0c6540}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Try\+Again} (Sub\+Code msg=k\+None)\hypertarget{classrocksdb_1_1Status_a345bcbbff5c16346001c37ce021cb949}{}\label{classrocksdb_1_1Status_a345bcbbff5c16346001c37ce021cb949}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Try\+Again} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&msg2=\hyperlink{classrocksdb_1_1Slice}{Slice}())\hypertarget{classrocksdb_1_1Status_a8f4dd7fa6e135ee369b518f7498bfddf}{}\label{classrocksdb_1_1Status_a8f4dd7fa6e135ee369b518f7498bfddf}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/status.\+h\end{DoxyCompactItemize}

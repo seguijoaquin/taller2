@@ -1,0 +1,38 @@
+\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB}{}\section{rocksdb\+:\+:spatial\+:\+:Spatial\+DB Class Reference}
+\label{classrocksdb_1_1spatial_1_1SpatialDB}\index{rocksdb\+::spatial\+::\+Spatial\+DB@{rocksdb\+::spatial\+::\+Spatial\+DB}}
+Inheritance diagram for rocksdb\+:\+:spatial\+:\+:Spatial\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1spatial_1_1SpatialDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Spatial\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db)\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_a6c90ffc1ba8d24b8905e6f9295f083b3}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_a6c90ffc1ba8d24b8905e6f9295f083b3}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Insert} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{structrocksdb_1_1spatial_1_1BoundingBox}{Bounding\+Box}$<$ double $>$ \&bbox, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&blob, const \hyperlink{classrocksdb_1_1spatial_1_1FeatureSet}{Feature\+Set} \&feature\+\_\+set, const std\+::vector$<$ std\+::string $>$ \&spatial\+\_\+indexes)=0\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_aa5ba141138e335ae0cdadf2385295fb8}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_aa5ba141138e335ae0cdadf2385295fb8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact} (int num\+\_\+threads=1)=0\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_a1f5876e94cc14279d28705e7ce79bec4}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_a1f5876e94cc14279d28705e7ce79bec4}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1spatial_1_1Cursor}{Cursor} $\ast$ {\bfseries Query} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, const \hyperlink{structrocksdb_1_1spatial_1_1BoundingBox}{Bounding\+Box}$<$ double $>$ \&bbox, const std\+::string \&spatial\+\_\+index)=0\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_a1c12e809750730224aee8758040f7aa1}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_a1c12e809750730224aee8758040f7aa1}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create} (const \hyperlink{structrocksdb_1_1spatial_1_1SpatialDBOptions}{Spatial\+D\+B\+Options} \&options, const std\+::string \&name, const std\+::vector$<$ \hyperlink{structrocksdb_1_1spatial_1_1SpatialIndexOptions}{Spatial\+Index\+Options} $>$ \&spatial\+\_\+indexes)\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_a7341ddde1e5448b8f92373a716438382}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_a7341ddde1e5448b8f92373a716438382}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1spatial_1_1SpatialDBOptions}{Spatial\+D\+B\+Options} \&options, const std\+::string \&name, \hyperlink{classrocksdb_1_1spatial_1_1SpatialDB}{Spatial\+DB} $\ast$$\ast$db, bool read\+\_\+only=false)\hypertarget{classrocksdb_1_1spatial_1_1SpatialDB_ae13db275176c600dd7d99b843ec047f9}{}\label{classrocksdb_1_1spatial_1_1SpatialDB_ae13db275176c600dd7d99b843ec047f9}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/spatial\+\_\+db.\+h\end{DoxyCompactItemize}

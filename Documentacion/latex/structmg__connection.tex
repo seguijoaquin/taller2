@@ -1,0 +1,85 @@
+\hypertarget{structmg__connection}{}\section{mg\+\_\+connection Struct Reference}
+\label{structmg__connection}\index{mg\+\_\+connection@{mg\+\_\+connection}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmg__connection}{mg\+\_\+connection} $\ast$ {\bfseries next}\hypertarget{structmg__connection_afcfd89f119a87cba6f6dfec2d2eda5d9}{}\label{structmg__connection_afcfd89f119a87cba6f6dfec2d2eda5d9}
+
+\item 
+struct \hyperlink{structmg__connection}{mg\+\_\+connection} $\ast$ {\bfseries prev}\hypertarget{structmg__connection_aa93fd5ca83f11230bc971a68a7fa8d5e}{}\label{structmg__connection_aa93fd5ca83f11230bc971a68a7fa8d5e}
+
+\item 
+struct \hyperlink{structmg__connection}{mg\+\_\+connection} $\ast$ {\bfseries listener}\hypertarget{structmg__connection_a9392bec67d0dc8df58e6c171214ddf8d}{}\label{structmg__connection_a9392bec67d0dc8df58e6c171214ddf8d}
+
+\item 
+struct \hyperlink{structmg__mgr}{mg\+\_\+mgr} $\ast$ {\bfseries mgr}\hypertarget{structmg__connection_ac341f1f2bd18e030fe90a914e4517506}{}\label{structmg__connection_ac341f1f2bd18e030fe90a914e4517506}
+
+\item 
+sock\+\_\+t {\bfseries sock}\hypertarget{structmg__connection_a608f2461b3dd53e503d6ed3c84ec55b0}{}\label{structmg__connection_a608f2461b3dd53e503d6ed3c84ec55b0}
+
+\item 
+int {\bfseries err}\hypertarget{structmg__connection_aa13a0bd4a2ce3d6384866acb7e00344a}{}\label{structmg__connection_aa13a0bd4a2ce3d6384866acb7e00344a}
+
+\item 
+union \hyperlink{unionsocket__address}{socket\+\_\+address} {\bfseries sa}\hypertarget{structmg__connection_a3dfa1816f5a4b0725d9d04be75bbb3f8}{}\label{structmg__connection_a3dfa1816f5a4b0725d9d04be75bbb3f8}
+
+\item 
+size\+\_\+t {\bfseries recv\+\_\+mbuf\+\_\+limit}\hypertarget{structmg__connection_ab15e90e7fb7b8719cc7dcc67f45856e1}{}\label{structmg__connection_ab15e90e7fb7b8719cc7dcc67f45856e1}
+
+\item 
+struct \hyperlink{structmbuf}{mbuf} {\bfseries recv\+\_\+mbuf}\hypertarget{structmg__connection_a72adb9aba4bbe59a9bd591de496713b3}{}\label{structmg__connection_a72adb9aba4bbe59a9bd591de496713b3}
+
+\item 
+struct \hyperlink{structmbuf}{mbuf} {\bfseries send\+\_\+mbuf}\hypertarget{structmg__connection_a70076f5da9c9d01e77acb3547941671c}{}\label{structmg__connection_a70076f5da9c9d01e77acb3547941671c}
+
+\item 
+S\+SL $\ast$ {\bfseries ssl}\hypertarget{structmg__connection_ac376c70a4f827896a0152d704233424b}{}\label{structmg__connection_ac376c70a4f827896a0152d704233424b}
+
+\item 
+S\+S\+L\+\_\+\+C\+TX $\ast$ {\bfseries ssl\+\_\+ctx}\hypertarget{structmg__connection_adad6e9c147ed4d84d40793dfb6c3d318}{}\label{structmg__connection_adad6e9c147ed4d84d40793dfb6c3d318}
+
+\item 
+time\+\_\+t {\bfseries last\+\_\+io\+\_\+time}\hypertarget{structmg__connection_aaf0f39b26deef84e6c204a176ea1e50a}{}\label{structmg__connection_aaf0f39b26deef84e6c204a176ea1e50a}
+
+\item 
+double {\bfseries ev\+\_\+timer\+\_\+time}\hypertarget{structmg__connection_a84d1a7e42f1326c70f61f71e65082dc0}{}\label{structmg__connection_a84d1a7e42f1326c70f61f71e65082dc0}
+
+\item 
+mg\+\_\+event\+\_\+handler\+\_\+t {\bfseries proto\+\_\+handler}\hypertarget{structmg__connection_ae6b1f0d002253c0f80371fc5a7bbfc70}{}\label{structmg__connection_ae6b1f0d002253c0f80371fc5a7bbfc70}
+
+\item 
+void $\ast$ {\bfseries proto\+\_\+data}\hypertarget{structmg__connection_a7508851a3c070a1357c226781fa92bb7}{}\label{structmg__connection_a7508851a3c070a1357c226781fa92bb7}
+
+\item 
+void($\ast$ {\bfseries proto\+\_\+data\+\_\+destructor} )(void $\ast$proto\+\_\+data)\hypertarget{structmg__connection_a834e7757b28379b2ca0b8b6c51d7ba95}{}\label{structmg__connection_a834e7757b28379b2ca0b8b6c51d7ba95}
+
+\item 
+mg\+\_\+event\+\_\+handler\+\_\+t {\bfseries handler}\hypertarget{structmg__connection_a1f14bd154357c301cce137c9ac1d1edb}{}\label{structmg__connection_a1f14bd154357c301cce137c9ac1d1edb}
+
+\item 
+void $\ast$ {\bfseries user\+\_\+data}\hypertarget{structmg__connection_ab6d66a4eacc5d4d15f817ce98f26322d}{}\label{structmg__connection_ab6d66a4eacc5d4d15f817ce98f26322d}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>void $\ast$ {\bfseries v}\\
+\>mg\_event\_handler\_t {\bfseries f}\\
+\} {\bfseries priv\_1}\hypertarget{structmg__connection_a67f1257d9d36f09eaaaebbd3ec2ff0fb}{}\label{structmg__connection_a67f1257d9d36f09eaaaebbd3ec2ff0fb}
+\\
+
+\end{tabbing}\item 
+void $\ast$ {\bfseries priv\+\_\+2}\hypertarget{structmg__connection_aeb5efea496ac74ed2e0b8864f4fd6f65}{}\label{structmg__connection_aeb5efea496ac74ed2e0b8864f4fd6f65}
+
+\item 
+void $\ast$ {\bfseries mgr\+\_\+data}\hypertarget{structmg__connection_a19cb5ee4c2402582dcf4cb6a4f899136}{}\label{structmg__connection_a19cb5ee4c2402582dcf4cb6a4f899136}
+
+\item 
+unsigned long {\bfseries flags}\hypertarget{structmg__connection_aa47edda11152dd7769a76d806a87e1aa}{}\label{structmg__connection_aa47edda11152dd7769a76d806a87e1aa}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/mongoose/mongoose.\+h\end{DoxyCompactItemize}

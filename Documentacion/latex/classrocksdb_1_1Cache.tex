@@ -1,0 +1,63 @@
+\hypertarget{classrocksdb_1_1Cache}{}\section{rocksdb\+:\+:Cache Class Reference}
+\label{classrocksdb_1_1Cache}\index{rocksdb\+::\+Cache@{rocksdb\+::\+Cache}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Insert} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, void $\ast$value, size\+\_\+t charge, void($\ast$deleter)(const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, void $\ast$value), \hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle} $\ast$$\ast$handle=nullptr)=0\hypertarget{classrocksdb_1_1Cache_aeeb1f83d19acd5e1dd08509361d17fd1}{}\label{classrocksdb_1_1Cache_aeeb1f83d19acd5e1dd08509361d17fd1}
+
+\item 
+virtual \hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle} $\ast$ {\bfseries Lookup} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Cache_a3df9823558cb3e87be72a61d494601d8}{}\label{classrocksdb_1_1Cache_a3df9823558cb3e87be72a61d494601d8}
+
+\item 
+virtual void {\bfseries Release} (\hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle} $\ast$handle)=0\hypertarget{classrocksdb_1_1Cache_a0c407981dfc226d8ec65e6b076aab42d}{}\label{classrocksdb_1_1Cache_a0c407981dfc226d8ec65e6b076aab42d}
+
+\item 
+virtual void $\ast$ {\bfseries Value} (\hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle} $\ast$handle)=0\hypertarget{classrocksdb_1_1Cache_a18ed26fd1e9e7097fea1a8ee3b2599b4}{}\label{classrocksdb_1_1Cache_a18ed26fd1e9e7097fea1a8ee3b2599b4}
+
+\item 
+virtual void {\bfseries Erase} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Cache_a17a30d33adccef40afe04ce729f7a2f2}{}\label{classrocksdb_1_1Cache_a17a30d33adccef40afe04ce729f7a2f2}
+
+\item 
+virtual uint64\+\_\+t {\bfseries New\+Id} ()=0\hypertarget{classrocksdb_1_1Cache_a0f53cd36aae877c68a28d128734a2b4a}{}\label{classrocksdb_1_1Cache_a0f53cd36aae877c68a28d128734a2b4a}
+
+\item 
+virtual void {\bfseries Set\+Capacity} (size\+\_\+t capacity)=0\hypertarget{classrocksdb_1_1Cache_a752de19d361112a191f61f5fcb47758d}{}\label{classrocksdb_1_1Cache_a752de19d361112a191f61f5fcb47758d}
+
+\item 
+virtual void {\bfseries Set\+Strict\+Capacity\+Limit} (bool strict\+\_\+capacity\+\_\+limit)=0\hypertarget{classrocksdb_1_1Cache_a241b2e3c50e9cdfa53733cb5f7d8e899}{}\label{classrocksdb_1_1Cache_a241b2e3c50e9cdfa53733cb5f7d8e899}
+
+\item 
+virtual bool {\bfseries Has\+Strict\+Capacity\+Limit} () const =0\hypertarget{classrocksdb_1_1Cache_ae54a9d537e7f71412a0c77f5aef21746}{}\label{classrocksdb_1_1Cache_ae54a9d537e7f71412a0c77f5aef21746}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Capacity} () const =0\hypertarget{classrocksdb_1_1Cache_accff305fc4e6553a09fe543b7fed62d4}{}\label{classrocksdb_1_1Cache_accff305fc4e6553a09fe543b7fed62d4}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Usage} () const =0\hypertarget{classrocksdb_1_1Cache_ab37eee9208f9fee29c929e47e3f9d9b8}{}\label{classrocksdb_1_1Cache_ab37eee9208f9fee29c929e47e3f9d9b8}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Usage} (\hyperlink{structrocksdb_1_1Cache_1_1Handle}{Handle} $\ast$handle) const =0\hypertarget{classrocksdb_1_1Cache_a5130bfdcc04fe4e3485261058e6fb1de}{}\label{classrocksdb_1_1Cache_a5130bfdcc04fe4e3485261058e6fb1de}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Pinned\+Usage} () const =0\hypertarget{classrocksdb_1_1Cache_ade4d9d95b99efa035727abaa29350625}{}\label{classrocksdb_1_1Cache_ade4d9d95b99efa035727abaa29350625}
+
+\item 
+virtual void {\bfseries Disown\+Data} ()\hypertarget{classrocksdb_1_1Cache_ad91007b91bd80c31bc6aac392874ba19}{}\label{classrocksdb_1_1Cache_ad91007b91bd80c31bc6aac392874ba19}
+
+\item 
+virtual void {\bfseries Apply\+To\+All\+Cache\+Entries} (void($\ast$callback)(void $\ast$, size\+\_\+t), bool thread\+\_\+safe)=0\hypertarget{classrocksdb_1_1Cache_a83bf8ca591a3b1fddb503c6f2fbe0994}{}\label{classrocksdb_1_1Cache_a83bf8ca591a3b1fddb503c6f2fbe0994}
+
+\item 
+virtual void {\bfseries Erase\+Un\+Ref\+Entries} ()=0\hypertarget{classrocksdb_1_1Cache_a045e94f30862a1821358a9fb277eba0e}{}\label{classrocksdb_1_1Cache_a045e94f30862a1821358a9fb277eba0e}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/cache.\+h\end{DoxyCompactItemize}

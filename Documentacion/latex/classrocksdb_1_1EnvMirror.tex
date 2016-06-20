@@ -1,0 +1,76 @@
+\hypertarget{classrocksdb_1_1EnvMirror}{}\section{rocksdb\+:\+:Env\+Mirror Class Reference}
+\label{classrocksdb_1_1EnvMirror}\index{rocksdb\+::\+Env\+Mirror@{rocksdb\+::\+Env\+Mirror}}
+Inheritance diagram for rocksdb\+:\+:Env\+Mirror\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1EnvMirror}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrocksdb_1_1EnvMirror_1_1FileLockMirror}{File\+Lock\+Mirror}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Env\+Mirror} (\hyperlink{classrocksdb_1_1Env}{Env} $\ast$a, \hyperlink{classrocksdb_1_1Env}{Env} $\ast$b)\hypertarget{classrocksdb_1_1EnvMirror_aa9d54e018f6c63551982ba4110010527}{}\label{classrocksdb_1_1EnvMirror_aa9d54e018f6c63551982ba4110010527}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Sequential\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1SequentialFile}{Sequential\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvMirror_af42cb2435858ab1e73fd212a7b953c6a}{}\label{classrocksdb_1_1EnvMirror_af42cb2435858ab1e73fd212a7b953c6a}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Random\+Access\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1RandomAccessFile}{Random\+Access\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvMirror_a4a192d3e03b23da2891392c43538f4fe}{}\label{classrocksdb_1_1EnvMirror_a4a192d3e03b23da2891392c43538f4fe}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Writable\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvMirror_ab0cd5ef3e36ddd53bf3a7f4d622fef1d}{}\label{classrocksdb_1_1EnvMirror_ab0cd5ef3e36ddd53bf3a7f4d622fef1d}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Reuse\+Writable\+File} (const std\+::string \&fname, const std\+::string \&old\+\_\+fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvMirror_a19cf54de09f54692019c2bf7c720a705}{}\label{classrocksdb_1_1EnvMirror_a19cf54de09f54692019c2bf7c720a705}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Directory} (const std\+::string \&name, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Directory}{Directory} $>$ $\ast$result) override\hypertarget{classrocksdb_1_1EnvMirror_ae325e2b590476a6bfbaaece47fbd007f}{}\label{classrocksdb_1_1EnvMirror_ae325e2b590476a6bfbaaece47fbd007f}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries File\+Exists} (const std\+::string \&f) override\hypertarget{classrocksdb_1_1EnvMirror_aa678cb923cf3ce0ed7d63eed05e80a03}{}\label{classrocksdb_1_1EnvMirror_aa678cb923cf3ce0ed7d63eed05e80a03}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Children} (const std\+::string \&dir, std\+::vector$<$ std\+::string $>$ $\ast$r) override\hypertarget{classrocksdb_1_1EnvMirror_a1960df889f22e8a291685be525ce3a44}{}\label{classrocksdb_1_1EnvMirror_a1960df889f22e8a291685be525ce3a44}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+File} (const std\+::string \&f) override\hypertarget{classrocksdb_1_1EnvMirror_a24cc55f67dc4a8d709c7f8051a1798a2}{}\label{classrocksdb_1_1EnvMirror_a24cc55f67dc4a8d709c7f8051a1798a2}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvMirror_aa22907e532ba18d3ab38fcadc40e52d2}{}\label{classrocksdb_1_1EnvMirror_aa22907e532ba18d3ab38fcadc40e52d2}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir\+If\+Missing} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvMirror_a47ffc0e4f721f3160abf26f2dd9d7017}{}\label{classrocksdb_1_1EnvMirror_a47ffc0e4f721f3160abf26f2dd9d7017}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Dir} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvMirror_a40f31f2af0a4540241910e14734447cc}{}\label{classrocksdb_1_1EnvMirror_a40f31f2af0a4540241910e14734447cc}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Size} (const std\+::string \&f, uint64\+\_\+t $\ast$s) override\hypertarget{classrocksdb_1_1EnvMirror_a25359fd3c7f4a5ca01c9690ca2e0e534}{}\label{classrocksdb_1_1EnvMirror_a25359fd3c7f4a5ca01c9690ca2e0e534}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Modification\+Time} (const std\+::string \&fname, uint64\+\_\+t $\ast$file\+\_\+mtime) override\hypertarget{classrocksdb_1_1EnvMirror_a3ad82605cad55c6e4973a2fe5ca05d60}{}\label{classrocksdb_1_1EnvMirror_a3ad82605cad55c6e4973a2fe5ca05d60}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rename\+File} (const std\+::string \&s, const std\+::string \&t) override\hypertarget{classrocksdb_1_1EnvMirror_ae59670ffb6ebe2e48e6dbac866d7fcb9}{}\label{classrocksdb_1_1EnvMirror_ae59670ffb6ebe2e48e6dbac866d7fcb9}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Link\+File} (const std\+::string \&s, const std\+::string \&t) override\hypertarget{classrocksdb_1_1EnvMirror_ab11999d851a8051d07e48d2a081b6196}{}\label{classrocksdb_1_1EnvMirror_ab11999d851a8051d07e48d2a081b6196}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Lock\+File} (const std\+::string \&f, \hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$$\ast$l) override\hypertarget{classrocksdb_1_1EnvMirror_a8ff9c4ee9b25498704ff4685c073d14b}{}\label{classrocksdb_1_1EnvMirror_a8ff9c4ee9b25498704ff4685c073d14b}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Unlock\+File} (\hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$l) override\hypertarget{classrocksdb_1_1EnvMirror_a9cf29cccefd183106a44d7810f44b83c}{}\label{classrocksdb_1_1EnvMirror_a9cf29cccefd183106a44d7810f44b83c}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/env\+\_\+mirror.\+h\end{DoxyCompactItemize}

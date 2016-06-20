@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['randomaccessfile',['RandomAccessFile',['../classrocksdb_1_1RandomAccessFile.html',1,'rocksdb']]],
+  ['range',['Range',['../structrocksdb_1_1Range.html',1,'rocksdb']]],
+  ['ratelimiter',['RateLimiter',['../classrocksdb_1_1RateLimiter.html',1,'rocksdb']]],
+  ['reader',['Reader',['../classJson_1_1Reader.html',1,'Json']]],
+  ['readoptions',['ReadOptions',['../structrocksdb_1_1TransactionLogIterator_1_1ReadOptions.html',1,'rocksdb::TransactionLogIterator']]],
+  ['readoptions',['ReadOptions',['../structrocksdb_1_1ReadOptions.html',1,'rocksdb']]],
+  ['rebind',['rebind',['../structJson_1_1SecureAllocator_1_1rebind.html',1,'Json::SecureAllocator']]],
+  ['respuestadelabusqueda',['RespuestaDeLaBusqueda',['../classRespuestaDeLaBusqueda.html',1,'']]],
+  ['respuestadelavotacion',['RespuestaDeLaVotacion',['../classRespuestaDeLaVotacion.html',1,'']]],
+  ['respuestadelchat',['RespuestaDelChat',['../classRespuestaDelChat.html',1,'']]],
+  ['respuestadellogin',['RespuestaDelLogin',['../classRespuestaDelLogin.html',1,'']]],
+  ['respuestadelregistro',['RespuestaDelRegistro',['../classRespuestaDelRegistro.html',1,'']]],
+  ['respuestadelservicio',['RespuestaDelServicio',['../classRespuestaDelServicio.html',1,'']]],
+  ['respuestaeliminacion',['RespuestaEliminacion',['../classRespuestaEliminacion.html',1,'']]],
+  ['respuestamensajes',['RespuestaMensajes',['../classRespuestaMensajes.html',1,'']]],
+  ['respuestamodificarfoto',['RespuestaModificarFoto',['../classRespuestaModificarFoto.html',1,'']]],
+  ['respuestaservicioinexistente',['RespuestaServicioInexistente',['../classRespuestaServicioInexistente.html',1,'']]],
+  ['restorebackupabledb',['RestoreBackupableDB',['../classrocksdb_1_1RestoreBackupableDB.html',1,'rocksdb']]],
+  ['restoreoptions',['RestoreOptions',['../structrocksdb_1_1RestoreOptions.html',1,'rocksdb']]],
+  ['runtimeerror',['RuntimeError',['../classJson_1_1RuntimeError.html',1,'Json']]]
+];

@@ -1,0 +1,41 @@
+\hypertarget{classrocksdb_1_1BackupableDB}{}\section{rocksdb\+:\+:Backupable\+DB Class Reference}
+\label{classrocksdb_1_1BackupableDB}\index{rocksdb\+::\+Backupable\+DB@{rocksdb\+::\+Backupable\+DB}}
+Inheritance diagram for rocksdb\+:\+:Backupable\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1BackupableDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Backupable\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, const \hyperlink{structrocksdb_1_1BackupableDBOptions}{Backupable\+D\+B\+Options} \&options)\hypertarget{classrocksdb_1_1BackupableDB_aec2a834e82c818b899afff3643042718}{}\label{classrocksdb_1_1BackupableDB_aec2a834e82c818b899afff3643042718}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+New\+Backup} (bool flush\+\_\+before\+\_\+backup=false)\hypertarget{classrocksdb_1_1BackupableDB_ac04502c4cb1b1f0fd93f25a2306a6a6a}{}\label{classrocksdb_1_1BackupableDB_ac04502c4cb1b1f0fd93f25a2306a6a6a}
+
+\item 
+void {\bfseries Get\+Backup\+Info} (std\+::vector$<$ \hyperlink{structrocksdb_1_1BackupInfo}{Backup\+Info} $>$ $\ast$backup\+\_\+info)\hypertarget{classrocksdb_1_1BackupableDB_a723dd4de74025e89298e626c5d9df7c7}{}\label{classrocksdb_1_1BackupableDB_a723dd4de74025e89298e626c5d9df7c7}
+
+\item 
+void {\bfseries Get\+Corrupted\+Backups} (std\+::vector$<$ Backup\+ID $>$ $\ast$corrupt\+\_\+backup\+\_\+ids)\hypertarget{classrocksdb_1_1BackupableDB_ac8538fa3a90b261ab163bced63600d65}{}\label{classrocksdb_1_1BackupableDB_ac8538fa3a90b261ab163bced63600d65}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Purge\+Old\+Backups} (uint32\+\_\+t num\+\_\+backups\+\_\+to\+\_\+keep)\hypertarget{classrocksdb_1_1BackupableDB_aa8c1573be253f3626fc8665c57888733}{}\label{classrocksdb_1_1BackupableDB_aa8c1573be253f3626fc8665c57888733}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Backup} (Backup\+ID backup\+\_\+id)\hypertarget{classrocksdb_1_1BackupableDB_aebece0f8d7b9d26e3fabef17c26d2fb4}{}\label{classrocksdb_1_1BackupableDB_aebece0f8d7b9d26e3fabef17c26d2fb4}
+
+\item 
+void {\bfseries Stop\+Backup} ()\hypertarget{classrocksdb_1_1BackupableDB_ad32d24faef144f48aa057a939a08a187}{}\label{classrocksdb_1_1BackupableDB_ad32d24faef144f48aa057a939a08a187}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Garbage\+Collect} ()\hypertarget{classrocksdb_1_1BackupableDB_a636cb6d47d92043adc97ea3a9c312ebb}{}\label{classrocksdb_1_1BackupableDB_a636cb6d47d92043adc97ea3a9c312ebb}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/backupable\+\_\+db.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,22 @@
+\hypertarget{classrocksdb_1_1SstFileWriter}{}\section{rocksdb\+:\+:Sst\+File\+Writer Class Reference}
+\label{classrocksdb_1_1SstFileWriter}\index{rocksdb\+::\+Sst\+File\+Writer@{rocksdb\+::\+Sst\+File\+Writer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Sst\+File\+Writer} (const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&env\+\_\+options, const \hyperlink{structrocksdb_1_1ImmutableCFOptions}{Immutable\+C\+F\+Options} \&ioptions, const \hyperlink{classrocksdb_1_1Comparator}{Comparator} $\ast$user\+\_\+comparator)\hypertarget{classrocksdb_1_1SstFileWriter_a1fe4d1f2d5ad4b1ad8257818d56fdeed}{}\label{classrocksdb_1_1SstFileWriter_a1fe4d1f2d5ad4b1ad8257818d56fdeed}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const std\+::string \&file\+\_\+path)\hypertarget{classrocksdb_1_1SstFileWriter_a7093b68b582eaa567eb5ab6d0c87eaba}{}\label{classrocksdb_1_1SstFileWriter_a7093b68b582eaa567eb5ab6d0c87eaba}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&user\+\_\+key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)\hypertarget{classrocksdb_1_1SstFileWriter_abeb5217b8b5c01d7328ed593c272b14d}{}\label{classrocksdb_1_1SstFileWriter_abeb5217b8b5c01d7328ed593c272b14d}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Finish} (\hyperlink{structrocksdb_1_1ExternalSstFileInfo}{External\+Sst\+File\+Info} $\ast$file\+\_\+info=nullptr)\hypertarget{classrocksdb_1_1SstFileWriter_aa511764ed91a07659b36c1317aaf2f7c}{}\label{classrocksdb_1_1SstFileWriter_aa511764ed91a07659b36c1317aaf2f7c}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/sst\+\_\+file\+\_\+writer.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,25 @@
+\hypertarget{classrocksdb_1_1Comparator}{}\section{rocksdb\+:\+:Comparator Class Reference}
+\label{classrocksdb_1_1Comparator}\index{rocksdb\+::\+Comparator@{rocksdb\+::\+Comparator}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int {\bfseries Compare} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&a, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&b) const =0\hypertarget{classrocksdb_1_1Comparator_a9fe800fa52b86a61b626a58f46a38f81}{}\label{classrocksdb_1_1Comparator_a9fe800fa52b86a61b626a58f46a38f81}
+
+\item 
+virtual bool {\bfseries Equal} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&a, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&b) const\hypertarget{classrocksdb_1_1Comparator_a539547b053be2dcf6e36fc95ebdc9890}{}\label{classrocksdb_1_1Comparator_a539547b053be2dcf6e36fc95ebdc9890}
+
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1Comparator_a3ef0d8f8f4fe04540c00cd4a9c9d5e84}{}\label{classrocksdb_1_1Comparator_a3ef0d8f8f4fe04540c00cd4a9c9d5e84}
+
+\item 
+virtual void {\bfseries Find\+Shortest\+Separator} (std\+::string $\ast$start, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&limit) const =0\hypertarget{classrocksdb_1_1Comparator_a69930f63e701669371046a0649770e62}{}\label{classrocksdb_1_1Comparator_a69930f63e701669371046a0649770e62}
+
+\item 
+virtual void {\bfseries Find\+Short\+Successor} (std\+::string $\ast$key) const =0\hypertarget{classrocksdb_1_1Comparator_adc2f1afc94736de2d450b1f3095c3baa}{}\label{classrocksdb_1_1Comparator_adc2f1afc94736de2d450b1f3095c3baa}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/comparator.\+h\end{DoxyCompactItemize}

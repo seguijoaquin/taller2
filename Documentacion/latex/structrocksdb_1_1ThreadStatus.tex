@@ -1,0 +1,143 @@
+\hypertarget{structrocksdb_1_1ThreadStatus}{}\section{rocksdb\+:\+:Thread\+Status Struct Reference}
+\label{structrocksdb_1_1ThreadStatus}\index{rocksdb\+::\+Thread\+Status@{rocksdb\+::\+Thread\+Status}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Thread\+Type} \+: int \{ {\bfseries H\+I\+G\+H\+\_\+\+P\+R\+I\+O\+R\+I\+TY} = 0, 
+{\bfseries L\+O\+W\+\_\+\+P\+R\+I\+O\+R\+I\+TY}, 
+{\bfseries U\+S\+ER}, 
+{\bfseries N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+T\+Y\+P\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_a090eabdbf76cc57240f9a2b3c738cd15}{}\label{structrocksdb_1_1ThreadStatus_a090eabdbf76cc57240f9a2b3c738cd15}
+
+\item 
+enum {\bfseries Operation\+Type} \+: int \{ {\bfseries O\+P\+\_\+\+U\+N\+K\+N\+O\+WN} = 0, 
+{\bfseries O\+P\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+ON}, 
+{\bfseries O\+P\+\_\+\+F\+L\+U\+SH}, 
+{\bfseries N\+U\+M\+\_\+\+O\+P\+\_\+\+T\+Y\+P\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_a308f9bb3ccb870af7ca39a142901c183}{}\label{structrocksdb_1_1ThreadStatus_a308f9bb3ccb870af7ca39a142901c183}
+
+\item 
+enum {\bfseries Operation\+Stage} \+: int \{ \\*
+{\bfseries S\+T\+A\+G\+E\+\_\+\+U\+N\+K\+N\+O\+WN} = 0, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+F\+L\+U\+S\+H\+\_\+\+R\+UN}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+F\+L\+U\+S\+H\+\_\+\+W\+R\+I\+T\+E\+\_\+\+L0}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+P\+R\+E\+P\+A\+RE}, 
+\\*
+{\bfseries S\+T\+A\+G\+E\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+R\+UN}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S\+\_\+\+KV}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+S\+T\+A\+LL}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+S\+Y\+N\+C\+\_\+\+F\+I\+LE}, 
+\\*
+{\bfseries S\+T\+A\+G\+E\+\_\+\+P\+I\+C\+K\+\_\+\+M\+E\+M\+T\+A\+B\+L\+E\+S\+\_\+\+T\+O\+\_\+\+F\+L\+U\+SH}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+M\+E\+M\+T\+A\+B\+L\+E\+\_\+\+R\+O\+L\+L\+B\+A\+CK}, 
+{\bfseries S\+T\+A\+G\+E\+\_\+\+M\+E\+M\+T\+A\+B\+L\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+\_\+\+F\+L\+U\+S\+H\+\_\+\+R\+E\+S\+U\+L\+TS}, 
+{\bfseries N\+U\+M\+\_\+\+O\+P\+\_\+\+S\+T\+A\+G\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_a6e994cfba8171145a4a646b2025145f5}{}\label{structrocksdb_1_1ThreadStatus_a6e994cfba8171145a4a646b2025145f5}
+
+\item 
+enum {\bfseries Compaction\+Property\+Type} \+: int \{ \\*
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+J\+O\+B\+\_\+\+ID} = 0, 
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+P\+U\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+E\+V\+EL}, 
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+P\+R\+O\+P\+\_\+\+F\+L\+A\+GS}, 
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+T\+O\+T\+A\+L\+\_\+\+I\+N\+P\+U\+T\+\_\+\+B\+Y\+T\+ES}, 
+\\*
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+R\+E\+AD}, 
+{\bfseries C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+W\+R\+I\+T\+T\+EN}, 
+{\bfseries N\+U\+M\+\_\+\+C\+O\+M\+P\+A\+C\+T\+I\+O\+N\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_ad30ba9f65e9a459383e62e26c95dc25d}{}\label{structrocksdb_1_1ThreadStatus_ad30ba9f65e9a459383e62e26c95dc25d}
+
+\item 
+enum {\bfseries Flush\+Property\+Type} \+: int \{ {\bfseries F\+L\+U\+S\+H\+\_\+\+J\+O\+B\+\_\+\+ID} = 0, 
+{\bfseries F\+L\+U\+S\+H\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+M\+E\+M\+T\+A\+B\+L\+ES}, 
+{\bfseries F\+L\+U\+S\+H\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+W\+R\+I\+T\+T\+EN}, 
+{\bfseries N\+U\+M\+\_\+\+F\+L\+U\+S\+H\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_acede81055e976298329dc3ab8bb4b570}{}\label{structrocksdb_1_1ThreadStatus_acede81055e976298329dc3ab8bb4b570}
+
+\item 
+enum {\bfseries State\+Type} \+: int \{ {\bfseries S\+T\+A\+T\+E\+\_\+\+U\+N\+K\+N\+O\+WN} = 0, 
+{\bfseries S\+T\+A\+T\+E\+\_\+\+M\+U\+T\+E\+X\+\_\+\+W\+A\+IT} = 1, 
+{\bfseries N\+U\+M\+\_\+\+S\+T\+A\+T\+E\+\_\+\+T\+Y\+P\+ES}
+ \}\hypertarget{structrocksdb_1_1ThreadStatus_a740fdb40adbee04944b43b302ad4a18a}{}\label{structrocksdb_1_1ThreadStatus_a740fdb40adbee04944b43b302ad4a18a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Thread\+Status} (const uint64\+\_\+t \+\_\+id, const Thread\+Type \+\_\+thread\+\_\+type, const std\+::string \&\+\_\+db\+\_\+name, const std\+::string \&\+\_\+cf\+\_\+name, const Operation\+Type \+\_\+operation\+\_\+type, const uint64\+\_\+t \+\_\+op\+\_\+elapsed\+\_\+micros, const Operation\+Stage \+\_\+operation\+\_\+stage, const uint64\+\_\+t \+\_\+op\+\_\+props\mbox{[}$\,$\mbox{]}, const State\+Type \+\_\+state\+\_\+type)\hypertarget{structrocksdb_1_1ThreadStatus_aa83828fa8e91b207cff2ec55ed668eef}{}\label{structrocksdb_1_1ThreadStatus_aa83828fa8e91b207cff2ec55ed668eef}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::string \& {\bfseries Get\+Thread\+Type\+Name} (Thread\+Type thread\+\_\+type)\hypertarget{structrocksdb_1_1ThreadStatus_ac6a71fe25af7e986c9c02d5e88f71fb2}{}\label{structrocksdb_1_1ThreadStatus_ac6a71fe25af7e986c9c02d5e88f71fb2}
+
+\item 
+static const std\+::string \& {\bfseries Get\+Operation\+Name} (Operation\+Type op\+\_\+type)\hypertarget{structrocksdb_1_1ThreadStatus_a24f01def129174ef65b81e8b191082c0}{}\label{structrocksdb_1_1ThreadStatus_a24f01def129174ef65b81e8b191082c0}
+
+\item 
+static const std\+::string {\bfseries Micros\+To\+String} (uint64\+\_\+t op\+\_\+elapsed\+\_\+time)\hypertarget{structrocksdb_1_1ThreadStatus_a3d4afb5df7fbc6b58a74ca5546b27954}{}\label{structrocksdb_1_1ThreadStatus_a3d4afb5df7fbc6b58a74ca5546b27954}
+
+\item 
+static const std\+::string \& {\bfseries Get\+Operation\+Stage\+Name} (Operation\+Stage stage)\hypertarget{structrocksdb_1_1ThreadStatus_ad18376b37905f157fe8312e46414ffb4}{}\label{structrocksdb_1_1ThreadStatus_ad18376b37905f157fe8312e46414ffb4}
+
+\item 
+static const std\+::string \& {\bfseries Get\+Operation\+Property\+Name} (Operation\+Type op\+\_\+type, int i)\hypertarget{structrocksdb_1_1ThreadStatus_a1b123f25ee10af66bf5406f58acb01e3}{}\label{structrocksdb_1_1ThreadStatus_a1b123f25ee10af66bf5406f58acb01e3}
+
+\item 
+static std\+::map$<$ std\+::string, uint64\+\_\+t $>$ {\bfseries Interpret\+Operation\+Properties} (Operation\+Type op\+\_\+type, const uint64\+\_\+t $\ast$op\+\_\+properties)\hypertarget{structrocksdb_1_1ThreadStatus_a71367b1d1d6020f527f9ad1627f50127}{}\label{structrocksdb_1_1ThreadStatus_a71367b1d1d6020f527f9ad1627f50127}
+
+\item 
+static const std\+::string \& {\bfseries Get\+State\+Name} (State\+Type state\+\_\+type)\hypertarget{structrocksdb_1_1ThreadStatus_ab313b75af626d465d29a4d5ea56cab7e}{}\label{structrocksdb_1_1ThreadStatus_ab313b75af626d465d29a4d5ea56cab7e}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const uint64\+\_\+t {\bfseries thread\+\_\+id}\hypertarget{structrocksdb_1_1ThreadStatus_ae9dbcae092820837bf49faef018a0f8e}{}\label{structrocksdb_1_1ThreadStatus_ae9dbcae092820837bf49faef018a0f8e}
+
+\item 
+const Thread\+Type {\bfseries thread\+\_\+type}\hypertarget{structrocksdb_1_1ThreadStatus_aba191524bf36504fb9c9667f6b24039e}{}\label{structrocksdb_1_1ThreadStatus_aba191524bf36504fb9c9667f6b24039e}
+
+\item 
+const std\+::string {\bfseries db\+\_\+name}\hypertarget{structrocksdb_1_1ThreadStatus_ae64f84da019e6004d46ed9f4f61a74e0}{}\label{structrocksdb_1_1ThreadStatus_ae64f84da019e6004d46ed9f4f61a74e0}
+
+\item 
+const std\+::string {\bfseries cf\+\_\+name}\hypertarget{structrocksdb_1_1ThreadStatus_a9dd8ede28fdfdfd82a270bd4f2a4061e}{}\label{structrocksdb_1_1ThreadStatus_a9dd8ede28fdfdfd82a270bd4f2a4061e}
+
+\item 
+const Operation\+Type {\bfseries operation\+\_\+type}\hypertarget{structrocksdb_1_1ThreadStatus_a60018753ced677e0a5578d6a5b00346c}{}\label{structrocksdb_1_1ThreadStatus_a60018753ced677e0a5578d6a5b00346c}
+
+\item 
+const uint64\+\_\+t {\bfseries op\+\_\+elapsed\+\_\+micros}\hypertarget{structrocksdb_1_1ThreadStatus_a676b61bb3204c677d51c22bafd52ff39}{}\label{structrocksdb_1_1ThreadStatus_a676b61bb3204c677d51c22bafd52ff39}
+
+\item 
+const Operation\+Stage {\bfseries operation\+\_\+stage}\hypertarget{structrocksdb_1_1ThreadStatus_a9f3ac56a8a35303075426a10e5d872a3}{}\label{structrocksdb_1_1ThreadStatus_a9f3ac56a8a35303075426a10e5d872a3}
+
+\item 
+uint64\+\_\+t {\bfseries op\+\_\+properties} \mbox{[}k\+Num\+Operation\+Properties\mbox{]}\hypertarget{structrocksdb_1_1ThreadStatus_a765c3f69860ab43b00880bb7699ebd13}{}\label{structrocksdb_1_1ThreadStatus_a765c3f69860ab43b00880bb7699ebd13}
+
+\item 
+const State\+Type {\bfseries state\+\_\+type}\hypertarget{structrocksdb_1_1ThreadStatus_a951ce536f161702148c1303b9e20614f}{}\label{structrocksdb_1_1ThreadStatus_a951ce536f161702148c1303b9e20614f}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries k\+Num\+Operation\+Properties}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{rocksdb\+::\+Thread\+Status@{rocksdb\+::\+Thread\+Status}!k\+Num\+Operation\+Properties@{k\+Num\+Operation\+Properties}}
+\index{k\+Num\+Operation\+Properties@{k\+Num\+Operation\+Properties}!rocksdb\+::\+Thread\+Status@{rocksdb\+::\+Thread\+Status}}
+\subsubsection[{\texorpdfstring{k\+Num\+Operation\+Properties}{kNumOperationProperties}}]{\setlength{\rightskip}{0pt plus 5cm}const int rocksdb\+::\+Thread\+Status\+::k\+Num\+Operation\+Properties\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{structrocksdb_1_1ThreadStatus_a64981a477e53c886cf73c7b851e29333}{}\label{structrocksdb_1_1ThreadStatus_a64981a477e53c886cf73c7b851e29333}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      constexpr\_max<NUM\_COMPACTION\_PROPERTIES, NUM\_FLUSH\_PROPERTIES>::result
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/thread\+\_\+status.\+h\end{DoxyCompactItemize}

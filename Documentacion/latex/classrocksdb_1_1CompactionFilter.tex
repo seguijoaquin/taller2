@@ -1,0 +1,27 @@
+\hypertarget{classrocksdb_1_1CompactionFilter}{}\section{rocksdb\+:\+:Compaction\+Filter Class Reference}
+\label{classrocksdb_1_1CompactionFilter}\index{rocksdb\+::\+Compaction\+Filter@{rocksdb\+::\+Compaction\+Filter}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrocksdb_1_1CompactionFilter_1_1Context}{Context}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries Filter} (int level, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&existing\+\_\+value, std\+::string $\ast$new\+\_\+value, bool $\ast$value\+\_\+changed) const =0\hypertarget{classrocksdb_1_1CompactionFilter_a7895ef194328ca68419f4559f8ef3f3e}{}\label{classrocksdb_1_1CompactionFilter_a7895ef194328ca68419f4559f8ef3f3e}
+
+\item 
+virtual bool {\bfseries Filter\+Merge\+Operand} (int level, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&operand) const\hypertarget{classrocksdb_1_1CompactionFilter_abbb7b97125949575155147d0ed3c0349}{}\label{classrocksdb_1_1CompactionFilter_abbb7b97125949575155147d0ed3c0349}
+
+\item 
+virtual bool {\bfseries Ignore\+Snapshots} () const\hypertarget{classrocksdb_1_1CompactionFilter_ac441dd2c4d04235b47b2367c821cb36c}{}\label{classrocksdb_1_1CompactionFilter_ac441dd2c4d04235b47b2367c821cb36c}
+
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1CompactionFilter_ad1494025487cde909a53510b94456d56}{}\label{classrocksdb_1_1CompactionFilter_ad1494025487cde909a53510b94456d56}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/compaction\+\_\+filter.\+h\end{DoxyCompactItemize}

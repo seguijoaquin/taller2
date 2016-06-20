@@ -1,0 +1,42 @@
+\hypertarget{classJson_1_1StaticString}{}\section{Json\+:\+:Static\+String Class Reference}
+\label{classJson_1_1StaticString}\index{Json\+::\+Static\+String@{Json\+::\+Static\+String}}
+
+
+Lightweight wrapper to tag static string.  
+
+
+
+
+{\ttfamily \#include $<$json.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Static\+String} (const char $\ast$czstring)\hypertarget{classJson_1_1StaticString_afb6baf1ec078ce76f0b0f9b39d19437f}{}\label{classJson_1_1StaticString_afb6baf1ec078ce76f0b0f9b39d19437f}
+
+\item 
+{\bfseries operator const char $\ast$} () const\hypertarget{classJson_1_1StaticString_a256a6cc0c630aef670848a0f11707b62}{}\label{classJson_1_1StaticString_a256a6cc0c630aef670848a0f11707b62}
+
+\item 
+const char $\ast$ {\bfseries c\+\_\+str} () const\hypertarget{classJson_1_1StaticString_ad6be703d432d108623bb0aa06b0b90ca}{}\label{classJson_1_1StaticString_ad6be703d432d108623bb0aa06b0b90ca}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Lightweight wrapper to tag static string. 
+
+\hyperlink{classJson_1_1Value}{Value} constructor and object\+Value member assignement takes advantage of the \hyperlink{classJson_1_1StaticString}{Static\+String} and avoid the cost of string duplication when storing the string or the member name.
+
+Example of usage\+: 
+\begin{DoxyCode}
+\hyperlink{classJson_1_1Value}{Json::Value} aValue( StaticString(\textcolor{stringliteral}{"some text"}) );
+\hyperlink{classJson_1_1Value}{Json::Value} object;
+\textcolor{keyword}{static} \textcolor{keyword}{const} StaticString code(\textcolor{stringliteral}{"code"});
+\textcolor{keywordtype}{object}[code] = 1234;
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/json/json.\+h\end{DoxyCompactItemize}

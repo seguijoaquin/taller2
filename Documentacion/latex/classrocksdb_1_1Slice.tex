@@ -1,0 +1,70 @@
+\hypertarget{classrocksdb_1_1Slice}{}\section{rocksdb\+:\+:Slice Class Reference}
+\label{classrocksdb_1_1Slice}\index{rocksdb\+::\+Slice@{rocksdb\+::\+Slice}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Slice} (const char $\ast$d, size\+\_\+t n)\hypertarget{classrocksdb_1_1Slice_ac0379e6948821c52c7e6d683f1dcf291}{}\label{classrocksdb_1_1Slice_ac0379e6948821c52c7e6d683f1dcf291}
+
+\item 
+{\bfseries Slice} (const std\+::string \&s)\hypertarget{classrocksdb_1_1Slice_a287be63b816a80d873b68bf845f2b0bc}{}\label{classrocksdb_1_1Slice_a287be63b816a80d873b68bf845f2b0bc}
+
+\item 
+{\bfseries Slice} (const char $\ast$s)\hypertarget{classrocksdb_1_1Slice_a7ea329001e3327031f1d1b5c2ebdb85f}{}\label{classrocksdb_1_1Slice_a7ea329001e3327031f1d1b5c2ebdb85f}
+
+\item 
+{\bfseries Slice} (const struct \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&parts, std\+::string $\ast$buf)\hypertarget{classrocksdb_1_1Slice_aa29629931fae88e4983114cc2b2fba3c}{}\label{classrocksdb_1_1Slice_aa29629931fae88e4983114cc2b2fba3c}
+
+\item 
+const char $\ast$ {\bfseries data} () const\hypertarget{classrocksdb_1_1Slice_a45ddb160067bdfba5533d545820722f2}{}\label{classrocksdb_1_1Slice_a45ddb160067bdfba5533d545820722f2}
+
+\item 
+size\+\_\+t {\bfseries size} () const\hypertarget{classrocksdb_1_1Slice_a5be056876e9de9e8386bf804097e05d2}{}\label{classrocksdb_1_1Slice_a5be056876e9de9e8386bf804097e05d2}
+
+\item 
+bool {\bfseries empty} () const\hypertarget{classrocksdb_1_1Slice_a89e31d492f40c4301329652215b7a932}{}\label{classrocksdb_1_1Slice_a89e31d492f40c4301329652215b7a932}
+
+\item 
+char {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t n) const\hypertarget{classrocksdb_1_1Slice_a70cd2682180b87e0b608ee62d78a1f3f}{}\label{classrocksdb_1_1Slice_a70cd2682180b87e0b608ee62d78a1f3f}
+
+\item 
+void {\bfseries clear} ()\hypertarget{classrocksdb_1_1Slice_a8f740f146e792dc89409f8402a61ad04}{}\label{classrocksdb_1_1Slice_a8f740f146e792dc89409f8402a61ad04}
+
+\item 
+void {\bfseries remove\+\_\+prefix} (size\+\_\+t n)\hypertarget{classrocksdb_1_1Slice_ac03632091b9078ec551ffd58d3372f6b}{}\label{classrocksdb_1_1Slice_ac03632091b9078ec551ffd58d3372f6b}
+
+\item 
+void {\bfseries remove\+\_\+suffix} (size\+\_\+t n)\hypertarget{classrocksdb_1_1Slice_ae9778d2008b42255c1e343c56e8e9b54}{}\label{classrocksdb_1_1Slice_ae9778d2008b42255c1e343c56e8e9b54}
+
+\item 
+std\+::string {\bfseries To\+String} (bool hex=false) const\hypertarget{classrocksdb_1_1Slice_a2bcf867cbc80c5d92ac43a203bc97165}{}\label{classrocksdb_1_1Slice_a2bcf867cbc80c5d92ac43a203bc97165}
+
+\item 
+bool {\bfseries Decode\+Hex} (std\+::string $\ast$result) const\hypertarget{classrocksdb_1_1Slice_a0afb7022dbdbf725cfdcbc68f326cd87}{}\label{classrocksdb_1_1Slice_a0afb7022dbdbf725cfdcbc68f326cd87}
+
+\item 
+int {\bfseries compare} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&b) const\hypertarget{classrocksdb_1_1Slice_a8a806a819cbd9864a927a0152e7fd120}{}\label{classrocksdb_1_1Slice_a8a806a819cbd9864a927a0152e7fd120}
+
+\item 
+bool {\bfseries starts\+\_\+with} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&x) const\hypertarget{classrocksdb_1_1Slice_a026a3bec8214ab1ebcfb9b86ec662d52}{}\label{classrocksdb_1_1Slice_a026a3bec8214ab1ebcfb9b86ec662d52}
+
+\item 
+bool {\bfseries ends\+\_\+with} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&x) const\hypertarget{classrocksdb_1_1Slice_a3e086f795cb50103963ef1e7efbcf719}{}\label{classrocksdb_1_1Slice_a3e086f795cb50103963ef1e7efbcf719}
+
+\item 
+size\+\_\+t {\bfseries difference\+\_\+offset} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&b) const\hypertarget{classrocksdb_1_1Slice_aafc3fd02c4697ae4ba882439bb32cd1a}{}\label{classrocksdb_1_1Slice_aafc3fd02c4697ae4ba882439bb32cd1a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bfseries data\+\_\+}\hypertarget{classrocksdb_1_1Slice_a3592506f631a3e0f6e8fe6c12a400df4}{}\label{classrocksdb_1_1Slice_a3592506f631a3e0f6e8fe6c12a400df4}
+
+\item 
+size\+\_\+t {\bfseries size\+\_\+}\hypertarget{classrocksdb_1_1Slice_a558ae353ac43637ac75a97dd5fb542f0}{}\label{classrocksdb_1_1Slice_a558ae353ac43637ac75a97dd5fb542f0}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/slice.\+h\end{DoxyCompactItemize}

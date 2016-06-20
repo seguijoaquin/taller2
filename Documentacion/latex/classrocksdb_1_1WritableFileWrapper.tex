@@ -1,0 +1,77 @@
+\hypertarget{classrocksdb_1_1WritableFileWrapper}{}\section{rocksdb\+:\+:Writable\+File\+Wrapper Class Reference}
+\label{classrocksdb_1_1WritableFileWrapper}\index{rocksdb\+::\+Writable\+File\+Wrapper@{rocksdb\+::\+Writable\+File\+Wrapper}}
+Inheritance diagram for rocksdb\+:\+:Writable\+File\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1WritableFileWrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Writable\+File\+Wrapper} (\hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $\ast$t)\hypertarget{classrocksdb_1_1WritableFileWrapper_a7cb16f393c028b9be2f0af644f6c9895}{}\label{classrocksdb_1_1WritableFileWrapper_a7cb16f393c028b9be2f0af644f6c9895}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Append} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&data) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a192786f3933b6a7c9afa515922f05656}{}\label{classrocksdb_1_1WritableFileWrapper_a192786f3933b6a7c9afa515922f05656}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Positioned\+Append} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&data, uint64\+\_\+t offset) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a08db5ae7c33a0305524149788fdd5466}{}\label{classrocksdb_1_1WritableFileWrapper_a08db5ae7c33a0305524149788fdd5466}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Truncate} (uint64\+\_\+t size) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a881f1840a1ad6eb7f3c94d8de1780b8d}{}\label{classrocksdb_1_1WritableFileWrapper_a881f1840a1ad6eb7f3c94d8de1780b8d}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Close} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_af66c704eb084b526acf57a9a3bb806d8}{}\label{classrocksdb_1_1WritableFileWrapper_af66c704eb084b526acf57a9a3bb806d8}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Flush} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_ad8a19812190c7b19e4134fd728224890}{}\label{classrocksdb_1_1WritableFileWrapper_ad8a19812190c7b19e4134fd728224890}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Sync} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_a36c5d1d427609b6ffa552627186deb88}{}\label{classrocksdb_1_1WritableFileWrapper_a36c5d1d427609b6ffa552627186deb88}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Fsync} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_addf5860aaa2745c0543c3fb2ba77c8d3}{}\label{classrocksdb_1_1WritableFileWrapper_addf5860aaa2745c0543c3fb2ba77c8d3}
+
+\item 
+bool {\bfseries Is\+Sync\+Thread\+Safe} () const override\hypertarget{classrocksdb_1_1WritableFileWrapper_abf6391522a133bbb532f34c60e1bae8a}{}\label{classrocksdb_1_1WritableFileWrapper_abf6391522a133bbb532f34c60e1bae8a}
+
+\item 
+void {\bfseries Set\+I\+O\+Priority} (Env\+::\+I\+O\+Priority pri) override\hypertarget{classrocksdb_1_1WritableFileWrapper_ab51961b1e6956249e33d8daec77ab511}{}\label{classrocksdb_1_1WritableFileWrapper_ab51961b1e6956249e33d8daec77ab511}
+
+\item 
+Env\+::\+I\+O\+Priority {\bfseries Get\+I\+O\+Priority} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_a2b77b91c99b5c85c160fef7ea1db3a18}{}\label{classrocksdb_1_1WritableFileWrapper_a2b77b91c99b5c85c160fef7ea1db3a18}
+
+\item 
+uint64\+\_\+t {\bfseries Get\+File\+Size} () override\hypertarget{classrocksdb_1_1WritableFileWrapper_a3496a5c309a49099465d412f9a9dc813}{}\label{classrocksdb_1_1WritableFileWrapper_a3496a5c309a49099465d412f9a9dc813}
+
+\item 
+void {\bfseries Get\+Preallocation\+Status} (size\+\_\+t $\ast$block\+\_\+size, size\+\_\+t $\ast$last\+\_\+allocated\+\_\+block) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a8f0f8c3ec4a18d25799d33dca8a935e0}{}\label{classrocksdb_1_1WritableFileWrapper_a8f0f8c3ec4a18d25799d33dca8a935e0}
+
+\item 
+size\+\_\+t {\bfseries Get\+Unique\+Id} (char $\ast$id, size\+\_\+t max\+\_\+size) const override\hypertarget{classrocksdb_1_1WritableFileWrapper_ab66f0f67f49cfb84240db1836417d793}{}\label{classrocksdb_1_1WritableFileWrapper_ab66f0f67f49cfb84240db1836417d793}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Invalidate\+Cache} (size\+\_\+t offset, size\+\_\+t length) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a770ae6a5a4c0e60872cd8e382e1b5b55}{}\label{classrocksdb_1_1WritableFileWrapper_a770ae6a5a4c0e60872cd8e382e1b5b55}
+
+\item 
+virtual void {\bfseries Set\+Preallocation\+Block\+Size} (size\+\_\+t size) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a6b8ebf3109cef615aa9ff256271bcf3e}{}\label{classrocksdb_1_1WritableFileWrapper_a6b8ebf3109cef615aa9ff256271bcf3e}
+
+\item 
+virtual void {\bfseries Prepare\+Write} (size\+\_\+t offset, size\+\_\+t len) override\hypertarget{classrocksdb_1_1WritableFileWrapper_acccf08918756d86d258535c9644f3997}{}\label{classrocksdb_1_1WritableFileWrapper_acccf08918756d86d258535c9644f3997}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Allocate} (uint64\+\_\+t offset, uint64\+\_\+t len) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a2cc3c1185744f3306493af943ee1aee4}{}\label{classrocksdb_1_1WritableFileWrapper_a2cc3c1185744f3306493af943ee1aee4}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Range\+Sync} (uint64\+\_\+t offset, uint64\+\_\+t nbytes) override\hypertarget{classrocksdb_1_1WritableFileWrapper_a3790940cd4f1abef886557ab5b533ad0}{}\label{classrocksdb_1_1WritableFileWrapper_a3790940cd4f1abef886557ab5b533ad0}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/env.\+h\end{DoxyCompactItemize}

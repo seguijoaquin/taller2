@@ -1,0 +1,49 @@
+\hypertarget{classrocksdb_1_1BackupEngine}{}\section{rocksdb\+:\+:Backup\+Engine Class Reference}
+\label{classrocksdb_1_1BackupEngine}\index{rocksdb\+::\+Backup\+Engine@{rocksdb\+::\+Backup\+Engine}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} \hyperlink{classrocksdb_1_1BackupEngine_a334add83bac85feb928064dbee0f90b9}{Create\+New\+Backup\+With\+Metadata} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, const std\+::string \&app\+\_\+metadata, bool flush\+\_\+before\+\_\+backup=false, std\+::function$<$ void()$>$ progress\+\_\+callback=\mbox{[}$\,$\mbox{]}() \{\})=0\hypertarget{classrocksdb_1_1BackupEngine_a334add83bac85feb928064dbee0f90b9}{}\label{classrocksdb_1_1BackupEngine_a334add83bac85feb928064dbee0f90b9}
+
+\begin{DoxyCompactList}\small\item\em same as Create\+New\+Backup, but stores extra application metadata \end{DoxyCompactList}\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+New\+Backup} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, bool flush\+\_\+before\+\_\+backup=false, std\+::function$<$ void()$>$ progress\+\_\+callback=\mbox{[}$\,$\mbox{]}() \{\})\hypertarget{classrocksdb_1_1BackupEngine_ae4caf7171f3980e4471d10eb784261bd}{}\label{classrocksdb_1_1BackupEngine_ae4caf7171f3980e4471d10eb784261bd}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Purge\+Old\+Backups} (uint32\+\_\+t num\+\_\+backups\+\_\+to\+\_\+keep)=0\hypertarget{classrocksdb_1_1BackupEngine_a609107b69c9115182ac9e6007e971fc2}{}\label{classrocksdb_1_1BackupEngine_a609107b69c9115182ac9e6007e971fc2}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Backup} (Backup\+ID backup\+\_\+id)=0\hypertarget{classrocksdb_1_1BackupEngine_a92eebbe0e8a93221f2aadba43f0c426f}{}\label{classrocksdb_1_1BackupEngine_a92eebbe0e8a93221f2aadba43f0c426f}
+
+\item 
+virtual void {\bfseries Stop\+Backup} ()=0\hypertarget{classrocksdb_1_1BackupEngine_a9c8a34b3137c5c090c149cbff9fff8ee}{}\label{classrocksdb_1_1BackupEngine_a9c8a34b3137c5c090c149cbff9fff8ee}
+
+\item 
+virtual void {\bfseries Get\+Backup\+Info} (std\+::vector$<$ \hyperlink{structrocksdb_1_1BackupInfo}{Backup\+Info} $>$ $\ast$backup\+\_\+info)=0\hypertarget{classrocksdb_1_1BackupEngine_a52557124fa1a1c7dc1e0220b92d88064}{}\label{classrocksdb_1_1BackupEngine_a52557124fa1a1c7dc1e0220b92d88064}
+
+\item 
+virtual void {\bfseries Get\+Corrupted\+Backups} (std\+::vector$<$ Backup\+ID $>$ $\ast$corrupt\+\_\+backup\+\_\+ids)=0\hypertarget{classrocksdb_1_1BackupEngine_a702eb2e414abbf9faaf4065ef29c42e6}{}\label{classrocksdb_1_1BackupEngine_a702eb2e414abbf9faaf4065ef29c42e6}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Restore\+D\+B\+From\+Backup} (Backup\+ID backup\+\_\+id, const std\+::string \&db\+\_\+dir, const std\+::string \&wal\+\_\+dir, const \hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options} \&restore\+\_\+options=\hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options}())=0\hypertarget{classrocksdb_1_1BackupEngine_a6ee696a103e180043b815d9446e0f1b4}{}\label{classrocksdb_1_1BackupEngine_a6ee696a103e180043b815d9446e0f1b4}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Restore\+D\+B\+From\+Latest\+Backup} (const std\+::string \&db\+\_\+dir, const std\+::string \&wal\+\_\+dir, const \hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options} \&restore\+\_\+options=\hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options}())=0\hypertarget{classrocksdb_1_1BackupEngine_a42887e54bdc224558fb54202fad97c12}{}\label{classrocksdb_1_1BackupEngine_a42887e54bdc224558fb54202fad97c12}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Verify\+Backup} (Backup\+ID backup\+\_\+id)=0\hypertarget{classrocksdb_1_1BackupEngine_aada26149e972ddce95827806ddd87aeb}{}\label{classrocksdb_1_1BackupEngine_aada26149e972ddce95827806ddd87aeb}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Garbage\+Collect} ()=0\hypertarget{classrocksdb_1_1BackupEngine_a83526a443b363d59c68e93229c30a63a}{}\label{classrocksdb_1_1BackupEngine_a83526a443b363d59c68e93229c30a63a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (\hyperlink{classrocksdb_1_1Env}{Env} $\ast$db\+\_\+env, const \hyperlink{structrocksdb_1_1BackupableDBOptions}{Backupable\+D\+B\+Options} \&options, \hyperlink{classrocksdb_1_1BackupEngine}{Backup\+Engine} $\ast$$\ast$backup\+\_\+engine\+\_\+ptr)\hypertarget{classrocksdb_1_1BackupEngine_a188d0f8e182da60f7670d9fb16beec12}{}\label{classrocksdb_1_1BackupEngine_a188d0f8e182da60f7670d9fb16beec12}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/backupable\+\_\+db.\+h\end{DoxyCompactItemize}

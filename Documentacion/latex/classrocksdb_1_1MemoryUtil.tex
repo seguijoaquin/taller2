@@ -1,0 +1,26 @@
+\hypertarget{classrocksdb_1_1MemoryUtil}{}\section{rocksdb\+:\+:Memory\+Util Class Reference}
+\label{classrocksdb_1_1MemoryUtil}\index{rocksdb\+::\+Memory\+Util@{rocksdb\+::\+Memory\+Util}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Usage\+Type} \+: int \{ \\*
+{\bfseries k\+Mem\+Table\+Total} = 0, 
+{\bfseries k\+Mem\+Table\+Un\+Flushed} = 1, 
+{\bfseries k\+Table\+Readers\+Total} = 2, 
+{\bfseries k\+Cache\+Total} = 3, 
+\\*
+{\bfseries k\+Num\+Usage\+Types} = 4
+ \}\hypertarget{classrocksdb_1_1MemoryUtil_af3650e6ec0c037d1c973d43c75a18f60}{}\label{classrocksdb_1_1MemoryUtil_af3650e6ec0c037d1c973d43c75a18f60}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Approximate\+Memory\+Usage\+By\+Type} (const std\+::vector$<$ \hyperlink{classrocksdb_1_1DB}{DB} $\ast$$>$ \&dbs, const std\+::unordered\+\_\+set$<$ const \hyperlink{classrocksdb_1_1Cache}{Cache} $\ast$$>$ cache\+\_\+set, std\+::map$<$ Memory\+Util\+::\+Usage\+Type, uint64\+\_\+t $>$ $\ast$usage\+\_\+by\+\_\+type)\hypertarget{classrocksdb_1_1MemoryUtil_af042daefc894bd4f2f4109649be96aec}{}\label{classrocksdb_1_1MemoryUtil_af042daefc894bd4f2f4109649be96aec}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/memory\+\_\+util.\+h\end{DoxyCompactItemize}

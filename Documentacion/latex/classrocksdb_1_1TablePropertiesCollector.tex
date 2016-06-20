@@ -1,0 +1,28 @@
+\hypertarget{classrocksdb_1_1TablePropertiesCollector}{}\section{rocksdb\+:\+:Table\+Properties\+Collector Class Reference}
+\label{classrocksdb_1_1TablePropertiesCollector}\index{rocksdb\+::\+Table\+Properties\+Collector@{rocksdb\+::\+Table\+Properties\+Collector}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&)\hypertarget{classrocksdb_1_1TablePropertiesCollector_aa7c608eec5b5c1f44d188fdba18f363b}{}\label{classrocksdb_1_1TablePropertiesCollector_aa7c608eec5b5c1f44d188fdba18f363b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add\+User\+Key} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value, Entry\+Type, Sequence\+Number, uint64\+\_\+t)\hypertarget{classrocksdb_1_1TablePropertiesCollector_ab35420e88794ed8cfc6499a5b18c0db4}{}\label{classrocksdb_1_1TablePropertiesCollector_ab35420e88794ed8cfc6499a5b18c0db4}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Finish} (User\+Collected\+Properties $\ast$properties)=0\hypertarget{classrocksdb_1_1TablePropertiesCollector_a9bdd727c1041b033ce0e2c1868a4b3ae}{}\label{classrocksdb_1_1TablePropertiesCollector_a9bdd727c1041b033ce0e2c1868a4b3ae}
+
+\item 
+virtual User\+Collected\+Properties {\bfseries Get\+Readable\+Properties} () const =0\hypertarget{classrocksdb_1_1TablePropertiesCollector_a29cdbdf4719e1e42093d0df9e1693310}{}\label{classrocksdb_1_1TablePropertiesCollector_a29cdbdf4719e1e42093d0df9e1693310}
+
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1TablePropertiesCollector_aa1e7087bd3b18c3b2255ba72ce5be5a6}{}\label{classrocksdb_1_1TablePropertiesCollector_aa1e7087bd3b18c3b2255ba72ce5be5a6}
+
+\item 
+virtual bool {\bfseries Need\+Compact} () const\hypertarget{classrocksdb_1_1TablePropertiesCollector_aa799c1c9dd55f7b2b634b2eb1e99df18}{}\label{classrocksdb_1_1TablePropertiesCollector_aa799c1c9dd55f7b2b634b2eb1e99df18}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/table\+\_\+properties.\+h\end{DoxyCompactItemize}

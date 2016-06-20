@@ -1,0 +1,35 @@
+\hypertarget{classrocksdb_1_1DBWithTTL}{}\section{rocksdb\+:\+:D\+B\+With\+T\+TL Class Reference}
+\label{classrocksdb_1_1DBWithTTL}\index{rocksdb\+::\+D\+B\+With\+T\+TL@{rocksdb\+::\+D\+B\+With\+T\+TL}}
+Inheritance diagram for rocksdb\+:\+:D\+B\+With\+T\+TL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1DBWithTTL}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Column\+Family\+With\+Ttl} (const \hyperlink{structrocksdb_1_1ColumnFamilyOptions}{Column\+Family\+Options} \&options, const std\+::string \&column\+\_\+family\+\_\+name, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$\ast$handle, int ttl)=0\hypertarget{classrocksdb_1_1DBWithTTL_a97b67542889448b90229760b352bac20}{}\label{classrocksdb_1_1DBWithTTL_a97b67542889448b90229760b352bac20}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options, const std\+::string \&dbname, \hyperlink{classrocksdb_1_1DBWithTTL}{D\+B\+With\+T\+TL} $\ast$$\ast$dbptr, int32\+\_\+t ttl=0, bool read\+\_\+only=false)\hypertarget{classrocksdb_1_1DBWithTTL_a8a87051b59fb482779912dc1a91a7b5d}{}\label{classrocksdb_1_1DBWithTTL_a8a87051b59fb482779912dc1a91a7b5d}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const std\+::string \&dbname, const std\+::vector$<$ \hyperlink{structrocksdb_1_1ColumnFamilyDescriptor}{Column\+Family\+Descriptor} $>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ $\ast$handles, \hyperlink{classrocksdb_1_1DBWithTTL}{D\+B\+With\+T\+TL} $\ast$$\ast$dbptr, std\+::vector$<$ int32\+\_\+t $>$ ttls, bool read\+\_\+only=false)\hypertarget{classrocksdb_1_1DBWithTTL_a932f8af06302d6358cf202ae47d93bd5}{}\label{classrocksdb_1_1DBWithTTL_a932f8af06302d6358cf202ae47d93bd5}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries D\+B\+With\+T\+TL} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db)\hypertarget{classrocksdb_1_1DBWithTTL_a31f23bd0807fa7f60041aa768a80ee0d}{}\label{classrocksdb_1_1DBWithTTL_a31f23bd0807fa7f60041aa768a80ee0d}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/db\+\_\+ttl.\+h\end{DoxyCompactItemize}

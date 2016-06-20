@@ -1,0 +1,68 @@
+\hypertarget{classrocksdb_1_1MemTableRep}{}\section{rocksdb\+:\+:Mem\+Table\+Rep Class Reference}
+\label{classrocksdb_1_1MemTableRep}\index{rocksdb\+::\+Mem\+Table\+Rep@{rocksdb\+::\+Mem\+Table\+Rep}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrocksdb_1_1MemTableRep_1_1Iterator}{Iterator}
+\item 
+class \hyperlink{classrocksdb_1_1MemTableRep_1_1KeyComparator}{Key\+Comparator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Mem\+Table\+Rep} (Mem\+Table\+Allocator $\ast$allocator)\hypertarget{classrocksdb_1_1MemTableRep_a40f57aa1059c416c706f44bd0573062b}{}\label{classrocksdb_1_1MemTableRep_a40f57aa1059c416c706f44bd0573062b}
+
+\item 
+virtual Key\+Handle {\bfseries Allocate} (const size\+\_\+t len, char $\ast$$\ast$buf)\hypertarget{classrocksdb_1_1MemTableRep_a6c355ad7a8a4163c6da861fcd2e9e1c1}{}\label{classrocksdb_1_1MemTableRep_a6c355ad7a8a4163c6da861fcd2e9e1c1}
+
+\item 
+virtual void {\bfseries Insert} (Key\+Handle handle)=0\hypertarget{classrocksdb_1_1MemTableRep_a16ea561f3ad9fa8a7817081f41a5bc6f}{}\label{classrocksdb_1_1MemTableRep_a16ea561f3ad9fa8a7817081f41a5bc6f}
+
+\item 
+virtual void {\bfseries Insert\+Concurrently} (Key\+Handle handle)\hypertarget{classrocksdb_1_1MemTableRep_a4bc4b4bc476d9aee29a381ee94256003}{}\label{classrocksdb_1_1MemTableRep_a4bc4b4bc476d9aee29a381ee94256003}
+
+\item 
+virtual bool {\bfseries Contains} (const char $\ast$key) const =0\hypertarget{classrocksdb_1_1MemTableRep_a9680af59089a57d48e65305181af275a}{}\label{classrocksdb_1_1MemTableRep_a9680af59089a57d48e65305181af275a}
+
+\item 
+virtual void {\bfseries Mark\+Read\+Only} ()\hypertarget{classrocksdb_1_1MemTableRep_a8bada15fbc6e474c3cdd25ba739b47b3}{}\label{classrocksdb_1_1MemTableRep_a8bada15fbc6e474c3cdd25ba739b47b3}
+
+\item 
+virtual void {\bfseries Get} (const Lookup\+Key \&k, void $\ast$callback\+\_\+args, bool($\ast$callback\+\_\+func)(void $\ast$arg, const char $\ast$entry))\hypertarget{classrocksdb_1_1MemTableRep_a6822dec90fff8e8048089f219529c952}{}\label{classrocksdb_1_1MemTableRep_a6822dec90fff8e8048089f219529c952}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Approximate\+Num\+Entries} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&start\+\_\+ikey, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&end\+\_\+key)\hypertarget{classrocksdb_1_1MemTableRep_a9ddecdf2ae912245236f170cd08e22b9}{}\label{classrocksdb_1_1MemTableRep_a9ddecdf2ae912245236f170cd08e22b9}
+
+\item 
+virtual size\+\_\+t {\bfseries Approximate\+Memory\+Usage} ()=0\hypertarget{classrocksdb_1_1MemTableRep_a5a313a7730104e94f4c60e0cf2818241}{}\label{classrocksdb_1_1MemTableRep_a5a313a7730104e94f4c60e0cf2818241}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1MemTableRep_1_1Iterator}{Iterator} $\ast$ {\bfseries Get\+Iterator} (Arena $\ast$arena=nullptr)=0\hypertarget{classrocksdb_1_1MemTableRep_a512847e7a3f7b77f738c97a04b92ef44}{}\label{classrocksdb_1_1MemTableRep_a512847e7a3f7b77f738c97a04b92ef44}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1MemTableRep_1_1Iterator}{Iterator} $\ast$ {\bfseries Get\+Dynamic\+Prefix\+Iterator} (Arena $\ast$arena=nullptr)\hypertarget{classrocksdb_1_1MemTableRep_a1d2ba3bbc72fa104828a7df394fb0d22}{}\label{classrocksdb_1_1MemTableRep_a1d2ba3bbc72fa104828a7df394fb0d22}
+
+\item 
+virtual bool {\bfseries Is\+Merge\+Operator\+Supported} () const\hypertarget{classrocksdb_1_1MemTableRep_a32a54039ec9337b1449b2fb02c7b32f1}{}\label{classrocksdb_1_1MemTableRep_a32a54039ec9337b1449b2fb02c7b32f1}
+
+\item 
+virtual bool {\bfseries Is\+Snapshot\+Supported} () const\hypertarget{classrocksdb_1_1MemTableRep_a808715ac901ddabeb55afdee56df4867}{}\label{classrocksdb_1_1MemTableRep_a808715ac901ddabeb55afdee56df4867}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Slice}{Slice} {\bfseries User\+Key} (const char $\ast$key) const\hypertarget{classrocksdb_1_1MemTableRep_a7879bba15f89e0af854770e955839fe0}{}\label{classrocksdb_1_1MemTableRep_a7879bba15f89e0af854770e955839fe0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Mem\+Table\+Allocator $\ast$ {\bfseries allocator\+\_\+}\hypertarget{classrocksdb_1_1MemTableRep_a100849cbb84764e4b83cbaf8fc54a2d6}{}\label{classrocksdb_1_1MemTableRep_a100849cbb84764e4b83cbaf8fc54a2d6}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/memtablerep.\+h\end{DoxyCompactItemize}

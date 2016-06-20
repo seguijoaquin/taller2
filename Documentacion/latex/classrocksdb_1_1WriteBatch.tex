@@ -1,0 +1,138 @@
+\hypertarget{classrocksdb_1_1WriteBatch}{}\section{rocksdb\+:\+:Write\+Batch Class Reference}
+\label{classrocksdb_1_1WriteBatch}\index{rocksdb\+::\+Write\+Batch@{rocksdb\+::\+Write\+Batch}}
+Inheritance diagram for rocksdb\+:\+:Write\+Batch\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1WriteBatch}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrocksdb_1_1WriteBatch_1_1Handler}{Handler}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Write\+Batch} (size\+\_\+t reserved\+\_\+bytes=0)\hypertarget{classrocksdb_1_1WriteBatch_aa964288cfc13a19a8c3368c7dd4e6c7e}{}\label{classrocksdb_1_1WriteBatch_aa964288cfc13a19a8c3368c7dd4e6c7e}
+
+\item 
+void {\bfseries Put} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_ae240788d70139efd5322c47d5a57204e}{}\label{classrocksdb_1_1WriteBatch_ae240788d70139efd5322c47d5a57204e}
+
+\item 
+void {\bfseries Put} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_a2031d860578ed8bd8d82c7460009cb4b}{}\label{classrocksdb_1_1WriteBatch_a2031d860578ed8bd8d82c7460009cb4b}
+
+\item 
+void {\bfseries Put} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_a07519b3d03c199febe81b8a243af1ed0}{}\label{classrocksdb_1_1WriteBatch_a07519b3d03c199febe81b8a243af1ed0}
+
+\item 
+void {\bfseries Put} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_a56f2b04b7cb9a06634f09525fed4d4a6}{}\label{classrocksdb_1_1WriteBatch_a56f2b04b7cb9a06634f09525fed4d4a6}
+
+\item 
+void {\bfseries Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_a027bdf26d0a75d8e95820fc9d0213e0f}{}\label{classrocksdb_1_1WriteBatch_a027bdf26d0a75d8e95820fc9d0213e0f}
+
+\item 
+void {\bfseries Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_a8dcb9e9f6feefb9e08ed0ce8dc140f11}{}\label{classrocksdb_1_1WriteBatch_a8dcb9e9f6feefb9e08ed0ce8dc140f11}
+
+\item 
+void {\bfseries Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_a4793f118b2e1448204828ec5142401b1}{}\label{classrocksdb_1_1WriteBatch_a4793f118b2e1448204828ec5142401b1}
+
+\item 
+void {\bfseries Delete} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_ac662ef75568bddf5be5eb4e8af49723c}{}\label{classrocksdb_1_1WriteBatch_ac662ef75568bddf5be5eb4e8af49723c}
+
+\item 
+void {\bfseries Single\+Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_a8a2a1eee5ad0dbe9c7c98987fce19ddc}{}\label{classrocksdb_1_1WriteBatch_a8a2a1eee5ad0dbe9c7c98987fce19ddc}
+
+\item 
+void {\bfseries Single\+Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_af4acc0d24ebef4bf39ce86d1348a8c82}{}\label{classrocksdb_1_1WriteBatch_af4acc0d24ebef4bf39ce86d1348a8c82}
+
+\item 
+void {\bfseries Single\+Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_ae15bb58e3484b15b4b133f39f74e5dea}{}\label{classrocksdb_1_1WriteBatch_ae15bb58e3484b15b4b133f39f74e5dea}
+
+\item 
+void {\bfseries Single\+Delete} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key) override\hypertarget{classrocksdb_1_1WriteBatch_a1066f694b68a71db057994819d1903cf}{}\label{classrocksdb_1_1WriteBatch_a1066f694b68a71db057994819d1903cf}
+
+\item 
+void {\bfseries Merge} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_a0ec4db669f3ab4bca0509120e7871dee}{}\label{classrocksdb_1_1WriteBatch_a0ec4db669f3ab4bca0509120e7871dee}
+
+\item 
+void {\bfseries Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_ad5fd55fc593ad6e7048d3eaf9656925c}{}\label{classrocksdb_1_1WriteBatch_ad5fd55fc593ad6e7048d3eaf9656925c}
+
+\item 
+void {\bfseries Merge} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_ae4a4eb48935ae12473e1e5c13c8885d3}{}\label{classrocksdb_1_1WriteBatch_ae4a4eb48935ae12473e1e5c13c8885d3}
+
+\item 
+void {\bfseries Merge} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value) override\hypertarget{classrocksdb_1_1WriteBatch_ada4d221db658c339ac6007c8181b4972}{}\label{classrocksdb_1_1WriteBatch_ada4d221db658c339ac6007c8181b4972}
+
+\item 
+void {\bfseries Put\+Log\+Data} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&blob) override\hypertarget{classrocksdb_1_1WriteBatch_a568eb076fa8043cd4b35af6906d97e40}{}\label{classrocksdb_1_1WriteBatch_a568eb076fa8043cd4b35af6906d97e40}
+
+\item 
+void {\bfseries Clear} () override\hypertarget{classrocksdb_1_1WriteBatch_a458765844fd45fd960142f8bcb7cbcdd}{}\label{classrocksdb_1_1WriteBatch_a458765844fd45fd960142f8bcb7cbcdd}
+
+\item 
+void {\bfseries Set\+Save\+Point} () override\hypertarget{classrocksdb_1_1WriteBatch_a157a035c5b1edbac1f4dbcb34c4e8878}{}\label{classrocksdb_1_1WriteBatch_a157a035c5b1edbac1f4dbcb34c4e8878}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rollback\+To\+Save\+Point} () override\hypertarget{classrocksdb_1_1WriteBatch_ae3cf171a2664175eb62f6677497aa7c3}{}\label{classrocksdb_1_1WriteBatch_ae3cf171a2664175eb62f6677497aa7c3}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Iterate} (\hyperlink{classrocksdb_1_1WriteBatch_1_1Handler}{Handler} $\ast$handler) const\hypertarget{classrocksdb_1_1WriteBatch_a382b0ecc06424d4a60d2d6a5e9c3bde7}{}\label{classrocksdb_1_1WriteBatch_a382b0ecc06424d4a60d2d6a5e9c3bde7}
+
+\item 
+const std\+::string \& {\bfseries Data} () const\hypertarget{classrocksdb_1_1WriteBatch_ac29b9ea6fd910c98d9834c0b8e79454f}{}\label{classrocksdb_1_1WriteBatch_ac29b9ea6fd910c98d9834c0b8e79454f}
+
+\item 
+size\+\_\+t {\bfseries Get\+Data\+Size} () const\hypertarget{classrocksdb_1_1WriteBatch_a96a8e3e36b1a6a5a732b736df35c392e}{}\label{classrocksdb_1_1WriteBatch_a96a8e3e36b1a6a5a732b736df35c392e}
+
+\item 
+int {\bfseries Count} () const\hypertarget{classrocksdb_1_1WriteBatch_a503163e73288971dbed55fbef33fc5cd}{}\label{classrocksdb_1_1WriteBatch_a503163e73288971dbed55fbef33fc5cd}
+
+\item 
+bool {\bfseries Has\+Put} () const\hypertarget{classrocksdb_1_1WriteBatch_a0e73f6954ddae7d75157118cd4b38474}{}\label{classrocksdb_1_1WriteBatch_a0e73f6954ddae7d75157118cd4b38474}
+
+\item 
+bool {\bfseries Has\+Delete} () const\hypertarget{classrocksdb_1_1WriteBatch_ac843fa941ed465a0a186bf72f769a5bf}{}\label{classrocksdb_1_1WriteBatch_ac843fa941ed465a0a186bf72f769a5bf}
+
+\item 
+bool {\bfseries Has\+Single\+Delete} () const\hypertarget{classrocksdb_1_1WriteBatch_a645b0f66f53a6c268023d52ec6d07442}{}\label{classrocksdb_1_1WriteBatch_a645b0f66f53a6c268023d52ec6d07442}
+
+\item 
+bool {\bfseries Has\+Merge} () const\hypertarget{classrocksdb_1_1WriteBatch_a4ed6a1f4f610ff9c05e769cc67bdbed5}{}\label{classrocksdb_1_1WriteBatch_a4ed6a1f4f610ff9c05e769cc67bdbed5}
+
+\item 
+\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} $\ast$ {\bfseries Get\+Write\+Batch} () override\hypertarget{classrocksdb_1_1WriteBatch_adc9fd017eeb793870c7be25f61c738c6}{}\label{classrocksdb_1_1WriteBatch_adc9fd017eeb793870c7be25f61c738c6}
+
+\item 
+{\bfseries Write\+Batch} (const std\+::string \&rep)\hypertarget{classrocksdb_1_1WriteBatch_ac006fc99243d375a9554278a439fd75f}{}\label{classrocksdb_1_1WriteBatch_ac006fc99243d375a9554278a439fd75f}
+
+\item 
+{\bfseries Write\+Batch} (const \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&src)\hypertarget{classrocksdb_1_1WriteBatch_abc6cc25db792efc196b429f2f2a22ff8}{}\label{classrocksdb_1_1WriteBatch_abc6cc25db792efc196b429f2f2a22ff8}
+
+\item 
+{\bfseries Write\+Batch} (\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&\&src)\hypertarget{classrocksdb_1_1WriteBatch_a5c7434403a6968c069bcb94f7ffbfdc9}{}\label{classrocksdb_1_1WriteBatch_a5c7434403a6968c069bcb94f7ffbfdc9}
+
+\item 
+\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \& {\bfseries operator=} (const \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&src)\hypertarget{classrocksdb_1_1WriteBatch_a4b75d4ffa2c7f8e979e97ab851a4ee65}{}\label{classrocksdb_1_1WriteBatch_a4b75d4ffa2c7f8e979e97ab851a4ee65}
+
+\item 
+\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \& {\bfseries operator=} (\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&\&src)\hypertarget{classrocksdb_1_1WriteBatch_a240498adab09ac235d766c694e4fb97a}{}\label{classrocksdb_1_1WriteBatch_a240498adab09ac235d766c694e4fb97a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries rep\+\_\+}\hypertarget{classrocksdb_1_1WriteBatch_afca810db729d1b7fcc1526ab592d755b}{}\label{classrocksdb_1_1WriteBatch_afca810db729d1b7fcc1526ab592d755b}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Write\+Batch\+Internal}\hypertarget{classrocksdb_1_1WriteBatch_a0c491f15816190f8235ccd1367d5ae5f}{}\label{classrocksdb_1_1WriteBatch_a0c491f15816190f8235ccd1367d5ae5f}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/write\+\_\+batch.\+h\end{DoxyCompactItemize}

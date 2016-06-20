@@ -1,0 +1,224 @@
+\hypertarget{structrocksdb_1_1DBOptions}{}\section{rocksdb\+:\+:D\+B\+Options Struct Reference}
+\label{structrocksdb_1_1DBOptions}\index{rocksdb\+::\+D\+B\+Options@{rocksdb\+::\+D\+B\+Options}}
+Inheritance diagram for rocksdb\+:\+:D\+B\+Options\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structrocksdb_1_1DBOptions}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Access\+Hint} \{ {\bfseries N\+O\+NE}, 
+{\bfseries N\+O\+R\+M\+AL}, 
+{\bfseries S\+E\+Q\+U\+E\+N\+T\+I\+AL}, 
+{\bfseries W\+I\+L\+L\+N\+E\+ED}
+ \}\hypertarget{structrocksdb_1_1DBOptions_a4c0ee6860de664497ef1da15d1df2f11}{}\label{structrocksdb_1_1DBOptions_a4c0ee6860de664497ef1da15d1df2f11}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} $\ast$ {\bfseries Old\+Defaults} (int rocksdb\+\_\+major\+\_\+version=4, int rocksdb\+\_\+minor\+\_\+version=6)\hypertarget{structrocksdb_1_1DBOptions_a5a227d520fc66dd3836a69fe32e225e8}{}\label{structrocksdb_1_1DBOptions_a5a227d520fc66dd3836a69fe32e225e8}
+
+\item 
+\hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} $\ast$ {\bfseries Increase\+Parallelism} (int total\+\_\+threads=16)\hypertarget{structrocksdb_1_1DBOptions_ab0db4bd149b283e652862784715da0d6}{}\label{structrocksdb_1_1DBOptions_ab0db4bd149b283e652862784715da0d6}
+
+\item 
+{\bfseries D\+B\+Options} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options)\hypertarget{structrocksdb_1_1DBOptions_a75ada8388a24596c5e4aa1bc9bac4b39}{}\label{structrocksdb_1_1DBOptions_a75ada8388a24596c5e4aa1bc9bac4b39}
+
+\item 
+void {\bfseries Dump} (\hyperlink{classrocksdb_1_1Logger}{Logger} $\ast$log) const\hypertarget{structrocksdb_1_1DBOptions_a8068fb42d793c7a567bc44e5aed50844}{}\label{structrocksdb_1_1DBOptions_a8068fb42d793c7a567bc44e5aed50844}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries create\+\_\+if\+\_\+missing}\hypertarget{structrocksdb_1_1DBOptions_abdcf05ab83219edf0d03d8d02d39ee0c}{}\label{structrocksdb_1_1DBOptions_abdcf05ab83219edf0d03d8d02d39ee0c}
+
+\item 
+bool {\bfseries create\+\_\+missing\+\_\+column\+\_\+families}\hypertarget{structrocksdb_1_1DBOptions_a4d8d13c5e43ca4a5b2a54f08aa3b7f60}{}\label{structrocksdb_1_1DBOptions_a4d8d13c5e43ca4a5b2a54f08aa3b7f60}
+
+\item 
+bool {\bfseries error\+\_\+if\+\_\+exists}\hypertarget{structrocksdb_1_1DBOptions_a4487e7de36b93dc5a06d6daf21bac151}{}\label{structrocksdb_1_1DBOptions_a4487e7de36b93dc5a06d6daf21bac151}
+
+\item 
+bool {\bfseries paranoid\+\_\+checks}\hypertarget{structrocksdb_1_1DBOptions_a0797bb6a87fc0345f24330ad531977c7}{}\label{structrocksdb_1_1DBOptions_a0797bb6a87fc0345f24330ad531977c7}
+
+\item 
+\hyperlink{classrocksdb_1_1Env}{Env} $\ast$ {\bfseries env}\hypertarget{structrocksdb_1_1DBOptions_a5c6e3419dd7cad2e73f746a5a5975ff9}{}\label{structrocksdb_1_1DBOptions_a5c6e3419dd7cad2e73f746a5a5975ff9}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1RateLimiter}{Rate\+Limiter} $>$ {\bfseries rate\+\_\+limiter}\hypertarget{structrocksdb_1_1DBOptions_aede14b809742935900cd5a8b544ad7b3}{}\label{structrocksdb_1_1DBOptions_aede14b809742935900cd5a8b544ad7b3}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1SstFileManager}{Sst\+File\+Manager} $>$ {\bfseries sst\+\_\+file\+\_\+manager}\hypertarget{structrocksdb_1_1DBOptions_a138d954e6c0b69672c7a9eaf7ad11d3f}{}\label{structrocksdb_1_1DBOptions_a138d954e6c0b69672c7a9eaf7ad11d3f}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Logger}{Logger} $>$ {\bfseries info\+\_\+log}\hypertarget{structrocksdb_1_1DBOptions_ac7eb66ab129bde4525879c737435c98e}{}\label{structrocksdb_1_1DBOptions_ac7eb66ab129bde4525879c737435c98e}
+
+\item 
+Info\+Log\+Level {\bfseries info\+\_\+log\+\_\+level}\hypertarget{structrocksdb_1_1DBOptions_a1570666f5bea2ae94bac7b2dd654cdce}{}\label{structrocksdb_1_1DBOptions_a1570666f5bea2ae94bac7b2dd654cdce}
+
+\item 
+int {\bfseries max\+\_\+open\+\_\+files}\hypertarget{structrocksdb_1_1DBOptions_a53adcfcc54693af498dffc659d39483f}{}\label{structrocksdb_1_1DBOptions_a53adcfcc54693af498dffc659d39483f}
+
+\item 
+int {\bfseries max\+\_\+file\+\_\+opening\+\_\+threads}\hypertarget{structrocksdb_1_1DBOptions_a6420806df488a43d450b7b8716f3544a}{}\label{structrocksdb_1_1DBOptions_a6420806df488a43d450b7b8716f3544a}
+
+\item 
+uint64\+\_\+t {\bfseries max\+\_\+total\+\_\+wal\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_a1e2d3510fc4b1ace1c1f1164ec9e3719}{}\label{structrocksdb_1_1DBOptions_a1e2d3510fc4b1ace1c1f1164ec9e3719}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Statistics}{Statistics} $>$ {\bfseries statistics}\hypertarget{structrocksdb_1_1DBOptions_a9662869d64a51af1e2ebbf3c9085c927}{}\label{structrocksdb_1_1DBOptions_a9662869d64a51af1e2ebbf3c9085c927}
+
+\item 
+bool {\bfseries disable\+Data\+Sync}\hypertarget{structrocksdb_1_1DBOptions_aedd20f6079fab3fb4e86e661c730325f}{}\label{structrocksdb_1_1DBOptions_aedd20f6079fab3fb4e86e661c730325f}
+
+\item 
+bool {\bfseries use\+\_\+fsync}\hypertarget{structrocksdb_1_1DBOptions_a5185be98a0135dbbedd2495b3f5e0311}{}\label{structrocksdb_1_1DBOptions_a5185be98a0135dbbedd2495b3f5e0311}
+
+\item 
+std\+::vector$<$ \hyperlink{structrocksdb_1_1DbPath}{Db\+Path} $>$ {\bfseries db\+\_\+paths}\hypertarget{structrocksdb_1_1DBOptions_af781d0124975adecfdfa615be0dfd2ea}{}\label{structrocksdb_1_1DBOptions_af781d0124975adecfdfa615be0dfd2ea}
+
+\item 
+std\+::string {\bfseries db\+\_\+log\+\_\+dir}\hypertarget{structrocksdb_1_1DBOptions_aa1b533683a34bf2e9d4380e568ba6c8a}{}\label{structrocksdb_1_1DBOptions_aa1b533683a34bf2e9d4380e568ba6c8a}
+
+\item 
+std\+::string {\bfseries wal\+\_\+dir}\hypertarget{structrocksdb_1_1DBOptions_a384cdc01f0f2906930144381b93de2e0}{}\label{structrocksdb_1_1DBOptions_a384cdc01f0f2906930144381b93de2e0}
+
+\item 
+uint64\+\_\+t {\bfseries delete\+\_\+obsolete\+\_\+files\+\_\+period\+\_\+micros}\hypertarget{structrocksdb_1_1DBOptions_a9bad65d02bd2049d30b45599ef8c35bb}{}\label{structrocksdb_1_1DBOptions_a9bad65d02bd2049d30b45599ef8c35bb}
+
+\item 
+int {\bfseries base\+\_\+background\+\_\+compactions}\hypertarget{structrocksdb_1_1DBOptions_ace75f288ddb9afa9a81d53b1eff96b43}{}\label{structrocksdb_1_1DBOptions_ace75f288ddb9afa9a81d53b1eff96b43}
+
+\item 
+int {\bfseries max\+\_\+background\+\_\+compactions}\hypertarget{structrocksdb_1_1DBOptions_adc51fcd7138149a50ef57bf146aaaae3}{}\label{structrocksdb_1_1DBOptions_adc51fcd7138149a50ef57bf146aaaae3}
+
+\item 
+uint32\+\_\+t {\bfseries max\+\_\+subcompactions}\hypertarget{structrocksdb_1_1DBOptions_a870b445c2d1222939a4367a58a775574}{}\label{structrocksdb_1_1DBOptions_a870b445c2d1222939a4367a58a775574}
+
+\item 
+int {\bfseries max\+\_\+background\+\_\+flushes}\hypertarget{structrocksdb_1_1DBOptions_af0deda157b0ecb70121239429e55f548}{}\label{structrocksdb_1_1DBOptions_af0deda157b0ecb70121239429e55f548}
+
+\item 
+size\+\_\+t {\bfseries max\+\_\+log\+\_\+file\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_a091e003256873b2c5b23b9dbd4f0598b}{}\label{structrocksdb_1_1DBOptions_a091e003256873b2c5b23b9dbd4f0598b}
+
+\item 
+size\+\_\+t {\bfseries log\+\_\+file\+\_\+time\+\_\+to\+\_\+roll}\hypertarget{structrocksdb_1_1DBOptions_afa52da87a90d2453fe3c43a8fb2ea126}{}\label{structrocksdb_1_1DBOptions_afa52da87a90d2453fe3c43a8fb2ea126}
+
+\item 
+size\+\_\+t {\bfseries keep\+\_\+log\+\_\+file\+\_\+num}\hypertarget{structrocksdb_1_1DBOptions_ade2727a3b6e9b9a410ec2d5f3810a1a9}{}\label{structrocksdb_1_1DBOptions_ade2727a3b6e9b9a410ec2d5f3810a1a9}
+
+\item 
+size\+\_\+t {\bfseries recycle\+\_\+log\+\_\+file\+\_\+num}\hypertarget{structrocksdb_1_1DBOptions_a546aa687572f9d68f75d3918b527fe7e}{}\label{structrocksdb_1_1DBOptions_a546aa687572f9d68f75d3918b527fe7e}
+
+\item 
+uint64\+\_\+t {\bfseries max\+\_\+manifest\+\_\+file\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_a7966751f8a167645900fe6307a4abe80}{}\label{structrocksdb_1_1DBOptions_a7966751f8a167645900fe6307a4abe80}
+
+\item 
+int {\bfseries table\+\_\+cache\+\_\+numshardbits}\hypertarget{structrocksdb_1_1DBOptions_a4411b1598a56ad2f4525cd59cb864ccf}{}\label{structrocksdb_1_1DBOptions_a4411b1598a56ad2f4525cd59cb864ccf}
+
+\item 
+uint64\+\_\+t {\bfseries W\+A\+L\+\_\+ttl\+\_\+seconds}\hypertarget{structrocksdb_1_1DBOptions_a516d9f0c5aec8397be3986b2c9e4db0f}{}\label{structrocksdb_1_1DBOptions_a516d9f0c5aec8397be3986b2c9e4db0f}
+
+\item 
+uint64\+\_\+t {\bfseries W\+A\+L\+\_\+size\+\_\+limit\+\_\+\+MB}\hypertarget{structrocksdb_1_1DBOptions_a04f4ffed6308ac8c59cbf5f916ee09cf}{}\label{structrocksdb_1_1DBOptions_a04f4ffed6308ac8c59cbf5f916ee09cf}
+
+\item 
+size\+\_\+t {\bfseries manifest\+\_\+preallocation\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_af7a3815f4c1809b18f0ebea46227ec8d}{}\label{structrocksdb_1_1DBOptions_af7a3815f4c1809b18f0ebea46227ec8d}
+
+\item 
+bool {\bfseries allow\+\_\+os\+\_\+buffer}\hypertarget{structrocksdb_1_1DBOptions_ac17d6620171a35f095846d23c06d5077}{}\label{structrocksdb_1_1DBOptions_ac17d6620171a35f095846d23c06d5077}
+
+\item 
+bool {\bfseries allow\+\_\+mmap\+\_\+reads}\hypertarget{structrocksdb_1_1DBOptions_a407f41b438848143b00a05445f69d453}{}\label{structrocksdb_1_1DBOptions_a407f41b438848143b00a05445f69d453}
+
+\item 
+bool {\bfseries allow\+\_\+mmap\+\_\+writes}\hypertarget{structrocksdb_1_1DBOptions_a55616ba06da6f436df7f3ff90471aa81}{}\label{structrocksdb_1_1DBOptions_a55616ba06da6f436df7f3ff90471aa81}
+
+\item 
+bool {\bfseries allow\+\_\+fallocate}\hypertarget{structrocksdb_1_1DBOptions_a81d82bc783905db0be041bd12bb7b78c}{}\label{structrocksdb_1_1DBOptions_a81d82bc783905db0be041bd12bb7b78c}
+
+\item 
+bool {\bfseries is\+\_\+fd\+\_\+close\+\_\+on\+\_\+exec}\hypertarget{structrocksdb_1_1DBOptions_acf446290a9583f2cab95ca1474c34283}{}\label{structrocksdb_1_1DBOptions_acf446290a9583f2cab95ca1474c34283}
+
+\item 
+bool {\bfseries skip\+\_\+log\+\_\+error\+\_\+on\+\_\+recovery}\hypertarget{structrocksdb_1_1DBOptions_aec1622bde76ec56c47bae87fb19e479d}{}\label{structrocksdb_1_1DBOptions_aec1622bde76ec56c47bae87fb19e479d}
+
+\item 
+unsigned int {\bfseries stats\+\_\+dump\+\_\+period\+\_\+sec}\hypertarget{structrocksdb_1_1DBOptions_a004866a30f79640d98c646c2b248a372}{}\label{structrocksdb_1_1DBOptions_a004866a30f79640d98c646c2b248a372}
+
+\item 
+bool {\bfseries advise\+\_\+random\+\_\+on\+\_\+open}\hypertarget{structrocksdb_1_1DBOptions_ab8a7b88f235cf5745b073ea2d799aab5}{}\label{structrocksdb_1_1DBOptions_ab8a7b88f235cf5745b073ea2d799aab5}
+
+\item 
+size\+\_\+t {\bfseries db\+\_\+write\+\_\+buffer\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_af1542493f100003fb3a1de29d6c37f69}{}\label{structrocksdb_1_1DBOptions_af1542493f100003fb3a1de29d6c37f69}
+
+\item 
+Access\+Hint {\bfseries access\+\_\+hint\+\_\+on\+\_\+compaction\+\_\+start}\hypertarget{structrocksdb_1_1DBOptions_a6be9d7a11b2050d11a709e9db0147d8e}{}\label{structrocksdb_1_1DBOptions_a6be9d7a11b2050d11a709e9db0147d8e}
+
+\item 
+bool {\bfseries new\+\_\+table\+\_\+reader\+\_\+for\+\_\+compaction\+\_\+inputs}\hypertarget{structrocksdb_1_1DBOptions_a528c773705773c219406a38866d1add8}{}\label{structrocksdb_1_1DBOptions_a528c773705773c219406a38866d1add8}
+
+\item 
+size\+\_\+t {\bfseries compaction\+\_\+readahead\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_abae810e6352793500cb748a970248836}{}\label{structrocksdb_1_1DBOptions_abae810e6352793500cb748a970248836}
+
+\item 
+size\+\_\+t {\bfseries random\+\_\+access\+\_\+max\+\_\+buffer\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_ace1cce7e8f1cfe2b12247bdb8751ce2a}{}\label{structrocksdb_1_1DBOptions_ace1cce7e8f1cfe2b12247bdb8751ce2a}
+
+\item 
+size\+\_\+t {\bfseries writable\+\_\+file\+\_\+max\+\_\+buffer\+\_\+size}\hypertarget{structrocksdb_1_1DBOptions_a4c4efda9615704dc07bc278957e33c16}{}\label{structrocksdb_1_1DBOptions_a4c4efda9615704dc07bc278957e33c16}
+
+\item 
+bool {\bfseries use\+\_\+adaptive\+\_\+mutex}\hypertarget{structrocksdb_1_1DBOptions_ad9819f8645d0529285b0845545cd9286}{}\label{structrocksdb_1_1DBOptions_ad9819f8645d0529285b0845545cd9286}
+
+\item 
+uint64\+\_\+t {\bfseries bytes\+\_\+per\+\_\+sync}\hypertarget{structrocksdb_1_1DBOptions_a906e2c4dc27261d6c38761b32fc327bc}{}\label{structrocksdb_1_1DBOptions_a906e2c4dc27261d6c38761b32fc327bc}
+
+\item 
+uint64\+\_\+t {\bfseries wal\+\_\+bytes\+\_\+per\+\_\+sync}\hypertarget{structrocksdb_1_1DBOptions_a651aad787c4a3692e504720f46a560ed}{}\label{structrocksdb_1_1DBOptions_a651aad787c4a3692e504720f46a560ed}
+
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1EventListener}{Event\+Listener} $>$ $>$ {\bfseries listeners}\hypertarget{structrocksdb_1_1DBOptions_a181c95f50c27dc35683e51dfdbe6fb23}{}\label{structrocksdb_1_1DBOptions_a181c95f50c27dc35683e51dfdbe6fb23}
+
+\item 
+bool {\bfseries enable\+\_\+thread\+\_\+tracking}\hypertarget{structrocksdb_1_1DBOptions_a363866053585683ad59e218da91da55b}{}\label{structrocksdb_1_1DBOptions_a363866053585683ad59e218da91da55b}
+
+\item 
+uint64\+\_\+t {\bfseries delayed\+\_\+write\+\_\+rate}\hypertarget{structrocksdb_1_1DBOptions_a0be34d0f483e371cfdfd5eacb916e3d9}{}\label{structrocksdb_1_1DBOptions_a0be34d0f483e371cfdfd5eacb916e3d9}
+
+\item 
+bool {\bfseries allow\+\_\+concurrent\+\_\+memtable\+\_\+write}\hypertarget{structrocksdb_1_1DBOptions_ae2ae762f46b856a815e852d7ba296a59}{}\label{structrocksdb_1_1DBOptions_ae2ae762f46b856a815e852d7ba296a59}
+
+\item 
+bool {\bfseries enable\+\_\+write\+\_\+thread\+\_\+adaptive\+\_\+yield}\hypertarget{structrocksdb_1_1DBOptions_aeb3dc073acbd119db542100a9f3666b5}{}\label{structrocksdb_1_1DBOptions_aeb3dc073acbd119db542100a9f3666b5}
+
+\item 
+uint64\+\_\+t {\bfseries write\+\_\+thread\+\_\+max\+\_\+yield\+\_\+usec}\hypertarget{structrocksdb_1_1DBOptions_ab1d40797f52ec7ad0a822af8559833ce}{}\label{structrocksdb_1_1DBOptions_ab1d40797f52ec7ad0a822af8559833ce}
+
+\item 
+uint64\+\_\+t {\bfseries write\+\_\+thread\+\_\+slow\+\_\+yield\+\_\+usec}\hypertarget{structrocksdb_1_1DBOptions_aa6bdd335a0bd7a1b335505faf31935f4}{}\label{structrocksdb_1_1DBOptions_aa6bdd335a0bd7a1b335505faf31935f4}
+
+\item 
+bool {\bfseries skip\+\_\+stats\+\_\+update\+\_\+on\+\_\+db\+\_\+open}\hypertarget{structrocksdb_1_1DBOptions_a019b1f46fb8a5f97b5e291ca33e8da5e}{}\label{structrocksdb_1_1DBOptions_a019b1f46fb8a5f97b5e291ca33e8da5e}
+
+\item 
+W\+A\+L\+Recovery\+Mode {\bfseries wal\+\_\+recovery\+\_\+mode}\hypertarget{structrocksdb_1_1DBOptions_af967c466aa612c9e5a777b44944653dc}{}\label{structrocksdb_1_1DBOptions_af967c466aa612c9e5a777b44944653dc}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Cache}{Cache} $>$ {\bfseries row\+\_\+cache}\hypertarget{structrocksdb_1_1DBOptions_ac272dc7a8a93351a7494ccfd128cac5a}{}\label{structrocksdb_1_1DBOptions_ac272dc7a8a93351a7494ccfd128cac5a}
+
+\item 
+\hyperlink{classrocksdb_1_1WalFilter}{Wal\+Filter} $\ast$ {\bfseries wal\+\_\+filter}\hypertarget{structrocksdb_1_1DBOptions_ad4a27b9f67d3c1f03fe77a09c26608ad}{}\label{structrocksdb_1_1DBOptions_ad4a27b9f67d3c1f03fe77a09c26608ad}
+
+\item 
+bool {\bfseries fail\+\_\+if\+\_\+options\+\_\+file\+\_\+error}\hypertarget{structrocksdb_1_1DBOptions_aa50efc7702bd62de3e8096d1afc9cdb4}{}\label{structrocksdb_1_1DBOptions_aa50efc7702bd62de3e8096d1afc9cdb4}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/options.\+h\end{DoxyCompactItemize}

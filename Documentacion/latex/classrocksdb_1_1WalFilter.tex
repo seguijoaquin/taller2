@@ -1,0 +1,35 @@
+\hypertarget{classrocksdb_1_1WalFilter}{}\section{rocksdb\+:\+:Wal\+Filter Class Reference}
+\label{classrocksdb_1_1WalFilter}\index{rocksdb\+::\+Wal\+Filter@{rocksdb\+::\+Wal\+Filter}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Wal\+Processing\+Option} \{ \\*
+{\bfseries k\+Continue\+Processing} = 0, 
+{\bfseries k\+Ignore\+Current\+Record} = 1, 
+{\bfseries k\+Stop\+Replay} = 2, 
+{\bfseries k\+Corrupted\+Record} = 3, 
+\\*
+{\bfseries k\+Wal\+Processing\+Option\+Max} = 4
+ \}\hypertarget{classrocksdb_1_1WalFilter_a5180efe80fd41848c060dda07e5447e5}{}\label{classrocksdb_1_1WalFilter_a5180efe80fd41848c060dda07e5447e5}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Column\+Family\+Log\+Number\+Map} (const std\+::map$<$ uint32\+\_\+t, uint64\+\_\+t $>$ \&cf\+\_\+lognumber\+\_\+map, const std\+::map$<$ std\+::string, uint32\+\_\+t $>$ \&cf\+\_\+name\+\_\+id\+\_\+map)\hypertarget{classrocksdb_1_1WalFilter_ae0d77fb9dc6ae57ed3882578dd4242b7}{}\label{classrocksdb_1_1WalFilter_ae0d77fb9dc6ae57ed3882578dd4242b7}
+
+\item 
+virtual Wal\+Processing\+Option {\bfseries Log\+Record\+Found} (unsigned long long log\+\_\+number, const std\+::string \&log\+\_\+file\+\_\+name, const \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&batch, \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} $\ast$new\+\_\+batch, bool $\ast$batch\+\_\+changed)\hypertarget{classrocksdb_1_1WalFilter_aa5c25f95586086b2c531fa6b1b565153}{}\label{classrocksdb_1_1WalFilter_aa5c25f95586086b2c531fa6b1b565153}
+
+\item 
+virtual Wal\+Processing\+Option {\bfseries Log\+Record} (const \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} \&batch, \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} $\ast$new\+\_\+batch, bool $\ast$batch\+\_\+changed) const\hypertarget{classrocksdb_1_1WalFilter_a2b4938630bb61f4e9ec684f04be792a9}{}\label{classrocksdb_1_1WalFilter_a2b4938630bb61f4e9ec684f04be792a9}
+
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1WalFilter_a4a75da8e43b6b04e173a4001a22bf8d8}{}\label{classrocksdb_1_1WalFilter_a4a75da8e43b6b04e173a4001a22bf8d8}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/wal\+\_\+filter.\+h\end{DoxyCompactItemize}

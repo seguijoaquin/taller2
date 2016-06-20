@@ -1,0 +1,184 @@
+\hypertarget{classrocksdb_1_1Transaction}{}\section{rocksdb\+:\+:Transaction Class Reference}
+\label{classrocksdb_1_1Transaction}\index{rocksdb\+::\+Transaction@{rocksdb\+::\+Transaction}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Set\+Snapshot} ()=0\hypertarget{classrocksdb_1_1Transaction_a4cba80b280146fb8cc64c189af2d049b}{}\label{classrocksdb_1_1Transaction_a4cba80b280146fb8cc64c189af2d049b}
+
+\item 
+virtual void {\bfseries Set\+Snapshot\+On\+Next\+Operation} (std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1TransactionNotifier}{Transaction\+Notifier} $>$ notifier=nullptr)=0\hypertarget{classrocksdb_1_1Transaction_a9618bb7e74740e5475a71b9b9e98dc50}{}\label{classrocksdb_1_1Transaction_a9618bb7e74740e5475a71b9b9e98dc50}
+
+\item 
+virtual const \hyperlink{classrocksdb_1_1Snapshot}{Snapshot} $\ast$ {\bfseries Get\+Snapshot} () const =0\hypertarget{classrocksdb_1_1Transaction_a22e45bc32a03872b91164049bd3a8d46}{}\label{classrocksdb_1_1Transaction_a22e45bc32a03872b91164049bd3a8d46}
+
+\item 
+virtual void {\bfseries Clear\+Snapshot} ()=0\hypertarget{classrocksdb_1_1Transaction_a09c1ebe23ba3cea87164cc4330efa254}{}\label{classrocksdb_1_1Transaction_a09c1ebe23ba3cea87164cc4330efa254}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Commit} ()=0\hypertarget{classrocksdb_1_1Transaction_aa5fd04b98d3e4d8d36b6bffd69e48914}{}\label{classrocksdb_1_1Transaction_aa5fd04b98d3e4d8d36b6bffd69e48914}
+
+\item 
+virtual void {\bfseries Rollback} ()=0\hypertarget{classrocksdb_1_1Transaction_ade7f19a5229a9e3744b00fbbd8d463de}{}\label{classrocksdb_1_1Transaction_ade7f19a5229a9e3744b00fbbd8d463de}
+
+\item 
+virtual void {\bfseries Set\+Save\+Point} ()=0\hypertarget{classrocksdb_1_1Transaction_aca7700b6ec6e7f1131d518d961ef1b0b}{}\label{classrocksdb_1_1Transaction_aca7700b6ec6e7f1131d518d961ef1b0b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rollback\+To\+Save\+Point} ()=0\hypertarget{classrocksdb_1_1Transaction_a1fc0716b763fea5c2bb7ac9201f1a493}{}\label{classrocksdb_1_1Transaction_a1fc0716b763fea5c2bb7ac9201f1a493}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1Transaction_abfb171f3c4e47ff910d272db7e49e121}{}\label{classrocksdb_1_1Transaction_abfb171f3c4e47ff910d272db7e49e121}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1Transaction_aea858445f7925a7bdd2fc6cf28616c73}{}\label{classrocksdb_1_1Transaction_aea858445f7925a7bdd2fc6cf28616c73}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ \&column\+\_\+family, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)=0\hypertarget{classrocksdb_1_1Transaction_ac633eafa7f47a630d405b787125854de}{}\label{classrocksdb_1_1Transaction_ac633eafa7f47a630d405b787125854de}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)=0\hypertarget{classrocksdb_1_1Transaction_afd79096f7e66b033f827dee2eb337170}{}\label{classrocksdb_1_1Transaction_afd79096f7e66b033f827dee2eb337170}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+For\+Update} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1Transaction_a277506a2697c5b1b5e5e482b32a1ec67}{}\label{classrocksdb_1_1Transaction_a277506a2697c5b1b5e5e482b32a1ec67}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+For\+Update} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1Transaction_a744e9197d5833b1700464874de31fe21}{}\label{classrocksdb_1_1Transaction_a744e9197d5833b1700464874de31fe21}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get\+For\+Update} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ \&column\+\_\+family, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)=0\hypertarget{classrocksdb_1_1Transaction_a552fff326c25e5cb90469d62479f02c0}{}\label{classrocksdb_1_1Transaction_a552fff326c25e5cb90469d62479f02c0}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get\+For\+Update} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)=0\hypertarget{classrocksdb_1_1Transaction_ab77be938cbff6e85462abc0385e2d62a}{}\label{classrocksdb_1_1Transaction_ab77be938cbff6e85462abc0385e2d62a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries Get\+Iterator} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options)=0\hypertarget{classrocksdb_1_1Transaction_acef7c20c65310fd1dbf995705f4f4e0d}{}\label{classrocksdb_1_1Transaction_acef7c20c65310fd1dbf995705f4f4e0d}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries Get\+Iterator} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1Transaction_afde1ced51be675977962ccd7445fa5de}{}\label{classrocksdb_1_1Transaction_afde1ced51be675977962ccd7445fa5de}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a60cc89e6a09632f30ce678b806a56a74}{}\label{classrocksdb_1_1Transaction_a60cc89e6a09632f30ce678b806a56a74}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_ab22b4ff2be528ea94010306038b3fe06}{}\label{classrocksdb_1_1Transaction_ab22b4ff2be528ea94010306038b3fe06}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a415b0d5e72777a2bfd858ae8c05d0a8a}{}\label{classrocksdb_1_1Transaction_a415b0d5e72777a2bfd858ae8c05d0a8a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value)=0\hypertarget{classrocksdb_1_1Transaction_af3ad817ce0e2bcdbca836973b8d36c5e}{}\label{classrocksdb_1_1Transaction_af3ad817ce0e2bcdbca836973b8d36c5e}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a8920241ff3479aa752eef73d2bc8bbdf}{}\label{classrocksdb_1_1Transaction_a8920241ff3479aa752eef73d2bc8bbdf}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_aa1d8e2d16a6f8438c7ece2006207a2ff}{}\label{classrocksdb_1_1Transaction_aa1d8e2d16a6f8438c7ece2006207a2ff}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a66216c0a299af6874f3476e1b45bff43}{}\label{classrocksdb_1_1Transaction_a66216c0a299af6874f3476e1b45bff43}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_ae001d3cd5b7b576fb88e7c0aee5982bf}{}\label{classrocksdb_1_1Transaction_ae001d3cd5b7b576fb88e7c0aee5982bf}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a7d7d05954b5389622d40f552aeb1fbc5}{}\label{classrocksdb_1_1Transaction_a7d7d05954b5389622d40f552aeb1fbc5}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a0c2774542bb00509fc118ba18a71c0a6}{}\label{classrocksdb_1_1Transaction_a0c2774542bb00509fc118ba18a71c0a6}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_aa660b0f6e7f13516689e0c66d22f63b1}{}\label{classrocksdb_1_1Transaction_aa660b0f6e7f13516689e0c66d22f63b1}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a14681d446883a3cc3ace42f15227a0cb}{}\label{classrocksdb_1_1Transaction_a14681d446883a3cc3ace42f15227a0cb}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_aff7c5310f58ffdb82c4dc19d57d4b50f}{}\label{classrocksdb_1_1Transaction_aff7c5310f58ffdb82c4dc19d57d4b50f}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a403c1c52fa3c5229b60d4df4a7f4a828}{}\label{classrocksdb_1_1Transaction_a403c1c52fa3c5229b60d4df4a7f4a828}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put\+Untracked} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_ace11b95d18a4b03ee7786d13b59a7135}{}\label{classrocksdb_1_1Transaction_ace11b95d18a4b03ee7786d13b59a7135}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put\+Untracked} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a1409664a8bd11053ad16adbb7a9100ce}{}\label{classrocksdb_1_1Transaction_a1409664a8bd11053ad16adbb7a9100ce}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put\+Untracked} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a376fd1373ca040a9c494315817ee891a}{}\label{classrocksdb_1_1Transaction_a376fd1373ca040a9c494315817ee891a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put\+Untracked} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&value)=0\hypertarget{classrocksdb_1_1Transaction_ae3cd6ed843b44f1916b91a20c1681a79}{}\label{classrocksdb_1_1Transaction_ae3cd6ed843b44f1916b91a20c1681a79}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge\+Untracked} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_afca03747b646bf6102195ad8a259c6b1}{}\label{classrocksdb_1_1Transaction_afca03747b646bf6102195ad8a259c6b1}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge\+Untracked} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1Transaction_a8bef0bee4b99c98f2e639a87452aec2b}{}\label{classrocksdb_1_1Transaction_a8bef0bee4b99c98f2e639a87452aec2b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Untracked} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_ab48ab6a85b09f520475e7db59a322d30}{}\label{classrocksdb_1_1Transaction_ab48ab6a85b09f520475e7db59a322d30}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Untracked} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a51f1f2080972259e9e9a3b89f05960c9}{}\label{classrocksdb_1_1Transaction_a51f1f2080972259e9e9a3b89f05960c9}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Untracked} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_ad06c008cbc366e28a0eab6f2b72d1e62}{}\label{classrocksdb_1_1Transaction_ad06c008cbc366e28a0eab6f2b72d1e62}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Untracked} (const \hyperlink{structrocksdb_1_1SliceParts}{Slice\+Parts} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a80088cbe97e4008dd2cb3371fa908b2c}{}\label{classrocksdb_1_1Transaction_a80088cbe97e4008dd2cb3371fa908b2c}
+
+\item 
+virtual void {\bfseries Put\+Log\+Data} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&blob)=0\hypertarget{classrocksdb_1_1Transaction_af53a4039368b9bf64b62075ddd428ee0}{}\label{classrocksdb_1_1Transaction_af53a4039368b9bf64b62075ddd428ee0}
+
+\item 
+virtual void {\bfseries Disable\+Indexing} ()=0\hypertarget{classrocksdb_1_1Transaction_a97d187ddd9226a15ca0ab8a740236705}{}\label{classrocksdb_1_1Transaction_a97d187ddd9226a15ca0ab8a740236705}
+
+\item 
+virtual void {\bfseries Enable\+Indexing} ()=0\hypertarget{classrocksdb_1_1Transaction_af765d06ee7f217c371c92e5ba06d6e70}{}\label{classrocksdb_1_1Transaction_af765d06ee7f217c371c92e5ba06d6e70}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Num\+Keys} () const =0\hypertarget{classrocksdb_1_1Transaction_a1646a67db6edbfff29ed1479fc4f2e22}{}\label{classrocksdb_1_1Transaction_a1646a67db6edbfff29ed1479fc4f2e22}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Num\+Puts} () const =0\hypertarget{classrocksdb_1_1Transaction_a1b5e082bd35ee4ad9450e9531628ed60}{}\label{classrocksdb_1_1Transaction_a1b5e082bd35ee4ad9450e9531628ed60}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Num\+Deletes} () const =0\hypertarget{classrocksdb_1_1Transaction_a5485faa6943916bc27da8f777058c57a}{}\label{classrocksdb_1_1Transaction_a5485faa6943916bc27da8f777058c57a}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Num\+Merges} () const =0\hypertarget{classrocksdb_1_1Transaction_ad9f4cc199b2e77c28aa305bdf563eaa3}{}\label{classrocksdb_1_1Transaction_ad9f4cc199b2e77c28aa305bdf563eaa3}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Elapsed\+Time} () const =0\hypertarget{classrocksdb_1_1Transaction_a264b9ba81d110897f3d63b7053cac822}{}\label{classrocksdb_1_1Transaction_a264b9ba81d110897f3d63b7053cac822}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1WriteBatchWithIndex}{Write\+Batch\+With\+Index} $\ast$ {\bfseries Get\+Write\+Batch} ()=0\hypertarget{classrocksdb_1_1Transaction_ab356c47de27b08c15ef78dea6abec680}{}\label{classrocksdb_1_1Transaction_ab356c47de27b08c15ef78dea6abec680}
+
+\item 
+virtual void {\bfseries Set\+Lock\+Timeout} (int64\+\_\+t timeout)=0\hypertarget{classrocksdb_1_1Transaction_a8a1df2ef2be87fece6ec27637bab69b7}{}\label{classrocksdb_1_1Transaction_a8a1df2ef2be87fece6ec27637bab69b7}
+
+\item 
+virtual const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} $\ast$ {\bfseries Get\+Write\+Options} ()=0\hypertarget{classrocksdb_1_1Transaction_aaf457f051f48015f57abf84e35e966d7}{}\label{classrocksdb_1_1Transaction_aaf457f051f48015f57abf84e35e966d7}
+
+\item 
+virtual void {\bfseries Set\+Write\+Options} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options)=0\hypertarget{classrocksdb_1_1Transaction_a99be1011b1b2867e3d0959a88ac2f5ab}{}\label{classrocksdb_1_1Transaction_a99be1011b1b2867e3d0959a88ac2f5ab}
+
+\item 
+virtual void {\bfseries Undo\+Get\+For\+Update} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a9839f10ba1df677fd9f2214409990916}{}\label{classrocksdb_1_1Transaction_a9839f10ba1df677fd9f2214409990916}
+
+\item 
+virtual void {\bfseries Undo\+Get\+For\+Update} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1Transaction_a4abb04c9b8251edfb83a6140039908a0}{}\label{classrocksdb_1_1Transaction_a4abb04c9b8251edfb83a6140039908a0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Transaction} (const \hyperlink{classrocksdb_1_1TransactionDB}{Transaction\+DB} $\ast$db)\hypertarget{classrocksdb_1_1Transaction_ae0e4ad54eb90b19600629b31d4e46acd}{}\label{classrocksdb_1_1Transaction_ae0e4ad54eb90b19600629b31d4e46acd}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/transaction.\+h\end{DoxyCompactItemize}

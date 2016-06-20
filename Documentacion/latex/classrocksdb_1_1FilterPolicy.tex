@@ -1,0 +1,25 @@
+\hypertarget{classrocksdb_1_1FilterPolicy}{}\section{rocksdb\+:\+:Filter\+Policy Class Reference}
+\label{classrocksdb_1_1FilterPolicy}\index{rocksdb\+::\+Filter\+Policy@{rocksdb\+::\+Filter\+Policy}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1FilterPolicy_a51521763e767376e3325e5565a6f7bf6}{}\label{classrocksdb_1_1FilterPolicy_a51521763e767376e3325e5565a6f7bf6}
+
+\item 
+virtual void {\bfseries Create\+Filter} (const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$keys, int n, std\+::string $\ast$dst) const =0\hypertarget{classrocksdb_1_1FilterPolicy_ad43c700719f38ca4ef864ffb3ec73f5e}{}\label{classrocksdb_1_1FilterPolicy_ad43c700719f38ca4ef864ffb3ec73f5e}
+
+\item 
+virtual bool {\bfseries Key\+May\+Match} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&filter) const =0\hypertarget{classrocksdb_1_1FilterPolicy_afd9296968a61335cc7e1eb5ae6f85489}{}\label{classrocksdb_1_1FilterPolicy_afd9296968a61335cc7e1eb5ae6f85489}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1FilterBitsBuilder}{Filter\+Bits\+Builder} $\ast$ {\bfseries Get\+Filter\+Bits\+Builder} () const\hypertarget{classrocksdb_1_1FilterPolicy_a267639ad348889203f98af1fc60286d7}{}\label{classrocksdb_1_1FilterPolicy_a267639ad348889203f98af1fc60286d7}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1FilterBitsReader}{Filter\+Bits\+Reader} $\ast$ {\bfseries Get\+Filter\+Bits\+Reader} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&contents) const\hypertarget{classrocksdb_1_1FilterPolicy_abb583d453b4e3d158d0f329e7724a15e}{}\label{classrocksdb_1_1FilterPolicy_abb583d453b4e3d158d0f329e7724a15e}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/filter\+\_\+policy.\+h\end{DoxyCompactItemize}

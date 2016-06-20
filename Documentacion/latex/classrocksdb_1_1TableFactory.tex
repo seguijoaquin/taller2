@@ -1,0 +1,28 @@
+\hypertarget{classrocksdb_1_1TableFactory}{}\section{rocksdb\+:\+:Table\+Factory Class Reference}
+\label{classrocksdb_1_1TableFactory}\index{rocksdb\+::\+Table\+Factory@{rocksdb\+::\+Table\+Factory}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1TableFactory_a0192ae8ed07500d334d7487ed2c9cd38}{}\label{classrocksdb_1_1TableFactory_a0192ae8ed07500d334d7487ed2c9cd38}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Table\+Reader} (const Table\+Reader\+Options \&table\+\_\+reader\+\_\+options, unique\+\_\+ptr$<$ Random\+Access\+File\+Reader $>$ \&\&file, uint64\+\_\+t file\+\_\+size, unique\+\_\+ptr$<$ Table\+Reader $>$ $\ast$table\+\_\+reader) const =0\hypertarget{classrocksdb_1_1TableFactory_a005c3da6f888bc9b7157fa62012b86c5}{}\label{classrocksdb_1_1TableFactory_a005c3da6f888bc9b7157fa62012b86c5}
+
+\item 
+virtual Table\+Builder $\ast$ {\bfseries New\+Table\+Builder} (const Table\+Builder\+Options \&table\+\_\+builder\+\_\+options, uint32\+\_\+t column\+\_\+family\+\_\+id, Writable\+File\+Writer $\ast$file) const =0\hypertarget{classrocksdb_1_1TableFactory_a8d6bcacd3d71ded411450cf67e32e7db}{}\label{classrocksdb_1_1TableFactory_a8d6bcacd3d71ded411450cf67e32e7db}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Sanitize\+Options} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+opts, const \hyperlink{structrocksdb_1_1ColumnFamilyOptions}{Column\+Family\+Options} \&cf\+\_\+opts) const =0\hypertarget{classrocksdb_1_1TableFactory_a1ce4350fa9f0bdf63dbb63b5db79ad74}{}\label{classrocksdb_1_1TableFactory_a1ce4350fa9f0bdf63dbb63b5db79ad74}
+
+\item 
+virtual std\+::string {\bfseries Get\+Printable\+Table\+Options} () const =0\hypertarget{classrocksdb_1_1TableFactory_abf7768646a0e98df1a39e3cad2b794e2}{}\label{classrocksdb_1_1TableFactory_abf7768646a0e98df1a39e3cad2b794e2}
+
+\item 
+virtual void $\ast$ {\bfseries Get\+Options} ()\hypertarget{classrocksdb_1_1TableFactory_a91fd699d5e1bcf2acdcdeef91874d7ac}{}\label{classrocksdb_1_1TableFactory_a91fd699d5e1bcf2acdcdeef91874d7ac}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/table.\+h\end{DoxyCompactItemize}

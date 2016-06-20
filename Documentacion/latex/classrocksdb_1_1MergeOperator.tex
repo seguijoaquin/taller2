@@ -1,0 +1,28 @@
+\hypertarget{classrocksdb_1_1MergeOperator}{}\section{rocksdb\+:\+:Merge\+Operator Class Reference}
+\label{classrocksdb_1_1MergeOperator}\index{rocksdb\+::\+Merge\+Operator@{rocksdb\+::\+Merge\+Operator}}
+Inheritance diagram for rocksdb\+:\+:Merge\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1MergeOperator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries Full\+Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$existing\+\_\+value, const std\+::deque$<$ std\+::string $>$ \&operand\+\_\+list, std\+::string $\ast$new\+\_\+value, \hyperlink{classrocksdb_1_1Logger}{Logger} $\ast$logger) const =0\hypertarget{classrocksdb_1_1MergeOperator_ab032c13fc4334b9c60a4eac4e29054ef}{}\label{classrocksdb_1_1MergeOperator_ab032c13fc4334b9c60a4eac4e29054ef}
+
+\item 
+virtual bool {\bfseries Partial\+Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&left\+\_\+operand, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&right\+\_\+operand, std\+::string $\ast$new\+\_\+value, \hyperlink{classrocksdb_1_1Logger}{Logger} $\ast$logger) const\hypertarget{classrocksdb_1_1MergeOperator_a8baf472cfc0695f0c09e064c10771bb7}{}\label{classrocksdb_1_1MergeOperator_a8baf472cfc0695f0c09e064c10771bb7}
+
+\item 
+virtual bool {\bfseries Partial\+Merge\+Multi} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const std\+::deque$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&operand\+\_\+list, std\+::string $\ast$new\+\_\+value, \hyperlink{classrocksdb_1_1Logger}{Logger} $\ast$logger) const\hypertarget{classrocksdb_1_1MergeOperator_ab29bb3963d23a84299cba65315289049}{}\label{classrocksdb_1_1MergeOperator_ab29bb3963d23a84299cba65315289049}
+
+\item 
+virtual const char $\ast$ {\bfseries Name} () const =0\hypertarget{classrocksdb_1_1MergeOperator_a6ab6b3c60986ad1e9c9edbcfcae041c5}{}\label{classrocksdb_1_1MergeOperator_a6ab6b3c60986ad1e9c9edbcfcae041c5}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/merge\+\_\+operator.\+h\end{DoxyCompactItemize}

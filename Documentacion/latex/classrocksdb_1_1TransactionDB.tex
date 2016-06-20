@@ -1,0 +1,35 @@
+\hypertarget{classrocksdb_1_1TransactionDB}{}\section{rocksdb\+:\+:Transaction\+DB Class Reference}
+\label{classrocksdb_1_1TransactionDB}\index{rocksdb\+::\+Transaction\+DB@{rocksdb\+::\+Transaction\+DB}}
+Inheritance diagram for rocksdb\+:\+:Transaction\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1TransactionDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Transaction}{Transaction} $\ast$ {\bfseries Begin\+Transaction} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{structrocksdb_1_1TransactionOptions}{Transaction\+Options} \&txn\+\_\+options=\hyperlink{structrocksdb_1_1TransactionOptions}{Transaction\+Options}(), \hyperlink{classrocksdb_1_1Transaction}{Transaction} $\ast$old\+\_\+txn=nullptr)=0\hypertarget{classrocksdb_1_1TransactionDB_aab5cb59e7b7182cb145b0cf2ba65a94b}{}\label{classrocksdb_1_1TransactionDB_aab5cb59e7b7182cb145b0cf2ba65a94b}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options, const \hyperlink{structrocksdb_1_1TransactionDBOptions}{Transaction\+D\+B\+Options} \&txn\+\_\+db\+\_\+options, const std\+::string \&dbname, \hyperlink{classrocksdb_1_1TransactionDB}{Transaction\+DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1TransactionDB_a56d2d44e92e2a3bc9d45644cd77dbfba}{}\label{classrocksdb_1_1TransactionDB_a56d2d44e92e2a3bc9d45644cd77dbfba}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const \hyperlink{structrocksdb_1_1TransactionDBOptions}{Transaction\+D\+B\+Options} \&txn\+\_\+db\+\_\+options, const std\+::string \&dbname, const std\+::vector$<$ \hyperlink{structrocksdb_1_1ColumnFamilyDescriptor}{Column\+Family\+Descriptor} $>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ $\ast$handles, \hyperlink{classrocksdb_1_1TransactionDB}{Transaction\+DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1TransactionDB_a3c98c8aa7463a03bef70a81a5be0323a}{}\label{classrocksdb_1_1TransactionDB_a3c98c8aa7463a03bef70a81a5be0323a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Transaction\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db)\hypertarget{classrocksdb_1_1TransactionDB_a836c6527927fd23c8f3b5a3537b29dbc}{}\label{classrocksdb_1_1TransactionDB_a836c6527927fd23c8f3b5a3537b29dbc}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/transaction\+\_\+db.\+h\end{DoxyCompactItemize}

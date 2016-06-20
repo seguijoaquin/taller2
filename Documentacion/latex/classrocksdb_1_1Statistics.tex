@@ -1,0 +1,40 @@
+\hypertarget{classrocksdb_1_1Statistics}{}\section{rocksdb\+:\+:Statistics Class Reference}
+\label{classrocksdb_1_1Statistics}\index{rocksdb\+::\+Statistics@{rocksdb\+::\+Statistics}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual uint64\+\_\+t {\bfseries get\+Ticker\+Count} (uint32\+\_\+t ticker\+Type) const =0\hypertarget{classrocksdb_1_1Statistics_abfdd7fbe79971830300cf9bd008ebf14}{}\label{classrocksdb_1_1Statistics_abfdd7fbe79971830300cf9bd008ebf14}
+
+\item 
+virtual void {\bfseries histogram\+Data} (uint32\+\_\+t type, \hyperlink{structrocksdb_1_1HistogramData}{Histogram\+Data} $\ast$const data) const =0\hypertarget{classrocksdb_1_1Statistics_a2e93e4c0fb45b757838ef282d0ef2115}{}\label{classrocksdb_1_1Statistics_a2e93e4c0fb45b757838ef282d0ef2115}
+
+\item 
+virtual std\+::string {\bfseries get\+Histogram\+String} (uint32\+\_\+t type) const\hypertarget{classrocksdb_1_1Statistics_a19a264254ca795621de077acbb39d04a}{}\label{classrocksdb_1_1Statistics_a19a264254ca795621de077acbb39d04a}
+
+\item 
+virtual void {\bfseries record\+Tick} (uint32\+\_\+t ticker\+Type, uint64\+\_\+t count=0)=0\hypertarget{classrocksdb_1_1Statistics_a9e4f8fa4f0aaab6712b3eed84acc1dcc}{}\label{classrocksdb_1_1Statistics_a9e4f8fa4f0aaab6712b3eed84acc1dcc}
+
+\item 
+virtual void {\bfseries set\+Ticker\+Count} (uint32\+\_\+t ticker\+Type, uint64\+\_\+t count)=0\hypertarget{classrocksdb_1_1Statistics_abe05f7d58dcc8c57d2c797f4e011cbd9}{}\label{classrocksdb_1_1Statistics_abe05f7d58dcc8c57d2c797f4e011cbd9}
+
+\item 
+virtual void {\bfseries measure\+Time} (uint32\+\_\+t histogram\+Type, uint64\+\_\+t time)=0\hypertarget{classrocksdb_1_1Statistics_a1f7997dd2421c01300ba765f58322987}{}\label{classrocksdb_1_1Statistics_a1f7997dd2421c01300ba765f58322987}
+
+\item 
+virtual std\+::string {\bfseries To\+String} () const\hypertarget{classrocksdb_1_1Statistics_af38dfb62262cb24210ca5a951eb6b710}{}\label{classrocksdb_1_1Statistics_af38dfb62262cb24210ca5a951eb6b710}
+
+\item 
+virtual bool {\bfseries Hist\+Enabled\+For\+Type} (uint32\+\_\+t type) const\hypertarget{classrocksdb_1_1Statistics_add318f6785d0f2ed2b80de01e952bca6}{}\label{classrocksdb_1_1Statistics_add318f6785d0f2ed2b80de01e952bca6}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Stats\+Level {\bfseries stats\+\_\+level\+\_\+} = k\+Except\+Time\+For\+Mutex\hypertarget{classrocksdb_1_1Statistics_ad8abfdadf7d0f87e86c83373c03dc253}{}\label{classrocksdb_1_1Statistics_ad8abfdadf7d0f87e86c83373c03dc253}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/statistics.\+h\end{DoxyCompactItemize}

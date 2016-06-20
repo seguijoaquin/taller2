@@ -1,0 +1,130 @@
+\hypertarget{structrocksdb_1_1ImmutableCFOptions}{}\section{rocksdb\+:\+:Immutable\+C\+F\+Options Struct Reference}
+\label{structrocksdb_1_1ImmutableCFOptions}\index{rocksdb\+::\+Immutable\+C\+F\+Options@{rocksdb\+::\+Immutable\+C\+F\+Options}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Immutable\+C\+F\+Options} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options)\hypertarget{structrocksdb_1_1ImmutableCFOptions_a7254f2e3a94d5a2267652fb7c34d12f0}{}\label{structrocksdb_1_1ImmutableCFOptions_a7254f2e3a94d5a2267652fb7c34d12f0}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Compaction\+Style {\bfseries compaction\+\_\+style}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a4776a2aa3bc768ce4ac7e3c076325a29}{}\label{structrocksdb_1_1ImmutableCFOptions_a4776a2aa3bc768ce4ac7e3c076325a29}
+
+\item 
+\hyperlink{classrocksdb_1_1CompactionOptionsUniversal}{Compaction\+Options\+Universal} {\bfseries compaction\+\_\+options\+\_\+universal}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a3229407b8be2877528a8ea03c44aa3ac}{}\label{structrocksdb_1_1ImmutableCFOptions_a3229407b8be2877528a8ea03c44aa3ac}
+
+\item 
+\hyperlink{structrocksdb_1_1CompactionOptionsFIFO}{Compaction\+Options\+F\+I\+FO} {\bfseries compaction\+\_\+options\+\_\+fifo}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ac543f1366457188cf1e8f5246c746acc}{}\label{structrocksdb_1_1ImmutableCFOptions_ac543f1366457188cf1e8f5246c746acc}
+
+\item 
+const \hyperlink{classrocksdb_1_1SliceTransform}{Slice\+Transform} $\ast$ {\bfseries prefix\+\_\+extractor}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ad9314688866ffd1187d838a2438cafcb}{}\label{structrocksdb_1_1ImmutableCFOptions_ad9314688866ffd1187d838a2438cafcb}
+
+\item 
+const \hyperlink{classrocksdb_1_1Comparator}{Comparator} $\ast$ {\bfseries comparator}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a07d56ede7bc4454b72ad8435c4e5dc62}{}\label{structrocksdb_1_1ImmutableCFOptions_a07d56ede7bc4454b72ad8435c4e5dc62}
+
+\item 
+\hyperlink{classrocksdb_1_1MergeOperator}{Merge\+Operator} $\ast$ {\bfseries merge\+\_\+operator}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a42ac2d42e68913dd68edd0bd88dbef98}{}\label{structrocksdb_1_1ImmutableCFOptions_a42ac2d42e68913dd68edd0bd88dbef98}
+
+\item 
+const \hyperlink{classrocksdb_1_1CompactionFilter}{Compaction\+Filter} $\ast$ {\bfseries compaction\+\_\+filter}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a943ce36274c18ea47c3b313a45f28457}{}\label{structrocksdb_1_1ImmutableCFOptions_a943ce36274c18ea47c3b313a45f28457}
+
+\item 
+\hyperlink{classrocksdb_1_1CompactionFilterFactory}{Compaction\+Filter\+Factory} $\ast$ {\bfseries compaction\+\_\+filter\+\_\+factory}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a77c467684e4ab40bee083bf31e9e57e8}{}\label{structrocksdb_1_1ImmutableCFOptions_a77c467684e4ab40bee083bf31e9e57e8}
+
+\item 
+bool {\bfseries inplace\+\_\+update\+\_\+support}\hypertarget{structrocksdb_1_1ImmutableCFOptions_afbea74b4fbc4f040100b065824248b1d}{}\label{structrocksdb_1_1ImmutableCFOptions_afbea74b4fbc4f040100b065824248b1d}
+
+\item 
+Update\+Status($\ast$ {\bfseries inplace\+\_\+callback} )(char $\ast$existing\+\_\+value, uint32\+\_\+t $\ast$existing\+\_\+value\+\_\+size, \hyperlink{classrocksdb_1_1Slice}{Slice} delta\+\_\+value, std\+::string $\ast$merged\+\_\+value)\hypertarget{structrocksdb_1_1ImmutableCFOptions_ac7ed99f10af85c19c563625307f52e43}{}\label{structrocksdb_1_1ImmutableCFOptions_ac7ed99f10af85c19c563625307f52e43}
+
+\item 
+\hyperlink{classrocksdb_1_1Logger}{Logger} $\ast$ {\bfseries info\+\_\+log}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ab361364acfcbc0b8ab5f115240d9f529}{}\label{structrocksdb_1_1ImmutableCFOptions_ab361364acfcbc0b8ab5f115240d9f529}
+
+\item 
+\hyperlink{classrocksdb_1_1Statistics}{Statistics} $\ast$ {\bfseries statistics}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a8dfb8e2671a91bfbf84785fc555eaad7}{}\label{structrocksdb_1_1ImmutableCFOptions_a8dfb8e2671a91bfbf84785fc555eaad7}
+
+\item 
+Info\+Log\+Level {\bfseries info\+\_\+log\+\_\+level}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a368c8511866af3152bb449944c933c8e}{}\label{structrocksdb_1_1ImmutableCFOptions_a368c8511866af3152bb449944c933c8e}
+
+\item 
+\hyperlink{classrocksdb_1_1Env}{Env} $\ast$ {\bfseries env}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ae3881b8375a25afa2e0ccd4a747ee101}{}\label{structrocksdb_1_1ImmutableCFOptions_ae3881b8375a25afa2e0ccd4a747ee101}
+
+\item 
+uint64\+\_\+t {\bfseries delayed\+\_\+write\+\_\+rate}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a17aad287cb54d5a5d932f9b309ea0627}{}\label{structrocksdb_1_1ImmutableCFOptions_a17aad287cb54d5a5d932f9b309ea0627}
+
+\item 
+bool {\bfseries allow\+\_\+mmap\+\_\+reads}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a98ad265658a7708fec1e254333ceac62}{}\label{structrocksdb_1_1ImmutableCFOptions_a98ad265658a7708fec1e254333ceac62}
+
+\item 
+bool {\bfseries allow\+\_\+mmap\+\_\+writes}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a36bc8957b89137861ddefaa79f07f0cc}{}\label{structrocksdb_1_1ImmutableCFOptions_a36bc8957b89137861ddefaa79f07f0cc}
+
+\item 
+std\+::vector$<$ \hyperlink{structrocksdb_1_1DbPath}{Db\+Path} $>$ {\bfseries db\+\_\+paths}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ae5375db7f6c09bc476531d38edddb2a4}{}\label{structrocksdb_1_1ImmutableCFOptions_ae5375db7f6c09bc476531d38edddb2a4}
+
+\item 
+\hyperlink{classrocksdb_1_1MemTableRepFactory}{Mem\+Table\+Rep\+Factory} $\ast$ {\bfseries memtable\+\_\+factory}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a8870554e29778540767743ff6a5c123b}{}\label{structrocksdb_1_1ImmutableCFOptions_a8870554e29778540767743ff6a5c123b}
+
+\item 
+\hyperlink{classrocksdb_1_1TableFactory}{Table\+Factory} $\ast$ {\bfseries table\+\_\+factory}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a6fa44e2b134204621cbcd4bf57a300fc}{}\label{structrocksdb_1_1ImmutableCFOptions_a6fa44e2b134204621cbcd4bf57a300fc}
+
+\item 
+Options\+::\+Table\+Properties\+Collector\+Factories {\bfseries table\+\_\+properties\+\_\+collector\+\_\+factories}\hypertarget{structrocksdb_1_1ImmutableCFOptions_aa146deeac17125682bfa70c4ad7d3510}{}\label{structrocksdb_1_1ImmutableCFOptions_aa146deeac17125682bfa70c4ad7d3510}
+
+\item 
+bool {\bfseries advise\+\_\+random\+\_\+on\+\_\+open}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ae16d3e88c59eef684b18f4bddb2d730e}{}\label{structrocksdb_1_1ImmutableCFOptions_ae16d3e88c59eef684b18f4bddb2d730e}
+
+\item 
+uint32\+\_\+t {\bfseries bloom\+\_\+locality}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a29dccb1781d0d3730b44c8f285b2970e}{}\label{structrocksdb_1_1ImmutableCFOptions_a29dccb1781d0d3730b44c8f285b2970e}
+
+\item 
+bool {\bfseries purge\+\_\+redundant\+\_\+kvs\+\_\+while\+\_\+flush}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a273116e62ad9dc49f89b1ac6379ad4ff}{}\label{structrocksdb_1_1ImmutableCFOptions_a273116e62ad9dc49f89b1ac6379ad4ff}
+
+\item 
+uint32\+\_\+t {\bfseries min\+\_\+partial\+\_\+merge\+\_\+operands}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ae9a584e1563f6b3962b2aa8aeaa742d3}{}\label{structrocksdb_1_1ImmutableCFOptions_ae9a584e1563f6b3962b2aa8aeaa742d3}
+
+\item 
+bool {\bfseries disable\+\_\+data\+\_\+sync}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a32b4a26fb68cd7a5225111d64ca2776c}{}\label{structrocksdb_1_1ImmutableCFOptions_a32b4a26fb68cd7a5225111d64ca2776c}
+
+\item 
+bool {\bfseries use\+\_\+fsync}\hypertarget{structrocksdb_1_1ImmutableCFOptions_afcdbee323795d6dc70721229905da6e6}{}\label{structrocksdb_1_1ImmutableCFOptions_afcdbee323795d6dc70721229905da6e6}
+
+\item 
+Compression\+Type {\bfseries compression}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ad4069596155d1c2ead3c04715c64a20b}{}\label{structrocksdb_1_1ImmutableCFOptions_ad4069596155d1c2ead3c04715c64a20b}
+
+\item 
+std\+::vector$<$ Compression\+Type $>$ {\bfseries compression\+\_\+per\+\_\+level}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a45efe1747ba502eecea4e3d68d3b69a3}{}\label{structrocksdb_1_1ImmutableCFOptions_a45efe1747ba502eecea4e3d68d3b69a3}
+
+\item 
+\hyperlink{structrocksdb_1_1CompressionOptions}{Compression\+Options} {\bfseries compression\+\_\+opts}\hypertarget{structrocksdb_1_1ImmutableCFOptions_ae4be1819c4016763da0477e14af0124d}{}\label{structrocksdb_1_1ImmutableCFOptions_ae4be1819c4016763da0477e14af0124d}
+
+\item 
+bool {\bfseries level\+\_\+compaction\+\_\+dynamic\+\_\+level\+\_\+bytes}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a467e3e949068b6476bdb5890b3ac029f}{}\label{structrocksdb_1_1ImmutableCFOptions_a467e3e949068b6476bdb5890b3ac029f}
+
+\item 
+Options\+::\+Access\+Hint {\bfseries access\+\_\+hint\+\_\+on\+\_\+compaction\+\_\+start}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a842c977d0fcac7ceb364be351c5694bc}{}\label{structrocksdb_1_1ImmutableCFOptions_a842c977d0fcac7ceb364be351c5694bc}
+
+\item 
+bool {\bfseries new\+\_\+table\+\_\+reader\+\_\+for\+\_\+compaction\+\_\+inputs}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a124a7dc458e4eb9fd2e5260047c3fb9b}{}\label{structrocksdb_1_1ImmutableCFOptions_a124a7dc458e4eb9fd2e5260047c3fb9b}
+
+\item 
+size\+\_\+t {\bfseries compaction\+\_\+readahead\+\_\+size}\hypertarget{structrocksdb_1_1ImmutableCFOptions_af01c151ec7eea87362582779e5085fa5}{}\label{structrocksdb_1_1ImmutableCFOptions_af01c151ec7eea87362582779e5085fa5}
+
+\item 
+int {\bfseries num\+\_\+levels}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a346d22bb964705b153c302c32be79699}{}\label{structrocksdb_1_1ImmutableCFOptions_a346d22bb964705b153c302c32be79699}
+
+\item 
+bool {\bfseries optimize\+\_\+filters\+\_\+for\+\_\+hits}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a49d382a31d0177b5b83d56aaffab2305}{}\label{structrocksdb_1_1ImmutableCFOptions_a49d382a31d0177b5b83d56aaffab2305}
+
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1EventListener}{Event\+Listener} $>$ $>$ {\bfseries listeners}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a0bac7d248e419650e034d4f2b992440f}{}\label{structrocksdb_1_1ImmutableCFOptions_a0bac7d248e419650e034d4f2b992440f}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Cache}{Cache} $>$ {\bfseries row\+\_\+cache}\hypertarget{structrocksdb_1_1ImmutableCFOptions_a0af1f42a94c3fe1b25cee22ef5252893}{}\label{structrocksdb_1_1ImmutableCFOptions_a0af1f42a94c3fe1b25cee22ef5252893}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/immutable\+\_\+options.\+h\end{DoxyCompactItemize}

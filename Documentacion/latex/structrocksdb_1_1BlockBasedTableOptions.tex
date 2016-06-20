@@ -1,0 +1,72 @@
+\hypertarget{structrocksdb_1_1BlockBasedTableOptions}{}\section{rocksdb\+:\+:Block\+Based\+Table\+Options Struct Reference}
+\label{structrocksdb_1_1BlockBasedTableOptions}\index{rocksdb\+::\+Block\+Based\+Table\+Options@{rocksdb\+::\+Block\+Based\+Table\+Options}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Index\+Type} \+: char \{ {\bfseries k\+Binary\+Search}, 
+{\bfseries k\+Hash\+Search}
+ \}\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a93cf5570b2c1a10470db336b9d83e2ce}{}\label{structrocksdb_1_1BlockBasedTableOptions_a93cf5570b2c1a10470db336b9d83e2ce}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1FlushBlockPolicyFactory}{Flush\+Block\+Policy\+Factory} $>$ {\bfseries flush\+\_\+block\+\_\+policy\+\_\+factory}\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ad73f8618a8e2f822a898b6b50351208a}{}\label{structrocksdb_1_1BlockBasedTableOptions_ad73f8618a8e2f822a898b6b50351208a}
+
+\item 
+bool {\bfseries cache\+\_\+index\+\_\+and\+\_\+filter\+\_\+blocks} = false\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a9b47fc5e2871d2928b6b4c6bffe6017c}{}\label{structrocksdb_1_1BlockBasedTableOptions_a9b47fc5e2871d2928b6b4c6bffe6017c}
+
+\item 
+bool {\bfseries pin\+\_\+l0\+\_\+filter\+\_\+and\+\_\+index\+\_\+blocks\+\_\+in\+\_\+cache} = false\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ac711b41f7055cdae0e3554b57bfe114f}{}\label{structrocksdb_1_1BlockBasedTableOptions_ac711b41f7055cdae0e3554b57bfe114f}
+
+\item 
+Index\+Type {\bfseries index\+\_\+type} = k\+Binary\+Search\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ae00971fc952135fe87df4f9f041e5289}{}\label{structrocksdb_1_1BlockBasedTableOptions_ae00971fc952135fe87df4f9f041e5289}
+
+\item 
+bool {\bfseries hash\+\_\+index\+\_\+allow\+\_\+collision} = true\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a1404fa6a494624d4dca4038e06312003}{}\label{structrocksdb_1_1BlockBasedTableOptions_a1404fa6a494624d4dca4038e06312003}
+
+\item 
+Checksum\+Type {\bfseries checksum} = k\+C\+R\+C32c\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a1adc5994a69a8cd0e1647148d0c2f752}{}\label{structrocksdb_1_1BlockBasedTableOptions_a1adc5994a69a8cd0e1647148d0c2f752}
+
+\item 
+bool {\bfseries no\+\_\+block\+\_\+cache} = false\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ae3a1448054303148e9c1d73c0d3a8149}{}\label{structrocksdb_1_1BlockBasedTableOptions_ae3a1448054303148e9c1d73c0d3a8149}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Cache}{Cache} $>$ {\bfseries block\+\_\+cache} = nullptr\hypertarget{structrocksdb_1_1BlockBasedTableOptions_af7012b6cfc023265669ca3db6fd8a6ac}{}\label{structrocksdb_1_1BlockBasedTableOptions_af7012b6cfc023265669ca3db6fd8a6ac}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Cache}{Cache} $>$ {\bfseries block\+\_\+cache\+\_\+compressed} = nullptr\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a333d1974b959b500e643e73d42f079f2}{}\label{structrocksdb_1_1BlockBasedTableOptions_a333d1974b959b500e643e73d42f079f2}
+
+\item 
+size\+\_\+t {\bfseries block\+\_\+size} = 4 $\ast$ 1024\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ac6d52bc1b24b8420aa8565be69d8c503}{}\label{structrocksdb_1_1BlockBasedTableOptions_ac6d52bc1b24b8420aa8565be69d8c503}
+
+\item 
+int {\bfseries block\+\_\+size\+\_\+deviation} = 10\hypertarget{structrocksdb_1_1BlockBasedTableOptions_ad32cd3d71e1f30b9962a7c8de3cc16e5}{}\label{structrocksdb_1_1BlockBasedTableOptions_ad32cd3d71e1f30b9962a7c8de3cc16e5}
+
+\item 
+int {\bfseries block\+\_\+restart\+\_\+interval} = 16\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a8bd604aaca756ab9e6308c8b198283ef}{}\label{structrocksdb_1_1BlockBasedTableOptions_a8bd604aaca756ab9e6308c8b198283ef}
+
+\item 
+int {\bfseries index\+\_\+block\+\_\+restart\+\_\+interval} = 1\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a23a65c7cba2b2b44386cceb5b2077604}{}\label{structrocksdb_1_1BlockBasedTableOptions_a23a65c7cba2b2b44386cceb5b2077604}
+
+\item 
+bool {\bfseries use\+\_\+delta\+\_\+encoding} = true\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a115eda587a9b226a49c662310fc66fae}{}\label{structrocksdb_1_1BlockBasedTableOptions_a115eda587a9b226a49c662310fc66fae}
+
+\item 
+std\+::shared\+\_\+ptr$<$ const \hyperlink{classrocksdb_1_1FilterPolicy}{Filter\+Policy} $>$ {\bfseries filter\+\_\+policy} = nullptr\hypertarget{structrocksdb_1_1BlockBasedTableOptions_accd96f660a1807c81d9f29fa56bfaa7c}{}\label{structrocksdb_1_1BlockBasedTableOptions_accd96f660a1807c81d9f29fa56bfaa7c}
+
+\item 
+bool {\bfseries whole\+\_\+key\+\_\+filtering} = true\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a28ac408b75f3a8ce18174ef0314790cb}{}\label{structrocksdb_1_1BlockBasedTableOptions_a28ac408b75f3a8ce18174ef0314790cb}
+
+\item 
+bool {\bfseries skip\+\_\+table\+\_\+builder\+\_\+flush} = false\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a9134bd76833f7acda42d5ed177f94b62}{}\label{structrocksdb_1_1BlockBasedTableOptions_a9134bd76833f7acda42d5ed177f94b62}
+
+\item 
+uint32\+\_\+t {\bfseries format\+\_\+version} = 2\hypertarget{structrocksdb_1_1BlockBasedTableOptions_a6c14b0303d48e4d6a2ceec75b2d4e0ae}{}\label{structrocksdb_1_1BlockBasedTableOptions_a6c14b0303d48e4d6a2ceec75b2d4e0ae}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/table.\+h\end{DoxyCompactItemize}

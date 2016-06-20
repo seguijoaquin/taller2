@@ -1,0 +1,145 @@
+\hypertarget{classrocksdb_1_1JSONDocument}{}\section{rocksdb\+:\+:J\+S\+O\+N\+Document Class Reference}
+\label{classrocksdb_1_1JSONDocument}\index{rocksdb\+::\+J\+S\+O\+N\+Document@{rocksdb\+::\+J\+S\+O\+N\+Document}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Type} \{ \\*
+{\bfseries k\+Null}, 
+{\bfseries k\+Array}, 
+{\bfseries k\+Bool}, 
+{\bfseries k\+Double}, 
+\\*
+{\bfseries k\+Int64}, 
+{\bfseries k\+Object}, 
+{\bfseries k\+String}
+ \}\hypertarget{classrocksdb_1_1JSONDocument_a7a57b72ea9075589151ee9e8aff1ddf8}{}\label{classrocksdb_1_1JSONDocument_a7a57b72ea9075589151ee9e8aff1ddf8}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries J\+S\+O\+N\+Document} (bool b)\hypertarget{classrocksdb_1_1JSONDocument_acb472e7939a3beac180ed7057f91ac4a}{}\label{classrocksdb_1_1JSONDocument_acb472e7939a3beac180ed7057f91ac4a}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (double d)\hypertarget{classrocksdb_1_1JSONDocument_a34b25c53329b82f45eb32a675985b039}{}\label{classrocksdb_1_1JSONDocument_a34b25c53329b82f45eb32a675985b039}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (int8\+\_\+t i)\hypertarget{classrocksdb_1_1JSONDocument_a5348870ce6c0f2e9f5c805c57016a131}{}\label{classrocksdb_1_1JSONDocument_a5348870ce6c0f2e9f5c805c57016a131}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (int16\+\_\+t i)\hypertarget{classrocksdb_1_1JSONDocument_a992cb3d9c8e4489a471a28f394d54416}{}\label{classrocksdb_1_1JSONDocument_a992cb3d9c8e4489a471a28f394d54416}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (int32\+\_\+t i)\hypertarget{classrocksdb_1_1JSONDocument_ab122a61ef505fd0b384cc61b0cd5cc8a}{}\label{classrocksdb_1_1JSONDocument_ab122a61ef505fd0b384cc61b0cd5cc8a}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (int64\+\_\+t i)\hypertarget{classrocksdb_1_1JSONDocument_a31c519799de83d32cb013a0a21a02b04}{}\label{classrocksdb_1_1JSONDocument_a31c519799de83d32cb013a0a21a02b04}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (const std\+::string \&s)\hypertarget{classrocksdb_1_1JSONDocument_aadc4879774f7156d40680750878ebead}{}\label{classrocksdb_1_1JSONDocument_aadc4879774f7156d40680750878ebead}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (const char $\ast$s)\hypertarget{classrocksdb_1_1JSONDocument_a5b3dea6b5a1deabce9198213d4735dea}{}\label{classrocksdb_1_1JSONDocument_a5b3dea6b5a1deabce9198213d4735dea}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (Type \+\_\+type)\hypertarget{classrocksdb_1_1JSONDocument_a7734a18e81252e0e197a4dbf7cdb75ec}{}\label{classrocksdb_1_1JSONDocument_a7734a18e81252e0e197a4dbf7cdb75ec}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&json\+\_\+document)\hypertarget{classrocksdb_1_1JSONDocument_ac054de19e7260a00f7bb7f83daf502a2}{}\label{classrocksdb_1_1JSONDocument_ac054de19e7260a00f7bb7f83daf502a2}
+
+\item 
+{\bfseries J\+S\+O\+N\+Document} (\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&\&json\+\_\+document)\hypertarget{classrocksdb_1_1JSONDocument_ad3b691c15e9e66547c1d6598b72fbe5a}{}\label{classrocksdb_1_1JSONDocument_ad3b691c15e9e66547c1d6598b72fbe5a}
+
+\item 
+Type {\bfseries type} () const\hypertarget{classrocksdb_1_1JSONDocument_ae24738c5b23619b63ae7e9c923629ca9}{}\label{classrocksdb_1_1JSONDocument_ae24738c5b23619b63ae7e9c923629ca9}
+
+\item 
+bool {\bfseries Contains} (const std\+::string \&key) const\hypertarget{classrocksdb_1_1JSONDocument_a7ca62d131a53c40c87a354dc61d3e2f2}{}\label{classrocksdb_1_1JSONDocument_a7ca62d131a53c40c87a354dc61d3e2f2}
+
+\item 
+\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&key) const\hypertarget{classrocksdb_1_1JSONDocument_a515dc269b2fc74c5baf0619f946d18b0}{}\label{classrocksdb_1_1JSONDocument_a515dc269b2fc74c5baf0619f946d18b0}
+
+\item 
+size\+\_\+t {\bfseries Count} () const\hypertarget{classrocksdb_1_1JSONDocument_a2e66abdc3d34d0816428c69b05de8a5d}{}\label{classrocksdb_1_1JSONDocument_a2e66abdc3d34d0816428c69b05de8a5d}
+
+\item 
+\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t i) const\hypertarget{classrocksdb_1_1JSONDocument_a14b3a9783230c00537405a9acd7ff589}{}\label{classrocksdb_1_1JSONDocument_a14b3a9783230c00537405a9acd7ff589}
+
+\item 
+\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \& {\bfseries operator=} (\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} json\+Document)\hypertarget{classrocksdb_1_1JSONDocument_a31b25cb70dcf002311e2289a3a7f03a6}{}\label{classrocksdb_1_1JSONDocument_a31b25cb70dcf002311e2289a3a7f03a6}
+
+\item 
+bool {\bfseries Is\+Null} () const\hypertarget{classrocksdb_1_1JSONDocument_ab4cee9806fa563e5a3de20d936875836}{}\label{classrocksdb_1_1JSONDocument_ab4cee9806fa563e5a3de20d936875836}
+
+\item 
+bool {\bfseries Is\+Array} () const\hypertarget{classrocksdb_1_1JSONDocument_a20544f3bd7ab50af8ef30025d2cf17f7}{}\label{classrocksdb_1_1JSONDocument_a20544f3bd7ab50af8ef30025d2cf17f7}
+
+\item 
+bool {\bfseries Is\+Bool} () const\hypertarget{classrocksdb_1_1JSONDocument_a53643c5b29b28da4b173d5b4cb7245db}{}\label{classrocksdb_1_1JSONDocument_a53643c5b29b28da4b173d5b4cb7245db}
+
+\item 
+bool {\bfseries Is\+Double} () const\hypertarget{classrocksdb_1_1JSONDocument_af3c036924c68cc1a699efa3a22b17b42}{}\label{classrocksdb_1_1JSONDocument_af3c036924c68cc1a699efa3a22b17b42}
+
+\item 
+bool {\bfseries Is\+Int64} () const\hypertarget{classrocksdb_1_1JSONDocument_a66a4efa29267abc77ed9778434651d95}{}\label{classrocksdb_1_1JSONDocument_a66a4efa29267abc77ed9778434651d95}
+
+\item 
+bool {\bfseries Is\+Object} () const\hypertarget{classrocksdb_1_1JSONDocument_a5e4e43bbf660cde813101f877744e8be}{}\label{classrocksdb_1_1JSONDocument_a5e4e43bbf660cde813101f877744e8be}
+
+\item 
+bool {\bfseries Is\+String} () const\hypertarget{classrocksdb_1_1JSONDocument_a51cba56fc4c6d8e5fd7609d6c2483036}{}\label{classrocksdb_1_1JSONDocument_a51cba56fc4c6d8e5fd7609d6c2483036}
+
+\item 
+bool {\bfseries Get\+Bool} () const\hypertarget{classrocksdb_1_1JSONDocument_afea7227a4530a605b87eec8ef1305129}{}\label{classrocksdb_1_1JSONDocument_afea7227a4530a605b87eec8ef1305129}
+
+\item 
+double {\bfseries Get\+Double} () const\hypertarget{classrocksdb_1_1JSONDocument_ac241778c6e274181cb0d7e4e7000bd55}{}\label{classrocksdb_1_1JSONDocument_ac241778c6e274181cb0d7e4e7000bd55}
+
+\item 
+int64\+\_\+t {\bfseries Get\+Int64} () const\hypertarget{classrocksdb_1_1JSONDocument_ab1bf996631710cf7fe3e996c50747b72}{}\label{classrocksdb_1_1JSONDocument_ab1bf996631710cf7fe3e996c50747b72}
+
+\item 
+std\+::string {\bfseries Get\+String} () const\hypertarget{classrocksdb_1_1JSONDocument_a864751667501f13941f4268a38f901ce}{}\label{classrocksdb_1_1JSONDocument_a864751667501f13941f4268a38f901ce}
+
+\item 
+bool {\bfseries operator==} (const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&rhs) const\hypertarget{classrocksdb_1_1JSONDocument_a0d7c520c34f92a381ad6585854de755e}{}\label{classrocksdb_1_1JSONDocument_a0d7c520c34f92a381ad6585854de755e}
+
+\item 
+bool {\bfseries operator!=} (const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&rhs) const\hypertarget{classrocksdb_1_1JSONDocument_a9ad0f6d65c09766b5e3c8a55c069fcfd}{}\label{classrocksdb_1_1JSONDocument_a9ad0f6d65c09766b5e3c8a55c069fcfd}
+
+\item 
+\hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} {\bfseries Copy} () const\hypertarget{classrocksdb_1_1JSONDocument_abd8eb5a045c72159429d9a8c4fae3ec4}{}\label{classrocksdb_1_1JSONDocument_abd8eb5a045c72159429d9a8c4fae3ec4}
+
+\item 
+bool {\bfseries Is\+Owner} () const\hypertarget{classrocksdb_1_1JSONDocument_a5018105d97e08df2ea66f7623237b217}{}\label{classrocksdb_1_1JSONDocument_a5018105d97e08df2ea66f7623237b217}
+
+\item 
+std\+::string {\bfseries Debug\+String} () const\hypertarget{classrocksdb_1_1JSONDocument_a4be12cd91ce9b582b701548ad97abbd3}{}\label{classrocksdb_1_1JSONDocument_a4be12cd91ce9b582b701548ad97abbd3}
+
+\item 
+Items\+Iterator\+Generator {\bfseries Items} () const\hypertarget{classrocksdb_1_1JSONDocument_af83edc7279e5abe6986001d3e9947da8}{}\label{classrocksdb_1_1JSONDocument_af83edc7279e5abe6986001d3e9947da8}
+
+\item 
+void {\bfseries Serialize} (std\+::string $\ast$dst) const\hypertarget{classrocksdb_1_1JSONDocument_a244aba5520db6bd7b7102d3e13c78336}{}\label{classrocksdb_1_1JSONDocument_a244aba5520db6bd7b7102d3e13c78336}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} $\ast$ {\bfseries Parse\+J\+S\+ON} (const char $\ast$json)\hypertarget{classrocksdb_1_1JSONDocument_a25424fd51385c0c795bd9d95d53b85bc}{}\label{classrocksdb_1_1JSONDocument_a25424fd51385c0c795bd9d95d53b85bc}
+
+\item 
+static \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} $\ast$ {\bfseries Deserialize} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&src)\hypertarget{classrocksdb_1_1JSONDocument_af16c6f77dc3c402fd5fd4fc4be1c6264}{}\label{classrocksdb_1_1JSONDocument_af16c6f77dc3c402fd5fd4fc4be1c6264}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries J\+S\+O\+N\+Document\+Builder}\hypertarget{classrocksdb_1_1JSONDocument_aca5ff666ab7c2a88cd39d1827e970a36}{}\label{classrocksdb_1_1JSONDocument_aca5ff666ab7c2a88cd39d1827e970a36}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/json\+\_\+document.\+h\end{DoxyCompactItemize}

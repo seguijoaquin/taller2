@@ -1,0 +1,106 @@
+\hypertarget{classrocksdb_1_1WritableFile}{}\section{rocksdb\+:\+:Writable\+File Class Reference}
+\label{classrocksdb_1_1WritableFile}\index{rocksdb\+::\+Writable\+File@{rocksdb\+::\+Writable\+File}}
+Inheritance diagram for rocksdb\+:\+:Writable\+File\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1WritableFile}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries Use\+O\+S\+Buffer} () const\hypertarget{classrocksdb_1_1WritableFile_a73db9884298866c672096a4a05d9b244}{}\label{classrocksdb_1_1WritableFile_a73db9884298866c672096a4a05d9b244}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Required\+Buffer\+Alignment} () const\hypertarget{classrocksdb_1_1WritableFile_a4d66e2e24cd3ae8ed5e436d1685d3f4a}{}\label{classrocksdb_1_1WritableFile_a4d66e2e24cd3ae8ed5e436d1685d3f4a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Append} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&data)=0\hypertarget{classrocksdb_1_1WritableFile_aa21c4bf5040156fe25e6580495bab7a9}{}\label{classrocksdb_1_1WritableFile_aa21c4bf5040156fe25e6580495bab7a9}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Positioned\+Append} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&, uint64\+\_\+t)\hypertarget{classrocksdb_1_1WritableFile_a52d99e6f4deae278c9104161dee64a4e}{}\label{classrocksdb_1_1WritableFile_a52d99e6f4deae278c9104161dee64a4e}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Truncate} (uint64\+\_\+t size)\hypertarget{classrocksdb_1_1WritableFile_a46e62aa15109fed6d78c0a41186e49f6}{}\label{classrocksdb_1_1WritableFile_a46e62aa15109fed6d78c0a41186e49f6}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Close} ()=0\hypertarget{classrocksdb_1_1WritableFile_ade502f1bafbb7db1b916d28ca16cc752}{}\label{classrocksdb_1_1WritableFile_ade502f1bafbb7db1b916d28ca16cc752}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Flush} ()=0\hypertarget{classrocksdb_1_1WritableFile_aff938f8677f063336848acdfd0446fa8}{}\label{classrocksdb_1_1WritableFile_aff938f8677f063336848acdfd0446fa8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Sync} ()=0\hypertarget{classrocksdb_1_1WritableFile_a739dc13d33b6716dce73e44a472ba1dd}{}\label{classrocksdb_1_1WritableFile_a739dc13d33b6716dce73e44a472ba1dd}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Fsync} ()\hypertarget{classrocksdb_1_1WritableFile_aaec9388e46e89e6b6706691e72b1430a}{}\label{classrocksdb_1_1WritableFile_aaec9388e46e89e6b6706691e72b1430a}
+
+\item 
+virtual bool {\bfseries Is\+Sync\+Thread\+Safe} () const\hypertarget{classrocksdb_1_1WritableFile_acb30290421a54190c89972fdb345789e}{}\label{classrocksdb_1_1WritableFile_acb30290421a54190c89972fdb345789e}
+
+\item 
+virtual bool {\bfseries Use\+Direct\+IO} () const\hypertarget{classrocksdb_1_1WritableFile_ad105cc280bb21db5a0ad150ea2028f0a}{}\label{classrocksdb_1_1WritableFile_ad105cc280bb21db5a0ad150ea2028f0a}
+
+\item 
+virtual void {\bfseries Set\+I\+O\+Priority} (Env\+::\+I\+O\+Priority pri)\hypertarget{classrocksdb_1_1WritableFile_a45d7ca5da7c15281ac2d96696706b203}{}\label{classrocksdb_1_1WritableFile_a45d7ca5da7c15281ac2d96696706b203}
+
+\item 
+virtual Env\+::\+I\+O\+Priority {\bfseries Get\+I\+O\+Priority} ()\hypertarget{classrocksdb_1_1WritableFile_a84f3a89d8c2f9ed2220b844ed814e153}{}\label{classrocksdb_1_1WritableFile_a84f3a89d8c2f9ed2220b844ed814e153}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+File\+Size} ()\hypertarget{classrocksdb_1_1WritableFile_a032f46afa6c012765c1869bcf55f7509}{}\label{classrocksdb_1_1WritableFile_a032f46afa6c012765c1869bcf55f7509}
+
+\item 
+virtual void {\bfseries Set\+Preallocation\+Block\+Size} (size\+\_\+t size)\hypertarget{classrocksdb_1_1WritableFile_aca475b532da78d725de650fb452f345d}{}\label{classrocksdb_1_1WritableFile_aca475b532da78d725de650fb452f345d}
+
+\item 
+virtual void {\bfseries Get\+Preallocation\+Status} (size\+\_\+t $\ast$block\+\_\+size, size\+\_\+t $\ast$last\+\_\+allocated\+\_\+block)\hypertarget{classrocksdb_1_1WritableFile_adbcb944d86f0b4d769472c01c043aea9}{}\label{classrocksdb_1_1WritableFile_adbcb944d86f0b4d769472c01c043aea9}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Unique\+Id} (char $\ast$id, size\+\_\+t max\+\_\+size) const\hypertarget{classrocksdb_1_1WritableFile_a5086ed4afc3fc63a0fb43ef2067a2224}{}\label{classrocksdb_1_1WritableFile_a5086ed4afc3fc63a0fb43ef2067a2224}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Invalidate\+Cache} (size\+\_\+t offset, size\+\_\+t length)\hypertarget{classrocksdb_1_1WritableFile_aecbf49617c8ba66165b1caefc1305798}{}\label{classrocksdb_1_1WritableFile_aecbf49617c8ba66165b1caefc1305798}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Range\+Sync} (uint64\+\_\+t offset, uint64\+\_\+t nbytes)\hypertarget{classrocksdb_1_1WritableFile_a8114ce078068bb659aac8f78cbd114b4}{}\label{classrocksdb_1_1WritableFile_a8114ce078068bb659aac8f78cbd114b4}
+
+\item 
+virtual void {\bfseries Prepare\+Write} (size\+\_\+t offset, size\+\_\+t len)\hypertarget{classrocksdb_1_1WritableFile_a5df5c0f168043f7c015205b861217c03}{}\label{classrocksdb_1_1WritableFile_a5df5c0f168043f7c015205b861217c03}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const size\+\_\+t {\bfseries c\+\_\+\+Default\+Page\+Size} = 4 $\ast$ 1024\hypertarget{classrocksdb_1_1WritableFile_a20f0caa7e16e0f9cb473ede649a0c094}{}\label{classrocksdb_1_1WritableFile_a20f0caa7e16e0f9cb473ede649a0c094}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Allocate} (uint64\+\_\+t offset, uint64\+\_\+t len)\hypertarget{classrocksdb_1_1WritableFile_abb429092498957e5374ea7be106ec29e}{}\label{classrocksdb_1_1WritableFile_abb429092498957e5374ea7be106ec29e}
+
+\item 
+size\+\_\+t {\bfseries preallocation\+\_\+block\+\_\+size} ()\hypertarget{classrocksdb_1_1WritableFile_a8f4d8ebe099b4acf7d8b46a277bbdc80}{}\label{classrocksdb_1_1WritableFile_a8f4d8ebe099b4acf7d8b46a277bbdc80}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Env\+::\+I\+O\+Priority {\bfseries io\+\_\+priority\+\_\+}\hypertarget{classrocksdb_1_1WritableFile_aada9395077a22ccbbf9a1dc89c119388}{}\label{classrocksdb_1_1WritableFile_aada9395077a22ccbbf9a1dc89c119388}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Writable\+File\+Wrapper}\hypertarget{classrocksdb_1_1WritableFile_ae666395d2b922329f7f6fe7befd9136a}{}\label{classrocksdb_1_1WritableFile_ae666395d2b922329f7f6fe7befd9136a}
+
+\item 
+class {\bfseries Writable\+File\+Mirror}\hypertarget{classrocksdb_1_1WritableFile_a08ca6d7a158add6892be69f24263e128}{}\label{classrocksdb_1_1WritableFile_a08ca6d7a158add6892be69f24263e128}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/env.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\hypertarget{classJson_1_1FastWriter}{}\section{Json\+:\+:Fast\+Writer Class Reference}
+\label{classJson_1_1FastWriter}\index{Json\+::\+Fast\+Writer@{Json\+::\+Fast\+Writer}}
+
+
+Outputs a \hyperlink{classJson_1_1Value}{Value} in \href{http://www.json.org}{\tt J\+S\+ON} format without formatting (not human friendly).  
+
+
+
+
+{\ttfamily \#include $<$json.\+h$>$}
+
+Inheritance diagram for Json\+:\+:Fast\+Writer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJson_1_1FastWriter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries enable\+Y\+A\+M\+L\+Compatibility} ()\hypertarget{classJson_1_1FastWriter_a78d98e9f76d33660ad6e6a1abe287d45}{}\label{classJson_1_1FastWriter_a78d98e9f76d33660ad6e6a1abe287d45}
+
+\item 
+void \hyperlink{classJson_1_1FastWriter_a6e93d8dce951e408517311026a065b40}{drop\+Null\+Placeholders} ()\hypertarget{classJson_1_1FastWriter_a6e93d8dce951e408517311026a065b40}{}\label{classJson_1_1FastWriter_a6e93d8dce951e408517311026a065b40}
+
+\begin{DoxyCompactList}\small\item\em Drop the \char`\"{}null\char`\"{} string from the writer\textquotesingle{}s output for null\+Values. Strictly speaking, this is not valid J\+S\+ON. But when the output is being fed to a browser\textquotesingle{}s Javascript, it makes for smaller output and the browser can handle the output just fine. \end{DoxyCompactList}\item 
+void {\bfseries omit\+Ending\+Line\+Feed} ()\hypertarget{classJson_1_1FastWriter_af4ee077d365d75941fb2688d97207a55}{}\label{classJson_1_1FastWriter_af4ee077d365d75941fb2688d97207a55}
+
+\item 
+J\+S\+O\+N\+C\+P\+P\+\_\+\+S\+T\+R\+I\+NG {\bfseries write} (const \hyperlink{classJson_1_1Value}{Value} \&root) J\+S\+O\+N\+C\+P\+P\+\_\+\+O\+V\+E\+R\+R\+I\+DE\hypertarget{classJson_1_1FastWriter_a93d45ba4bc312371d08beb3e3dfbe654}{}\label{classJson_1_1FastWriter_a93d45ba4bc312371d08beb3e3dfbe654}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Outputs a \hyperlink{classJson_1_1Value}{Value} in \href{http://www.json.org}{\tt J\+S\+ON} format without formatting (not human friendly). 
+
+The J\+S\+ON document is written in a single line. It is not intended for \textquotesingle{}human\textquotesingle{} consumption, but may be usefull to support feature such as R\+PC where bandwith is limited. \begin{DoxySeeAlso}{See also}
+\hyperlink{classJson_1_1Reader}{Reader}, \hyperlink{classJson_1_1Value}{Value} 
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000008}{Deprecated}]Use \hyperlink{classJson_1_1StreamWriterBuilder}{Stream\+Writer\+Builder}. \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/json/json.\+h\item 
+Appserver/src/external/json/jsoncpp.\+cpp\end{DoxyCompactItemize}

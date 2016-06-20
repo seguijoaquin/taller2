@@ -1,0 +1,40 @@
+\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler}{}\section{rocksdb\+:\+:Write\+Batch\+:\+:Handler Class Reference}
+\label{classrocksdb_1_1WriteBatch_1_1Handler}\index{rocksdb\+::\+Write\+Batch\+::\+Handler@{rocksdb\+::\+Write\+Batch\+::\+Handler}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put\+CF} (uint32\+\_\+t column\+\_\+family\+\_\+id, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a17e17f57d3d614483b3d849468db108a}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a17e17f57d3d614483b3d849468db108a}
+
+\item 
+virtual void {\bfseries Put} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_accf33beb9e1587846826c243302a0cdc}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_accf33beb9e1587846826c243302a0cdc}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+CF} (uint32\+\_\+t column\+\_\+family\+\_\+id, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a055858a9b7c0479d15d909d4f1f6c125}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a055858a9b7c0479d15d909d4f1f6c125}
+
+\item 
+virtual void {\bfseries Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_aa32531e83a34a1dd9da2a0e4bfb26e1e}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_aa32531e83a34a1dd9da2a0e4bfb26e1e}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete\+CF} (uint32\+\_\+t column\+\_\+family\+\_\+id, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a48386b0c5115f5097bd72fe163b8611d}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a48386b0c5115f5097bd72fe163b8611d}
+
+\item 
+virtual void {\bfseries Single\+Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a1d3d553cacbc2f1fa34790d8670c8ac6}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a1d3d553cacbc2f1fa34790d8670c8ac6}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge\+CF} (uint32\+\_\+t column\+\_\+family\+\_\+id, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_ad388aaf5b4570a2c20c3095c56b8b34f}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_ad388aaf5b4570a2c20c3095c56b8b34f}
+
+\item 
+virtual void {\bfseries Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a1ff8fc8861c143729bcba6733ae04567}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a1ff8fc8861c143729bcba6733ae04567}
+
+\item 
+virtual void {\bfseries Log\+Data} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&blob)\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_ac3e39bf94f61573a522a7f0825bc5332}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_ac3e39bf94f61573a522a7f0825bc5332}
+
+\item 
+virtual bool {\bfseries Continue} ()\hypertarget{classrocksdb_1_1WriteBatch_1_1Handler_a8f3ffb10b28171ac4f9cdd379815abf1}{}\label{classrocksdb_1_1WriteBatch_1_1Handler_a8f3ffb10b28171ac4f9cdd379815abf1}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/write\+\_\+batch.\+h\end{DoxyCompactItemize}

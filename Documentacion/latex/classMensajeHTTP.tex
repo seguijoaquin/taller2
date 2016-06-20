@@ -1,0 +1,59 @@
+\hypertarget{classMensajeHTTP}{}\section{Mensaje\+H\+T\+TP Class Reference}
+\label{classMensajeHTTP}\index{Mensaje\+H\+T\+TP@{Mensaje\+H\+T\+TP}}
+Inheritance diagram for Mensaje\+H\+T\+TP\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMensajeHTTP}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Mensaje\+H\+T\+TP} (\hyperlink{structhttp__message}{http\+\_\+message} $\ast$mensaje\+MG)\hypertarget{classMensajeHTTP_a81014d5d4ff6304f73ae8ca79e6afc1d}{}\label{classMensajeHTTP_a81014d5d4ff6304f73ae8ca79e6afc1d}
+
+\item 
+bool {\bfseries tiene\+Header} (string header)\hypertarget{classMensajeHTTP_ae287891749d61472d882403a9a89d0a4}{}\label{classMensajeHTTP_ae287891749d61472d882403a9a89d0a4}
+
+\item 
+string {\bfseries get\+Header} (string header)\hypertarget{classMensajeHTTP_a2bc7778920edd7b85ded455ca16098b7}{}\label{classMensajeHTTP_a2bc7778920edd7b85ded455ca16098b7}
+
+\item 
+string {\bfseries get\+Body} ()\hypertarget{classMensajeHTTP_a3a4ae2f0872d7fd3662cc93ebfc12c65}{}\label{classMensajeHTTP_a3a4ae2f0872d7fd3662cc93ebfc12c65}
+
+\item 
+void {\bfseries set\+Body} (string body)\hypertarget{classMensajeHTTP_a0797090e1196d3d43b2f7484525d81c2}{}\label{classMensajeHTTP_a0797090e1196d3d43b2f7484525d81c2}
+
+\item 
+void {\bfseries agregar\+Header} (string header, string valor)\hypertarget{classMensajeHTTP_af1e394fc2962d285424a94bb7c290a4c}{}\label{classMensajeHTTP_af1e394fc2962d285424a94bb7c290a4c}
+
+\item 
+virtual string {\bfseries to\+String} ()=0\hypertarget{classMensajeHTTP_aa24169ae958f27977b3345cf2bb162e3}{}\label{classMensajeHTTP_aa24169ae958f27977b3345cf2bb162e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries cargar\+Headers} (\hyperlink{structhttp__message}{http\+\_\+message} $\ast$mensaje\+MG)\hypertarget{classMensajeHTTP_a8f1cf1e316cf0e690c4997262301c8b0}{}\label{classMensajeHTTP_a8f1cf1e316cf0e690c4997262301c8b0}
+
+\item 
+string {\bfseries mg\+\_\+str\+To\+String} (\hyperlink{structmg__str}{mg\+\_\+str} \&mg\+Str)\hypertarget{classMensajeHTTP_a5b13801cd2ea67aec646315661c9c7d5}{}\label{classMensajeHTTP_a5b13801cd2ea67aec646315661c9c7d5}
+
+\item 
+string {\bfseries headers\+To\+String} ()\hypertarget{classMensajeHTTP_acac8b954266349e08823a5b036b7b28d}{}\label{classMensajeHTTP_acac8b954266349e08823a5b036b7b28d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries body}\hypertarget{classMensajeHTTP_a4dfdf400c066b6f55d29986feff110c9}{}\label{classMensajeHTTP_a4dfdf400c066b6f55d29986feff110c9}
+
+\item 
+map$<$ string, string $>$ {\bfseries headers}\hypertarget{classMensajeHTTP_a3f3375d37fcec2dec4562119408ca4a5}{}\label{classMensajeHTTP_a3f3375d37fcec2dec4562119408ca4a5}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/servicios/Mensaje\+H\+T\+T\+P.\+h\item 
+Appserver/src/servicios/Mensaje\+H\+T\+T\+P.\+cpp\end{DoxyCompactItemize}

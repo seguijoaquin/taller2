@@ -1,0 +1,47 @@
+\hypertarget{classrocksdb_1_1Iterator}{}\section{rocksdb\+:\+:Iterator Class Reference}
+\label{classrocksdb_1_1Iterator}\index{rocksdb\+::\+Iterator@{rocksdb\+::\+Iterator}}
+Inheritance diagram for rocksdb\+:\+:Iterator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1Iterator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries Valid} () const =0\hypertarget{classrocksdb_1_1Iterator_a866c8627787b3a768273ae4893f27f8f}{}\label{classrocksdb_1_1Iterator_a866c8627787b3a768273ae4893f27f8f}
+
+\item 
+virtual void {\bfseries Seek\+To\+First} ()=0\hypertarget{classrocksdb_1_1Iterator_a99d2e05c952cecb0f4a0fa60412bafc2}{}\label{classrocksdb_1_1Iterator_a99d2e05c952cecb0f4a0fa60412bafc2}
+
+\item 
+virtual void {\bfseries Seek\+To\+Last} ()=0\hypertarget{classrocksdb_1_1Iterator_a72603897beae5180e1785ee095ca43f4}{}\label{classrocksdb_1_1Iterator_a72603897beae5180e1785ee095ca43f4}
+
+\item 
+virtual void {\bfseries Seek} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&target)=0\hypertarget{classrocksdb_1_1Iterator_aeed06527f83bf2863595fc9514511d7d}{}\label{classrocksdb_1_1Iterator_aeed06527f83bf2863595fc9514511d7d}
+
+\item 
+virtual void {\bfseries Next} ()=0\hypertarget{classrocksdb_1_1Iterator_a06da095e0c88cc65ac23e4ec88d0a390}{}\label{classrocksdb_1_1Iterator_a06da095e0c88cc65ac23e4ec88d0a390}
+
+\item 
+virtual void {\bfseries Prev} ()=0\hypertarget{classrocksdb_1_1Iterator_acc6625d2209a48343c1ebce4c2528e23}{}\label{classrocksdb_1_1Iterator_acc6625d2209a48343c1ebce4c2528e23}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Slice}{Slice} {\bfseries key} () const =0\hypertarget{classrocksdb_1_1Iterator_a34cfd17f7b64652774de76cbc0e5b202}{}\label{classrocksdb_1_1Iterator_a34cfd17f7b64652774de76cbc0e5b202}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Slice}{Slice} {\bfseries value} () const =0\hypertarget{classrocksdb_1_1Iterator_a1a503134af26025486d5c640e49cdf54}{}\label{classrocksdb_1_1Iterator_a1a503134af26025486d5c640e49cdf54}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries status} () const =0\hypertarget{classrocksdb_1_1Iterator_a5435c832490b19d4c3aebf7c4877098d}{}\label{classrocksdb_1_1Iterator_a5435c832490b19d4c3aebf7c4877098d}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Property} (std\+::string prop\+\_\+name, std\+::string $\ast$prop)\hypertarget{classrocksdb_1_1Iterator_a262a0e911087b145e95ac2a4603289f7}{}\label{classrocksdb_1_1Iterator_a262a0e911087b145e95ac2a4603289f7}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/iterator.\+h\end{DoxyCompactItemize}

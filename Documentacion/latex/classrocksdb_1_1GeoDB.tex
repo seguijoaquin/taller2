@@ -1,0 +1,35 @@
+\hypertarget{classrocksdb_1_1GeoDB}{}\section{rocksdb\+:\+:Geo\+DB Class Reference}
+\label{classrocksdb_1_1GeoDB}\index{rocksdb\+::\+Geo\+DB@{rocksdb\+::\+Geo\+DB}}
+Inheritance diagram for rocksdb\+:\+:Geo\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1GeoDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Geo\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, const \hyperlink{structrocksdb_1_1GeoDBOptions}{Geo\+D\+B\+Options} \&options)\hypertarget{classrocksdb_1_1GeoDB_aea4cdd1e86027b6126059e8eb2245c25}{}\label{classrocksdb_1_1GeoDB_aea4cdd1e86027b6126059e8eb2245c25}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Insert} (const \hyperlink{classrocksdb_1_1GeoObject}{Geo\+Object} \&object)=0\hypertarget{classrocksdb_1_1GeoDB_a81c9e2268ccb793802cf44c69b1ea942}{}\label{classrocksdb_1_1GeoDB_a81c9e2268ccb793802cf44c69b1ea942}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+By\+Position} (const \hyperlink{classrocksdb_1_1GeoPosition}{Geo\+Position} \&pos, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&id, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1GeoDB_ac53062674afd942131c8503ace4e863c}{}\label{classrocksdb_1_1GeoDB_ac53062674afd942131c8503ace4e863c}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+By\+Id} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&id, \hyperlink{classrocksdb_1_1GeoObject}{Geo\+Object} $\ast$object)=0\hypertarget{classrocksdb_1_1GeoDB_a8f62bab51de989169f88875313323740}{}\label{classrocksdb_1_1GeoDB_a8f62bab51de989169f88875313323740}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Remove} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&id)=0\hypertarget{classrocksdb_1_1GeoDB_a3079e4b1fe9f8da662f136b4bcf73354}{}\label{classrocksdb_1_1GeoDB_a3079e4b1fe9f8da662f136b4bcf73354}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1GeoIterator}{Geo\+Iterator} $\ast$ {\bfseries Search\+Radial} (const \hyperlink{classrocksdb_1_1GeoPosition}{Geo\+Position} \&pos, double radius, int number\+\_\+of\+\_\+values=I\+N\+T\+\_\+\+M\+AX)=0\hypertarget{classrocksdb_1_1GeoDB_af7201ce086b3ceba0b6e0b7ba108a284}{}\label{classrocksdb_1_1GeoDB_af7201ce086b3ceba0b6e0b7ba108a284}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/geo\+\_\+db.\+h\end{DoxyCompactItemize}

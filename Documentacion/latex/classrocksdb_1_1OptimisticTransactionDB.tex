@@ -1,0 +1,31 @@
+\hypertarget{classrocksdb_1_1OptimisticTransactionDB}{}\section{rocksdb\+:\+:Optimistic\+Transaction\+DB Class Reference}
+\label{classrocksdb_1_1OptimisticTransactionDB}\index{rocksdb\+::\+Optimistic\+Transaction\+DB@{rocksdb\+::\+Optimistic\+Transaction\+DB}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Transaction}{Transaction} $\ast$ {\bfseries Begin\+Transaction} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{structrocksdb_1_1OptimisticTransactionOptions}{Optimistic\+Transaction\+Options} \&txn\+\_\+options=\hyperlink{structrocksdb_1_1OptimisticTransactionOptions}{Optimistic\+Transaction\+Options}(), \hyperlink{classrocksdb_1_1Transaction}{Transaction} $\ast$old\+\_\+txn=nullptr)=0\hypertarget{classrocksdb_1_1OptimisticTransactionDB_a2c6efa583e4fb58ae5b37d71f59a81da}{}\label{classrocksdb_1_1OptimisticTransactionDB_a2c6efa583e4fb58ae5b37d71f59a81da}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1DB}{DB} $\ast$ {\bfseries Get\+Base\+DB} ()=0\hypertarget{classrocksdb_1_1OptimisticTransactionDB_a3884f36d6bb661670fb57e97c10e3e1f}{}\label{classrocksdb_1_1OptimisticTransactionDB_a3884f36d6bb661670fb57e97c10e3e1f}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options, const std\+::string \&dbname, \hyperlink{classrocksdb_1_1OptimisticTransactionDB}{Optimistic\+Transaction\+DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1OptimisticTransactionDB_a31f3542b7fddd3c2fe0d6d1050764561}{}\label{classrocksdb_1_1OptimisticTransactionDB_a31f3542b7fddd3c2fe0d6d1050764561}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const std\+::string \&dbname, const std\+::vector$<$ \hyperlink{structrocksdb_1_1ColumnFamilyDescriptor}{Column\+Family\+Descriptor} $>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ $\ast$handles, \hyperlink{classrocksdb_1_1OptimisticTransactionDB}{Optimistic\+Transaction\+DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1OptimisticTransactionDB_a82684a5683c06825d97dcc5fbed71b3a}{}\label{classrocksdb_1_1OptimisticTransactionDB_a82684a5683c06825d97dcc5fbed71b3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Optimistic\+Transaction\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db)\hypertarget{classrocksdb_1_1OptimisticTransactionDB_a61276475766982659400e78281815fe7}{}\label{classrocksdb_1_1OptimisticTransactionDB_a61276475766982659400e78281815fe7}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/optimistic\+\_\+transaction\+\_\+db.\+h\end{DoxyCompactItemize}

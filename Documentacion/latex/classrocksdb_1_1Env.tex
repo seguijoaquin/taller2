@@ -1,0 +1,171 @@
+\hypertarget{classrocksdb_1_1Env}{}\section{rocksdb\+:\+:Env Class Reference}
+\label{classrocksdb_1_1Env}\index{rocksdb\+::\+Env@{rocksdb\+::\+Env}}
+Inheritance diagram for rocksdb\+:\+:Env\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1Env}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrocksdb_1_1Env_1_1FileAttributes}{File\+Attributes}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Priority} \{ {\bfseries L\+OW}, 
+{\bfseries H\+I\+GH}, 
+{\bfseries T\+O\+T\+AL}
+ \}\hypertarget{classrocksdb_1_1Env_aa5be3083441b804767a9d554d7effcda}{}\label{classrocksdb_1_1Env_aa5be3083441b804767a9d554d7effcda}
+
+\item 
+enum {\bfseries I\+O\+Priority} \{ {\bfseries I\+O\+\_\+\+L\+OW} = 0, 
+{\bfseries I\+O\+\_\+\+H\+I\+GH} = 1, 
+{\bfseries I\+O\+\_\+\+T\+O\+T\+AL} = 2
+ \}\hypertarget{classrocksdb_1_1Env_a20ebe3b9e9fae566e83e91249a02b021}{}\label{classrocksdb_1_1Env_a20ebe3b9e9fae566e83e91249a02b021}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Sequential\+File} (const std\+::string \&fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1SequentialFile}{Sequential\+File} $>$ $\ast$result, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options)=0\hypertarget{classrocksdb_1_1Env_af2eb6650bd551549c4f6f66ce0e51de3}{}\label{classrocksdb_1_1Env_af2eb6650bd551549c4f6f66ce0e51de3}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Random\+Access\+File} (const std\+::string \&fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1RandomAccessFile}{Random\+Access\+File} $>$ $\ast$result, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options)=0\hypertarget{classrocksdb_1_1Env_a6e6619074ecb6b5ba4e4a23ffb2e4974}{}\label{classrocksdb_1_1Env_a6e6619074ecb6b5ba4e4a23ffb2e4974}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Writable\+File} (const std\+::string \&fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$result, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options)=0\hypertarget{classrocksdb_1_1Env_a2415186e0a399d70edabef9f477e4c47}{}\label{classrocksdb_1_1Env_a2415186e0a399d70edabef9f477e4c47}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Reuse\+Writable\+File} (const std\+::string \&fname, const std\+::string \&old\+\_\+fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$result, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options)\hypertarget{classrocksdb_1_1Env_abdb061a41cfd7f6d5ac57beb95f5aabc}{}\label{classrocksdb_1_1Env_abdb061a41cfd7f6d5ac57beb95f5aabc}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Directory} (const std\+::string \&name, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Directory}{Directory} $>$ $\ast$result)=0\hypertarget{classrocksdb_1_1Env_a6fc64f5876b0755c7df72f38d148343f}{}\label{classrocksdb_1_1Env_a6fc64f5876b0755c7df72f38d148343f}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries File\+Exists} (const std\+::string \&fname)=0\hypertarget{classrocksdb_1_1Env_a69c138d9c4fa957ebf3dd950849c6319}{}\label{classrocksdb_1_1Env_a69c138d9c4fa957ebf3dd950849c6319}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Children} (const std\+::string \&dir, std\+::vector$<$ std\+::string $>$ $\ast$result)=0\hypertarget{classrocksdb_1_1Env_aebd6a4aac30704da29fecf45a9da21d6}{}\label{classrocksdb_1_1Env_aebd6a4aac30704da29fecf45a9da21d6}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Children\+File\+Attributes} (const std\+::string \&dir, std\+::vector$<$ \hyperlink{structrocksdb_1_1Env_1_1FileAttributes}{File\+Attributes} $>$ $\ast$result)\hypertarget{classrocksdb_1_1Env_ace92872738ffb27bbe8d90a4c03a0746}{}\label{classrocksdb_1_1Env_ace92872738ffb27bbe8d90a4c03a0746}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+File} (const std\+::string \&fname)=0\hypertarget{classrocksdb_1_1Env_a0d75747a2a64c041d106b85202848fe8}{}\label{classrocksdb_1_1Env_a0d75747a2a64c041d106b85202848fe8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir} (const std\+::string \&dirname)=0\hypertarget{classrocksdb_1_1Env_abb8c5907cacfd71bb223be17c4741a47}{}\label{classrocksdb_1_1Env_abb8c5907cacfd71bb223be17c4741a47}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir\+If\+Missing} (const std\+::string \&dirname)=0\hypertarget{classrocksdb_1_1Env_a52a10880d70d77d1dcad9f2fb20ce171}{}\label{classrocksdb_1_1Env_a52a10880d70d77d1dcad9f2fb20ce171}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Dir} (const std\+::string \&dirname)=0\hypertarget{classrocksdb_1_1Env_a4dc62f49ff743af36746fb9c49edadda}{}\label{classrocksdb_1_1Env_a4dc62f49ff743af36746fb9c49edadda}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Size} (const std\+::string \&fname, uint64\+\_\+t $\ast$file\+\_\+size)=0\hypertarget{classrocksdb_1_1Env_afe49e988676094b54312ada4f927a26d}{}\label{classrocksdb_1_1Env_afe49e988676094b54312ada4f927a26d}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Modification\+Time} (const std\+::string \&fname, uint64\+\_\+t $\ast$file\+\_\+mtime)=0\hypertarget{classrocksdb_1_1Env_a0b7781facd40158245aabf25ce686448}{}\label{classrocksdb_1_1Env_a0b7781facd40158245aabf25ce686448}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rename\+File} (const std\+::string \&src, const std\+::string \&target)=0\hypertarget{classrocksdb_1_1Env_a8dc0848695f4b55193ee01ffb9ad24b8}{}\label{classrocksdb_1_1Env_a8dc0848695f4b55193ee01ffb9ad24b8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Link\+File} (const std\+::string \&src, const std\+::string \&target)\hypertarget{classrocksdb_1_1Env_a1eeb1b9ff00c86714795f0a07a7d9572}{}\label{classrocksdb_1_1Env_a1eeb1b9ff00c86714795f0a07a7d9572}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Lock\+File} (const std\+::string \&fname, \hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$$\ast$lock)=0\hypertarget{classrocksdb_1_1Env_a680d05d86580d65e4c1cfe16dd099385}{}\label{classrocksdb_1_1Env_a680d05d86580d65e4c1cfe16dd099385}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Unlock\+File} (\hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$lock)=0\hypertarget{classrocksdb_1_1Env_a802631b298800f1ee47b75f3d8c9594d}{}\label{classrocksdb_1_1Env_a802631b298800f1ee47b75f3d8c9594d}
+
+\item 
+virtual void {\bfseries Schedule} (void($\ast$function)(void $\ast$arg), void $\ast$arg, Priority pri=L\+OW, void $\ast$tag=nullptr, void($\ast$unsched\+Function)(void $\ast$arg)=0)=0\hypertarget{classrocksdb_1_1Env_a54daee6faf4261f0e316542a1aa099fd}{}\label{classrocksdb_1_1Env_a54daee6faf4261f0e316542a1aa099fd}
+
+\item 
+virtual int {\bfseries Un\+Schedule} (void $\ast$arg, Priority pri)\hypertarget{classrocksdb_1_1Env_ad2f8ab772981aedf832123c161158c58}{}\label{classrocksdb_1_1Env_ad2f8ab772981aedf832123c161158c58}
+
+\item 
+virtual void {\bfseries Start\+Thread} (void($\ast$function)(void $\ast$arg), void $\ast$arg)=0\hypertarget{classrocksdb_1_1Env_a1f316d7bbe5cc3e9d833bd57e34c62aa}{}\label{classrocksdb_1_1Env_a1f316d7bbe5cc3e9d833bd57e34c62aa}
+
+\item 
+virtual void {\bfseries Wait\+For\+Join} ()\hypertarget{classrocksdb_1_1Env_aa28d5c0cd42d458390cb3e8fe36a1455}{}\label{classrocksdb_1_1Env_aa28d5c0cd42d458390cb3e8fe36a1455}
+
+\item 
+virtual unsigned int {\bfseries Get\+Thread\+Pool\+Queue\+Len} (Priority pri=L\+OW) const\hypertarget{classrocksdb_1_1Env_a18280e4d314e5b867a04633479e9b048}{}\label{classrocksdb_1_1Env_a18280e4d314e5b867a04633479e9b048}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Test\+Directory} (std\+::string $\ast$path)=0\hypertarget{classrocksdb_1_1Env_ad55bb21c00f55febdc9a199d28d1948c}{}\label{classrocksdb_1_1Env_ad55bb21c00f55febdc9a199d28d1948c}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Logger} (const std\+::string \&fname, shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Logger}{Logger} $>$ $\ast$result)=0\hypertarget{classrocksdb_1_1Env_aa95f36590fd6a28f78fcd419fc3692c9}{}\label{classrocksdb_1_1Env_aa95f36590fd6a28f78fcd419fc3692c9}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Now\+Micros} ()=0\hypertarget{classrocksdb_1_1Env_a20e69bbefe7d92b92a2f33100cf251b7}{}\label{classrocksdb_1_1Env_a20e69bbefe7d92b92a2f33100cf251b7}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Now\+Nanos} ()\hypertarget{classrocksdb_1_1Env_ae5122204652862ba303b904aa4f4cdd6}{}\label{classrocksdb_1_1Env_ae5122204652862ba303b904aa4f4cdd6}
+
+\item 
+virtual void {\bfseries Sleep\+For\+Microseconds} (int micros)=0\hypertarget{classrocksdb_1_1Env_a93416572ace483f9a64c6a531ccc016b}{}\label{classrocksdb_1_1Env_a93416572ace483f9a64c6a531ccc016b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Host\+Name} (char $\ast$name, uint64\+\_\+t len)=0\hypertarget{classrocksdb_1_1Env_a6ee02c3a73c1a5f17a8bf197ffb1a0dd}{}\label{classrocksdb_1_1Env_a6ee02c3a73c1a5f17a8bf197ffb1a0dd}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Current\+Time} (int64\+\_\+t $\ast$unix\+\_\+time)=0\hypertarget{classrocksdb_1_1Env_a70ed14df4e067de0f2a8a09010eaf31b}{}\label{classrocksdb_1_1Env_a70ed14df4e067de0f2a8a09010eaf31b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Absolute\+Path} (const std\+::string \&db\+\_\+path, std\+::string $\ast$output\+\_\+path)=0\hypertarget{classrocksdb_1_1Env_a85e9d22dff053a1ada591614b4ae2994}{}\label{classrocksdb_1_1Env_a85e9d22dff053a1ada591614b4ae2994}
+
+\item 
+virtual void {\bfseries Set\+Background\+Threads} (int number, Priority pri=L\+OW)=0\hypertarget{classrocksdb_1_1Env_ae2acfe9f43ea8e5012d6cea69a2cc385}{}\label{classrocksdb_1_1Env_ae2acfe9f43ea8e5012d6cea69a2cc385}
+
+\item 
+virtual void {\bfseries Inc\+Background\+Threads\+If\+Needed} (int number, Priority pri)=0\hypertarget{classrocksdb_1_1Env_ae977cc7485297c10951573d8897aaff8}{}\label{classrocksdb_1_1Env_ae977cc7485297c10951573d8897aaff8}
+
+\item 
+virtual void {\bfseries Lower\+Thread\+Pool\+I\+O\+Priority} (Priority pool=L\+OW)\hypertarget{classrocksdb_1_1Env_ae8f32ffd20bc281e03f15421b21a4fd7}{}\label{classrocksdb_1_1Env_ae8f32ffd20bc281e03f15421b21a4fd7}
+
+\item 
+virtual std\+::string {\bfseries Time\+To\+String} (uint64\+\_\+t time)=0\hypertarget{classrocksdb_1_1Env_ade1259f3f43b344b56b69b5b007d979b}{}\label{classrocksdb_1_1Env_ade1259f3f43b344b56b69b5b007d979b}
+
+\item 
+virtual std\+::string {\bfseries Generate\+Unique\+Id} ()\hypertarget{classrocksdb_1_1Env_aa7b5a37eb83cdb2af97e5a7762e8e54e}{}\label{classrocksdb_1_1Env_aa7b5a37eb83cdb2af97e5a7762e8e54e}
+
+\item 
+virtual \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} {\bfseries Optimize\+For\+Log\+Write} (const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&env\+\_\+options, const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options) const\hypertarget{classrocksdb_1_1Env_ac9e2bed0406b7d48358a0b6a56fc035c}{}\label{classrocksdb_1_1Env_ac9e2bed0406b7d48358a0b6a56fc035c}
+
+\item 
+virtual \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} {\bfseries Optimize\+For\+Manifest\+Write} (const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&env\+\_\+options) const\hypertarget{classrocksdb_1_1Env_a1f553facfeae570c6b593a8b1bf26fa0}{}\label{classrocksdb_1_1Env_a1f553facfeae570c6b593a8b1bf26fa0}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Thread\+List} (std\+::vector$<$ \hyperlink{structrocksdb_1_1ThreadStatus}{Thread\+Status} $>$ $\ast$thread\+\_\+list)\hypertarget{classrocksdb_1_1Env_a0e571896f474014b4b325901d750ab23}{}\label{classrocksdb_1_1Env_a0e571896f474014b4b325901d750ab23}
+
+\item 
+virtual Thread\+Status\+Updater $\ast$ {\bfseries Get\+Thread\+Status\+Updater} () const\hypertarget{classrocksdb_1_1Env_a1477a743c80bcd2b8ea4f74282e6cdbd}{}\label{classrocksdb_1_1Env_a1477a743c80bcd2b8ea4f74282e6cdbd}
+
+\item 
+virtual uint64\+\_\+t {\bfseries Get\+Thread\+ID} () const\hypertarget{classrocksdb_1_1Env_a5586254cf1fcb2841eba41a22aff7818}{}\label{classrocksdb_1_1Env_a5586254cf1fcb2841eba41a22aff7818}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Env}{Env} $\ast$ {\bfseries Default} ()\hypertarget{classrocksdb_1_1Env_abb20c38f65f272a895a7b809606939d9}{}\label{classrocksdb_1_1Env_abb20c38f65f272a895a7b809606939d9}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Thread\+Status\+Updater $\ast$ {\bfseries thread\+\_\+status\+\_\+updater\+\_\+}\hypertarget{classrocksdb_1_1Env_a348855afa44cb4be60336af867c421aa}{}\label{classrocksdb_1_1Env_a348855afa44cb4be60336af867c421aa}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/env.\+h\end{DoxyCompactItemize}

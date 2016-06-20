@@ -1,0 +1,68 @@
+\hypertarget{structrocksdb_1_1spatial_1_1Variant}{}\section{rocksdb\+:\+:spatial\+:\+:Variant Struct Reference}
+\label{structrocksdb_1_1spatial_1_1Variant}\index{rocksdb\+::spatial\+::\+Variant@{rocksdb\+::spatial\+::\+Variant}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Type} \{ \\*
+{\bfseries k\+Null} = 0x0, 
+{\bfseries k\+Bool} = 0x1, 
+{\bfseries k\+Int} = 0x2, 
+{\bfseries k\+Double} = 0x3, 
+\\*
+{\bfseries k\+String} = 0x4
+ \}\hypertarget{structrocksdb_1_1spatial_1_1Variant_af85905b6e4e46ab8031847c13861444a}{}\label{structrocksdb_1_1spatial_1_1Variant_af85905b6e4e46ab8031847c13861444a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Variant} (bool b)\hypertarget{structrocksdb_1_1spatial_1_1Variant_a5083ceb789a66d7c53bf0e7553ca2c50}{}\label{structrocksdb_1_1spatial_1_1Variant_a5083ceb789a66d7c53bf0e7553ca2c50}
+
+\item 
+{\bfseries Variant} (uint64\+\_\+t i)\hypertarget{structrocksdb_1_1spatial_1_1Variant_a1d2c52eb0930999df0ae06c9930b1d53}{}\label{structrocksdb_1_1spatial_1_1Variant_a1d2c52eb0930999df0ae06c9930b1d53}
+
+\item 
+{\bfseries Variant} (double d)\hypertarget{structrocksdb_1_1spatial_1_1Variant_ac99fd382a10691924d8fe3f5c1aeec97}{}\label{structrocksdb_1_1spatial_1_1Variant_ac99fd382a10691924d8fe3f5c1aeec97}
+
+\item 
+{\bfseries Variant} (const std\+::string \&s)\hypertarget{structrocksdb_1_1spatial_1_1Variant_adcc54d7dd8044fc1a34f736515fc5cad}{}\label{structrocksdb_1_1spatial_1_1Variant_adcc54d7dd8044fc1a34f736515fc5cad}
+
+\item 
+{\bfseries Variant} (const \hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&v)\hypertarget{structrocksdb_1_1spatial_1_1Variant_afb31e476f01fd11217e1dc9040f42c41}{}\label{structrocksdb_1_1spatial_1_1Variant_afb31e476f01fd11217e1dc9040f42c41}
+
+\item 
+\hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \& {\bfseries operator=} (const \hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&v)\hypertarget{structrocksdb_1_1spatial_1_1Variant_aea11a584d823a0f317efb6d83e6338dd}{}\label{structrocksdb_1_1spatial_1_1Variant_aea11a584d823a0f317efb6d83e6338dd}
+
+\item 
+{\bfseries Variant} (\hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&\&rhs)\hypertarget{structrocksdb_1_1spatial_1_1Variant_a5a9ab7f2d69f9635034a2b51541381ce}{}\label{structrocksdb_1_1spatial_1_1Variant_a5a9ab7f2d69f9635034a2b51541381ce}
+
+\item 
+\hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \& {\bfseries operator=} (\hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&\&v)\hypertarget{structrocksdb_1_1spatial_1_1Variant_a3c93cff1f1fa3ba1979d684b03deff80}{}\label{structrocksdb_1_1spatial_1_1Variant_a3c93cff1f1fa3ba1979d684b03deff80}
+
+\item 
+Type {\bfseries type} () const\hypertarget{structrocksdb_1_1spatial_1_1Variant_a77308f9b5314db443f6c9a732017f3d1}{}\label{structrocksdb_1_1spatial_1_1Variant_a77308f9b5314db443f6c9a732017f3d1}
+
+\item 
+bool {\bfseries get\+\_\+bool} () const\hypertarget{structrocksdb_1_1spatial_1_1Variant_adeab269cc2ae98c3911c296a2d5e08cb}{}\label{structrocksdb_1_1spatial_1_1Variant_adeab269cc2ae98c3911c296a2d5e08cb}
+
+\item 
+uint64\+\_\+t {\bfseries get\+\_\+int} () const\hypertarget{structrocksdb_1_1spatial_1_1Variant_a6426d2691a56f4330c5634c0d52b9324}{}\label{structrocksdb_1_1spatial_1_1Variant_a6426d2691a56f4330c5634c0d52b9324}
+
+\item 
+double {\bfseries get\+\_\+double} () const\hypertarget{structrocksdb_1_1spatial_1_1Variant_a599235d5bdc42c28ed7e178ea0083ebe}{}\label{structrocksdb_1_1spatial_1_1Variant_a599235d5bdc42c28ed7e178ea0083ebe}
+
+\item 
+const std\+::string \& {\bfseries get\+\_\+string} () const\hypertarget{structrocksdb_1_1spatial_1_1Variant_a6827b473bfc47b6d8ec9a0a43b680cad}{}\label{structrocksdb_1_1spatial_1_1Variant_a6827b473bfc47b6d8ec9a0a43b680cad}
+
+\item 
+bool {\bfseries operator==} (const \hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&other) const\hypertarget{structrocksdb_1_1spatial_1_1Variant_ad712e89cffc7229134c3e3960d361044}{}\label{structrocksdb_1_1spatial_1_1Variant_ad712e89cffc7229134c3e3960d361044}
+
+\item 
+bool {\bfseries operator!=} (const \hyperlink{structrocksdb_1_1spatial_1_1Variant}{Variant} \&other) const\hypertarget{structrocksdb_1_1spatial_1_1Variant_a23b0d1e39639162ab5205a8f7b227760}{}\label{structrocksdb_1_1spatial_1_1Variant_a23b0d1e39639162ab5205a8f7b227760}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/spatial\+\_\+db.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,25 @@
+\hypertarget{classrocksdb_1_1RateLimiter}{}\section{rocksdb\+:\+:Rate\+Limiter Class Reference}
+\label{classrocksdb_1_1RateLimiter}\index{rocksdb\+::\+Rate\+Limiter@{rocksdb\+::\+Rate\+Limiter}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Set\+Bytes\+Per\+Second} (int64\+\_\+t bytes\+\_\+per\+\_\+second)=0\hypertarget{classrocksdb_1_1RateLimiter_a53648ecfbbd85daa0966017b3a57ec44}{}\label{classrocksdb_1_1RateLimiter_a53648ecfbbd85daa0966017b3a57ec44}
+
+\item 
+virtual void {\bfseries Request} (const int64\+\_\+t bytes, const Env\+::\+I\+O\+Priority pri)=0\hypertarget{classrocksdb_1_1RateLimiter_a810573502b5fe0a1e97a9357eaee2abf}{}\label{classrocksdb_1_1RateLimiter_a810573502b5fe0a1e97a9357eaee2abf}
+
+\item 
+virtual int64\+\_\+t {\bfseries Get\+Single\+Burst\+Bytes} () const =0\hypertarget{classrocksdb_1_1RateLimiter_a4354ccb1bd11c7bf84210adb30544ce5}{}\label{classrocksdb_1_1RateLimiter_a4354ccb1bd11c7bf84210adb30544ce5}
+
+\item 
+virtual int64\+\_\+t {\bfseries Get\+Total\+Bytes\+Through} (const Env\+::\+I\+O\+Priority pri=Env\+::\+I\+O\+\_\+\+T\+O\+T\+AL) const =0\hypertarget{classrocksdb_1_1RateLimiter_a09bcea728c13012315223e3e08a18df0}{}\label{classrocksdb_1_1RateLimiter_a09bcea728c13012315223e3e08a18df0}
+
+\item 
+virtual int64\+\_\+t {\bfseries Get\+Total\+Requests} (const Env\+::\+I\+O\+Priority pri=Env\+::\+I\+O\+\_\+\+T\+O\+T\+AL) const =0\hypertarget{classrocksdb_1_1RateLimiter_a612909dc7934f497042312bfdb185844}{}\label{classrocksdb_1_1RateLimiter_a612909dc7934f497042312bfdb185844}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/rate\+\_\+limiter.\+h\end{DoxyCompactItemize}

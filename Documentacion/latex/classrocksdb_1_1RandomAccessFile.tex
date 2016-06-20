@@ -1,0 +1,41 @@
+\hypertarget{classrocksdb_1_1RandomAccessFile}{}\section{rocksdb\+:\+:Random\+Access\+File Class Reference}
+\label{classrocksdb_1_1RandomAccessFile}\index{rocksdb\+::\+Random\+Access\+File@{rocksdb\+::\+Random\+Access\+File}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Access\+Pattern} \{ \\*
+{\bfseries N\+O\+R\+M\+AL}, 
+{\bfseries R\+A\+N\+D\+OM}, 
+{\bfseries S\+E\+Q\+U\+E\+N\+T\+I\+AL}, 
+{\bfseries W\+I\+L\+L\+N\+E\+ED}, 
+\\*
+{\bfseries D\+O\+N\+T\+N\+E\+ED}
+ \}\hypertarget{classrocksdb_1_1RandomAccessFile_a6bf9074480c2cf24836631271a988547}{}\label{classrocksdb_1_1RandomAccessFile_a6bf9074480c2cf24836631271a988547}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Read} (uint64\+\_\+t offset, size\+\_\+t n, \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$result, char $\ast$scratch) const =0\hypertarget{classrocksdb_1_1RandomAccessFile_a3dc8a3221deea7b19942817f28b67901}{}\label{classrocksdb_1_1RandomAccessFile_a3dc8a3221deea7b19942817f28b67901}
+
+\item 
+virtual bool {\bfseries Should\+Forward\+Raw\+Request} () const\hypertarget{classrocksdb_1_1RandomAccessFile_a84074bac1f8e4fe53398d5df523935f5}{}\label{classrocksdb_1_1RandomAccessFile_a84074bac1f8e4fe53398d5df523935f5}
+
+\item 
+virtual void {\bfseries Enable\+Read\+Ahead} ()\hypertarget{classrocksdb_1_1RandomAccessFile_a2e137637b698a77bf80015ca47a40d8c}{}\label{classrocksdb_1_1RandomAccessFile_a2e137637b698a77bf80015ca47a40d8c}
+
+\item 
+virtual size\+\_\+t {\bfseries Get\+Unique\+Id} (char $\ast$id, size\+\_\+t max\+\_\+size) const\hypertarget{classrocksdb_1_1RandomAccessFile_a26830ba238bc7a568c99844e44483784}{}\label{classrocksdb_1_1RandomAccessFile_a26830ba238bc7a568c99844e44483784}
+
+\item 
+virtual void {\bfseries Hint} (Access\+Pattern pattern)\hypertarget{classrocksdb_1_1RandomAccessFile_a9081eb53804e3a1ca8d9c3ad38f31395}{}\label{classrocksdb_1_1RandomAccessFile_a9081eb53804e3a1ca8d9c3ad38f31395}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Invalidate\+Cache} (size\+\_\+t offset, size\+\_\+t length)\hypertarget{classrocksdb_1_1RandomAccessFile_acbd49dea162d3457dc4b6c121479a582}{}\label{classrocksdb_1_1RandomAccessFile_acbd49dea162d3457dc4b6c121479a582}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/env.\+h\end{DoxyCompactItemize}

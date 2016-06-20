@@ -1,0 +1,34 @@
+\hypertarget{classrocksdb_1_1RestoreBackupableDB}{}\section{rocksdb\+:\+:Restore\+Backupable\+DB Class Reference}
+\label{classrocksdb_1_1RestoreBackupableDB}\index{rocksdb\+::\+Restore\+Backupable\+DB@{rocksdb\+::\+Restore\+Backupable\+DB}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Restore\+Backupable\+DB} (\hyperlink{classrocksdb_1_1Env}{Env} $\ast$db\+\_\+env, const \hyperlink{structrocksdb_1_1BackupableDBOptions}{Backupable\+D\+B\+Options} \&options)\hypertarget{classrocksdb_1_1RestoreBackupableDB_a99288ae06ea295685e8adf70d3d2cdb6}{}\label{classrocksdb_1_1RestoreBackupableDB_a99288ae06ea295685e8adf70d3d2cdb6}
+
+\item 
+void {\bfseries Get\+Backup\+Info} (std\+::vector$<$ \hyperlink{structrocksdb_1_1BackupInfo}{Backup\+Info} $>$ $\ast$backup\+\_\+info)\hypertarget{classrocksdb_1_1RestoreBackupableDB_a17d272e67c518523c5d61301b78daa99}{}\label{classrocksdb_1_1RestoreBackupableDB_a17d272e67c518523c5d61301b78daa99}
+
+\item 
+void {\bfseries Get\+Corrupted\+Backups} (std\+::vector$<$ Backup\+ID $>$ $\ast$corrupt\+\_\+backup\+\_\+ids)\hypertarget{classrocksdb_1_1RestoreBackupableDB_acbc4fd7ca4193eb8b9ef2637d484805c}{}\label{classrocksdb_1_1RestoreBackupableDB_acbc4fd7ca4193eb8b9ef2637d484805c}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Restore\+D\+B\+From\+Backup} (Backup\+ID backup\+\_\+id, const std\+::string \&db\+\_\+dir, const std\+::string \&wal\+\_\+dir, const \hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options} \&restore\+\_\+options=\hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options}())\hypertarget{classrocksdb_1_1RestoreBackupableDB_aac7e79522516f2685877eb0b2a034490}{}\label{classrocksdb_1_1RestoreBackupableDB_aac7e79522516f2685877eb0b2a034490}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Restore\+D\+B\+From\+Latest\+Backup} (const std\+::string \&db\+\_\+dir, const std\+::string \&wal\+\_\+dir, const \hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options} \&restore\+\_\+options=\hyperlink{structrocksdb_1_1RestoreOptions}{Restore\+Options}())\hypertarget{classrocksdb_1_1RestoreBackupableDB_abe5e355e3185131a77cc358d99fe4558}{}\label{classrocksdb_1_1RestoreBackupableDB_abe5e355e3185131a77cc358d99fe4558}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Purge\+Old\+Backups} (uint32\+\_\+t num\+\_\+backups\+\_\+to\+\_\+keep)\hypertarget{classrocksdb_1_1RestoreBackupableDB_a8568545789fdcb4f707c61b711993d92}{}\label{classrocksdb_1_1RestoreBackupableDB_a8568545789fdcb4f707c61b711993d92}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Backup} (Backup\+ID backup\+\_\+id)\hypertarget{classrocksdb_1_1RestoreBackupableDB_aeb3b0a390232dfbfb2676652b40ce7e5}{}\label{classrocksdb_1_1RestoreBackupableDB_aeb3b0a390232dfbfb2676652b40ce7e5}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Garbage\+Collect} ()\hypertarget{classrocksdb_1_1RestoreBackupableDB_a5a27018727fd65724bbf0d2c083ffea8}{}\label{classrocksdb_1_1RestoreBackupableDB_a5a27018727fd65724bbf0d2c083ffea8}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/backupable\+\_\+db.\+h\end{DoxyCompactItemize}

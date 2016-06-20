@@ -1,0 +1,82 @@
+\hypertarget{classrocksdb_1_1WriteBatchWithIndex}{}\section{rocksdb\+:\+:Write\+Batch\+With\+Index Class Reference}
+\label{classrocksdb_1_1WriteBatchWithIndex}\index{rocksdb\+::\+Write\+Batch\+With\+Index@{rocksdb\+::\+Write\+Batch\+With\+Index}}
+Inheritance diagram for rocksdb\+:\+:Write\+Batch\+With\+Index\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrocksdb_1_1WriteBatchWithIndex}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Write\+Batch\+With\+Index} (const \hyperlink{classrocksdb_1_1Comparator}{Comparator} $\ast$backup\+\_\+index\+\_\+comparator=Bytewise\+Comparator(), size\+\_\+t reserved\+\_\+bytes=0, bool overwrite\+\_\+key=false)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_ae30239148711ea91f9f74c0ff35a050a}{}\label{classrocksdb_1_1WriteBatchWithIndex_ae30239148711ea91f9f74c0ff35a050a}
+
+\item 
+void {\bfseries Put} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a65947d01dc77091d9a5a73485dd804ff}{}\label{classrocksdb_1_1WriteBatchWithIndex_a65947d01dc77091d9a5a73485dd804ff}
+
+\item 
+void {\bfseries Put} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a84a48bbbb10429133b09de7f3b5d38e0}{}\label{classrocksdb_1_1WriteBatchWithIndex_a84a48bbbb10429133b09de7f3b5d38e0}
+
+\item 
+void {\bfseries Merge} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_ad59982d64a80a24201930158499bd927}{}\label{classrocksdb_1_1WriteBatchWithIndex_ad59982d64a80a24201930158499bd927}
+
+\item 
+void {\bfseries Merge} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a4c8be96a087e0376a7523be2993732e6}{}\label{classrocksdb_1_1WriteBatchWithIndex_a4c8be96a087e0376a7523be2993732e6}
+
+\item 
+void {\bfseries Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_ad7dee3429735282d18652b8ea0d5b06c}{}\label{classrocksdb_1_1WriteBatchWithIndex_ad7dee3429735282d18652b8ea0d5b06c}
+
+\item 
+void {\bfseries Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a8607c3d398eb4be3ecc0b146aa49c414}{}\label{classrocksdb_1_1WriteBatchWithIndex_a8607c3d398eb4be3ecc0b146aa49c414}
+
+\item 
+void {\bfseries Single\+Delete} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a0f9e13dde1b941d9048e23a025748e94}{}\label{classrocksdb_1_1WriteBatchWithIndex_a0f9e13dde1b941d9048e23a025748e94}
+
+\item 
+void {\bfseries Single\+Delete} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a5a6a99382308e325ba2331a41a27fec6}{}\label{classrocksdb_1_1WriteBatchWithIndex_a5a6a99382308e325ba2331a41a27fec6}
+
+\item 
+void {\bfseries Put\+Log\+Data} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&blob) override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a243f29744cb3521f987eb2da0405eff9}{}\label{classrocksdb_1_1WriteBatchWithIndex_a243f29744cb3521f987eb2da0405eff9}
+
+\item 
+void {\bfseries Clear} () override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a35c2f169d06c3965a30b8612640df8d8}{}\label{classrocksdb_1_1WriteBatchWithIndex_a35c2f169d06c3965a30b8612640df8d8}
+
+\item 
+\hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} $\ast$ {\bfseries Get\+Write\+Batch} () override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a0e1a019e009b31c5a25388c4dc7ebfdc}{}\label{classrocksdb_1_1WriteBatchWithIndex_a0e1a019e009b31c5a25388c4dc7ebfdc}
+
+\item 
+\hyperlink{classrocksdb_1_1WBWIIterator}{W\+B\+W\+I\+Iterator} $\ast$ {\bfseries New\+Iterator} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a78b9a2d037cbfc2c5410cda78551ffd3}{}\label{classrocksdb_1_1WriteBatchWithIndex_a78b9a2d037cbfc2c5410cda78551ffd3}
+
+\item 
+\hyperlink{classrocksdb_1_1WBWIIterator}{W\+B\+W\+I\+Iterator} $\ast$ {\bfseries New\+Iterator} ()\hypertarget{classrocksdb_1_1WriteBatchWithIndex_ab79deb71fb0f8899d68d2098df057416}{}\label{classrocksdb_1_1WriteBatchWithIndex_ab79deb71fb0f8899d68d2098df057416}
+
+\item 
+\hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries New\+Iterator\+With\+Base} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$base\+\_\+iterator)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a4cc367c9b6b2432bb3e5b001ec825695}{}\label{classrocksdb_1_1WriteBatchWithIndex_a4cc367c9b6b2432bb3e5b001ec825695}
+
+\item 
+\hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries New\+Iterator\+With\+Base} (\hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$base\+\_\+iterator)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a5c5ae5be74f4dc481bebf24255a3d394}{}\label{classrocksdb_1_1WriteBatchWithIndex_a5c5ae5be74f4dc481bebf24255a3d394}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+From\+Batch} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_aee56706c39cc7df1b23990c9c2e17957}{}\label{classrocksdb_1_1WriteBatchWithIndex_aee56706c39cc7df1b23990c9c2e17957}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+From\+Batch} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a751a2f10088e6a4da8b7bdfbba3b88c2}{}\label{classrocksdb_1_1WriteBatchWithIndex_a751a2f10088e6a4da8b7bdfbba3b88c2}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+From\+Batch\+And\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a4c4f01aad704cfce660e4e12dcadcfee}{}\label{classrocksdb_1_1WriteBatchWithIndex_a4c4f01aad704cfce660e4e12dcadcfee}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+From\+Batch\+And\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db, const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a5f19484b5f3ce5a1ec831b750f020f5d}{}\label{classrocksdb_1_1WriteBatchWithIndex_a5f19484b5f3ce5a1ec831b750f020f5d}
+
+\item 
+void {\bfseries Set\+Save\+Point} () override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_a1390ea750181a1298563d759eb23a6c3}{}\label{classrocksdb_1_1WriteBatchWithIndex_a1390ea750181a1298563d759eb23a6c3}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rollback\+To\+Save\+Point} () override\hypertarget{classrocksdb_1_1WriteBatchWithIndex_af53563fdeb95c10fa3e7b7a96ab5beaa}{}\label{classrocksdb_1_1WriteBatchWithIndex_af53563fdeb95c10fa3e7b7a96ab5beaa}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/write\+\_\+batch\+\_\+with\+\_\+index.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,261 @@
+\hypertarget{classrocksdb_1_1DB}{}\section{rocksdb\+:\+:DB Class Reference}
+\label{classrocksdb_1_1DB}\index{rocksdb\+::\+DB@{rocksdb\+::\+DB}}
+Inheritance diagram for rocksdb\+:\+:DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.666667cm]{classrocksdb_1_1DB}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrocksdb_1_1DB_1_1Properties}{Properties}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Column\+Family} (const \hyperlink{structrocksdb_1_1ColumnFamilyOptions}{Column\+Family\+Options} \&options, const std\+::string \&column\+\_\+family\+\_\+name, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$\ast$handle)\hypertarget{classrocksdb_1_1DB_ab6f4cf8a955b0083fde139a70104753b}{}\label{classrocksdb_1_1DB_ab6f4cf8a955b0083fde139a70104753b}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Drop\+Column\+Family} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)\hypertarget{classrocksdb_1_1DB_af08fcb7b5334227e118e79a591b92408}{}\label{classrocksdb_1_1DB_af08fcb7b5334227e118e79a591b92408}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1DB_ab1731d9fde21f163083bef66454432e2}{}\label{classrocksdb_1_1DB_ab1731d9fde21f163083bef66454432e2}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Put} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)\hypertarget{classrocksdb_1_1DB_a998d342c4a74b56a53e70e27c87eb2db}{}\label{classrocksdb_1_1DB_a998d342c4a74b56a53e70e27c87eb2db}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1DB_a50336757940b8c37bcf91857f11b6ad1}{}\label{classrocksdb_1_1DB_a50336757940b8c37bcf91857f11b6ad1}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)\hypertarget{classrocksdb_1_1DB_a8fc5053ec040138744e90f0067ed6f5d}{}\label{classrocksdb_1_1DB_a8fc5053ec040138744e90f0067ed6f5d}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)=0\hypertarget{classrocksdb_1_1DB_aacdb5c6a021a01e5ee0b9c45bef3a347}{}\label{classrocksdb_1_1DB_aacdb5c6a021a01e5ee0b9c45bef3a347}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Single\+Delete} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key)\hypertarget{classrocksdb_1_1DB_a6354e7a166722545b44d751506d0239a}{}\label{classrocksdb_1_1DB_a6354e7a166722545b44d751506d0239a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)=0\hypertarget{classrocksdb_1_1DB_ae9077bdc59ced0ea36abbe883036f4ba}{}\label{classrocksdb_1_1DB_ae9077bdc59ced0ea36abbe883036f4ba}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Merge} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&value)\hypertarget{classrocksdb_1_1DB_a1efe3591397dba140128cf68d94c3a51}{}\label{classrocksdb_1_1DB_a1efe3591397dba140128cf68d94c3a51}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Write} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, \hyperlink{classrocksdb_1_1WriteBatch}{Write\+Batch} $\ast$updates)=0\hypertarget{classrocksdb_1_1DB_ad5d37a09e90d0c22c9a0adca87267ebc}{}\label{classrocksdb_1_1DB_ad5d37a09e90d0c22c9a0adca87267ebc}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1DB_a53885ea9306b14be2385ca8a9e664b5f}{}\label{classrocksdb_1_1DB_a53885ea9306b14be2385ca8a9e664b5f}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1DB_ad04ed2bb886fbfb5c97af2dc3e88d8b0}{}\label{classrocksdb_1_1DB_ad04ed2bb886fbfb5c97af2dc3e88d8b0}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ \&column\+\_\+family, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)=0\hypertarget{classrocksdb_1_1DB_a5809d34b7cb788825fc65991c95a2d64}{}\label{classrocksdb_1_1DB_a5809d34b7cb788825fc65991c95a2d64}
+
+\item 
+virtual std\+::vector$<$ \hyperlink{classrocksdb_1_1Status}{Status} $>$ {\bfseries Multi\+Get} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1Slice}{Slice} $>$ \&keys, std\+::vector$<$ std\+::string $>$ $\ast$values)\hypertarget{classrocksdb_1_1DB_a608e457908d203043d7d6756ab58d5ef}{}\label{classrocksdb_1_1DB_a608e457908d203043d7d6756ab58d5ef}
+
+\item 
+virtual bool {\bfseries Key\+May\+Exist} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&, std\+::string $\ast$, bool $\ast$value\+\_\+found=nullptr)\hypertarget{classrocksdb_1_1DB_a771ca74b3c3a772e4f45169180692c06}{}\label{classrocksdb_1_1DB_a771ca74b3c3a772e4f45169180692c06}
+
+\item 
+virtual bool {\bfseries Key\+May\+Exist} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&key, std\+::string $\ast$value, bool $\ast$value\+\_\+found=nullptr)\hypertarget{classrocksdb_1_1DB_a17165bfaf29a7b0b1fc36bf684954e53}{}\label{classrocksdb_1_1DB_a17165bfaf29a7b0b1fc36bf684954e53}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries New\+Iterator} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1DB_ab76fb645ee6e5e1aa1e1b9f6f61c831a}{}\label{classrocksdb_1_1DB_ab76fb645ee6e5e1aa1e1b9f6f61c831a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$ {\bfseries New\+Iterator} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options)\hypertarget{classrocksdb_1_1DB_a898a5baaba9ec5b0f451f2f8863ab79d}{}\label{classrocksdb_1_1DB_a898a5baaba9ec5b0f451f2f8863ab79d}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Iterators} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&options, const std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1Iterator}{Iterator} $\ast$$>$ $\ast$iterators)=0\hypertarget{classrocksdb_1_1DB_a1d8e4e97c149deaf44e4664f2b0efe9a}{}\label{classrocksdb_1_1DB_a1d8e4e97c149deaf44e4664f2b0efe9a}
+
+\item 
+virtual const \hyperlink{classrocksdb_1_1Snapshot}{Snapshot} $\ast$ {\bfseries Get\+Snapshot} ()=0\hypertarget{classrocksdb_1_1DB_a09ad7c62dfe7e8739732d37041d058f9}{}\label{classrocksdb_1_1DB_a09ad7c62dfe7e8739732d37041d058f9}
+
+\item 
+virtual void {\bfseries Release\+Snapshot} (const \hyperlink{classrocksdb_1_1Snapshot}{Snapshot} $\ast$snapshot)=0\hypertarget{classrocksdb_1_1DB_aedefaa4497eb584a45a818c0f05aff9b}{}\label{classrocksdb_1_1DB_aedefaa4497eb584a45a818c0f05aff9b}
+
+\item 
+virtual bool {\bfseries Get\+Property} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&property, std\+::string $\ast$value)=0\hypertarget{classrocksdb_1_1DB_a31f99bb093e4b586f3f10c04592043dc}{}\label{classrocksdb_1_1DB_a31f99bb093e4b586f3f10c04592043dc}
+
+\item 
+virtual bool {\bfseries Get\+Property} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&property, std\+::string $\ast$value)\hypertarget{classrocksdb_1_1DB_a579863b12d9adff0cb560218846c9b1f}{}\label{classrocksdb_1_1DB_a579863b12d9adff0cb560218846c9b1f}
+
+\item 
+virtual bool {\bfseries Get\+Int\+Property} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} \&property, uint64\+\_\+t $\ast$value)=0\hypertarget{classrocksdb_1_1DB_a76b06e26e9c0436b26034f826bfda8c0}{}\label{classrocksdb_1_1DB_a76b06e26e9c0436b26034f826bfda8c0}
+
+\item 
+virtual bool {\bfseries Get\+Int\+Property} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&property, uint64\+\_\+t $\ast$value)\hypertarget{classrocksdb_1_1DB_a0e8ae1d11f99d95db4d6e270674a9f7b}{}\label{classrocksdb_1_1DB_a0e8ae1d11f99d95db4d6e270674a9f7b}
+
+\item 
+virtual bool {\bfseries Get\+Aggregated\+Int\+Property} (const \hyperlink{classrocksdb_1_1Slice}{Slice} \&property, uint64\+\_\+t $\ast$value)=0\hypertarget{classrocksdb_1_1DB_a27ffb63934a6b2e1fdae25667f551f76}{}\label{classrocksdb_1_1DB_a27ffb63934a6b2e1fdae25667f551f76}
+
+\item 
+virtual void {\bfseries Get\+Approximate\+Sizes} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1Range}{Range} $\ast$range, int n, uint64\+\_\+t $\ast$sizes, bool include\+\_\+memtable=false)=0\hypertarget{classrocksdb_1_1DB_a3f135e62b87497858d3abcff25b651ce}{}\label{classrocksdb_1_1DB_a3f135e62b87497858d3abcff25b651ce}
+
+\item 
+virtual void {\bfseries Get\+Approximate\+Sizes} (const \hyperlink{structrocksdb_1_1Range}{Range} $\ast$range, int n, uint64\+\_\+t $\ast$sizes, bool include\+\_\+memtable=false)\hypertarget{classrocksdb_1_1DB_a0d06bfb3ff0c90a650d1c2bb4926e6ce}{}\label{classrocksdb_1_1DB_a0d06bfb3ff0c90a650d1c2bb4926e6ce}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Range} (const \hyperlink{structrocksdb_1_1CompactRangeOptions}{Compact\+Range\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$begin, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$end)=0\hypertarget{classrocksdb_1_1DB_a83ca9b10138335cd4fddadd65c748882}{}\label{classrocksdb_1_1DB_a83ca9b10138335cd4fddadd65c748882}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Range} (const \hyperlink{structrocksdb_1_1CompactRangeOptions}{Compact\+Range\+Options} \&options, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$begin, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$end)\hypertarget{classrocksdb_1_1DB_a405ebb44a9ca8dff9fff6def599c1a94}{}\label{classrocksdb_1_1DB_a405ebb44a9ca8dff9fff6def599c1a94}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Range} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$begin, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$end, bool change\+\_\+level=false, int target\+\_\+level=-\/1, uint32\+\_\+t target\+\_\+path\+\_\+id=0)\hypertarget{classrocksdb_1_1DB_a7dd130ae3133ee9390fc27436cb4ca30}{}\label{classrocksdb_1_1DB_a7dd130ae3133ee9390fc27436cb4ca30}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Range} (const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$begin, const \hyperlink{classrocksdb_1_1Slice}{Slice} $\ast$end, bool change\+\_\+level=false, int target\+\_\+level=-\/1, uint32\+\_\+t target\+\_\+path\+\_\+id=0)\hypertarget{classrocksdb_1_1DB_abde04eaf7df420cd1e8b9e3a185ac7fd}{}\label{classrocksdb_1_1DB_abde04eaf7df420cd1e8b9e3a185ac7fd}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Set\+Options} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$, const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \&)\hypertarget{classrocksdb_1_1DB_a28795d0bb3016cff44b19f224d7114f8}{}\label{classrocksdb_1_1DB_a28795d0bb3016cff44b19f224d7114f8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Set\+Options} (const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \&new\+\_\+options)\hypertarget{classrocksdb_1_1DB_aa2c805ad4ad7a1e37390d95f67502740}{}\label{classrocksdb_1_1DB_aa2c805ad4ad7a1e37390d95f67502740}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Files} (const \hyperlink{structrocksdb_1_1CompactionOptions}{Compaction\+Options} \&compact\+\_\+options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const std\+::vector$<$ std\+::string $>$ \&input\+\_\+file\+\_\+names, const int output\+\_\+level, const int output\+\_\+path\+\_\+id=-\/1)=0\hypertarget{classrocksdb_1_1DB_a6d291df380bb41a6737689c3d33e7d73}{}\label{classrocksdb_1_1DB_a6d291df380bb41a6737689c3d33e7d73}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Compact\+Files} (const \hyperlink{structrocksdb_1_1CompactionOptions}{Compaction\+Options} \&compact\+\_\+options, const std\+::vector$<$ std\+::string $>$ \&input\+\_\+file\+\_\+names, const int output\+\_\+level, const int output\+\_\+path\+\_\+id=-\/1)\hypertarget{classrocksdb_1_1DB_a3158273244f418b65d9f04caff0d7368}{}\label{classrocksdb_1_1DB_a3158273244f418b65d9f04caff0d7368}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Pause\+Background\+Work} ()=0\hypertarget{classrocksdb_1_1DB_af392b40e23a8db606e8ee220e5a58c00}{}\label{classrocksdb_1_1DB_af392b40e23a8db606e8ee220e5a58c00}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Continue\+Background\+Work} ()=0\hypertarget{classrocksdb_1_1DB_acb9cd7be26b415f52f33e65f3c5be02e}{}\label{classrocksdb_1_1DB_acb9cd7be26b415f52f33e65f3c5be02e}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Enable\+Auto\+Compaction} (const std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ \&column\+\_\+family\+\_\+handles)=0\hypertarget{classrocksdb_1_1DB_acd233aa1070ea21b4bc329fdf1fdf277}{}\label{classrocksdb_1_1DB_acd233aa1070ea21b4bc329fdf1fdf277}
+
+\item 
+virtual int {\bfseries Number\+Levels} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1DB_a6581ba7d28b51491faebe55a7df500b1}{}\label{classrocksdb_1_1DB_a6581ba7d28b51491faebe55a7df500b1}
+
+\item 
+virtual int {\bfseries Number\+Levels} ()\hypertarget{classrocksdb_1_1DB_aa8becbddfcbd7353aa3a21ef955a9c46}{}\label{classrocksdb_1_1DB_aa8becbddfcbd7353aa3a21ef955a9c46}
+
+\item 
+virtual int {\bfseries Max\+Mem\+Compaction\+Level} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1DB_a25dedb3ebc958c5dfff1eee4453fbd56}{}\label{classrocksdb_1_1DB_a25dedb3ebc958c5dfff1eee4453fbd56}
+
+\item 
+virtual int {\bfseries Max\+Mem\+Compaction\+Level} ()\hypertarget{classrocksdb_1_1DB_a5762e92e3e20880efd3a399c5a0e0ae5}{}\label{classrocksdb_1_1DB_a5762e92e3e20880efd3a399c5a0e0ae5}
+
+\item 
+virtual int {\bfseries Level0\+Stop\+Write\+Trigger} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1DB_a818ec586390892c14201b610ced44283}{}\label{classrocksdb_1_1DB_a818ec586390892c14201b610ced44283}
+
+\item 
+virtual int {\bfseries Level0\+Stop\+Write\+Trigger} ()\hypertarget{classrocksdb_1_1DB_aa9d8399659361a8d4d239d16f09d777c}{}\label{classrocksdb_1_1DB_aa9d8399659361a8d4d239d16f09d777c}
+
+\item 
+virtual const std\+::string \& {\bfseries Get\+Name} () const =0\hypertarget{classrocksdb_1_1DB_ad3dd1a5cbcd4161cc9b7aae7b0287406}{}\label{classrocksdb_1_1DB_ad3dd1a5cbcd4161cc9b7aae7b0287406}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Env}{Env} $\ast$ {\bfseries Get\+Env} () const =0\hypertarget{classrocksdb_1_1DB_aab78568f94216fcb321af22ee2803882}{}\label{classrocksdb_1_1DB_aab78568f94216fcb321af22ee2803882}
+
+\item 
+virtual const \hyperlink{structrocksdb_1_1Options}{Options} \& {\bfseries Get\+Options} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family) const =0\hypertarget{classrocksdb_1_1DB_aa8b1587fe656f511da075a5bc722fe27}{}\label{classrocksdb_1_1DB_aa8b1587fe656f511da075a5bc722fe27}
+
+\item 
+virtual const \hyperlink{structrocksdb_1_1Options}{Options} \& {\bfseries Get\+Options} () const\hypertarget{classrocksdb_1_1DB_a5ea0041b5bf31c38256152a698b6a6da}{}\label{classrocksdb_1_1DB_a5ea0041b5bf31c38256152a698b6a6da}
+
+\item 
+virtual const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \& {\bfseries Get\+D\+B\+Options} () const =0\hypertarget{classrocksdb_1_1DB_a3dc7a81072b8eaa75a785a3f7b094809}{}\label{classrocksdb_1_1DB_a3dc7a81072b8eaa75a785a3f7b094809}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Flush} (const \hyperlink{structrocksdb_1_1FlushOptions}{Flush\+Options} \&options, \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family)=0\hypertarget{classrocksdb_1_1DB_afb62c428d9ffaf473bdd9ecc7568cfe5}{}\label{classrocksdb_1_1DB_afb62c428d9ffaf473bdd9ecc7568cfe5}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Flush} (const \hyperlink{structrocksdb_1_1FlushOptions}{Flush\+Options} \&options)\hypertarget{classrocksdb_1_1DB_ae50d0a8ea55b682b6f4fe1e696f388ba}{}\label{classrocksdb_1_1DB_ae50d0a8ea55b682b6f4fe1e696f388ba}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Sync\+W\+AL} ()=0\hypertarget{classrocksdb_1_1DB_afd06e3e012663cb19640a82b741b6884}{}\label{classrocksdb_1_1DB_afd06e3e012663cb19640a82b741b6884}
+
+\item 
+virtual Sequence\+Number {\bfseries Get\+Latest\+Sequence\+Number} () const =0\hypertarget{classrocksdb_1_1DB_a71590d8fbc17ba01c39d2067cd26a084}{}\label{classrocksdb_1_1DB_a71590d8fbc17ba01c39d2067cd26a084}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Disable\+File\+Deletions} ()=0\hypertarget{classrocksdb_1_1DB_a03dd54471b0ab3aadbd88200b305d9a9}{}\label{classrocksdb_1_1DB_a03dd54471b0ab3aadbd88200b305d9a9}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Enable\+File\+Deletions} (bool force=true)=0\hypertarget{classrocksdb_1_1DB_a8972bd881003084cfd646487fbe0ee0a}{}\label{classrocksdb_1_1DB_a8972bd881003084cfd646487fbe0ee0a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Live\+Files} (std\+::vector$<$ std\+::string $>$ \&, uint64\+\_\+t $\ast$manifest\+\_\+file\+\_\+size, bool flush\+\_\+memtable=true)=0\hypertarget{classrocksdb_1_1DB_a1c645c8ae376c0acd11a3271ec3a59ad}{}\label{classrocksdb_1_1DB_a1c645c8ae376c0acd11a3271ec3a59ad}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Sorted\+Wal\+Files} (Vector\+Log\+Ptr \&files)=0\hypertarget{classrocksdb_1_1DB_a4cbc3ccd04ec78d0268b38397c2af029}{}\label{classrocksdb_1_1DB_a4cbc3ccd04ec78d0268b38397c2af029}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Updates\+Since} (Sequence\+Number seq\+\_\+number, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1TransactionLogIterator}{Transaction\+Log\+Iterator} $>$ $\ast$iter, const \hyperlink{structrocksdb_1_1TransactionLogIterator_1_1ReadOptions}{Transaction\+Log\+Iterator\+::\+Read\+Options} \&read\+\_\+options=\hyperlink{structrocksdb_1_1TransactionLogIterator_1_1ReadOptions}{Transaction\+Log\+Iterator\+::\+Read\+Options}())=0\hypertarget{classrocksdb_1_1DB_aa604af3c08d15340565f4552acfde5cc}{}\label{classrocksdb_1_1DB_aa604af3c08d15340565f4552acfde5cc}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+File} (std\+::string name)=0\hypertarget{classrocksdb_1_1DB_a04985803f9914f80a9f4bdd894771e2b}{}\label{classrocksdb_1_1DB_a04985803f9914f80a9f4bdd894771e2b}
+
+\item 
+virtual void {\bfseries Get\+Live\+Files\+Meta\+Data} (std\+::vector$<$ \hyperlink{structrocksdb_1_1LiveFileMetaData}{Live\+File\+Meta\+Data} $>$ $\ast$)\hypertarget{classrocksdb_1_1DB_ae7d0a66cc4f4e08e6df31db2aa48aebe}{}\label{classrocksdb_1_1DB_ae7d0a66cc4f4e08e6df31db2aa48aebe}
+
+\item 
+virtual void {\bfseries Get\+Column\+Family\+Meta\+Data} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$, \hyperlink{structrocksdb_1_1ColumnFamilyMetaData}{Column\+Family\+Meta\+Data} $\ast$)\hypertarget{classrocksdb_1_1DB_a0d0c02b96ac8ac35c49bf00f4ddd0021}{}\label{classrocksdb_1_1DB_a0d0c02b96ac8ac35c49bf00f4ddd0021}
+
+\item 
+void {\bfseries Get\+Column\+Family\+Meta\+Data} (\hyperlink{structrocksdb_1_1ColumnFamilyMetaData}{Column\+Family\+Meta\+Data} $\ast$metadata)\hypertarget{classrocksdb_1_1DB_a90f405c1bdced4252d8e9fd9925b95b4}{}\label{classrocksdb_1_1DB_a90f405c1bdced4252d8e9fd9925b95b4}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add\+File} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const std\+::string \&file\+\_\+path, bool move\+\_\+file=false)=0\hypertarget{classrocksdb_1_1DB_af02d75b05154cbb1c1fa9dcad88c26ef}{}\label{classrocksdb_1_1DB_af02d75b05154cbb1c1fa9dcad88c26ef}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add\+File} (const std\+::string \&file\+\_\+path, bool move\+\_\+file=false)\hypertarget{classrocksdb_1_1DB_afd2b59898d904dde210f9ab174af6bd2}{}\label{classrocksdb_1_1DB_afd2b59898d904dde210f9ab174af6bd2}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add\+File} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1ExternalSstFileInfo}{External\+Sst\+File\+Info} $\ast$file\+\_\+info, bool move\+\_\+file=false)=0\hypertarget{classrocksdb_1_1DB_a41c3fb74e6f0ac69c4fc8f475384f4b1}{}\label{classrocksdb_1_1DB_a41c3fb74e6f0ac69c4fc8f475384f4b1}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Add\+File} (const \hyperlink{structrocksdb_1_1ExternalSstFileInfo}{External\+Sst\+File\+Info} $\ast$file\+\_\+info, bool move\+\_\+file=false)\hypertarget{classrocksdb_1_1DB_a4cb68b0602b9b312abe680e7916e717f}{}\label{classrocksdb_1_1DB_a4cb68b0602b9b312abe680e7916e717f}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Db\+Identity} (std\+::string \&identity) const =0\hypertarget{classrocksdb_1_1DB_ae25bfa14c79c2a314fb2c2b9b15c8878}{}\label{classrocksdb_1_1DB_ae25bfa14c79c2a314fb2c2b9b15c8878}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$ {\bfseries Default\+Column\+Family} () const =0\hypertarget{classrocksdb_1_1DB_a9f835f7c274965147732d1e4ac14d640}{}\label{classrocksdb_1_1DB_a9f835f7c274965147732d1e4ac14d640}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Properties\+Of\+All\+Tables} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, Table\+Properties\+Collection $\ast$props)=0\hypertarget{classrocksdb_1_1DB_a2fdc357ae5ec32baa1b0a1fb075e172f}{}\label{classrocksdb_1_1DB_a2fdc357ae5ec32baa1b0a1fb075e172f}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Properties\+Of\+All\+Tables} (Table\+Properties\+Collection $\ast$props)\hypertarget{classrocksdb_1_1DB_a15dcf2da4443fcc770cefafb8cb7c5a5}{}\label{classrocksdb_1_1DB_a15dcf2da4443fcc770cefafb8cb7c5a5}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Properties\+Of\+Tables\+In\+Range} (\hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$column\+\_\+family, const \hyperlink{structrocksdb_1_1Range}{Range} $\ast$range, std\+::size\+\_\+t n, Table\+Properties\+Collection $\ast$props)=0\hypertarget{classrocksdb_1_1DB_aca4860f05fa06107b59c48c6930c848c}{}\label{classrocksdb_1_1DB_aca4860f05fa06107b59c48c6930c848c}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1DB}{DB} $\ast$ {\bfseries Get\+Root\+DB} ()\hypertarget{classrocksdb_1_1DB_a8b5ad7e30644b9dbe7a95eaa94939c87}{}\label{classrocksdb_1_1DB_a8b5ad7e30644b9dbe7a95eaa94939c87}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options, const std\+::string \&name, \hyperlink{classrocksdb_1_1DB}{DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1DB_aa4cd208caf75bff0027149ec7f0b0171}{}\label{classrocksdb_1_1DB_aa4cd208caf75bff0027149ec7f0b0171}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open\+For\+Read\+Only} (const \hyperlink{structrocksdb_1_1Options}{Options} \&options, const std\+::string \&name, \hyperlink{classrocksdb_1_1DB}{DB} $\ast$$\ast$dbptr, bool error\+\_\+if\+\_\+log\+\_\+file\+\_\+exist=false)\hypertarget{classrocksdb_1_1DB_a128d6ca12398890b3a52279fa5e32731}{}\label{classrocksdb_1_1DB_a128d6ca12398890b3a52279fa5e32731}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open\+For\+Read\+Only} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const std\+::string \&name, const std\+::vector$<$ \hyperlink{structrocksdb_1_1ColumnFamilyDescriptor}{Column\+Family\+Descriptor} $>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ $\ast$handles, \hyperlink{classrocksdb_1_1DB}{DB} $\ast$$\ast$dbptr, bool error\+\_\+if\+\_\+log\+\_\+file\+\_\+exist=false)\hypertarget{classrocksdb_1_1DB_a2d287fcd25a0d283f9c9b0209313506d}{}\label{classrocksdb_1_1DB_a2d287fcd25a0d283f9c9b0209313506d}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const std\+::string \&name, const std\+::vector$<$ \hyperlink{structrocksdb_1_1ColumnFamilyDescriptor}{Column\+Family\+Descriptor} $>$ \&column\+\_\+families, std\+::vector$<$ \hyperlink{classrocksdb_1_1ColumnFamilyHandle}{Column\+Family\+Handle} $\ast$$>$ $\ast$handles, \hyperlink{classrocksdb_1_1DB}{DB} $\ast$$\ast$dbptr)\hypertarget{classrocksdb_1_1DB_a45a1173260f060715c952003c59846dc}{}\label{classrocksdb_1_1DB_a45a1173260f060715c952003c59846dc}
+
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries List\+Column\+Families} (const \hyperlink{structrocksdb_1_1DBOptions}{D\+B\+Options} \&db\+\_\+options, const std\+::string \&name, std\+::vector$<$ std\+::string $>$ $\ast$column\+\_\+families)\hypertarget{classrocksdb_1_1DB_a30967758ca8b4b3589b444e3ab1d2545}{}\label{classrocksdb_1_1DB_a30967758ca8b4b3589b444e3ab1d2545}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/db.\+h\end{DoxyCompactItemize}

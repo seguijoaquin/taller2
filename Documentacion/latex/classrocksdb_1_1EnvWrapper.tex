@@ -1,0 +1,134 @@
+\hypertarget{classrocksdb_1_1EnvWrapper}{}\section{rocksdb\+:\+:Env\+Wrapper Class Reference}
+\label{classrocksdb_1_1EnvWrapper}\index{rocksdb\+::\+Env\+Wrapper@{rocksdb\+::\+Env\+Wrapper}}
+Inheritance diagram for rocksdb\+:\+:Env\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1EnvWrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Env\+Wrapper} (\hyperlink{classrocksdb_1_1Env}{Env} $\ast$t)\hypertarget{classrocksdb_1_1EnvWrapper_ae37ae6de8a04752756d14b3d733e6e1e}{}\label{classrocksdb_1_1EnvWrapper_ae37ae6de8a04752756d14b3d733e6e1e}
+
+\item 
+\hyperlink{classrocksdb_1_1Env}{Env} $\ast$ {\bfseries target} () const\hypertarget{classrocksdb_1_1EnvWrapper_aefb72ca219c9b933fba9fc572cf84a3f}{}\label{classrocksdb_1_1EnvWrapper_aefb72ca219c9b933fba9fc572cf84a3f}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Sequential\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1SequentialFile}{Sequential\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvWrapper_a16afc94e7dbb40a9f15d137d6675dc40}{}\label{classrocksdb_1_1EnvWrapper_a16afc94e7dbb40a9f15d137d6675dc40}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Random\+Access\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1RandomAccessFile}{Random\+Access\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvWrapper_ac24f60f42e2af752e6cec45e958f4408}{}\label{classrocksdb_1_1EnvWrapper_ac24f60f42e2af752e6cec45e958f4408}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Writable\+File} (const std\+::string \&f, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvWrapper_a33a5adf52362df8b3502e4237071b108}{}\label{classrocksdb_1_1EnvWrapper_a33a5adf52362df8b3502e4237071b108}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Reuse\+Writable\+File} (const std\+::string \&fname, const std\+::string \&old\+\_\+fname, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1WritableFile}{Writable\+File} $>$ $\ast$r, const \hyperlink{structrocksdb_1_1EnvOptions}{Env\+Options} \&options) override\hypertarget{classrocksdb_1_1EnvWrapper_a734526bf94a33e59a3a4f9d973c72642}{}\label{classrocksdb_1_1EnvWrapper_a734526bf94a33e59a3a4f9d973c72642}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Directory} (const std\+::string \&name, unique\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Directory}{Directory} $>$ $\ast$result) override\hypertarget{classrocksdb_1_1EnvWrapper_af6a51b6a782c76e343d0762137bf462d}{}\label{classrocksdb_1_1EnvWrapper_af6a51b6a782c76e343d0762137bf462d}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries File\+Exists} (const std\+::string \&f) override\hypertarget{classrocksdb_1_1EnvWrapper_a26e009afcc388524815ce1652afefb6c}{}\label{classrocksdb_1_1EnvWrapper_a26e009afcc388524815ce1652afefb6c}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Children} (const std\+::string \&dir, std\+::vector$<$ std\+::string $>$ $\ast$r) override\hypertarget{classrocksdb_1_1EnvWrapper_a88542d17182f47d14d5f717204c8b831}{}\label{classrocksdb_1_1EnvWrapper_a88542d17182f47d14d5f717204c8b831}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Children\+File\+Attributes} (const std\+::string \&dir, std\+::vector$<$ \hyperlink{structrocksdb_1_1Env_1_1FileAttributes}{File\+Attributes} $>$ $\ast$result) override\hypertarget{classrocksdb_1_1EnvWrapper_a5bbff8711a5422883d5a1bc73bbe1032}{}\label{classrocksdb_1_1EnvWrapper_a5bbff8711a5422883d5a1bc73bbe1032}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+File} (const std\+::string \&f) override\hypertarget{classrocksdb_1_1EnvWrapper_ad53db88a845b6691ec87ad45d3d27c9f}{}\label{classrocksdb_1_1EnvWrapper_ad53db88a845b6691ec87ad45d3d27c9f}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvWrapper_a131daf98774112cf7b52a693519ed04a}{}\label{classrocksdb_1_1EnvWrapper_a131daf98774112cf7b52a693519ed04a}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Dir\+If\+Missing} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvWrapper_a780722e8cd623b67cb573e861b24476c}{}\label{classrocksdb_1_1EnvWrapper_a780722e8cd623b67cb573e861b24476c}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Delete\+Dir} (const std\+::string \&d) override\hypertarget{classrocksdb_1_1EnvWrapper_a671abf270a42b060531a33e57e6dda44}{}\label{classrocksdb_1_1EnvWrapper_a671abf270a42b060531a33e57e6dda44}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Size} (const std\+::string \&f, uint64\+\_\+t $\ast$s) override\hypertarget{classrocksdb_1_1EnvWrapper_a2b10a24c1394464ce2a0d56d29a1a03c}{}\label{classrocksdb_1_1EnvWrapper_a2b10a24c1394464ce2a0d56d29a1a03c}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+File\+Modification\+Time} (const std\+::string \&fname, uint64\+\_\+t $\ast$file\+\_\+mtime) override\hypertarget{classrocksdb_1_1EnvWrapper_a4e1147d6136e86eb0d082525839c1575}{}\label{classrocksdb_1_1EnvWrapper_a4e1147d6136e86eb0d082525839c1575}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Rename\+File} (const std\+::string \&s, const std\+::string \&t) override\hypertarget{classrocksdb_1_1EnvWrapper_a1d027dd3537ba577893df70232c35763}{}\label{classrocksdb_1_1EnvWrapper_a1d027dd3537ba577893df70232c35763}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Link\+File} (const std\+::string \&s, const std\+::string \&t) override\hypertarget{classrocksdb_1_1EnvWrapper_a35951d75c25be92c096d426e616dd670}{}\label{classrocksdb_1_1EnvWrapper_a35951d75c25be92c096d426e616dd670}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Lock\+File} (const std\+::string \&f, \hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$$\ast$l) override\hypertarget{classrocksdb_1_1EnvWrapper_a3864487300905a1dc31172530b0d68a9}{}\label{classrocksdb_1_1EnvWrapper_a3864487300905a1dc31172530b0d68a9}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Unlock\+File} (\hyperlink{classrocksdb_1_1FileLock}{File\+Lock} $\ast$l) override\hypertarget{classrocksdb_1_1EnvWrapper_af4ed5505a79bf2469aee41b071e65772}{}\label{classrocksdb_1_1EnvWrapper_af4ed5505a79bf2469aee41b071e65772}
+
+\item 
+void {\bfseries Schedule} (void($\ast$f)(void $\ast$arg), void $\ast$a, Priority pri, void $\ast$tag=nullptr, void($\ast$u)(void $\ast$arg)=0) override\hypertarget{classrocksdb_1_1EnvWrapper_a4dcc1d168f1a6313df4c0272259d7dce}{}\label{classrocksdb_1_1EnvWrapper_a4dcc1d168f1a6313df4c0272259d7dce}
+
+\item 
+int {\bfseries Un\+Schedule} (void $\ast$tag, Priority pri) override\hypertarget{classrocksdb_1_1EnvWrapper_ae8d7a993c3d59951738942283241b76f}{}\label{classrocksdb_1_1EnvWrapper_ae8d7a993c3d59951738942283241b76f}
+
+\item 
+void {\bfseries Start\+Thread} (void($\ast$f)(void $\ast$), void $\ast$a) override\hypertarget{classrocksdb_1_1EnvWrapper_aca39b00f12a10b25a29cf80bc877bcd7}{}\label{classrocksdb_1_1EnvWrapper_aca39b00f12a10b25a29cf80bc877bcd7}
+
+\item 
+void {\bfseries Wait\+For\+Join} () override\hypertarget{classrocksdb_1_1EnvWrapper_aeb73bcae1e862c28c1facf89c6bdc004}{}\label{classrocksdb_1_1EnvWrapper_aeb73bcae1e862c28c1facf89c6bdc004}
+
+\item 
+virtual unsigned int {\bfseries Get\+Thread\+Pool\+Queue\+Len} (Priority pri=L\+OW) const override\hypertarget{classrocksdb_1_1EnvWrapper_ad793f330cd75416daac2942f27dbbaa4}{}\label{classrocksdb_1_1EnvWrapper_ad793f330cd75416daac2942f27dbbaa4}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Test\+Directory} (std\+::string $\ast$path) override\hypertarget{classrocksdb_1_1EnvWrapper_a317ac22205c71a9149ac281a2099eea8}{}\label{classrocksdb_1_1EnvWrapper_a317ac22205c71a9149ac281a2099eea8}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries New\+Logger} (const std\+::string \&fname, shared\+\_\+ptr$<$ \hyperlink{classrocksdb_1_1Logger}{Logger} $>$ $\ast$result) override\hypertarget{classrocksdb_1_1EnvWrapper_a2980b8dc1cd6861ab3ed58e57b6b7de1}{}\label{classrocksdb_1_1EnvWrapper_a2980b8dc1cd6861ab3ed58e57b6b7de1}
+
+\item 
+uint64\+\_\+t {\bfseries Now\+Micros} () override\hypertarget{classrocksdb_1_1EnvWrapper_aa37120924c92abc8dcc877b030e2e85e}{}\label{classrocksdb_1_1EnvWrapper_aa37120924c92abc8dcc877b030e2e85e}
+
+\item 
+void {\bfseries Sleep\+For\+Microseconds} (int micros) override\hypertarget{classrocksdb_1_1EnvWrapper_aead93103f08a912aa82ae4d67a4d58eb}{}\label{classrocksdb_1_1EnvWrapper_aead93103f08a912aa82ae4d67a4d58eb}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Host\+Name} (char $\ast$name, uint64\+\_\+t len) override\hypertarget{classrocksdb_1_1EnvWrapper_a0351d4fc6a66eb8131ccd8c1874dbb8f}{}\label{classrocksdb_1_1EnvWrapper_a0351d4fc6a66eb8131ccd8c1874dbb8f}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Current\+Time} (int64\+\_\+t $\ast$unix\+\_\+time) override\hypertarget{classrocksdb_1_1EnvWrapper_a9e4488f871063d0fd72f0fd2919610aa}{}\label{classrocksdb_1_1EnvWrapper_a9e4488f871063d0fd72f0fd2919610aa}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Absolute\+Path} (const std\+::string \&db\+\_\+path, std\+::string $\ast$output\+\_\+path) override\hypertarget{classrocksdb_1_1EnvWrapper_a0e10fc987cd3e93ed4f2150e2af350e2}{}\label{classrocksdb_1_1EnvWrapper_a0e10fc987cd3e93ed4f2150e2af350e2}
+
+\item 
+void {\bfseries Set\+Background\+Threads} (int num, Priority pri) override\hypertarget{classrocksdb_1_1EnvWrapper_a8fcba7e9f6a8b1fbfd59dbe2aeda5dea}{}\label{classrocksdb_1_1EnvWrapper_a8fcba7e9f6a8b1fbfd59dbe2aeda5dea}
+
+\item 
+void {\bfseries Inc\+Background\+Threads\+If\+Needed} (int num, Priority pri) override\hypertarget{classrocksdb_1_1EnvWrapper_a176f3b118d6bbf42d94169c4c2d66814}{}\label{classrocksdb_1_1EnvWrapper_a176f3b118d6bbf42d94169c4c2d66814}
+
+\item 
+void {\bfseries Lower\+Thread\+Pool\+I\+O\+Priority} (Priority pool=L\+OW) override\hypertarget{classrocksdb_1_1EnvWrapper_afa78d2ed1ba4c848345cb06175cefa72}{}\label{classrocksdb_1_1EnvWrapper_afa78d2ed1ba4c848345cb06175cefa72}
+
+\item 
+std\+::string {\bfseries Time\+To\+String} (uint64\+\_\+t time) override\hypertarget{classrocksdb_1_1EnvWrapper_ab85d8bb25a5b465f6dac690bbb2f3f1a}{}\label{classrocksdb_1_1EnvWrapper_ab85d8bb25a5b465f6dac690bbb2f3f1a}
+
+\item 
+\hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Get\+Thread\+List} (std\+::vector$<$ \hyperlink{structrocksdb_1_1ThreadStatus}{Thread\+Status} $>$ $\ast$thread\+\_\+list) override\hypertarget{classrocksdb_1_1EnvWrapper_a8b98931ac26c2a4726e2702d5ea2ecb7}{}\label{classrocksdb_1_1EnvWrapper_a8b98931ac26c2a4726e2702d5ea2ecb7}
+
+\item 
+Thread\+Status\+Updater $\ast$ {\bfseries Get\+Thread\+Status\+Updater} () const override\hypertarget{classrocksdb_1_1EnvWrapper_a0a2049d06aad5884a104c216959a9c50}{}\label{classrocksdb_1_1EnvWrapper_a0a2049d06aad5884a104c216959a9c50}
+
+\item 
+uint64\+\_\+t {\bfseries Get\+Thread\+ID} () const override\hypertarget{classrocksdb_1_1EnvWrapper_a96c45c0226e3bbb4714e7c695be97c6f}{}\label{classrocksdb_1_1EnvWrapper_a96c45c0226e3bbb4714e7c695be97c6f}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/env.\+h\end{DoxyCompactItemize}

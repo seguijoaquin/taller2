@@ -1,0 +1,49 @@
+\hypertarget{classrocksdb_1_1DocumentDB}{}\section{rocksdb\+:\+:Document\+DB Class Reference}
+\label{classrocksdb_1_1DocumentDB}\index{rocksdb\+::\+Document\+DB@{rocksdb\+::\+Document\+DB}}
+Inheritance diagram for rocksdb\+:\+:Document\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrocksdb_1_1DocumentDB}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrocksdb_1_1DocumentDB_1_1IndexDescriptor}{Index\+Descriptor}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Document\+DB} (\hyperlink{classrocksdb_1_1DB}{DB} $\ast$db)\hypertarget{classrocksdb_1_1DocumentDB_a7521c1576c8e97ac192be7a17856fe29}{}\label{classrocksdb_1_1DocumentDB_a7521c1576c8e97ac192be7a17856fe29}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Create\+Index} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{structrocksdb_1_1DocumentDB_1_1IndexDescriptor}{Index\+Descriptor} \&index)=0\hypertarget{classrocksdb_1_1DocumentDB_a3ba5420bc54b1016c62b491602ce3811}{}\label{classrocksdb_1_1DocumentDB_a3ba5420bc54b1016c62b491602ce3811}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Drop\+Index} (const std\+::string \&name)=0\hypertarget{classrocksdb_1_1DocumentDB_a3f503331b6030566045f25bccd67209e}{}\label{classrocksdb_1_1DocumentDB_a3f503331b6030566045f25bccd67209e}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Insert} (const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&options, const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&document)=0\hypertarget{classrocksdb_1_1DocumentDB_ac456af22d4bd0dad85476593af18a05a}{}\label{classrocksdb_1_1DocumentDB_ac456af22d4bd0dad85476593af18a05a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Remove} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&query)=0\hypertarget{classrocksdb_1_1DocumentDB_ac45f6bf1c1206f9307c106217a6fed3a}{}\label{classrocksdb_1_1DocumentDB_ac45f6bf1c1206f9307c106217a6fed3a}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Update} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, const \hyperlink{structrocksdb_1_1WriteOptions}{Write\+Options} \&write\+\_\+options, const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&filter, const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&updates)=0\hypertarget{classrocksdb_1_1DocumentDB_a433f73b4550bc683c4700b1d9c7625d5}{}\label{classrocksdb_1_1DocumentDB_a433f73b4550bc683c4700b1d9c7625d5}
+
+\item 
+virtual \hyperlink{classrocksdb_1_1Cursor}{Cursor} $\ast$ {\bfseries Query} (const \hyperlink{structrocksdb_1_1ReadOptions}{Read\+Options} \&read\+\_\+options, const \hyperlink{classrocksdb_1_1JSONDocument}{J\+S\+O\+N\+Document} \&query)=0\hypertarget{classrocksdb_1_1DocumentDB_a584dc4f0db8065f8d1c94563a80cd559}{}\label{classrocksdb_1_1DocumentDB_a584dc4f0db8065f8d1c94563a80cd559}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classrocksdb_1_1Status}{Status} {\bfseries Open} (const \hyperlink{structrocksdb_1_1DocumentDBOptions}{Document\+D\+B\+Options} \&options, const std\+::string \&name, const std\+::vector$<$ \hyperlink{structrocksdb_1_1DocumentDB_1_1IndexDescriptor}{Index\+Descriptor} $>$ \&indexes, \hyperlink{classrocksdb_1_1DocumentDB}{Document\+DB} $\ast$$\ast$db, bool read\+\_\+only=false)\hypertarget{classrocksdb_1_1DocumentDB_abd15334b981a303969cb16e6f152c69f}{}\label{classrocksdb_1_1DocumentDB_abd15334b981a303969cb16e6f152c69f}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Appserver/src/external/rocksdb/utilities/document\+\_\+db.\+h\end{DoxyCompactItemize}
