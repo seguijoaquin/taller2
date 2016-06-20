@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/*!
+ * Clase que asbtrae los pedidos por medio de mensajes http
+ */
+
 class MensajeHTTPRequest: public MensajeHTTP
 {
     public:
@@ -14,12 +18,12 @@ class MensajeHTTPRequest: public MensajeHTTP
         MensajeHTTPRequest(http_message* mensajeMG);
         virtual ~MensajeHTTPRequest();
 
-        string getMetodo();
-        string getURI();
-        string toString();
+        string getMetodo();/*!< Devuelve el metodo del pedido: PUT, POST, GET, etc*/
+        string getURI();/*!< Devuelve la URI del pedido*/
+        string toString();/*!< Devuelve el mensaje en formato de string*/
 
-        void setMetodo(string metodo);
-        void setURI(string uri);
+        void setMetodo(string metodo);/*!< Setea el metodo del mensaje de peticion*/
+        void setURI(string uri);/*!< Setea la uri del mensaje de peticion*/
     protected:
     private:
         string metodo;

@@ -4,6 +4,10 @@
 #include "JsonValor.h"
 #include "JsonArray.h"
 
+/*!
+ * Esta clase permite manejar json objects
+ */
+
 class JsonObject: public JsonValor{
     public:
         JsonObject();
@@ -11,16 +15,16 @@ class JsonObject: public JsonValor{
         JsonObject(const Json::Value& jsonValor);
         virtual ~JsonObject();
 
-        JsonValor operator[](string clave);
-        JsonObject getJsonObject(string clave);
-        JsonArray getJsonArray(string clave);
+        JsonValor operator[](string clave);/*!< Permite acceder a la clave pasada como parametro*/
+        JsonObject getJsonObject(string clave);/*!< Devuelve el valor de la clave interpretado como JsonObject*/
+        JsonArray getJsonArray(string clave);/*!< Devuelve el valor de la clave interpretado como json array*/
 
-        int getInt(string clave);
-        string getString(string clave);
+        int getInt(string clave);/*!< Devuelve el valor de la clave interpretado como Int*/
+        string getString(string clave);/*!<Devuelve el valor de la clave interpretado como string*/
 
-        void agregarClaveValor(string clave, string valor);
-        void agregarClaveValor(string clave, int valor);
-        void agregarClaveValor(string clave, JsonValor& valor);
+        void agregarClaveValor(string clave, string valor);/*!< Permite agregar un par clave valor al JsonObject donde el valor es un string*/
+        void agregarClaveValor(string clave, int valor);/*!< Permite agregar un par clave valor al JsonObject donde el valor es un Int*/
+        void agregarClaveValor(string clave, JsonValor& valor);/*!< Permite agregar un par clave valor al JsonObject donde el valor es un JsonValor*/
 
 
 

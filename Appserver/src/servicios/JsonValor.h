@@ -6,7 +6,9 @@
 
 using namespace std;
 
-//Clase con la que intento wrappear a jsoncpp
+/*!
+ * Clase que wrappea a la libreria de json utilizada.
+ */
 class JsonValor
 {
     public:
@@ -16,10 +18,10 @@ class JsonValor
         JsonValor(const Json::Value& jsonValor);
         Json::Value& getJsonValue();
 
-        int size();
+        int size();/*!< Devuelve el tamanio del json valor*/
 
         virtual ~JsonValor();
-        string toString();
+        string toString(); /*!< Devuelvo el json valor en formato de string*/
     protected:
         Json::Value jsonValor;
     private:
