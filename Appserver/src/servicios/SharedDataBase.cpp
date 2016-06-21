@@ -91,7 +91,6 @@ string SharedDataBase::armarURIDeUsuario(int idUsuario){
 
 ListadoDeIntereses SharedDataBase::obtenerListadoDeIntereses(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/interests","");
-
     this->listadoDeIntereses.agregarIntereses( respuestaShared.getBody() );
     return (this->listadoDeIntereses);
 }
