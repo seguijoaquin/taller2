@@ -7,6 +7,8 @@
 #include "ServicioBusquedaCandidatos.h"
 #include "ServicioInexistente.h"
 
+
+
 class CreatorBusquedaCandidato : public CreatorServicio
 {
     public:

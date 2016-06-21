@@ -8,6 +8,9 @@
 //para guiarme por si la conexion esta prendida en vez de por si recibio la respuesta (en ese caso podria desbloquearse si recibe una rta parcial
 //Si efectivamente MG devuelve respuestas parciales para mensajes largos (todavia no lo se) deberia tener un metodo appenRespuesta
 
+
+
+
 class ClienteDelSharedServer
 {
     public:

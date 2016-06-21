@@ -8,6 +8,10 @@
 
 #include "Servicio.h"
 
+/** Clase encargada de gestionar el servicio de
+ * mensajeria entre usuarios provisto por el servidor.
+ * Actua ante la lleada de un mensaje http.
+ */
 class ServicioMensajes : public Servicio
 {
     public:

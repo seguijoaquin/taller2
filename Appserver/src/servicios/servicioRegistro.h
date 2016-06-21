@@ -22,6 +22,13 @@
 //class ManejadorDeConexiones;
 using namespace std;
 
+/** Clase encargada de gestionar el registro
+ * de usuarios al sistema.
+ * registra al usuario en el Shared, 
+ * en las Credenciales y lo inicializa en el Adminsitrador
+ * a partir de un mensaje http
+ */
+
 class servicioRegistro : public Servicio
 {
     public:
