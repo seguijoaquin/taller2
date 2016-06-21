@@ -8,6 +8,10 @@
 #include "AdministradorCandidatos.h"
 #include "RespuestaDeLaVotacion.h"
 
+/** Clase que gestiona el servicio
+ * de votacion que brinda el sistema
+ */
+
 class ServicioVotacion : public Servicio
 {
     public:

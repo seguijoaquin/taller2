@@ -7,6 +7,10 @@
 #include "CredencialesDeUsuarios.h"
 #include "RespuestaModificarFoto.h"
 
+/** Servicio que gestiona la modificacion de fotos
+ * de los usuarios.
+ */
+
 class ServicioModificarFoto : public Servicio
 {
     public:

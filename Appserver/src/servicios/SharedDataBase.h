@@ -10,6 +10,8 @@
 #include "ListadoDeUsuarios.h"
 #include "ListadoDeIntereses.h"
 
+/** Clase que abstrae la comunicacion con el Shared Server */
+
 
 class SharedDataBase
 {
@@ -28,14 +30,20 @@ class SharedDataBase
         //int registrarUsuario(string bodyJson);
         int registrarUsuario(Usuario& usuario);
 
-
+        /** Devuelve los datos correspondientes a un usuario con id "idUsuario"*/
         Usuario obtenerPerfilDelUsuario(int idUsuario);
         virtual ListadoDeUsuarios obtenerListadoDeUsuarios();
+    
+        /** Elimina un usuario del Shared Server, devuelve true caso de poder realizar la baja y false sino*/
         bool eliminarUsuario(int idUsuario);
 
+        /** Devuelve el listado completo de intereses del shared server*/
         ListadoDeIntereses obtenerListadoDeIntereses();
+    
+        /** Modifica la foto de perfil de un usuario, devuelve true en caso de poder o false en caso contrario*/
         bool modificarFotoPerfil(int idUsuario, string fotoBase64);
 
+        /** Modifica la direccion del Shared Server al cual nos conectamos*/
         void cambiarDireccion(string nuevaDireccion);
 
     protected:
