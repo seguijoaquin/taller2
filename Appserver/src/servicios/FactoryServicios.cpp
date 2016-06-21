@@ -38,11 +38,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){
-
             creator = new CreatorLogin(this->sesiones, httpRequest, this->credenciales);
         }
         else if (compararUriHTTP(httpRequest, "/mensajes")){
-
             creator = new CreatorServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);
         }
         else if (compararUriHTTP(httpRequest, "/perfil")){
@@ -50,6 +48,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         }
         else if (compararUriHTTP(httpRequest, "/intereses")){
             creator = new CreatorPedirIntereses(this->shared);
+        }
+        else if (compararUriHTTP(httpRequest, "/info")){
+            creator = new CreatorPedirInformacion(this->shared, &httpRequest, this->credenciales, this->sesiones);
         }
         else if (compararUriHTTP(httpRequest, "/test")){
             creator = nullptr;

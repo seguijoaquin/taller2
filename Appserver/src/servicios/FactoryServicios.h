@@ -21,6 +21,7 @@
 #include "CreatorEliminacion.h"
 #include "CreatorActualizarPosicion.h"
 #include "CreatorPedirIntereses.h"
+#include "CreatorPedirInformacion.h"
 
 class FactoryServicios
 {
