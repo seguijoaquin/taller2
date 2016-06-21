@@ -12,7 +12,6 @@ JsonObject::JsonObject(const Json::Value& jsonValor):JsonValor(jsonValor){
 
 }
 
-
 JsonValor JsonObject::operator[](string clave){
     return JsonValor(this->jsonValor[clave]);
 }
@@ -31,9 +30,12 @@ string JsonObject::getString(string clave){
 }
 
 
-
 JsonArray JsonObject::getJsonArray(string clave){
     return JsonArray(this->jsonValor[clave]);
+}
+
+double JsonObject::getDouble(string clave){
+    return (this->jsonValor[clave]).asDouble();
 }
 
 
@@ -48,6 +50,10 @@ void JsonObject::agregarClaveValor(string clave, string valor){
 }
 
 void JsonObject::agregarClaveValor(string clave, int valor){
+    this->jsonValor[clave] = valor;
+}
+
+void JsonObject::agregarClaveValor(string clave, double valor){
     this->jsonValor[clave] = valor;
 }
 

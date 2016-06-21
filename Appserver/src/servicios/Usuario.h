@@ -3,6 +3,7 @@
 
 #include "JsonObject.h"
 #include "ListadoDeIntereses.h"
+#include "Localizacion.h"
 
 
 using namespace std;
@@ -20,6 +21,9 @@ class Usuario
 
         string toString();
         ListadoDeIntereses getIntereses();
+
+        Localizacion getLocalizacion();
+        void actualizarLocalizacion(Localizacion& localizacion);
     protected:
     private:
         JsonObject perfil;
