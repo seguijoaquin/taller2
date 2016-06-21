@@ -18,10 +18,10 @@ class Usuario
         Usuario();
         Usuario(string jsonUsuario);
         virtual ~Usuario();
-    
+
         /** Devuelve el email del usuario*/
         string getEmail();
-    
+
         /**Devuelve el id del usuario*/
         int getId();
 
@@ -29,14 +29,16 @@ class Usuario
          * de string
          */
         string toString();
-    
+
         /** Devuelve el listado de intereses del usuario*/
         ListadoDeIntereses getIntereses();
 
-
+        /** Devuelve la localizacion actual del usuario. */
         Localizacion getLocalizacion();
+
+        /** Actualiza la ultima localizacion subida por la actual.*/
         void actualizarLocalizacion(Localizacion& localizacion);
-    
+
     protected:
     private:
         JsonObject perfil;
