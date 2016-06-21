@@ -15,6 +15,8 @@ class Interes
 
         bool comparar(Interes& interes);
 
+        JsonObject toJsonObject();
+
     protected:
     private:
         string categoria;

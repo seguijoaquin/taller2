@@ -73,8 +73,9 @@ Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
 
 ListadoDeUsuarios SharedDataBase::obtenerListadoDeUsuarios(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/users/" ,"");
-    this->listadoDeUsuarios.agregarUsuarios( respuestaShared.getBody() );
-    return (this->listadoDeUsuarios);
+    ListadoDeUsuarios usuarios;
+    usuarios.agregarUsuarios( respuestaShared.getBody() );
+    return usuarios;
 }
 
 
@@ -91,7 +92,6 @@ string SharedDataBase::armarURIDeUsuario(int idUsuario){
 
 ListadoDeIntereses SharedDataBase::obtenerListadoDeIntereses(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/interests","");
-
     this->listadoDeIntereses.agregarIntereses( respuestaShared.getBody() );
     return (this->listadoDeIntereses);
 }
@@ -106,4 +106,13 @@ bool SharedDataBase::modificarFotoPerfil(int idUsuario, string fotoBase64){
 
     return (respuestaShared.getCodigo() == 200);
 }
+
+
+bool SharedDataBase::modificarPerfilUsuario(Usuario& usuario){
+    string uri = this->armarURIDeUsuario(usuario.getId());
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("PUT", uri, usuario.toString());
+    return (respuestaShared.getCodigo() == 200) && (respuestaShared.getBody() == "OK" );
+}
+
+
 

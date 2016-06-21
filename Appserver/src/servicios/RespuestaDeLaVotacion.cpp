@@ -13,4 +13,5 @@ RespuestaDeLaVotacion::~RespuestaDeLaVotacion()
 void RespuestaDeLaVotacion::setRespuestaSeRegistroVoto(){
     this->respuesta.setCodigo(200);
     this->respuesta.setMensajeDeEstado("El voto se registro correctamente");
+    this->respuesta.agregarHeader("Content-Type", "application/json");
 }

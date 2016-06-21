@@ -13,6 +13,13 @@ Interes::~Interes()
     //dtor
 }
 
+JsonObject Interes::toJsonObject(){
+    JsonObject datos;
+    datos.agregarClaveValor("category", this->categoria);
+    datos.agregarClaveValor("value", this->valor);
+    return datos;
+}
+
 string Interes::getCategoria(){
     return this->categoria;
 }

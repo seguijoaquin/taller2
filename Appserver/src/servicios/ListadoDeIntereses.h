@@ -20,6 +20,7 @@ class ListadoDeIntereses
 
         int size();
         Interes getInteres(int i);
+        string toString();
     protected:
     private:
         void agregarInteres(string jsonInteres);

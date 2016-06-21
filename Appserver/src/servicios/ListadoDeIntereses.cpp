@@ -14,6 +14,19 @@ ListadoDeIntereses::~ListadoDeIntereses(){
 }
 
 
+string ListadoDeIntereses::toString(){
+    JsonArray intereses;
+    for (vector<Interes>::iterator it = this->intereses.begin(); it != this->intereses.end(); ++it ){
+        JsonObject interesActual = (*it).toJsonObject();
+        intereses.agregar(interesActual);
+    }
+    JsonObject listado;
+    listado.agregarClaveValor("interests", intereses);
+    return listado.toString();
+}
+
+
+
 void ListadoDeIntereses::agregarIntereses(string jsonListadoIntereses){
     JsonObject jsonListado(jsonListadoIntereses);
     JsonArray arrayIntereses = jsonListado.getJsonArray("interests");
@@ -25,7 +38,10 @@ void ListadoDeIntereses::agregarIntereses(string jsonListadoIntereses){
 }
 
 void ListadoDeIntereses::agregarInteres(string jsonInteres){
-    this->intereses.push_back(Interes(jsonInteres));
+    Interes nuevoInteres(jsonInteres);
+    if (!this->tieneInteres(nuevoInteres)){
+        this->intereses.push_back(nuevoInteres);
+    }
 }
 
 bool ListadoDeIntereses::tieneInteres(Interes& interes){
@@ -50,3 +66,4 @@ Interes ListadoDeIntereses::getInteres(int i){
         return Interes("");
     }
 }
+

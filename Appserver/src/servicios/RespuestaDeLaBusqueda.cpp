@@ -13,6 +13,7 @@ RespuestaDeLaBusqueda::~RespuestaDeLaBusqueda()
 void RespuestaDeLaBusqueda::setRespuestaCandidatoEncontrado(Usuario* usuario){
     this->respuesta.setCodigo(200);
     this->respuesta.setMensajeDeEstado("Candidato encontrado");
+    this->respuesta.agregarHeader("Content-Type", "application/json");
     this->respuesta.setBody(usuario->toString());
 }
 

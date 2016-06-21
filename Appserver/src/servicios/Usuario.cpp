@@ -36,6 +36,14 @@ ListadoDeIntereses Usuario::getIntereses(){
     return intereses;
 }
 
+Localizacion Usuario::getLocalizacion(){
+    return Localizacion(this->perfil.getJsonObject("location").toString());
+}
+
+void Usuario::actualizarLocalizacion(Localizacion& localizacion){
+    JsonObject posicion = localizacion.toJsonObject();
+    this->perfil.agregarClaveValor("location", posicion);
+}
 
 
 

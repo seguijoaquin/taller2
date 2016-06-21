@@ -48,6 +48,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         else if (compararUriHTTP(httpRequest, "/perfil")){
             creator = new CreatorBusquedaCandidato(this->administradorCandidatos, &httpRequest, this->sesiones);
         }
+        else if (compararUriHTTP(httpRequest, "/intereses")){
+            creator = new CreatorPedirIntereses(this->shared);
+        }
         else if (compararUriHTTP(httpRequest, "/test")){
             creator = nullptr;
         }
@@ -58,6 +61,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         }
         else if (compararUriHTTP(httpRequest, "/foto")){
             creator = new CreatorModificarFoto(this->shared, &httpRequest, this->sesiones, this->credenciales);
+        }
+        else if (compararUriHTTP(httpRequest, "/gps")){
+            creator = new CreatorActualizarPosicion(this->shared, &httpRequest, this->sesiones, this->credenciales);
         }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){

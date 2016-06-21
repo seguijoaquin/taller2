@@ -3,6 +3,7 @@
 
 #include "JsonObject.h"
 #include "ListadoDeIntereses.h"
+#include "Localizacion.h"
 
 
 using namespace std;
@@ -31,6 +32,10 @@ class Usuario
     
         /** Devuelve el listado de intereses del usuario*/
         ListadoDeIntereses getIntereses();
+
+
+        Localizacion getLocalizacion();
+        void actualizarLocalizacion(Localizacion& localizacion);
     
     protected:
     private:
