@@ -20,8 +20,6 @@ class ServicioVotacion : public Servicio
         AdministradorCandidatos* administradorCandidatos;
         SharedDataBase* shared;
         Mensajero* mensajero;
-
-
 };
 
 #endif // SERVICIOVOTACION_H

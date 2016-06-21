@@ -19,6 +19,7 @@
 #include "CreatorModificarFoto.h"
 #include "CreatorVotacion.h"
 #include "CreatorEliminacion.h"
+#include "CreatorActualizarPosicion.h"
 
 class FactoryServicios
 {

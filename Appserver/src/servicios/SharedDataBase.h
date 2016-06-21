@@ -18,7 +18,6 @@ class SharedDataBase
         el base64 de todos los usuarios. El link en donde debe estar la foto es users/1/photo y en esa url se devuelve
         base64 de la imagen. Si uno consulta el detalle del usuario (users/1) ahí si se devuelve la imagen en base64.
         */
-
         SharedDataBase(ManejadorDeConexiones* conexiones, string direccion);
         virtual ~SharedDataBase();
 
@@ -35,6 +34,8 @@ class SharedDataBase
 
         ListadoDeIntereses obtenerListadoDeIntereses();
         bool modificarFotoPerfil(int idUsuario, string fotoBase64);
+        bool modificarPerfilUsuario(Usuario& usuario);
+
 
         void cambiarDireccion(string nuevaDireccion);
 

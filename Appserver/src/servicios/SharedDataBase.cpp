@@ -107,3 +107,12 @@ bool SharedDataBase::modificarFotoPerfil(int idUsuario, string fotoBase64){
     return (respuestaShared.getCodigo() == 200);
 }
 
+
+bool SharedDataBase::modificarPerfilUsuario(Usuario& usuario){
+    string uri = this->armarURIDeUsuario(usuario.getId());
+    MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("PUT", uri, usuario.toString());
+    return (respuestaShared.getCodigo() == 200) && (respuestaShared.getBody() == "OK" );
+}
+
+
+

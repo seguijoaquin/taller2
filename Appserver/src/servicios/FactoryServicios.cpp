@@ -59,6 +59,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         else if (compararUriHTTP(httpRequest, "/foto")){
             creator = new CreatorModificarFoto(this->shared, &httpRequest, this->sesiones, this->credenciales);
         }
+        else if (compararUriHTTP(httpRequest, "/gps")){
+            creator = new CreatorActualizarPosicion(this->shared, &httpRequest, this->sesiones, this->credenciales);
+        }
     }
     else if (compararMetodoHTTP(httpRequest, "DELETE")){
         if (compararUriHTTP(httpRequest, "/eliminar")){
