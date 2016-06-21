@@ -73,8 +73,9 @@ Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
 
 ListadoDeUsuarios SharedDataBase::obtenerListadoDeUsuarios(){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", "/users/" ,"");
-    this->listadoDeUsuarios.agregarUsuarios( respuestaShared.getBody() );
-    return (this->listadoDeUsuarios);
+    ListadoDeUsuarios usuarios;
+    usuarios.agregarUsuarios( respuestaShared.getBody() );
+    return usuarios;
 }
 
 
