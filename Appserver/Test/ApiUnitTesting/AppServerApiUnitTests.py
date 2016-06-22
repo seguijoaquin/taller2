@@ -5,6 +5,7 @@ import Utilities
 from testLogin import *
 from testChat import *
 from testBusquedaCandidatos import *
+from testPerfil import *
 
 
 
@@ -106,7 +107,6 @@ class TestRegistroYLogin(unittest.TestCase):
         self.assertEqual(request.status_code,200)
         self.assertEqual(request.reason,self.msgLoginCorrecto)
         self.assertIsNotNone(request.headers["Token"])
-
 
 
 
