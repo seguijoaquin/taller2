@@ -28,12 +28,16 @@ Usuario* AdministradorCandidatos::buscarCandidatoPara(string usuario){
            ( this->compararIntereses(usuarioPrincipal,candidatoActual) ) /*&&
             this->estaCerca(usuarioPrincipal,*candidatoActual)  &&
             this->condicionDel1%*/){
-            candidato = new Usuario(candidatoActual);
+
+            //Para parchear que se devuelva la foto en vez del link
+            //candidato = new Usuario(candidatoActual);
+            candidato = new Usuario(shared->obtenerPerfilDelUsuario(candidatoActual.getId()));
             this->candidatos.registrarNotificacionAUsuarioSobreCandidato(usuarioPrincipal.getEmail(), candidato->getEmail());
             this->estadisticas.contabilizarCandidatoPara(usuarioPrincipal.getEmail());
             Logger::Instance()->log(DEBUG, "Se le entrega a "+ usuario + " un candidato:\n" + candidato->toString());
         }
     }
+
     return candidato;
 }
 
