@@ -1,6 +1,7 @@
 #include "ServicioBusquedaCandidatos.h"
 
 ServicioBusquedaCandidatos::ServicioBusquedaCandidatos(AdministradorCandidatos* administradorCandidatos, MensajeHTTPRequest* mensajeHTTP){
+    Logger::Instance()->log(INFO, "Se crea el Servicio Busqueda de Candidatos");
     this->administradorCandidatos = administradorCandidatos;
     this->mensajeHTTP = mensajeHTTP;
 

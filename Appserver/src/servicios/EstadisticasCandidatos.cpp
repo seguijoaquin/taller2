@@ -25,7 +25,7 @@ int EstadisticasCandidatos::getCantidadVotosPara(string usuario){
 }
 
 string EstadisticasCandidatos::buscarUsuarioPopularConMenosVotos(){
-    int votosDeUsuarioPopular = 100000;
+    int votosDeUsuarioPopular = 100000; //Un numero muy grande
     string usuarioPopularConMenosVotos = "";
     for( set<string>::iterator it = this->usuariosPopulares.begin() ; it != this->usuariosPopulares.end(); ++it){
         int votosAux = this->getCantidadVotosPara(*it);
@@ -50,6 +50,8 @@ void EstadisticasCandidatos::actualizarUsuariosPopulares(string usuario){
         if ( (usuarioPopularConMenosVotos != "") && (this->getCantidadVotosPara(usuario) > this->getCantidadVotosPara(usuarioPopularConMenosVotos)) ){
             this->usuariosPopulares.erase(usuarioPopularConMenosVotos);
             this->usuariosPopulares.insert(usuario);
+            Logger::Instance()->log(DEBUG, "El usuario popular eliminado es: " + usuarioPopularConMenosVotos);
+            Logger::Instance()->log(DEBUG, "El nuevo usuario popular es: " + usuario);
         }
     }
 }
@@ -82,7 +84,7 @@ bool EstadisticasCandidatos::existeUsuario(string usuario){
 void EstadisticasCandidatos::inicializarUsuario(string usuario){
 
     if( !this->existeUsuario(usuario)){
-
+        Logger::Instance()->log(INFO, "Se inicializan las estadisticas de " + usuario );
         Estadisticas estadisticas;
         estadisticas.cantidadDeCandidatosPedidos = 0;
         estadisticas.cantidadDeVotosPositivos = 0;

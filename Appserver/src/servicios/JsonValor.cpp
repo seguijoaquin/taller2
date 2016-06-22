@@ -23,8 +23,11 @@ int JsonValor::size(){
 }
 
 string JsonValor::toString(){
-    Json::FastWriter writer;
-    return writer.write(this->jsonValor);
+    //Json::FastWriter writer;
+    Json::StyledWriter writer;
+    string jsonString = writer.write(this->jsonValor);
+    Logger::Instance()->log(DEBUG, "Json String:\n" + jsonString);
+    return jsonString;
 }
 
 JsonValor::~JsonValor()

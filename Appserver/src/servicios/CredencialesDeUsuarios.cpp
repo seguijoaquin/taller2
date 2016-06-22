@@ -42,11 +42,14 @@ void CredencialesDeUsuarios::agregarUsuarioYCredenciales(string usuario, string 
     JsonObject datos;
     datos.agregarClaveValor("password",password);
     datos.agregarClaveValor("idShared",idShared);
+    Logger::Instance()->log(INFO, "Se agrega un nuevo usuario a las credenciales");
+    Logger::Instance()->log(DEBUG, "Credenciales guardadas del usuario: "+ usuario + ":\n" + datos.toString());
     this->credenciales->put(usuario,datos.toString());
 }
 
 
 void CredencialesDeUsuarios::eliminiarUsuario(string usuario){
+    Logger::Instance()->log(INFO, "Se intenta eliminar a: " + usuario);
     this->credenciales->eliminar(usuario);
 }
 

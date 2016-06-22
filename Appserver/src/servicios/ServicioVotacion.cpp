@@ -1,6 +1,7 @@
 #include "ServicioVotacion.h"
 
 ServicioVotacion::ServicioVotacion(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, AdministradorCandidatos* administradorCandidatos, Mensajero* mensajero){
+    Logger::Instance()->log(INFO, "Se crea el Servicio de Votacion");
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->administradorCandidatos = administradorCandidatos;

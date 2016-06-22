@@ -22,12 +22,16 @@ string ListadoDeIntereses::toString(){
     }
     JsonObject listado;
     listado.agregarClaveValor("interests", intereses);
-    return listado.toString();
+
+    string listadoString = listado.toString();
+    Logger::Instance()->log(DEBUG, "Listado de intereses toString():\n" + listadoString);
+    return listadoString;
 }
 
 
 
 void ListadoDeIntereses::agregarIntereses(string jsonListadoIntereses){
+    Logger::Instance()->log(INFO, "Se agregan intereses al listado de intereses");
     JsonObject jsonListado(jsonListadoIntereses);
     JsonArray arrayIntereses = jsonListado.getJsonArray("interests");
 
@@ -63,6 +67,7 @@ Interes ListadoDeIntereses::getInteres(int i){
         return this->intereses[i-1];
     }
     else{
+        Logger::Instance()->log(WARNING, "En el listado de intereses se pidio un Interes fuera de rango, se devuelve un interes vacio");
         return Interes("");
     }
 }

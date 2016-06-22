@@ -3,6 +3,8 @@
 #include "servicioRegistro.h"
 
 #define MAXIMOS_MILISEGUNDOS_ESPERA 1000
+const string HEADER_HOST = "Host";
+
 
 using namespace std;
 
@@ -63,7 +65,7 @@ void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int ev
                 */
                 string respuesta = ((Servidor*)(conexion->user_data))->getRespuestaDelServicio(MensajeHTTPRequest(mensajeHTTP));
 
-                Logger::Instance()->log(DEBUG,"Respuesta del servicio " + respuesta);
+                Logger::Instance()->log(DEBUG,"Respuesta del servicio:\n" + respuesta);
                 mg_printf(conexion,"%s",StringUtil::stringToChar(respuesta));
                 conexion->flags |= MG_F_SEND_AND_CLOSE;
                 mbuf_remove(recvBuffer, recvBuffer->len);
@@ -80,7 +82,7 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* re
 
     ClienteDelSharedServer cliente;
 
-    string direccion = request->getHeader("Host");
+    string direccion = request->getHeader(HEADER_HOST);
     //REFACTORIZAR: SI TIENE "LOCALHOST"
     if (direccion != "localhost:5000"){
         direccion = direccion + ":" + puertoLocal;
@@ -103,12 +105,14 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* re
     //ESTO NO ES NECESARIO CON EL CLIENTE PROPIO, CONEXION ACTIVA ALCANZA
     cliente.esperarRespuesta();//aca el cliente implmenta el loop de espera
 
+    MensajeHTTPReply respuesta = cliente.getRespuesta();
     Logger::Instance()->log(INFO,"Se obtuvo una respuesta de " + direccion);
-    Logger::Instance()->log(DEBUG,"HTTP Reply de "+ direccion + ":\n"+ cliente.getRespuesta().toString());
-    return cliente.getRespuesta();
+    Logger::Instance()->log(DEBUG,"HTTP Reply de "+ direccion + ":\n"+ respuesta.toString());
+    if (respuesta.getCodigo() == 0){
+        Logger::Instance()->log(ERROR,"Direccion invalida: " + direccion);
+    }
+    return respuesta;
 }
-
-
 
 
 void ManejadorDeConexiones::handlerCliente(struct mg_connection* conexion, int evento, void* ev_data){

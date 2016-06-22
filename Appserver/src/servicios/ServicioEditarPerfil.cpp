@@ -1,6 +1,9 @@
 #include "ServicioEditarPerfil.h"
 
 ServicioEditarPerfil::ServicioEditarPerfil(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, CredencialesDeUsuarios* credenciales){
+
+    Logger::Instance()->log(INFO, "Se crea el Servicio de Edicion de Perfil");
+
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;

@@ -1,10 +1,7 @@
 #include "servicioLogin.h"
 
-
-
-
-
 servicioLogin::servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+    Logger::Instance()->log(INFO, "Se crea el Servicio de Login");
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;
     this->sesionesDeUsuarios = sesionesDeUsuarios;
@@ -18,11 +15,9 @@ void servicioLogin::atenderLogin(){
     }
     else{
         //SI ALGUNO DE LOS DOS DATOS ESTA INCORRECTO, SE LE MANDA UN MENSAJE GENERAL DE QUE HAY DATOS INCORRECTOS
-        //Refactorizar: respuesta = MENSAJE_DATOS__LOGIN_ERRONEOS;
         RespuestaDelLogin* respuestaLogin = new RespuestaDelLogin();
         respuestaLogin->setRespuestaLoginIncorrecto();
         this->respuesta = respuestaLogin;
-        //this->respuesta = "HTTP/1.1 400 No coinciden los datos\r\n\r\n";
     }
 }
 
@@ -48,7 +43,6 @@ void servicioLogin::realizarLogin(){
     RespuestaDelLogin* respuestaLogin = new RespuestaDelLogin();
     respuestaLogin->setRespuestaLoginCorrecto(token);
     this->respuesta = respuestaLogin;
-    //this->respuesta = "HTTP/1.1 200 Se logueo correctamente\r\nToken:" + token + "\r\n\r\nbody\0";
 }
 
 string servicioLogin::generarToken(){
@@ -56,13 +50,6 @@ string servicioLogin::generarToken(){
     return "123456abcdef";
 
 }
-
-
-
-/*string servicioLogin::getRespuesta(){
-    return this->respuesta;
-}
-*/
 
 servicioLogin::~servicioLogin(){
     //dtor

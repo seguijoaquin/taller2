@@ -28,17 +28,13 @@ MensajeHTTPRequest SharedDataBase::armarRequest(string metodo, string uri, strin
 
 MensajeHTTPReply SharedDataBase::enviarHTTPRequest(string metodo, string uri, string bodyJson){
     MensajeHTTPRequest request = this->armarRequest(metodo, uri, bodyJson);
-    cout<<"REQUEST DEL SHARED: \n"<<request.toString()<<"\n";
+    Logger::Instance()->log(INFO, "Se envia un mensaje al Shared Server");
     return this->conexiones->enviarMensajeHTTP(&request,"80");
 }
 
 
 
-
-
-//int SharedDataBase::registrarUsuario(string bodyJson){
 int SharedDataBase::registrarUsuario(Usuario& usuario){
-    //MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",bodyJson);
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("POST", "/users/",usuario.toString());
 
 
@@ -55,9 +51,6 @@ int SharedDataBase::registrarUsuario(Usuario& usuario){
 
 Usuario SharedDataBase::obtenerPerfilDelUsuario(int idUsuario){
     MensajeHTTPReply respuestaShared = this->enviarHTTPRequest("GET", this->armarURIDeUsuario(idUsuario) ,"");
-
-    //Refactorizar: CODIGO_ALTA_CORRECTA.... etc
-    //if (respustaShared.getCodigo() == 201){ //POR ALGUNA RAZON LO CAMBIARON A 200 EN EL SHARED
 
     /*int idCliente = 0;
     if (respuestaShared.getCodigo() == 201){

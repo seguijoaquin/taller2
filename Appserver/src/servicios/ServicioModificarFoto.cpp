@@ -1,6 +1,7 @@
 #include "ServicioModificarFoto.h"
 
 ServicioModificarFoto::ServicioModificarFoto(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, CredencialesDeUsuarios* credenciales){
+    Logger::Instance()->log(INFO, "Se crea el Servicio para Modificar la Foto de Perfil");
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;

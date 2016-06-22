@@ -13,47 +13,29 @@ Mensajero::~Mensajero()
 
 
 bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
-
+    Logger::Instance()->log(INFO, "Se va a enviar un mensaje de "+ emisor + " a " + receptor +":\n" + mensaje);
     MensajeHTTPRequestGCM requestGCM;
-    ////////////////////////////////REFACTORIZAR//////////////////////////////////////
-    //Json::Value bodyJson = Json::objectValue;
-    //Json::Value dataJson = Json::objectValue;
     JsonObject dataJson;
-    //dataJson["Emisor"] = emisor;
-    //dataJson["Mensaje"] = mensaje;
     dataJson.agregarClaveValor("Emisor",emisor);
     dataJson.agregarClaveValor("Mensaje",mensaje);
 
-    JsonObject bodyJson;
-    //string GCMToken= this->mensajeHTTP->getHeader("GChigihgMToken");
-    //bodyJson["to"] = GCMToken;
-    //Hardcodeado el cluente de mi comopu
-    //Aca deberia sacar el token de las sesiones
+
     string tokenGCM = this->sesiones->getTokenGCMDe(receptor);
-    //bodyJson.agregarClaveValor("to","APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ");
+
+    this->armarBodyDelMensaje(tokenGCM, requestGCM, dataJson);
+    /*JsonObject bodyJson;
     bodyJson.agregarClaveValor("to",tokenGCM);
     bodyJson.agregarClaveValor("data",dataJson);
-    //bodyJson["to"] = "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ";
-    //bodyJson["data"] = dataJson;
-    //Json::FastWriter escritor;
-    //requestGCM.setBody( escritor.write(bodyJson) );
     requestGCM.setBody( bodyJson.toString() );
+    */
 
-
-    MensajeHTTPReply GCMreply = this->conexiones->enviarMensajeHTTP(&requestGCM,"80");
-    cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
-
-    //FALTARIA COMPARAR EL BODY QUE ES EL QUE DICE SI FUE SUCCES O FAIL
-    return (GCMreply.getCodigo() == 200);
-
+    return this->enviarMensaje(requestGCM);
 }
 
 bool Mensajero::notificarUsuarioSobreMatchCon(string usuario, string match){
-    cout<<"Se va a notificar\n";
+    Logger::Instance()->log(INFO, "Se va a notificar al usuario "+usuario+" sobre su match con "+match);
     MensajeHTTPRequestGCM requestGCM;
-
     string tokenGCM = this->sesiones->getTokenGCMDe(usuario);
-
     JsonObject dataJson;
     dataJson.agregarClaveValor("Email", match);
     dataJson.agregarClaveValor("Nombre","NOMBRE HARDCODEADO"+match);
@@ -71,8 +53,17 @@ void Mensajero::armarBodyDelMensaje(string tokenGCM, MensajeHTTPRequestGCM& requ
 
 
 bool Mensajero::enviarMensaje(MensajeHTTPRequestGCM& requestGCM){
+    Logger::Instance()->log(DEBUG, "HTTP Request que se envia a GCM:\n" + requestGCM.toString());
     MensajeHTTPReply GCMreply = this->conexiones->enviarMensajeHTTP(&requestGCM,"80");
-    cout<<"Mensaje de respuesta de GCM:\n"<<GCMreply.toString()<<"\n";
-    //FALTARIA COMPARAR EL BODY QUE ES EL QUE DICE SI FUE SUCCES O FAIL
-    return (GCMreply.getCodigo() == 200);
+    Logger::Instance()->log(DEBUG, "HTTP Reply que viene de GCM:\n" + GCMreply.toString() );
+
+    JsonObject bodyGCM(requestGCM.getBody());
+
+    if (  (GCMreply.getCodigo() != 200)  || (bodyGCM.getInt("failure") == 1)  ){
+        Logger::Instance()->log(ERROR, "Error en Google Cloud Messaging" + requestGCM.toString());
+        return false;
+    }
+    else{
+        return true;
+    }
 }

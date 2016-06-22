@@ -14,6 +14,7 @@ ListadoDeUsuarios::~ListadoDeUsuarios(){
 }
 
 void ListadoDeUsuarios::agregarUsuarios(string jsonListadoUsuarios){
+    Logger::Instance()->log(INFO, "Se agregan usuarios al listado de usuarios");
     JsonObject jsonListado(jsonListadoUsuarios);
     JsonArray arrayUsuarios = jsonListado.getJsonArray("users");
 
@@ -43,11 +44,11 @@ void ListadoDeUsuarios::agregarUsuario(string jsonUsuario){
 
 
 Usuario ListadoDeUsuarios::getUsuario(string usuario){
-    //PRECONDICION: EL USUARIO EXISTE
     if (this->usuarioExiste(usuario)){
         return ((this->usuarios[usuario]));
     }
     else{
+        Logger::Instance()->log(WARNING, "El listado de usuarios devuelve un Usuario vacio");
         return Usuario();
     }
 }

@@ -26,6 +26,7 @@ Mensajes Conversaciones::obtenerCantidadMensajesDesdeEntre(int cantidad, int des
 
     int limite = cantidadMensajesTotales - desde - cantidad + 2;
     if (limite < 1 ){
+        Logger::Instance()->log(WARNING, "Se limite de mensajes pedidos es menor a 1 ");
         limite = 1;
     }
     for (int i = ( cantidadMensajesTotales - desde + 1); i >= limite ; i--){
@@ -60,7 +61,7 @@ void Conversaciones::agregarMensajeDePara(string& emisor, string& receptor, stri
     //IMPORTANTE: aca puede haber problemas de performance, si todo el tiempo esta accediendo a la base de datos
     //Se podria hacer que Conversaciones o alguien tenga una lista de conversaciones de gente que esta logueada
     //La modificacion podria hacerse en this->guardarConversacion
-
+    Logger::Instance()->log(INFO, "Se agrega un mensaje de " + emisor + " para " + receptor + "\n" + mensaje);
     Mensajes todosLosMensajes(this->obtenerTodosLosMensajesEntre(emisor,receptor));
     todosLosMensajes.agregarMensaje(emisor,mensaje);
     this->guardarConversacion(emisor,receptor,todosLosMensajes);

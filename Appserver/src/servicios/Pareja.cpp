@@ -37,7 +37,10 @@ Pareja::Pareja(string texto){
 string Pareja::toString(){
     string votoUsuario1 = StringUtil::int2string(this->votosDeUsuarios[usuario1]);
     string votoUsuario2 = StringUtil::int2string(this->votosDeUsuarios[usuario2]);
-    return (this->usuario1 + " " + this->usuario2 + " " + votoUsuario1 + " " + votoUsuario2);
+    string parejaString = this->usuario1 + " " + this->usuario2 + " " + votoUsuario1 + " " + votoUsuario2;
+
+    Logger::Instance()->log(DEBUG, "Pareja toString(): " + parejaString);
+    return parejaString;
 }
 
 Pareja::~Pareja()

@@ -11,6 +11,7 @@ BaseDeDatos::BaseDeDatos(string ruta){
     //Lanzar errores si fuera necesario
     //WARNING: no se si las opciones pueden perder scope antes de que se destruya la base de datos, si no puede--> options variable privada
     rocksdb::Status status = rocksdb::DB::Open(options, ruta, &(this->datos));
+    Logger::Instance()->log(INFO, "Se abre una base de datos en " + ruta);
 }
 
 BaseDeDatos::~BaseDeDatos(){
@@ -26,6 +27,9 @@ string BaseDeDatos::get(string clave){
     //NO se modifica el contenido de la varaiable valor si no se encuentra la clave
     string valor = VALOR_DE_CLAVE_NO_ENCONTRADA;
     this->datos->Get(rocksdb::ReadOptions(), clave, &valor );
+    if (!this->existe(clave)){
+        Logger::Instance()->log(WARNING, "Clave " + clave + " no encontrada");
+    }
     return valor;
 }
 

@@ -6,6 +6,7 @@ Interes::Interes(string jsonInteres){
 
     this->categoria = datos.getString("category");
     this->valor = datos.getString("value");
+    Logger::Instance()->log(INFO, "Se crea interes "+ categoria + ": " + valor);
 }
 
 Interes::~Interes()

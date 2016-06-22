@@ -1,8 +1,8 @@
 #include "ServicioMensajes.h"
 
 ServicioMensajes::ServicioMensajes(MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
+    Logger::Instance()->log(INFO, "Se crea el Servicio para pedir Mensajes");
     this->mensajeHTTP = mensajeHTTP;
-    //this->sesiones = sesiones;
     this->conversaciones = conversaciones;
 
     this->atenderMensajes();
@@ -16,19 +16,11 @@ ServicioMensajes::~ServicioMensajes(){
 void ServicioMensajes::atenderMensajes(){
     string usuario1 = this->mensajeHTTP->getHeader("Usuario1");
     string tokenIngresado = this->mensajeHTTP->getHeader("Token");
-
-/*    //if (this->sesiones->validarTokenConUsuario(usuario1, tokenIngresado)){
-    if (true){
-        if (true){//Ahora me tengo que fijar si hubo match
-*/
-            //aca SI hubo match y tengo el token correcto
     string usuario2 = this->mensajeHTTP->getHeader("Usuario2");
     string desde = this->mensajeHTTP->getHeader("Desde");
     string cantidad = this->mensajeHTTP->getHeader("Cantidad");
 
     Mensajes mensajes = this->conversaciones->obtenerCantidadMensajesDesdeEntre(StringUtil::str2int(cantidad),StringUtil::str2int(desde),usuario1,usuario2);
-    //string mensajesPedidos = mensajes.toString();
-    //delete mensajes;
 
     RespuestaMensajes* respuestaMensajes = new RespuestaMensajes();
     respuestaMensajes->setMensajesComoRespuesta(mensajes);
@@ -44,8 +36,4 @@ void ServicioMensajes::atenderMensajes(){
     }
 */
 }
-
-/*string ServicioMensajes::getRespuesta(){
-    return this->respuesta;
-}*/
 

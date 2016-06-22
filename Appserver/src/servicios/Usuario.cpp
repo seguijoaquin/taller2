@@ -9,6 +9,7 @@ Usuario::Usuario(){
 Usuario::Usuario(string jsonUsuario){
     this->perfil = JsonObject(jsonUsuario).getJsonObject("user");
     this->email = this->perfil.getString("email");
+    Logger::Instance()->log(INFO, "Se crea usuario " + this->getEmail());
 }
 
 Usuario::~Usuario(){

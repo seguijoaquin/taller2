@@ -39,6 +39,7 @@ void Candidatos::registrarNotificacionAUsuarioSobreCandidato(string usuario, str
     else{
         pareja = new Pareja(usuario,candidato);
     }
+    Logger::Instance()->log(INFO, "Se notifica a " + usuario + " sobre el candidato "+candidato);
     pareja->notificarUsuario(usuario);
     this->guardarPareja(usuario, candidato, pareja);
     delete pareja;
@@ -56,12 +57,14 @@ bool Candidatos::usuarioFueNotificadoSobreElCandidato(string usuario, string can
 
 bool Candidatos::usuarioVotaAFavorDe(string usuario1, string usuario2, bool votoAFavor){
     if ( this->existePareja(usuario1, usuario2) ){
+        Logger::Instance()->log(INFO, usuario1 + "voto por " + usuario2);
         Pareja pareja( this->obtenerPareja(usuario1, usuario2) );
         pareja.usuarioVota(usuario1, votoAFavor);
         this->guardarPareja(usuario1, usuario2, &pareja);
         return pareja.hayMatch();
     }
     else{
+        Logger::Instance()->log(WARNING, usuario1 + " intento votar por un usuario en una Pareja que no existe");
         return false;
     }
 }

@@ -1,6 +1,7 @@
 #include "ServicioPedirInformacion.h"
 
 ServicioPedirInformacion::ServicioPedirInformacion(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, CredencialesDeUsuarios* credenciales){
+    Logger::Instance()->log(INFO, "Se crea el Servicio para Pedir Informacion sobre un Usuario");
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;

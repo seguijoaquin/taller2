@@ -5,6 +5,7 @@
 #include <map>
 #include <set>
 #include <math.h>
+#include "Logger.h"
 
 using namespace std;
 

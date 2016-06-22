@@ -1,6 +1,7 @@
 #include "ServicioChat.h"
 
 ServicioChat::ServicioChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
+    Logger::Instance()->log(INFO, "Se crea el Servicio de Chat");
     this->mensajero = mensajero;
     this->mensajeHTTP = mensajeHTTP;
     //this->sesiones = sesiones;

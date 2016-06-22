@@ -31,6 +31,7 @@ Usuario* AdministradorCandidatos::buscarCandidatoPara(string usuario){
             candidato = new Usuario(candidatoActual);
             this->candidatos.registrarNotificacionAUsuarioSobreCandidato(usuarioPrincipal.getEmail(), candidato->getEmail());
             this->estadisticas.contabilizarCandidatoPara(usuarioPrincipal.getEmail());
+            Logger::Instance()->log(DEBUG, "Se le entrega a "+ usuario + " un candidato:\n" + candidato->toString());
         }
     }
     return candidato;

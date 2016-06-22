@@ -4,6 +4,7 @@
 #include "StringUtil.h"
 #include <iostream>
 #include <map>
+#include "Logger.h"
 
 using namespace std;
 

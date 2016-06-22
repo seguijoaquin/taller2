@@ -35,9 +35,7 @@ string Mensajes::getEmisor(int nroMensaje){
     if (this->indiceValido(indice)){
         JsonValor aux = (this->jArray)[indice];
         JsonObject* mensaje = (JsonObject*) &aux;
-        string emisor = ( (*mensaje)["emisor"].toString() );
-        //Le saco las comillas (formato Json)
-        emisor = emisor.substr(1, emisor.size() - 3);
+        string emisor = mensaje->getString("emisor");
         return emisor;
 
     }
@@ -51,10 +49,7 @@ string Mensajes::getMensaje(int nroMensaje){
     if (this->indiceValido(indice)){
         JsonValor aux = (this->jArray)[indice];
         JsonObject* mensajeJson = (JsonObject*) &aux;
-
-        string mensaje = ( (*mensajeJson)["mensaje"].toString() );
-        //Le saco las comillas y el '\n' (formato Json)
-        mensaje = mensaje.substr(1, mensaje.size() - 3);
+        string mensaje = mensajeJson->getString("mensaje");
         return mensaje;
 
 
@@ -67,6 +62,7 @@ string Mensajes::getMensaje(int nroMensaje){
 }
 
 string Mensajes::toString(){
+    Logger::Instance()->log(DEBUG, "Mensaje toString()");
     return this->jArray.toString();
 }
 

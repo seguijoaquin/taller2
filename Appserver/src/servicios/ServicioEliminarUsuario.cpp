@@ -1,6 +1,8 @@
 #include "ServicioEliminarUsuario.h"
 
 ServicioEliminarUsuario::ServicioEliminarUsuario(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, CredencialesDeUsuarios* credenciales, SesionesDeUsuarios* sesiones){
+    Logger::Instance()->log(INFO, "Se crea el Servicio para Eliminar Usuario");
+
     this->shared = shared;
     this->mensajeHTTP = mensajeHTTP;
     this->credenciales = credenciales;

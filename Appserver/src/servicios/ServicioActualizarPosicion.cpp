@@ -1,6 +1,7 @@
 #include "ServicioActualizarPosicion.h"
 
 ServicioActualizarPosicion::ServicioActualizarPosicion(SharedDataBase* shared, CredencialesDeUsuarios* credenciales, MensajeHTTPRequest* mensaje){
+    Logger::Instance()->log(INFO, "Se crea el Servicio Actualizar Posicion");
     this->shared = shared;
     this->credenciales = credenciales;
     this->mensajeHTTP = mensaje;

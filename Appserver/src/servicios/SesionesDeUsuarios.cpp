@@ -12,14 +12,19 @@ bool SesionesDeUsuarios::existeSesionDe(string usuario){
 }
 
 bool SesionesDeUsuarios::validarTokenConUsuario(string usuario, string token){
-    return ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario].token ==  token) );
+    bool esValido = ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario].token ==  token) );
+    if (!esValido){
+        Logger::Instance()->log(WARNING, "Token y Usuario no son validos");
+    }
+    return esValido;
+
 
 }
 
 void SesionesDeUsuarios::agregarSesionDe(string usuario, string token, string tokenGCM){
     this->tokensDeSesionesDeUsuario[usuario].token = token;
     this->tokensDeSesionesDeUsuario[usuario].tokenGCM = tokenGCM;
-
+    Logger::Instance()->log(INFO, "Se inicio la sesion de "+ usuario);
 }
 
 
@@ -28,12 +33,14 @@ string SesionesDeUsuarios::getTokenGCMDe(string usuario){
         return this->tokensDeSesionesDeUsuario[usuario].tokenGCM;
     }
     else{
+        Logger::Instance()->log(WARNING, "No se tiene el TokenGCM de "+ usuario);
         return "";
     }
 }
 
 void SesionesDeUsuarios::eliminarUsuario(string usuario){
     this->tokensDeSesionesDeUsuario.erase(usuario);
+    Logger::Instance()->log(INFO, "Se elimino "+ usuario);
 }
 
 SesionesDeUsuarios::~SesionesDeUsuarios()
