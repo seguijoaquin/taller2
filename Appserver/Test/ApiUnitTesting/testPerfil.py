@@ -15,6 +15,7 @@ class TestManejarPerfil(unittest.TestCase):
 
     def compararJsonsPosicion(self, perfilEsperado,perfilPedido):
         self.assertAlmostEqual(perfilEsperado["location"]["latitude"], perfilPedido["location"]["latitude"], places=3, msg=None, delta=None)
+        self.assertAlmostEqual(perfilEsperado["location"]["longitude"], perfilPedido["location"]["longitude"], places=3, msg=None, delta=None)
 
     def compararPerfilEsperadConElObtenido(self,perfilEsperado,perfilPedido):
         self.compararJsons(perfilEsperado,perfilPedido, "email")
@@ -32,5 +33,19 @@ class TestManejarPerfil(unittest.TestCase):
         perfilEsperado = Utilities.abrirUsuarioConEmail(usuario)["user"]
 
         self.compararPerfilEsperadConElObtenido(perfilEsperado,perfilPedido)
+
+        self.usuariosParaBorrar.extend([usuario])
+
+    def test_ActualizarPosicion(self):
+        usuario = "test_ActualizarPosicion1"
+        tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
+        #VALORES DIFERENTES A LOS QUE SE CARGAN EN EL JSON DE Utilities.registrarYLoguearAlUsuarioSinEmail
+        nuevaLatitud = 55.4444000
+        nuevaLongitud = 15.4243744
+        Utilities.modificarPosicion(usuario,tokenSesion, nuevaLatitud, nuevaLongitud)
+
+        perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
+        self.assertAlmostEqual(perfilPedido["location"]["latitude"], nuevaLatitud, places=3, msg=None, delta=None)
+        self.assertAlmostEqual(perfilPedido["location"]["longitude"], nuevaLongitud, places=3, msg=None, delta=None)
 
         self.usuariosParaBorrar.extend([usuario])

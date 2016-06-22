@@ -7,6 +7,7 @@ URILogin = "/login"
 URIPedirCandidato = "/perfil"
 URIEliminar = "/eliminar"
 URIPedirUsuario = "/info"
+URIModificarPosicion = "/gps"
 
 
 def abrirJson(ruta):
@@ -49,6 +50,16 @@ def pedirPerfil(usuario, token, usuarioPedido):
     headPedirUsuario = {'Usuario': usuario, "Token": token, "UsuarioPedido": usuarioPedido}
     replyInfo = requests.get(Address + URIPedirUsuario, headers=headPedirUsuario)
     return replyInfo.json()
+
+
+def modificarPosicion(usuario,token, nuevaLatitud, nuevaLongitud):
+    nuevaPosicion = {}
+    nuevaPosicion["latitude"] = nuevaLatitud
+    nuevaPosicion["longitude"] = nuevaLongitud
+    headerModificarPosicion = {'Usuario': usuario, "Token": token}
+    requests.put(Address + URIModificarPosicion, headers=headerModificarPosicion, data=json.dumps(nuevaPosicion))
+
+
 
 
 
