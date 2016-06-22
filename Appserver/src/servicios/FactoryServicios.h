@@ -28,6 +28,10 @@
  * https://es.wikipedia.org/wiki/Factory_Method_(patr%C3%B3n_de_dise%C3%B1o)
  */
 
+/** Clase que implementa el patron de diseño Factory
+ * https://es.wikipedia.org/wiki/Factory_Method_(patr%C3%B3n_de_dise%C3%B1o)
+ */
+
 class FactoryServicios
 {
     public:
