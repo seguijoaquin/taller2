@@ -8,6 +8,8 @@
 #include "MensajeHTTPRequest.h"
 #include "ClienteDelSharedServer.h"
 
+#include "Logger.h"
+
 //#include "Servidor.h"
 class Servidor;
 
@@ -15,7 +17,7 @@ class Servidor;
 
 using namespace std;
 
-/** Clase que se encarga de gestionar las conexiones al servidor.*/
+/** Clase que se encarga de gestionar las conexiones como servidor y conexiones externas.*/
 
 class ManejadorDeConexiones
 {
@@ -24,18 +26,15 @@ class ManejadorDeConexiones
         virtual ~ManejadorDeConexiones();
 
 
-        /** Inicia como servidor para permitir la recepcion de mensajes http*/
+        /** Inicia como servidor para permitir la recepcion de mensajes HTTP*/
         void iniciarConexionComoServidor(string puerto, Servidor* servidor);
 
         /** Deja de escuchar y permitir la recepcion de mensajes.*/
         void terminarConexionComoServidor();
-        //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
 
-        //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
-        //MensajeHTTPReply enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host);
 
-        /** Envia un mensaje HTTP al shared server y nos devuelve espera la respuesta
-        * como un MensajeHTTPReply
+        /** Envia un mensaje HTTP al host indicado en el request y devuelve la respuesta
+        *  al mensaje enviado
         */
         MensajeHTTPReply enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal);
 
