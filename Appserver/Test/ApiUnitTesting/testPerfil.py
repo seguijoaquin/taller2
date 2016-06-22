@@ -49,3 +49,37 @@ class TestManejarPerfil(unittest.TestCase):
         self.assertAlmostEqual(perfilPedido["location"]["longitude"], nuevaLongitud, places=3, msg=None, delta=None)
 
         self.usuariosParaBorrar.extend([usuario])
+
+
+
+
+    def test_ActualizarFotoDePerfil(self):
+        usuario = "test_ActualizarFotoDePerfil"
+        tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
+        nuevaFoto = "foto_en_base_64_solamente_es_un_string_muy_muy_largo"
+        Utilities.modificarFotoPerfil(usuario,tokenSesion, nuevaFoto)
+
+        perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
+        self.assertEqual(nuevaFoto, perfilPedido["photo_profile"])
+        self.usuariosParaBorrar.extend([usuario])
+
+    def test_ModificarDatosDelPerfil(self):
+        usuario = "test_ModificarDatosDelPerfil"
+        tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
+        #pido el perfil inicial
+        perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
+
+        #lo copio a un nuevo perfil
+        nuevoPerfil = perfilPedido
+        #lo modifico
+        nuevoPerfil["name"] = "NUEVO_NOMBRE_DE_test_ActualizarFotoDePerfil"
+        nuevoPerfil["alias"] = "NUEVO_ALIAS_DE_test_ActualizarFotoDePerfil"
+        nuevoPerfil["alias"] = "NUEVO_ALIAS_DE_test_ActualizarFotoDePerfil"
+        nuevoPerfil["age"] = 99
+        #mando la modificacion
+        Utilities.modificarPerfil(usuario, tokenSesion, nuevoPerfil)
+        #lo pido de nuevo
+        perfilPedidoLuegoDeLaModificacion = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
+        #EL nuevo perfil pedido debe ser igual al perfil modificado
+        self.compararPerfilEsperadConElObtenido(nuevoPerfil,perfilPedidoLuegoDeLaModificacion)
+        self.usuariosParaBorrar.extend([usuario])

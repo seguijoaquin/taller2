@@ -8,6 +8,8 @@ URIPedirCandidato = "/perfil"
 URIEliminar = "/eliminar"
 URIPedirUsuario = "/info"
 URIModificarPosicion = "/gps"
+URIModificarFoto = "/foto"
+URIModificarPerfil = "/editar"
 
 
 def abrirJson(ruta):
@@ -61,12 +63,18 @@ def modificarPosicion(usuario,token, nuevaLatitud, nuevaLongitud):
 
 
 
-
-
-
-
 def borrarUsuarios(usuariosParaBorrar):
     for usuario in usuariosParaBorrar:
         headEliminarUsuario = {'Usuario': usuario,'Password': "password" }
         replyDelete = requests.delete(Address + URIEliminar, headers=headEliminarUsuario)
     del usuariosParaBorrar[:]
+
+def modificarFotoPerfil(usuario, token, nuevaFoto):
+    headModificarFoto = {'Usuario': usuario, "Token": token}
+    requests.put(Address + URIModificarFoto, headers=headModificarFoto, data=nuevaFoto)
+
+def modificarPerfil(usuario, token, nuevoPerfil):
+    headModificarPerfil = {'Usuario': usuario, "Token": token}
+    bodyAMandar = {}
+    bodyAMandar["user"] = nuevoPerfil
+    requests.put(Address + URIModificarPerfil, headers=headModificarPerfil, data=json.dumps(bodyAMandar))
