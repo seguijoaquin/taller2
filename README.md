@@ -32,17 +32,10 @@ Para poder iniciar una conversación entre dos usuarios es necesario que exista 
 
 ## Librerias externas
 
-
-Base de datos RocksDB, para instalarlo:
-
-```
-> ./instalar_rocksdb.sh
-```
-
-Framework de testing Google tests, para instalarlo:
+Base de datos RocksDB, Framework de testing Google tests, junto con Google Mock para instalarlos:
 
 ```
-> ./instalar_googletest.sh
+> ./instalar_dependencias.sh
 ```
 
 (se instala como una biblioteca dinamica)
@@ -61,13 +54,13 @@ Se utiliza jsoncpp como parser; no es necesaria su instalacion previa.
 > cd Appserver
 > mkdir build
 > cd build
-> cmake ../src
+> cmake ../
 > make
 ```
 
 ### Utilizacion:
 ```
-> ./Appserver
+> ./src/Appserver
 ```
 
 
