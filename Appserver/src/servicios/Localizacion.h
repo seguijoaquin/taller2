@@ -9,6 +9,8 @@
 
 using namespace std;
 
+/** Clase que gestiona la localizacion y la logica de calculo de distancias*/
+
 class Localizacion
 {
     public:
@@ -22,6 +24,9 @@ class Localizacion
         void setLatitud(double latitud);
         void setLongitud(double longitud);
 
+        /** Devuelve la distancia entre la localizacion que llama al metodo y
+        * la pasada por parametro.
+        */
         double getDistancia(Localizacion& localizacion);
     protected:
     private:

@@ -3,6 +3,9 @@
 
 #include "MensajeHTTPReply.h"
 
+/** Clase que abstrae el formato interno de respuestas que generan
+* los distintos servicios al procesar una peticion
+*/
 
 class RespuestaDelServicio
 {

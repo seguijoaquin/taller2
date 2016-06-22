@@ -15,6 +15,8 @@ class Servidor;
 
 using namespace std;
 
+/** Clase que se encarga de gestionar las conexiones al servidor.*/
+
 class ManejadorDeConexiones
 {
     public:
@@ -22,14 +24,22 @@ class ManejadorDeConexiones
         virtual ~ManejadorDeConexiones();
 
 
-
+        /** Inicia como servidor para permitir la recepcion de mensajes http*/
         void iniciarConexionComoServidor(string puerto, Servidor* servidor);
+
+        /** Deja de escuchar y permitir la recepcion de mensajes.*/
         void terminarConexionComoServidor();
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, servicioRegistro* servicio);
 
         //void iniciarConexionComoCliente(string metodo, string uri, string body, string puertoLocal, string host, ClienteDelSharedServer* cliente);
         //MensajeHTTPReply enviarMensajeHTTP(string metodo, string uri, string body, string puertoLocal, string host);
+
+        /** Envia un mensaje HTTP al shared server y nos devuelve espera la respuesta
+        * como un MensajeHTTPReply
+        */
         MensajeHTTPReply enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal);
+
+
     protected:
     private:
         mg_mgr manager;
