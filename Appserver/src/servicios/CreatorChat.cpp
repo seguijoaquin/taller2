@@ -1,19 +1,12 @@
 #include "CreatorChat.h"
 
-CreatorChat::CreatorChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones){
+CreatorChat::CreatorChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones, AdministradorCandidatos* administrador){
 
-    string usuarioEmisor = mensajeHTTP->getHeader("Usuario");
-    string tokenIngresado = mensajeHTTP->getHeader("Token");
-    string usuarioReceptor = mensajeHTTP->getHeader("Receptor");
-
-
-    //if ( (sesiones->validarTokenConUsuario(usuarioEmisor,tokenIngresado) ) && (true/*chequear match*/ ) ){
-    if ( (true /*sesiones->validarTokenConUsuario(usuarioEmisor,tokenIngresado)*/ ) && (true/*chequear match*/ ) ){
+    if ( (this->validarParametrosDeSesion(mensajeHTTP,sesiones)) && (this->validarMatch(mensajeHTTP,administrador, "Usuario", "Receptor")) ){
         this->servicio = new ServicioChat(mensajero,mensajeHTTP,sesiones, conversaciones);
     }
     else{
         this->servicio = new ServicioInexistente();
-        //this->respuesta = "HTTP/1.1 400 No tiene autorizacion\r\n\r\n";
     }
 }
 

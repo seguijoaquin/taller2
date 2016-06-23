@@ -14,7 +14,7 @@
 class CreatorChat : public CreatorServicio
 {
     public:
-        CreatorChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones);
+        CreatorChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, SesionesDeUsuarios* sesiones, Conversaciones* conversaciones, AdministradorCandidatos* administrador);
         virtual ~CreatorChat();
     protected:
     private:

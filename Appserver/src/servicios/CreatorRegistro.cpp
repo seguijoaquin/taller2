@@ -2,8 +2,7 @@
 
 CreatorRegistro::CreatorRegistro(SharedDataBase* shared, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, AdministradorCandidatos* administradorCandidatos ){
 
-    //DEBE VERIFICAR EL JSON DEL USUARIO
-    if (/*mensajeHTTP.tieneHeader("Usuario") && */ mensajeHTTP.tieneHeader("Password") ){
+    if (  (this->verificarJsonUsuario(mensajeHTTP)) && (mensajeHTTP.tieneHeader("Password") )) {
         this->servicio = new servicioRegistro(shared, mensajeHTTP, credenciales, administradorCandidatos);
     }
     else{
@@ -14,4 +13,11 @@ CreatorRegistro::CreatorRegistro(SharedDataBase* shared, MensajeHTTPRequest mens
 CreatorRegistro::~CreatorRegistro()
 {
     //dtor
+}
+
+
+bool CreatorRegistro::verificarJsonUsuario(MensajeHTTPRequest& mensajeHTTP){
+    Usuario usuarioIngresado(mensajeHTTP.getBody());
+
+    return (usuarioIngresado.getEmail() != "");
 }

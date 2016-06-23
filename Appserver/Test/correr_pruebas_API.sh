@@ -1,7 +1,6 @@
 cp -r ApiUnitTesting/BaseDeDatosInicial/usuariosRegistrados ApiUnitTesting/EntornoDeTesting
+cp -r ApiUnitTesting/BaseDeDatosInicial/Candidatos ApiUnitTesting/EntornoDeTesting
 cp -r ApiUnitTesting/ArchivosIniciales/. ApiUnitTesting/EntornoDeTesting
-#cp  ApiUnitTesting/usuario.json ApiUnitTesting/EntornoDeTesting
-#cp  ApiUnitTesting/usuarioCompleto.json ApiUnitTesting/EntornoDeTesting
 cd ApiUnitTesting/EntornoDeTesting
 ./../../../build/src/Appserver &
 sleep 5

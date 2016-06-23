@@ -13,6 +13,7 @@ class CreatorRegistro : public CreatorServicio
         virtual ~CreatorRegistro();
     protected:
     private:
+        bool verificarJsonUsuario(MensajeHTTPRequest& mensajeHTTP);
 };
 
 #endif // CREATORREGISTRO_H

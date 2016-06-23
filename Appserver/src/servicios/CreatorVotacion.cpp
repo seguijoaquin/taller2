@@ -1,13 +1,7 @@
 #include "CreatorVotacion.h"
 
 CreatorVotacion::CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP,SesionesDeUsuarios* sesiones,AdministradorCandidatos* administradorCandidatos){
-    string usuario1 = mensajeHTTP->getHeader("Usuario");
-    string candidato = mensajeHTTP->getHeader("Candidato");
-    string tokenIngresado = mensajeHTTP->getHeader("Token");
-    string cantidad = mensajeHTTP->getHeader("Resultado");
-
-    //IMPORTANTE VERIFICAR QUE LE HAYA NOTIFICADO EL CANDIDATO AL USUARIO
-    if ( (true /*sesiones->validarTokenConUsuario(usuarioEmisor,tokenIngresado)*/ ) && (true/*chequear match*/ ) ){
+    if ( (this->validarParametrosDeSesion(mensajeHTTP, sesiones) ) && (this->validarNotificacion(mensajeHTTP, administradorCandidatos) )  && (mensajeHTTP->tieneHeader("Resultado")) ){
         this->servicio = new ServicioVotacion(shared,mensajeHTTP,administradorCandidatos, mensajero);
     }
     else{
@@ -18,4 +12,21 @@ CreatorVotacion::CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, M
 CreatorVotacion::~CreatorVotacion()
 {
     //dtor
+}
+
+bool CreatorVotacion::validarNotificacion(MensajeHTTPRequest* mensajeHTTP,AdministradorCandidatos* administradorCandidatos){
+
+    string headerUsuario = "Usuario";
+    string headerCandidato = "Candidato";
+
+    if ( (mensajeHTTP->tieneHeader(headerUsuario)) && (mensajeHTTP->tieneHeader(headerCandidato)) ){
+        string usuario = mensajeHTTP->getHeader(headerUsuario);
+        string candidato = mensajeHTTP->getHeader(headerCandidato);
+
+        return administradorCandidatos->usuarioFueNotificadoSobreCandidato(usuario, candidato);
+    }
+    else{
+        return false;
+    }
+
 }

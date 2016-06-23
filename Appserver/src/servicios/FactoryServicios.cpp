@@ -9,7 +9,7 @@ FactoryServicios::FactoryServicios(ManejadorDeConexiones* conexiones){
     this->shared = new SharedDataBase(this->conexiones, "t2shared.herokuapp.com");
     this->mensajero = new Mensajero(this->conexiones, this->sesiones);
 
-    this->administradorCandidatos = new AdministradorCandidatos(this->shared, this->mensajero);
+    this->administradorCandidatos = new AdministradorCandidatos(this->shared);
 }
 
 FactoryServicios::~FactoryServicios(){
@@ -30,7 +30,7 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     if (compararMetodoHTTP(httpRequest, "POST")){
         if (compararUriHTTP(httpRequest, "/chat")){
 
-            creator = new CreatorChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones);
+            creator = new CreatorChat(this->mensajero,&httpRequest,this->sesiones, this->conversaciones, this->administradorCandidatos);
         }
         else if (compararUriHTTP(httpRequest, "/matcheo")){
             creator = new CreatorVotacion(this->shared, this->mensajero, &httpRequest,this->sesiones, this->administradorCandidatos);
@@ -50,7 +50,7 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
             creator = new CreatorPedirIntereses(this->shared);
         }
         else if (compararUriHTTP(httpRequest, "/info")){
-            creator = new CreatorPedirInformacion(this->shared, &httpRequest, this->credenciales, this->sesiones);
+            creator = new CreatorPedirInformacion(this->shared, &httpRequest, this->credenciales, this->sesiones, this->administradorCandidatos);
         }
         else if (compararUriHTTP(httpRequest, "/test")){
             creator = nullptr;

@@ -2,7 +2,7 @@
 
 CreatorEditarPerfil::CreatorEditarPerfil(SharedDataBase* shared, MensajeHTTPRequest* mensaje, SesionesDeUsuarios* sesiones, CredencialesDeUsuarios* credenciales){
 
-    if (true /*VERIFICAR TOKEN Y HEADERS*/){
+    if (this->validarParametrosDeSesion(mensaje,sesiones) ){
         this->servicio = new ServicioEditarPerfil(shared,mensaje,credenciales);
     }
     else{

@@ -4,8 +4,6 @@
 #include <CreatorServicio.h>
 
 #include "ServicioVotacion.h"
-#include "SesionesDeUsuarios.h"
-#include "ServicioInexistente.h"
 
 class CreatorVotacion : public CreatorServicio
 {
@@ -14,6 +12,7 @@ class CreatorVotacion : public CreatorServicio
         virtual ~CreatorVotacion();
     protected:
     private:
+        bool validarNotificacion(MensajeHTTPRequest* mensajeHTTP,AdministradorCandidatos* administradorCandidatos);
 };
 
 #endif // CREATORVOTACION_H

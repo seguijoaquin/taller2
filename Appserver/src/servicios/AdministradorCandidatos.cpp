@@ -1,8 +1,7 @@
 #include "AdministradorCandidatos.h"
 
-AdministradorCandidatos::AdministradorCandidatos(SharedDataBase* shared, Mensajero* mensajero){
+AdministradorCandidatos::AdministradorCandidatos(SharedDataBase* shared){
     this->shared = shared;
-    this->mensajero = mensajero;
 }
 
 AdministradorCandidatos::~AdministradorCandidatos(){
@@ -70,3 +69,8 @@ bool AdministradorCandidatos::hayMatchEntre(string usuario1, string usuario2){
     return this->candidatos.hayMatchEntre(usuario1, usuario2);
 }
 
+
+
+bool AdministradorCandidatos::usuarioFueNotificadoSobreCandidato(string usuario, string candidato){
+    return this->candidatos.usuarioFueNotificadoSobreElCandidato(usuario,candidato);
+}

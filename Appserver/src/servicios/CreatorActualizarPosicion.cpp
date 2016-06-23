@@ -2,7 +2,8 @@
 
 CreatorActualizarPosicion::CreatorActualizarPosicion(SharedDataBase* shared, MensajeHTTPRequest* mensaje, SesionesDeUsuarios* sesiones, CredencialesDeUsuarios* credenciales){
 
-    if ( (true /*sesiones->validarTokenConUsuario(usuarioEmisor,tokenIngresado)*/ ) ){
+
+    if (this->validarParametrosDeSesion(mensaje, sesiones)){
         this->servicio = new ServicioActualizarPosicion(shared,credenciales,mensaje);
     }
     else{

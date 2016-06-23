@@ -8,7 +8,7 @@
 class CreatorPedirInformacion : public CreatorServicio
 {
     public:
-        CreatorPedirInformacion(SharedDataBase* shared, MensajeHTTPRequest* mensaje, CredencialesDeUsuarios* credenciales, SesionesDeUsuarios* sesiones);
+        CreatorPedirInformacion(SharedDataBase* shared, MensajeHTTPRequest* mensaje, CredencialesDeUsuarios* credenciales, SesionesDeUsuarios* sesiones, AdministradorCandidatos* administrador);
         virtual ~CreatorPedirInformacion();
     protected:
     private:
