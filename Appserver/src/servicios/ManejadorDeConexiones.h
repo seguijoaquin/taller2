@@ -48,6 +48,7 @@ class ManejadorDeConexiones
 
         bool escuchar;
         void escucharMensajes();
+        string getHost(MensajeHTTPRequest* request, string puertoLocal);
 
 };
 

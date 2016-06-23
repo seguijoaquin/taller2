@@ -75,6 +75,17 @@ void ManejadorDeConexiones::handlerServer(struct mg_connection* conexion, int ev
 }
 
 
+string ManejadorDeConexiones::getHost(MensajeHTTPRequest* request, string puertoLocal){
+    string host = request->getHeader(HEADER_HOST);
+
+    //Si NO es un localhost, moongose tiene que recibir la direccion a la que se conecta como , por ejemplo, "t2shared.herokuapp.com:80"
+    //Si SI es un localhost, moongose tiene que recibir la direccion a la que se conecta como , por ejemplo, "localhost:5000"
+    if (host.find("localhost") == std::string::npos){
+        host = host + ":" + puertoLocal;
+    }
+    return host;
+}
+
 MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* request, string puertoLocal){
     //Se va a crear un manager para cada cliente, no se si traiga problemas internos pero esto permite que las conexiones como cliente se hagan MUCHO mas rapido y en paralelo
     mg_mgr managerCliente;
@@ -82,12 +93,13 @@ MensajeHTTPReply ManejadorDeConexiones::enviarMensajeHTTP(MensajeHTTPRequest* re
 
     ClienteDelSharedServer cliente;
 
+    string direccion = this->getHost(request, puertoLocal);
+/*
     string direccion = request->getHeader(HEADER_HOST);
-    //REFACTORIZAR: SI TIENE "LOCALHOST"
     if (direccion != "localhost:5000"){
         direccion = direccion + ":" + puertoLocal;
     }
-
+*/
 
     Logger::Instance()->log(INFO,"Direccion a la que se conecta como cliente: " + direccion);
     Logger::Instance()->log(DEBUG,"HTTP Request que se enviara:\n" + request->toString());
