@@ -3,9 +3,11 @@
 string RUTA_ARCHIVO_COMANDOS = "comandos.txt";
 string COMANDO_CERRAR = "cerrar";
 string COMANDO_CAMBIAR_SHARED = "cambiarShared";
-string PUERTO_LOCAL_COMO_SERVIDOR = "8000";
 
-Servidor::Servidor(){
+Servidor::Servidor(string puerto, string direccionShared){
+    this->puerto = puerto;
+    this->factoryServicios.cambiarShared(direccionShared);
+
     iniciarBaseDeDatos();
 }
 
@@ -13,7 +15,7 @@ void Servidor::iniciarServidor(){
     Logger::Instance()->log(INFO,"Se inicia el servidor");
     this->activo = true;
     thread comandos(escucharComandos, this);
-    this->manejadorDeConexiones.iniciarConexionComoServidor(PUERTO_LOCAL_COMO_SERVIDOR, this);
+    this->manejadorDeConexiones.iniciarConexionComoServidor(this->puerto, this);
     comandos.join();
 }
 

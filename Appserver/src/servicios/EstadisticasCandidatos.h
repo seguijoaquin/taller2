@@ -46,7 +46,7 @@ class EstadisticasCandidatos
         bool usuarioEsPopular(string usuario);
 
         /** limite de candidatos posibles para un usuario */
-        const static int limiteCandidatos;
+        static int limiteCandidatos;
 
         /** Porcentaje de usuarios que son populares. */
         const static double porcentajeUsuariosPopulares;

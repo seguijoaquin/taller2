@@ -10,12 +10,6 @@
 
 #include "SesionesDeUsuarios.h"
 
-/*
-#include "servicioRegistro.h"
-#include "servicioLogin.h"
-#include "ServicioChat.h"
-#include "ServicioMensajes.h"
-*/
 
 #include "Servicio.h"
 #include "FactoryServicios.h"
@@ -24,12 +18,11 @@
 
 
 
-//const char* PATHLOGIN = "/login";
 
 class Servidor
 {
     public:
-        Servidor();
+        Servidor(string puerto, string direccionShared);
         virtual ~Servidor();
 
         void iniciarServidor();
@@ -49,6 +42,8 @@ class Servidor
         ManejadorDeConexiones manejadorDeConexiones;
         //void iniciarServidor();
         void iniciarBaseDeDatos();
+
+        string puerto;
 
         FactoryServicios factoryServicios = FactoryServicios(&manejadorDeConexiones);
 

@@ -3,7 +3,7 @@
 unsigned int SEGUNDOS_PARA_RESETEAR = 86400; //86400 = un dia
 using namespace std;
 
-const int EstadisticasCandidatos::limiteCandidatos = 3;
+int EstadisticasCandidatos::limiteCandidatos;
 const double EstadisticasCandidatos::porcentajeUsuariosPopulares = 0.01;
 
 EstadisticasCandidatos::EstadisticasCandidatos(){
