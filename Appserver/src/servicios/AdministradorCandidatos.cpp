@@ -1,5 +1,7 @@
 #include "AdministradorCandidatos.h"
 
+int LIMITE_CERCANIA = 100;
+
 AdministradorCandidatos::AdministradorCandidatos(SharedDataBase* shared){
     this->shared = shared;
 }
@@ -12,31 +14,42 @@ void AdministradorCandidatos::inicializarCandidato(string usuario){
     this->estadisticas.inicializarUsuario(usuario);
 }
 
+bool AdministradorCandidatos::estaCerca(Usuario& usuario1, Usuario& usuario2){
+    Localizacion posicion1 = usuario1.getLocalizacion();
+    Localizacion posicion2 = usuario2.getLocalizacion();
+
+    return ( posicion1.getDistancia(posicion2) <= LIMITE_CERCANIA );
+}
+
+
 Usuario* AdministradorCandidatos::buscarCandidatoPara(string usuario){
 
-    ListadoDeUsuarios usuarios = this->shared->obtenerListadoDeUsuarios();
-    Usuario usuarioPrincipal = usuarios.getUsuario(usuario);
-
     Usuario* candidato = nullptr;
-    Usuario candidatoActual;
 
-    usuarios.irAlInicio();
-    while ( ( usuarios.getSiguienteUsuario(candidatoActual) ) && (candidato == nullptr) ){
-        if((usuarioPrincipal.getEmail() != candidatoActual.getEmail() ) &&
-           (!this->candidatos.usuarioFueNotificadoSobreElCandidato(usuario,candidatoActual.getEmail()) ) &&
-           ( this->compararIntereses(usuarioPrincipal,candidatoActual) ) /*&&
-            this->estaCerca(usuarioPrincipal,*candidatoActual)  &&
-            this->condicionDel1%*/){
+    if (!this->estadisticas.usuarioSuperoLimiteDeCandidatos(usuario)){
+        ListadoDeUsuarios usuarios = this->shared->obtenerListadoDeUsuarios();
+        Usuario usuarioPrincipal = usuarios.getUsuario(usuario);
 
-            //Para parchear que se devuelva la foto en vez del link
-            //candidato = new Usuario(candidatoActual);
-            candidato = new Usuario(shared->obtenerPerfilDelUsuario(candidatoActual.getId()));
-            this->candidatos.registrarNotificacionAUsuarioSobreCandidato(usuarioPrincipal.getEmail(), candidato->getEmail());
-            this->estadisticas.contabilizarCandidatoPara(usuarioPrincipal.getEmail());
-            Logger::Instance()->log(DEBUG, "Se le entrega a "+ usuario + " un candidato:\n" + candidato->toString());
+
+        Usuario candidatoActual;
+
+        usuarios.irAlInicio();
+        while ( ( usuarios.getSiguienteUsuario(candidatoActual) ) && (candidato == nullptr) ){
+            if((usuarioPrincipal.getEmail() != candidatoActual.getEmail() ) &&
+               (!this->candidatos.usuarioFueNotificadoSobreElCandidato(usuario,candidatoActual.getEmail()) ) &&
+               ( this->compararIntereses(usuarioPrincipal,candidatoActual) ) &&
+               ( this->estaCerca(usuarioPrincipal,candidatoActual))  &&
+                !this->estadisticas.usuarioEsPopular(usuario)){
+
+                //Para parchear que se devuelva la foto en vez del link
+                //candidato = new Usuario(candidatoActual);
+                candidato = new Usuario(shared->obtenerPerfilDelUsuario(candidatoActual.getId()));
+                this->candidatos.registrarNotificacionAUsuarioSobreCandidato(usuarioPrincipal.getEmail(), candidato->getEmail());
+                this->estadisticas.contabilizarCandidatoPara(usuarioPrincipal.getEmail());
+                Logger::Instance()->log(DEBUG, "Se le entrega a "+ usuario + " un candidato:\n" + candidato->toString());
+            }
         }
     }
-
     return candidato;
 }
 

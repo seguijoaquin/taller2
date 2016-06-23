@@ -39,6 +39,8 @@ class AdministradorCandidatos
 
         Candidatos candidatos = Candidatos("./Candidatos");
         EstadisticasCandidatos estadisticas;
+
+        bool estaCerca(Usuario& usuario1, Usuario& usuario2);
 };
 
 #endif // ADMINISTRADORCANDIDATOS_H
