@@ -1,6 +1,8 @@
 #include "SesionesDeUsuarios.h"
 using namespace std;
 
+string TOKEN_SESION_CERRADA = "TOKEN SESION CERRADA";
+
 SesionesDeUsuarios::SesionesDeUsuarios()
 {
     //ctor
@@ -12,7 +14,7 @@ bool SesionesDeUsuarios::existeSesionDe(string usuario){
 }
 
 bool SesionesDeUsuarios::validarTokenConUsuario(string usuario, string token){
-    bool esValido = ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario].token ==  token) );
+    bool esValido = ( (this->existeSesionDe(usuario)) && ((this->tokensDeSesionesDeUsuario)[usuario].token ==  token) && ((this->tokensDeSesionesDeUsuario)[usuario].token != TOKEN_SESION_CERRADA));
     if (!esValido){
         Logger::Instance()->log(WARNING, "Token y Usuario no son validos");
     }
@@ -46,4 +48,11 @@ void SesionesDeUsuarios::eliminarUsuario(string usuario){
 SesionesDeUsuarios::~SesionesDeUsuarios()
 {
     //dtor
+}
+
+
+void SesionesDeUsuarios::terminarSesionDe(string usuario){
+    if (this->existeSesionDe(usuario)){
+        this->tokensDeSesionesDeUsuario[usuario].token = TOKEN_SESION_CERRADA;
+    }
 }

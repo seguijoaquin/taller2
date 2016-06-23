@@ -23,10 +23,7 @@
 #include "CreatorPedirIntereses.h"
 #include "CreatorPedirInformacion.h"
 #include "CreatorEditarPerfil.h"
-
-/** Clase que implementa el patron de diseño Factory
- * https://es.wikipedia.org/wiki/Factory_Method_(patr%C3%B3n_de_dise%C3%B1o)
- */
+#include "CreatorLogout.h"
 
 /** Clase que implementa el patron de diseño Factory
  * https://es.wikipedia.org/wiki/Factory_Method_(patr%C3%B3n_de_dise%C3%B1o)

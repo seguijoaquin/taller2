@@ -74,6 +74,9 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         if (compararUriHTTP(httpRequest, "/eliminar")){
             creator = new CreatorEliminacion(this->shared, &httpRequest, this->credenciales, this->sesiones);
         }
+        else if (compararUriHTTP(httpRequest, "/logout")){
+            creator = new CreatorLogout(&httpRequest, this->sesiones);
+        }
     }
 
     if (creator != nullptr){

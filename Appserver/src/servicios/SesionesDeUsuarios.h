@@ -39,8 +39,11 @@ class SesionesDeUsuarios
         /**  */
         string getTokenGCMDe(string usuario);
 
-        /**  */
+        /** Elimina completamente al usuario de la lista de sesiones*/
         void eliminarUsuario(string usuario);
+
+        /** Anula el token del usuario pero guarda el resto de sus datos*/
+        void terminarSesionDe(string usuario);
 
     protected:
     private:
