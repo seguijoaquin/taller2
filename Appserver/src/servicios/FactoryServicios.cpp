@@ -38,7 +38,7 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
     }
     else if (compararMetodoHTTP(httpRequest, "GET")){
         if (compararUriHTTP(httpRequest, "/login")){
-            creator = new CreatorLogin(this->sesiones, httpRequest, this->credenciales);
+            creator = new CreatorLogin(this->sesiones, httpRequest, this->credenciales, this->shared);
         }
         else if (compararUriHTTP(httpRequest, "/mensajes")){
             creator = new CreatorServicioMensajes(&httpRequest, this->sesiones,this->conversaciones);

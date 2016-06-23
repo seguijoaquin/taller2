@@ -10,7 +10,7 @@
 
 class CreatorLogin : public CreatorServicio{
     public:
-        CreatorLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales);
+        CreatorLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, SharedDataBase* shared);
         virtual ~CreatorLogin();
     protected:
     private:

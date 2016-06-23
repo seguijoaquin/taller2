@@ -7,24 +7,16 @@
 #include "SesionesDeUsuarios.h"
 #include "CredencialesDeUsuarios.h"
 #include "RespuestaDelLogin.h"
+#include "SharedDataBase.h"
 
 #include "Servicio.h"
 
 using namespace std;
 
-/** Clase que contiene la logica
- * correspondiente al servicio de
- * log in de usuarios provisto por
- * el servidor. Actua ante la llegada
- * del mensaje http correspondiente.
- */
-
-
 class servicioLogin : public Servicio
 {
     public:
-    
-        servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales);
+        servicioLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, SharedDataBase* shared);
         virtual ~servicioLogin();
 
         //string getRespuesta();
@@ -36,6 +28,8 @@ class servicioLogin : public Servicio
         CredencialesDeUsuarios* credenciales;
 
         SesionesDeUsuarios* sesionesDeUsuarios;
+
+        SharedDataBase* shared;
 
         bool validarCredenciales();
         void realizarLogin();

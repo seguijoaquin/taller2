@@ -1,10 +1,9 @@
 #include "CreatorLogin.h"
 
-CreatorLogin::CreatorLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales){
+CreatorLogin::CreatorLogin(SesionesDeUsuarios* sesionesDeUsuarios, MensajeHTTPRequest mensajeHTTP, CredencialesDeUsuarios* credenciales, SharedDataBase* shared){
 
-    //if (mensajeHTTP.tieneHeader("Usuario") && mensajeHTTP.tieneHeader("Password")){
-    if (this->validarUsuarioYPassword(&mensajeHTTP)){
-        this->servicio = new servicioLogin(sesionesDeUsuarios, mensajeHTTP, credenciales);
+    if ( (this->validarUsuarioYPassword(&mensajeHTTP))  && ( mensajeHTTP.tieneHeader("TokenGCM") )){
+        this->servicio = new servicioLogin(sesionesDeUsuarios, mensajeHTTP, credenciales, shared);
     }
     else{
         this->servicio = new ServicioInexistente();
