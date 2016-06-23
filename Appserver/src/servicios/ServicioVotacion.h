@@ -7,15 +7,12 @@
 #include "MensajeHTTPRequest.h"
 #include "AdministradorCandidatos.h"
 #include "RespuestaDeLaVotacion.h"
-
-/** Clase que gestiona el servicio
- * de votacion que brinda el sistema
- */
+#include "CredencialesDeUsuarios.h"
 
 class ServicioVotacion : public Servicio
 {
     public:
-        ServicioVotacion(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, AdministradorCandidatos* administradorCandidatos, Mensajero* mensajero);
+        ServicioVotacion(SharedDataBase* shared, MensajeHTTPRequest* mensajeHTTP, AdministradorCandidatos* administradorCandidatos, Mensajero* mensajero, CredencialesDeUsuarios* credenciales);
         virtual ~ServicioVotacion();
     protected:
     private:
@@ -24,6 +21,7 @@ class ServicioVotacion : public Servicio
         AdministradorCandidatos* administradorCandidatos;
         SharedDataBase* shared;
         Mensajero* mensajero;
+        CredencialesDeUsuarios* credenciales;
 };
 
 #endif // SERVICIOVOTACION_H

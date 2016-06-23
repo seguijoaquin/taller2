@@ -8,7 +8,7 @@
 class CreatorVotacion : public CreatorServicio
 {
     public:
-        CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP,SesionesDeUsuarios* sesiones,AdministradorCandidatos* administradorCandidatos);
+        CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP,SesionesDeUsuarios* sesiones,AdministradorCandidatos* administradorCandidatos, CredencialesDeUsuarios* credenciales);
         virtual ~CreatorVotacion();
     protected:
     private:

@@ -26,7 +26,7 @@ class Mensajero
         /** Se le envia un mensaje HTTP al usuario pasado por parametro
         * notificandole que posee un match.
         */
-        bool notificarUsuarioSobreMatchCon(string usuario, string match);
+        bool notificarUsuarioSobreMatchCon(string usuario, string match, string nombreDelMatch);
 
     protected:
     private:

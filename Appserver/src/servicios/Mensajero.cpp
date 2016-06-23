@@ -32,13 +32,13 @@ bool Mensajero::enviarMensaje(string emisor, string receptor, string mensaje){
     return this->enviarMensaje(requestGCM);
 }
 
-bool Mensajero::notificarUsuarioSobreMatchCon(string usuario, string match){
+bool Mensajero::notificarUsuarioSobreMatchCon(string usuario, string match, string nombreDelMatch){
     Logger::Instance()->log(INFO, "Se va a notificar al usuario "+usuario+" sobre su match con "+match);
     MensajeHTTPRequestGCM requestGCM;
     string tokenGCM = this->sesiones->getTokenGCMDe(usuario);
     JsonObject dataJson;
     dataJson.agregarClaveValor("Email", match);
-    dataJson.agregarClaveValor("Nombre","NOMBRE HARDCODEADO"+match);
+    dataJson.agregarClaveValor("Nombre",nombreDelMatch);
 
     this->armarBodyDelMensaje(tokenGCM, requestGCM, dataJson);
     return this->enviarMensaje(requestGCM);

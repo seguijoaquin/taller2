@@ -31,6 +31,13 @@ int Usuario::getId(){
     return this->perfil.getInt("id");
 }
 
+string Usuario::getNombre(){
+    return this->perfil.getString("name");
+}
+
+
+
+
 ListadoDeIntereses Usuario::getIntereses(){
     ListadoDeIntereses intereses;
     intereses.agregarIntereses(this->perfil.toString());

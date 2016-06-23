@@ -25,6 +25,9 @@ class Usuario
         /**Devuelve el id del usuario*/
         int getId();
 
+        /**Devuelve el nombre del usuario*/
+        string getNombre();
+
         /** Devuelve toda la informacion almacenada en formato
          * de string
          */

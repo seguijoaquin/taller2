@@ -1,8 +1,8 @@
 #include "CreatorVotacion.h"
 
-CreatorVotacion::CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP,SesionesDeUsuarios* sesiones,AdministradorCandidatos* administradorCandidatos){
+CreatorVotacion::CreatorVotacion(SharedDataBase* shared, Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP,SesionesDeUsuarios* sesiones,AdministradorCandidatos* administradorCandidatos, CredencialesDeUsuarios* credenciales){
     if ( (this->validarParametrosDeSesion(mensajeHTTP, sesiones) ) && (this->validarNotificacion(mensajeHTTP, administradorCandidatos) )  && (mensajeHTTP->tieneHeader("Resultado")) ){
-        this->servicio = new ServicioVotacion(shared,mensajeHTTP,administradorCandidatos, mensajero);
+        this->servicio = new ServicioVotacion(shared,mensajeHTTP,administradorCandidatos, mensajero, credenciales);
     }
     else{
         this->servicio = new ServicioInexistente();
