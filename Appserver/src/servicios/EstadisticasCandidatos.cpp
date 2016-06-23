@@ -1,18 +1,32 @@
 #include "EstadisticasCandidatos.h"
 
+unsigned int SEGUNDOS_PARA_RESETEAR = 86400; //86400 = un dia
 using namespace std;
 
 const int EstadisticasCandidatos::limiteCandidatos = 3;
 const double EstadisticasCandidatos::porcentajeUsuariosPopulares = 0.01;
 
-EstadisticasCandidatos::EstadisticasCandidatos()
-{
-    //ctor
+EstadisticasCandidatos::EstadisticasCandidatos(){
+    thread resetear(resetearDia, this);
+    resetear.detach();
 }
 
-EstadisticasCandidatos::~EstadisticasCandidatos()
-{
-    //dtor
+
+void EstadisticasCandidatos::resetearDia(EstadisticasCandidatos* estadisticas){
+    while(true){
+        std::this_thread::sleep_for( (std::chrono::seconds(SEGUNDOS_PARA_RESETEAR)));
+        Logger::Instance()->log(INFO, "Se resetea el contador de candidatos");
+        estadisticas->resetearContadorCandidatos();
+    }
+}
+
+void EstadisticasCandidatos::resetearContadorCandidatos(){
+    for( map<string, Estadisticas>::iterator it = this->estadisticasPorUsuario.begin() ; it != this->estadisticasPorUsuario.end(); ++it){
+        it->second.cantidadDeCandidatosPedidos = 0;
+    }
+}
+
+EstadisticasCandidatos::~EstadisticasCandidatos(){
 }
 
 int EstadisticasCandidatos::getCantidadVotosPara(string usuario){

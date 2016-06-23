@@ -14,7 +14,7 @@ TEST(AdministradorCandidatos, primerPrueba){
   EXPECT_CALL( mock ,obtenerListadoDeUsuarios())
     .Times(AtLeast(1)) 
     .WillOnce(Return(ListadoDeUsuarios()));
-  AdministradorCandidatos adm(&mock,nullptr);
+  AdministradorCandidatos adm(&mock);
   
   ASSERT_EQ(adm.buscarCandidatoPara("asdasd"),nullptr);
   

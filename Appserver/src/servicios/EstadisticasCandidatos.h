@@ -6,6 +6,9 @@
 #include <set>
 #include <math.h>
 #include "Logger.h"
+#include <thread>
+#include <chrono>
+#include "Logger.h"
 
 using namespace std;
 
@@ -48,6 +51,10 @@ class EstadisticasCandidatos
         /** Porcentaje de usuarios que son populares. */
         const static double porcentajeUsuariosPopulares;
 
+
+        /** Pone todos los contadores de candidatos en 0 */
+        void resetearContadorCandidatos();
+
     protected:
     private:
         int getCantidadVotosPara(string usuario);
@@ -59,6 +66,8 @@ class EstadisticasCandidatos
         string buscarUsuarioPopularConMenosVotos();
 
         void actualizarUsuariosPopulares(string usuario);
+
+        static void resetearDia(EstadisticasCandidatos* estadisticas);
 };
 
 #endif // ESTADISTICASCANDIDATOS_H
