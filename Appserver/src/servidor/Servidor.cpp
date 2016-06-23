@@ -36,11 +36,6 @@ string Servidor::getRespuestaDelServicio(MensajeHTTPRequest mensajeHTTPRequest){
         delete servicio->getRespuesta();
         delete servicio;
     }
-    else{
-        //ESTO ES TEMPORAL PARA PODER OBTENER LOS REPORTES DE COVERTURA, HABRIA QUE VER QUE PASA CON LOS QUE ESTAN CONECTADOS
-        respuesta = "HTTP/1.1 200 Se cerrara el server\r\n\r\n";
-        //this->manejadorDeConexiones.terminarConexionComoServidor();
-    }
     return respuesta;
 }
 

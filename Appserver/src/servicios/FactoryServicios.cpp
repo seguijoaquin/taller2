@@ -81,7 +81,7 @@ Servicio* FactoryServicios::fabricarServicio(MensajeHTTPRequest httpRequest){
         delete creator;
     }
     else{
-        servicio = nullptr;
+        servicio = new ServicioInexistente();
     }
     return servicio;
 }
