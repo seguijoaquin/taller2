@@ -10,6 +10,7 @@ URIPedirUsuario = "/info"
 URIModificarPosicion = "/gps"
 URIModificarFoto = "/foto"
 URIModificarPerfil = "/editar"
+URIVotarCandidato = "/matcheo"
 
 
 def abrirJson(ruta):
@@ -31,6 +32,23 @@ def registrarUsuarioSinEmail(emailUsuario):
     headRegistrarUsuario = {'Password': "password"}
     return requests.put(Address + URIResgistro, headers=headRegistrarUsuario, data=json.dumps(bodyUsuario))
 
+
+def registrarUsuarioSinEmailYSinIntereses(emailUsuario, categoria, valor):
+    bodyUsuario = abrirJson("./usuarioSinEmailYSinIntereses.json")
+    agregarEmailAlUsuario(bodyUsuario, emailUsuario)
+
+    interes = {}
+    interes["category"] = categoria
+    interes["value"] = valor
+    bodyUsuario["user"]["interests"] = [interes]
+    headRegistrarUsuario = {'Password': "password"}
+    return requests.put(Address + URIResgistro, headers=headRegistrarUsuario, data=json.dumps(bodyUsuario))
+
+
+
+
+
+
 def crearHeadersParaElLogin(usuario):
     return {'Usuario': usuario,'Password': "password", 'TokenGCM': "APA91bFundy4qQCiRnhUbMOcsZEwUBpbuPjBm-wnyBv600MNetW5rp-5Cg32_UA0rY_gmqqQ8pf0Cn-nyqoYrAl6BQTPT3dXNYFuHeWYEIdLz0RwAhN2lGqdoiYnCM2V_O8MonYn3rL6hAtYaIz_b0Jl2xojcKIOqQ" }
 
@@ -44,6 +62,18 @@ def registrarYLoguearAlUsuarioSinEmail(usuario):
     return loguearAlUsuario(usuario)
 
 
+
+
+
+def pedirCandidato(usuario, token):
+    headPedirCandidato = {'Usuario': usuario, "Token": token }
+    candidatoPedido = requests.get(Address + URIPedirCandidato, headers=headPedirCandidato)
+    jsonBody = candidatoPedido
+    return jsonBody.json()["user"]["email"]
+
+def likearCandidato(usuario, token, candidato):
+    headerLikearCandidato = {'Usuario': usuario, "Token": token, "Candidato": candidato, "Resultado": "like" }
+    return requests.post(Address + URIVotarCandidato, headers=headerLikearCandidato)
 
 
 

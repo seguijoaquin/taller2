@@ -52,7 +52,6 @@ class TestManejarPerfil(unittest.TestCase):
 
 
 
-
     def test_ActualizarFotoDePerfil(self):
         usuario = "test_ActualizarFotoDePerfil"
         tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)

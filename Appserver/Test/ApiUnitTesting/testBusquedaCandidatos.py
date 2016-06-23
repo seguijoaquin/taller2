@@ -1,6 +1,7 @@
 import json
 import requests
 import unittest
+import Utilities
 
 
 
@@ -73,6 +74,8 @@ class TestBusquedaCandidatos(unittest.TestCase):
         del self.usuariosParaBorrar[:]
 
 
+
+
     def test_UsuarioPideUnCandidatoPeroNoSeEncuentra(self):
         #Para esto no debe haber ningun usuario en el shared con el interes "interesUnico"
         #Aca creo el body del usuario con un interes unico, ningun otro lo debe usar
@@ -116,6 +119,7 @@ class TestBusquedaCandidatos(unittest.TestCase):
         return requests.get(Address + URIPedirCandidato, headers=headPedirCandidatos)
 
 
+
     def test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro(self):
 
         nombreUsuario1 = "test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro1"
@@ -139,5 +143,33 @@ class TestBusquedaCandidatos(unittest.TestCase):
 
         self.assertEqual(replyPedirCandidatos2.reason,self.msgSeEncontraronCandidatos)
         self.assertEqual(replyPedirCandidatos2.status_code,200)
+
+        self.usuariosParaBorrar.extend([nombreUsuario1, nombreUsuario2])
+
+
+
+    def test_DosUsuariosMatcheanYVotanUnoPorElOtro(self):
+        nombreUsuario1 = "test_DosUsuariosMatcheanYVotanUnoPorElOtro1"
+        nombreUsuario2 = "test_DosUsuariosMatcheanYVotanUnoPorElOtro2"
+
+        categoria =  "outdoors"
+        valor = "test_DosUsuariosMatcheanYVotanUnoPorElOtro"
+        Utilities.registrarUsuarioSinEmailYSinIntereses(nombreUsuario1,categoria, valor)
+        Utilities.registrarUsuarioSinEmailYSinIntereses(nombreUsuario2,categoria, valor)
+
+        tokenSesion1 = Utilities.registrarYLoguearAlUsuarioSinEmail(nombreUsuario1)
+        tokenSesion2 = Utilities.registrarYLoguearAlUsuarioSinEmail(nombreUsuario2)
+
+        candidatoParaUsuario1 = Utilities.pedirCandidato(nombreUsuario1,tokenSesion1)
+        candidatoParaUsuario2 = Utilities.pedirCandidato(nombreUsuario2,tokenSesion2)
+
+        replyVotacion1 = Utilities.likearCandidato(nombreUsuario1, tokenSesion1, candidatoParaUsuario1)
+        replyVotacion2 = Utilities.likearCandidato(nombreUsuario2, tokenSesion2, candidatoParaUsuario2)
+
+        self.assertEqual("El voto se registro correctamente",replyVotacion1.reason)
+        self.assertEqual(200,replyVotacion1.status_code)
+
+        self.assertEqual("El voto se registro correctamente",replyVotacion2.reason)
+        self.assertEqual(200,replyVotacion2.status_code)
 
         self.usuariosParaBorrar.extend([nombreUsuario1, nombreUsuario2])
