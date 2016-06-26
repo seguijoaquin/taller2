@@ -7,7 +7,10 @@ CreatorActualizarPosicion::CreatorActualizarPosicion(SharedDataBase* shared, Men
         this->servicio = new ServicioActualizarPosicion(shared,credenciales,mensaje);
     }
     else{
-        this->servicio = new ServicioInexistente();
+        //Queda medio mal asi pero es una solucion rapida...
+        if (this->servicio == nullptr){
+            this->servicio = new ServicioInexistente();
+        }
     }
 }
 

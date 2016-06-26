@@ -6,7 +6,10 @@ CreatorBusquedaCandidato::CreatorBusquedaCandidato(AdministradorCandidatos* admi
         this->servicio = new ServicioBusquedaCandidatos(administradorCandidatos,mensajeHTTP);
     }
     else{
-        this->servicio = new ServicioInexistente();
+        //Queda medio mal asi pero es una solucion rapida...
+        if (this->servicio == nullptr){
+            this->servicio = new ServicioInexistente();
+        }
     }
 }
 

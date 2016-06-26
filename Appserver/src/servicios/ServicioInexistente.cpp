@@ -9,3 +9,8 @@ ServicioInexistente::~ServicioInexistente()
 {
     //dtor
 }
+
+
+void ServicioInexistente::setRespuestaTokenInvalido(){
+    ((RespuestaServicioInexistente*) this->respuesta)->setRespuestaTokenInvalido();
+}

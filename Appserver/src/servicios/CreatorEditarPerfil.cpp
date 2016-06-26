@@ -6,7 +6,10 @@ CreatorEditarPerfil::CreatorEditarPerfil(SharedDataBase* shared, MensajeHTTPRequ
         this->servicio = new ServicioEditarPerfil(shared,mensaje,credenciales);
     }
     else{
-        this->servicio = new ServicioInexistente();
+        //Queda medio mal asi pero es una solucion rapida...
+        if (this->servicio == nullptr){
+            this->servicio = new ServicioInexistente();
+        }
     }
 
 

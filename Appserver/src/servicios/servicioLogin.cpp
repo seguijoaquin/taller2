@@ -65,7 +65,6 @@ void servicioLogin::realizarLogin(){
 string servicioLogin::generarToken(string usuario){
     std::hash<std::string> str_hash;
     return StringUtil::int2string((int)str_hash(usuario));
-
 }
 
 servicioLogin::~servicioLogin(){

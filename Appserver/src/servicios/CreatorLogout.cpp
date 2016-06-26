@@ -6,7 +6,10 @@ CreatorLogout::CreatorLogout(MensajeHTTPRequest* mensaje, SesionesDeUsuarios* se
         this->servicio = new ServicioLogout(mensaje,sesiones);
     }
     else{
-        this->servicio = new ServicioInexistente();
+        //Queda medio mal asi pero es una solucion rapida...
+        if (this->servicio == nullptr){
+            this->servicio = new ServicioInexistente();
+        }
     }
 
 }

@@ -5,7 +5,11 @@ RespuestaServicioInexistente::RespuestaServicioInexistente(){
     this->respuesta.setMensajeDeEstado("Bad Request");
 }
 
-RespuestaServicioInexistente::~RespuestaServicioInexistente()
-{
+RespuestaServicioInexistente::~RespuestaServicioInexistente(){
     //dtor
+}
+
+void RespuestaServicioInexistente::setRespuestaTokenInvalido(){
+    this->respuesta.setCodigo(401);
+    this->respuesta.setMensajeDeEstado("Token no coincide con usuario");
 }

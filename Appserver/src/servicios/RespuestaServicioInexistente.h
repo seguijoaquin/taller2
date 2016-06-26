@@ -9,6 +9,8 @@ class RespuestaServicioInexistente : public RespuestaDelServicio
     public:
         RespuestaServicioInexistente();
         virtual ~RespuestaServicioInexistente();
+
+        void setRespuestaTokenInvalido();
     protected:
     private:
 };

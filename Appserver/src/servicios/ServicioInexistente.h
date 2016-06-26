@@ -10,6 +10,7 @@ class ServicioInexistente : public Servicio
     public:
         ServicioInexistente();
         virtual ~ServicioInexistente();
+        void setRespuestaTokenInvalido();
     protected:
     private:
 };

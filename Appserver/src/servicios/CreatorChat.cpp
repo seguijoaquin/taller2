@@ -6,7 +6,10 @@ CreatorChat::CreatorChat(Mensajero* mensajero, MensajeHTTPRequest* mensajeHTTP, 
         this->servicio = new ServicioChat(mensajero,mensajeHTTP,sesiones, conversaciones);
     }
     else{
-        this->servicio = new ServicioInexistente();
+        //Queda medio mal asi pero es una solucion rapida...
+        if (this->servicio == nullptr){
+            this->servicio = new ServicioInexistente();
+        }
     }
 }
 
