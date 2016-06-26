@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include "Logger.h"
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
@@ -13,6 +15,7 @@ using namespace std;
 struct datosDeSesion{
     string token;
     string tokenGCM;
+    int tiempoSesion;
 };
 
 
@@ -45,9 +48,14 @@ class SesionesDeUsuarios
         /** Anula el token del usuario pero guarda el resto de sus datos*/
         void terminarSesionDe(string usuario);
 
+        /** Se terminan las sesiones que superen SEGUNDOS_MAXIMO_SESION */
+        void terminarSesionesVencidas();
+
     protected:
     private:
         map<string,datosDeSesion> tokensDeSesionesDeUsuario;
+
+        static void verificarSesionesVecidas(SesionesDeUsuarios* sesiones);
 
 
 };

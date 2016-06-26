@@ -10,6 +10,7 @@
 #include "SharedDataBase.h"
 
 #include "Servicio.h"
+#include <functional>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ class servicioLogin : public Servicio
 
         bool validarCredenciales();
         void realizarLogin();
-        string generarToken();
+        string generarToken(string usuario);
 
         void atenderLogin();
 };

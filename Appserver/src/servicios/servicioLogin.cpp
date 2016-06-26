@@ -45,10 +45,11 @@ bool servicioLogin::validarCredenciales(){
 
 
 void servicioLogin::realizarLogin(){
-    string token;
-    token = generarToken();
+
+
     string usuarioIngresado = this->mensajeHTTP.getHeader("Usuario");
     string tokenGCM = this->mensajeHTTP.getHeader("TokenGCM");
+    string token = generarToken(usuarioIngresado);
 
     this->sesionesDeUsuarios->agregarSesionDe(usuarioIngresado, token,tokenGCM);
 
@@ -57,9 +58,13 @@ void servicioLogin::realizarLogin(){
     this->respuesta = respuestaLogin;
 }
 
-string servicioLogin::generarToken(){
-    //Algo random
-    return "123456abcdef";
+
+
+
+
+string servicioLogin::generarToken(string usuario){
+    std::hash<std::string> str_hash;
+    return StringUtil::int2string((int)str_hash(usuario));
 
 }
 
