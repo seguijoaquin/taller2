@@ -1,31 +1,26 @@
+#install:
+#  - sudo pip install requests
+#language: php
+#php:
+#  - 5.5
+#script: phpunit Test.php
 
-language: c++
-
-notifications:
-  email:
-    - segui.joaquin@gmail.com
-    # diegofk26@gmail.com
-   # Mail Seba
-    - juanmafc25@gmail.com
 
 sudo: required
-dist: trusty
+
+services:
+  - docker
+
 
 before_install:
-#Dependencias RocksDB
-install:
-- sudo -H pip install --upgrade pip
-- sudo -H pip install requests
-- sh ./instalar_dependenciasTravis.sh
-
+- docker pull juanmafc/appserver
+- docker run -i -t -p 5000:5000 juanmafc/appserver /bin/sh -c "cd /home/taller2-appserver/Appserver/; git pull;"
 
 script:
-- cd Appserver
-- mkdir build
-- cd build
+- cd /home/taller2-appserver/Appserver/build
+- rm -r *
 - cmake ..
 - make
 - cd ../Test
 - ./correr_pruebas_API.sh
-- sh ./correrUnitTests.sh
-
+- ./correrUnitTests.sh
