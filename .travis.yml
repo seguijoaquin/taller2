@@ -14,8 +14,8 @@ dist: trusty
 before_install:
 #Dependencias RocksDB
 install:
-- pip install --upgrade pip
-- pip install -H requests
+- sudo pip install --upgrade pip
+- sudo pip install -H requests
 - sh ./instalar_dependenciasTravis.sh
 
 
