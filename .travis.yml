@@ -17,7 +17,7 @@ before_install:
 - docker run -i -t -p 5000:5000 juanmafc/appserver /bin/sh -c "cd /home/taller2-appserver/Appserver/; git pull;"
 
 script:
-- cd /home/taller2-appserver/Appserver/build
+- cd build
 - rm -r *
 - cmake ..
 - make
