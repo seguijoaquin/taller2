@@ -14,8 +14,9 @@ dist: trusty
 before_install:
 #Dependencias RocksDB
 install:
-- sh ./instalar_dependencias.sh
 - sudo pip install requests
+- sh ./instalar_dependenciasTravis.sh
+
 
 script:
 - cd Appserver
