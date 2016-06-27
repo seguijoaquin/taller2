@@ -15,6 +15,7 @@ before_install:
 #Dependencias RocksDB
 install:
 - sh ./instalar_dependencias.sh
+- sudo pip install requests
 
 script:
 - cd Appserver
