@@ -1,11 +1,3 @@
-#install:
-#  - sudo pip install requests
-#language: php
-#php:
-#  - 5.5
-#script: phpunit Test.php
-
-
 sudo: required
 
 language: ruby
