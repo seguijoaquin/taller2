@@ -1,5 +1,5 @@
 
-
+language: c++
 
 notifications:
   email:
@@ -9,16 +9,15 @@ notifications:
     - juanmafc25@gmail.com
 
 sudo: required
-#dist: trusty
+dist: trusty
 
 before_install:
 #Dependencias RocksDB
 install:
-- sudo pip install --upgrade pip
-- sudo pip install requests
+- pip install --upgrade pip
+- pip install -H requests
 - sh ./instalar_dependenciasTravis.sh
 
-language: c++
 
 script:
 - cd Appserver
