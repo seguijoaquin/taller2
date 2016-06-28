@@ -5,3 +5,6 @@ language: c++
 install:
   - sudo pip install requests
   - sh ./instalar_dependenciasTravis.sh
+
+script:
+- cd Appserver
