@@ -11,7 +11,7 @@ script:
 #instalo requests y corro una prueba minima
 - cd Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
 - sudo python setup.py install
-- cd ..
+#- cd ..
 - python prueba.py
 
 #- cd Appserver
