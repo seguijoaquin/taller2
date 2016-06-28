@@ -12,7 +12,7 @@ script:
 - cd Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
 - sudo python setup.py install
 - cd ..
-- PYTHONPATH=$HOME/Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
+#- PYTHONPATH=$HOME/Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
 - python prueba.py
 
 
@@ -23,7 +23,7 @@ script:
 #- make
 #- cd ../Test
 #- sh ./correr_pruebas_API.sh
-- cd ../../../../../
+- cd ../../..
 - echo "Directorio:"
 - ls
 - sh ./correrUnitTests.sh
