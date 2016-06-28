@@ -1,14 +1,4 @@
 sudo: required
 
-language: ruby
-
-services:
-  - docker
-
-
-before_install:
-- docker pull juanmafc/appserver
-- docker run -i -t -p 5000:5000 juanmafc/appserver /bin/sh -c "cd /home/taller2-appserver/Appserver/; git pull; cd /home/taller2-appserver/Appserver/; git pull; cd build; rm -r *; cmake ..; make; cd ../Test; ./correr_pruebas_API.sh; ./correrUnitTests.sh;"
-
-script:
-- ls
+install:
+  - sudo pip install requests
