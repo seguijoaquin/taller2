@@ -11,10 +11,20 @@ script:
 #instalo requests y corro una prueba minima
 - cd Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
 - sudo python setup.py install
-- cd ../../..
-#- PYTHONPATH=$HOME/Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
-- ls
-- python prueba.py
+#- cd ../../..
+#- ls
+#- python prueba.py
+
+
+#Me paro en Appserver
+- cd ../../../..
+- mkdir build
+- cd build
+- cmake ..
+- make
+- cd ../Test
+- sh ./correr_pruebas_API.sh
+
 
 
 #- cd Appserver
