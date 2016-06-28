@@ -1,0 +1,33 @@
+sudo: required
+dist: trusty
+
+python:
+  - "3.4"
+
+install:
+#   - sudo pip install --upgrade pip
+#   - sudo apt-get install -y python-dev
+#   - sudo apt-get install  -y libffi-dev
+#   - sudo apt-get install  -y libssl-dev
+#   - sudo pip install pyopenssl ndg-httpsclient pyasn1
+#   - sudo pip install --upgrade ndg-httpsclient
+
+
+#   - sudo -H pip install requests[security] 
+#  - pip install 'requests[security]'
+#  - sudo pip install 'requests[security]'
+#   - sudo -H pip install 'requests[security]'
+
+language: c++
+#language: ython
+
+#php:
+#  - 5.5 
+#script: phpunit Test.php
+
+script:  
+#   - sudo -H pip install --upgrade requests
+   - cd requests-2.10.0
+   - sudo python setup.py install
+   - cd ..
+   - python prueba.py

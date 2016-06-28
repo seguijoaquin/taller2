@@ -8,11 +8,18 @@ install:
   - sh ./instalar_dependenciasTravis.sh
 
 script:
-- cd Appserver
-- mkdir build
-- cd build
-- cmake ..
-- make
-- cd ../Test
-- sh ./correr_pruebas_API.sh
+#instalo requests y corro una prueba minima
+- cd Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
+- sudo python setup.py install
+- cd ..
+- python prueba.py
+
+#- cd Appserver
+#- mkdir build
+#- cd build
+#- cmake ..
+#- make
+#- cd ../Test
+#- sh ./correr_pruebas_API.sh
+- cd ../../../../../
 - sh ./correrUnitTests.sh
