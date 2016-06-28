@@ -2,4 +2,4 @@ sudo: required
 
 install:
   - sudo pip install requests
-  - ./instalar_dependenciasTravis.sh
+  - sh ./instalar_dependenciasTravis.sh
