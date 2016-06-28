@@ -11,8 +11,9 @@ script:
 #instalo requests y corro una prueba minima
 - cd Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
 - sudo python setup.py install
-- cd ..
+- cd ../../..
 #- PYTHONPATH=$HOME/Appserver/Test/ApiUnitTesting/ArchivosRequests/requests-2.10.0
+- ls
 - python prueba.py
 
 
@@ -23,7 +24,7 @@ script:
 #- make
 #- cd ../Test
 #- sh ./correr_pruebas_API.sh
-- cd ../..
+#- cd ../..
 - echo "Directorio:"
 - ls
 - sh ./correrUnitTests.sh
