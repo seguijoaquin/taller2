@@ -4,8 +4,15 @@ dist: trusty
 language: c++
 
 install:
-  - sudo pip install requests
+#  - sudo -H pip install requests
   - sh ./instalar_dependenciasTravis.sh
 
 script:
 - cd Appserver
+- mkdir build
+- cd build
+- cmake ..
+- make
+- cd ../Test
+- sh ./correr_pruebas_API.sh
+- sh ./correrUnitTests.sh
