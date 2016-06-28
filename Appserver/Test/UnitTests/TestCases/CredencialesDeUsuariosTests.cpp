@@ -18,9 +18,7 @@ class CredencialesDeUsuariosTest : public testing::Test {
   // Otherwise, this can be skipped.
 
   virtual void SetUp() {
-	cout<<"Se van a creear credenciales\n";
 	credenciales = new CredencialesDeUsuarios("./Entorno/CredencialesDePrueba");
-	cout<<"Se crearon credenciales\n";
 	password = "password";
 	passwordIncorrecto = "passwordIncorrecto";
 	usuario = "NUEVO_USUARIO";
@@ -33,9 +31,7 @@ class CredencialesDeUsuariosTest : public testing::Test {
   // you don't have to provide it.
   //
   virtual void TearDown() {
-	cout<<"Se deletea credenciales\n";
 	delete credenciales;
-	cout<<"Se limpia el entorno\n";
 	system("../limpiarEntorno.sh");
   }
 
@@ -63,11 +59,8 @@ TEST_F(CredencialesDeUsuariosTest, agregarUnNuevoUsuarioDeberiaDarTrue){
 
 
 TEST_F(CredencialesDeUsuariosTest, alTratarDeAgregarUnUsuarioExistenteDeberiaDarFalse){
-	cout<<"COMIENZA alTratarDeAgregarUnUsuarioExistenteDeberiaDarFalse\n";
 	credenciales->agregarNuevoUsuario(usuario,password,5);
-	cout<<"Se agrego un nuevo usuario\n";
 	ASSERT_FALSE(credenciales->agregarNuevoUsuario(usuario,password,5));
-	cout<<"Se paso el ASSERT\n";
 }
 
 
