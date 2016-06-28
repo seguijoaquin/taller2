@@ -23,7 +23,7 @@ script:
 #- make
 #- cd ../Test
 #- sh ./correr_pruebas_API.sh
-- cd ../../..
+- cd ../..
 - echo "Directorio:"
 - ls
 - sh ./correrUnitTests.sh
