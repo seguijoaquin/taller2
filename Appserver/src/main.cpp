@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     Logger::Instance()->log(INFO, "Valores iniciales:\nPuerto:" + puerto + "\nSharedServer: "+direccionShared+"\nLimite de candidatos: " + StringUtil::int2string(EstadisticasCandidatos::limiteCandidatos) );
     Servidor server(puerto, direccionShared);
     server.iniciarServidor();
-
+    Logger::Instance()->KillLogger();
     return 0;
 
 }
