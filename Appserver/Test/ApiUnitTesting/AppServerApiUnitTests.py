@@ -39,7 +39,7 @@ class TestRegistro(unittest.TestCase):
     msgUsuarioYaRegistrado = "Usuario existente"
     msgUsuarioNuevoRegistrado = "Se pudo registrar el usuario"
 
-    usuarioNuevo = "usuarioNuevo"
+    usuarioNuevo = "usuarioNuevo@p.com"
     passwordNuevo = "passwordNuevo"
     headUsuarioNuevo = crearHeadersDeUsuarioYPassword(usuarioNuevo, passwordNuevo)
 
@@ -91,13 +91,14 @@ class TestRegistroYLogin(unittest.TestCase):
 
 	#Me intento loguear con un usuario no registrado y no puedo
         #headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado_SeLoRegistra_SeDebePoderLoguearCorrectamente", "12345")
-        headUsuario = crearHeadersDeUsuarioYPassword( "IntentoDeLoginDeUnUsuarioNoRegistrado", "12345")
+        nombreUsuario = Utilities.transformarEnMail("IntentoDeLoginDeUnUsuarioNoRegistrado")
+        headUsuario = crearHeadersDeUsuarioYPassword( nombreUsuario, "12345")
         request = requests.get(Address + URILogin,headers=headUsuario)
         self.assertEqual(request.status_code,400)
         self.assertEqual(request.reason,self.msgLoginIncorrecto)
 
 	#Lo registro
-        bodyUsuario = self.crearBodyUsuario("IntentoDeLoginDeUnUsuarioNoRegistrado")
+        bodyUsuario = self.crearBodyUsuario(nombreUsuario)
         request = requests.put(Address + URIResgistro, headers=headUsuario, data=json.dumps(bodyUsuario))
         self.assertEqual(request.status_code,201)
         self.assertEqual(request.reason,self.msgUsuarioNuevoRegistrado)

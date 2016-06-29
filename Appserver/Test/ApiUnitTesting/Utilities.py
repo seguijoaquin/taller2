@@ -18,6 +18,13 @@ def abrirJson(ruta):
         parseado = json.load(archivoJson)
         return parseado
 
+
+def transformarEnMail(usuario):
+   usuario = (usuario[:64]) if len(usuario) > 64 else usuario
+   return usuario.lower() + "@p.com"
+
+
+
 def agregarEmailAlUsuario(bodyUsuario, email):
     bodyUsuario["user"]["email"] = email
 

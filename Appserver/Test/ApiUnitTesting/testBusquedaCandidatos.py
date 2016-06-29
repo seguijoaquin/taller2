@@ -79,7 +79,7 @@ class TestBusquedaCandidatos(unittest.TestCase):
     def test_UsuarioPideUnCandidatoPeroNoSeEncuentra(self):
         #Para esto no debe haber ningun usuario en el shared con el interes "interesUnico"
         #Aca creo el body del usuario con un interes unico, ningun otro lo debe usar
-        nombreUsuario = "test_UsuarioPideUnCandidatoPeroNoSeEncuentra.com"
+        nombreUsuario = Utilities.transformarEnMail("test_UsuarioPideUnCandidatoPeroNoSeEncuentra")
 
         bodyUsuario = abrirJson(self.usuarioSinIntereses)
         self.agregarEmailAlUsuario(bodyUsuario, nombreUsuario)
@@ -122,8 +122,8 @@ class TestBusquedaCandidatos(unittest.TestCase):
 
     def test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro(self):
 
-        nombreUsuario1 = "test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro1"
-        nombreUsuario2 = "test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro2"
+        nombreUsuario1 = Utilities.transformarEnMail("1test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro")
+        nombreUsuario2 = Utilities.transformarEnMail("2test_DosUsuariosConUnInteresEspecificoPidenUnCandidatoYSeEncuentranUnoAlOtro")
 
         bodyUsuario1 = self.crearBodyConUnInteres(nombreUsuario1, self.interesCompartido)
         bodyUsuario2 = self.crearBodyConUnInteres(nombreUsuario2, self.interesCompartido)
@@ -147,10 +147,9 @@ class TestBusquedaCandidatos(unittest.TestCase):
         self.usuariosParaBorrar.extend([nombreUsuario1, nombreUsuario2])
 
 
-
     def test_DosUsuariosMatcheanYVotanUnoPorElOtro(self):
-        nombreUsuario1 = "test_DosUsuariosMatcheanYVotanUnoPorElOtro1"
-        nombreUsuario2 = "test_DosUsuariosMatcheanYVotanUnoPorElOtro2"
+        nombreUsuario1 = Utilities.transformarEnMail("test_DosUsuariosMatcheanYVotanUnoPorElOtro1")
+        nombreUsuario2 = Utilities.transformarEnMail("test_DosUsuariosMatcheanYVotanUnoPorElOtro2")
 
         categoria =  "outdoors"
         valor = "test_DosUsuariosMatcheanYVotanUnoPorElOtro"

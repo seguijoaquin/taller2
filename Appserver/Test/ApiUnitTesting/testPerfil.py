@@ -27,7 +27,7 @@ class TestManejarPerfil(unittest.TestCase):
         self.compararJsonsPosicion(perfilEsperado,perfilPedido)
 
     def test_ObtenerPerfilDebeDevolverElMismoPerfil(self):
-        usuario = "test_ObtenerPerfil"
+        usuario = Utilities.transformarEnMail("test_ObtenerPerfil")
         tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
         perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
         perfilEsperado = Utilities.abrirUsuarioConEmail(usuario)["user"]
@@ -37,7 +37,7 @@ class TestManejarPerfil(unittest.TestCase):
         self.usuariosParaBorrar.extend([usuario])
 
     def test_ActualizarPosicion(self):
-        usuario = "test_ActualizarPosicion1"
+        usuario = Utilities.transformarEnMail("test_ActualizarPosicion1")
         tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
         #VALORES DIFERENTES A LOS QUE SE CARGAN EN EL JSON DE Utilities.registrarYLoguearAlUsuarioSinEmail
         nuevaLatitud = 55.4444000
@@ -53,9 +53,10 @@ class TestManejarPerfil(unittest.TestCase):
 
 
     def test_ActualizarFotoDePerfil(self):
-        usuario = "test_ActualizarFotoDePerfil"
+        usuario = Utilities.transformarEnMail("test_ActualizarFotoDePerfil")
         tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
-        nuevaFoto = "foto_en_base_64_solamente_es_un_string_muy_muy_largo"
+        #Ejemplo de base64 sacado de wikipedia https://en.wikipedia.org/wiki/Base64
+        nuevaFoto = "TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4="
         Utilities.modificarFotoPerfil(usuario,tokenSesion, nuevaFoto)
 
         perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
@@ -63,7 +64,7 @@ class TestManejarPerfil(unittest.TestCase):
         self.usuariosParaBorrar.extend([usuario])
 
     def test_ModificarDatosDelPerfil(self):
-        usuario = "test_ModificarDatosDelPerfil"
+        usuario = Utilities.transformarEnMail("test_ModificarDatosDelPerfil")
         tokenSesion = Utilities.registrarYLoguearAlUsuarioSinEmail(usuario)
         #pido el perfil inicial
         perfilPedido = Utilities.pedirPerfil(usuario, tokenSesion, usuario)["user"];
