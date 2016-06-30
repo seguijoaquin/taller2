@@ -67,7 +67,9 @@ class EstadisticasCandidatos
 
         void actualizarUsuariosPopulares(string usuario);
 
-        static void resetearDia(EstadisticasCandidatos* estadisticas);
+        //static void resetearDia(EstadisticasCandidatos* estadisticas);
+
+        time_t tiempoInicio;
 };
 
 #endif // ESTADISTICASCANDIDATOS_H

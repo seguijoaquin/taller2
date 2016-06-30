@@ -57,6 +57,9 @@ class SesionesDeUsuarios
 
         static void verificarSesionesVecidas(SesionesDeUsuarios* sesiones);
 
+        thread* resetear;
+        bool activo;
+
 
 };
 

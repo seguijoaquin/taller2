@@ -3,17 +3,26 @@ using namespace std;
 
 string TOKEN_SESION_CERRADA = "TOKEN SESION CERRADA";
 double SEGUNDOS_MAXIMO_SESION = 600; //10 minutos. Poner un numero mucho mas grande para las pruebas
-int SEGUNDOS_ESPERA_VERIFICACION_SESIONES_VENCIDAS = 10;
+int SEGUNDOS_ESPERA_VERIFICACION_SESIONES_VENCIDAS = 1;
 
 SesionesDeUsuarios::SesionesDeUsuarios(){
-    thread verificarSesionesVencidas(verificarSesionesVecidas, this);
-    verificarSesionesVencidas.detach();
+    //thread verificarSesionesVencidas(verificarSesionesVecidas, this);
+    this->activo = true;
+    this->resetear = new thread(verificarSesionesVecidas, this);
 }
 
+SesionesDeUsuarios::~SesionesDeUsuarios(){
+    this->activo = false;
+    this->resetear->join();
+    delete this->resetear;
+}
+
+
 void SesionesDeUsuarios::verificarSesionesVecidas(SesionesDeUsuarios* sesiones){
-    while (true){
-        sesiones->terminarSesionesVencidas();
+    //while (true){
+    while(sesiones->activo){
         std::this_thread::sleep_for( (std::chrono::seconds(SEGUNDOS_ESPERA_VERIFICACION_SESIONES_VENCIDAS)));
+        sesiones->terminarSesionesVencidas();
     }
 }
 
@@ -78,10 +87,6 @@ void SesionesDeUsuarios::eliminarUsuario(string usuario){
     Logger::Instance()->log(INFO, "Se elimino "+ usuario);
 }
 
-SesionesDeUsuarios::~SesionesDeUsuarios()
-{
-    //dtor
-}
 
 
 void SesionesDeUsuarios::terminarSesionDe(string usuario){

@@ -7,11 +7,13 @@ int EstadisticasCandidatos::limiteCandidatos;
 const double EstadisticasCandidatos::porcentajeUsuariosPopulares = 0.01;
 
 EstadisticasCandidatos::EstadisticasCandidatos(){
-    thread resetear(resetearDia, this);
+    /*thread resetear(resetearDia, this);
     resetear.detach();
+    */
+    this->tiempoInicio = time(NULL);
 }
 
-
+/*
 void EstadisticasCandidatos::resetearDia(EstadisticasCandidatos* estadisticas){
     while(true){
         std::this_thread::sleep_for( (std::chrono::seconds(SEGUNDOS_PARA_RESETEAR)));
@@ -19,8 +21,10 @@ void EstadisticasCandidatos::resetearDia(EstadisticasCandidatos* estadisticas){
         estadisticas->resetearContadorCandidatos();
     }
 }
+*/
 
 void EstadisticasCandidatos::resetearContadorCandidatos(){
+    this->tiempoInicio = time(NULL);
     for( map<string, Estadisticas>::iterator it = this->estadisticasPorUsuario.begin() ; it != this->estadisticasPorUsuario.end(); ++it){
         it->second.cantidadDeCandidatosPedidos = 0;
     }
@@ -86,6 +90,10 @@ bool EstadisticasCandidatos::usuarioSuperoLimiteDeCandidatos(string usuario){
         return false;
     }
     else{
+        time_t segundosTranscurridos = time(NULL) - this->tiempoInicio;
+        if( segundosTranscurridos >= SEGUNDOS_PARA_RESETEAR ){
+            this->resetearContadorCandidatos();
+        }
         return ( this->estadisticasPorUsuario[usuario].cantidadDeCandidatosPedidos >= limiteCandidatos );
     }
 }
