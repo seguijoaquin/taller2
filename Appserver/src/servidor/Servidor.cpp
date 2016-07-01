@@ -23,6 +23,7 @@ void Servidor::iniciarServidor(){
 void Servidor::iniciarBaseDeDatos(){
     //this->credencialesDeUsuarios = new CredencialesDeUsuarios("./usuariosRegistrados");
     //this->conversaciones = new Conversaciones("./Conversaciones");
+
 }
 
 
